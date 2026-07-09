@@ -28,6 +28,10 @@ export default component$(() => {
   const added = useSignal(false);
   const addedInfo = useSignal("");
   const imgFullscreen = useSignal(false);
+  // Mobile image layout: "rail" = catalog style with the preview column on the
+  // right; "full" = full-width image (previews hidden, dots for paging).
+  // Toggled from the breadcrumb bar.
+  const imgLayout = useSignal<"rail" | "full">("rail");
 
   // Set initial color once product is known
   const colorInitialized = useSignal(false);
@@ -221,8 +225,23 @@ export default component$(() => {
         </a>
         <a href={`/apparel/#${catHash}`} class="pdp-breadcrumb__link pdp-breadcrumb__cat">{catLabel}</a>
         <span class="pdp-breadcrumb__sku">{p.sku}</span>
+        {/* Mobile: toggle between full-width image and the right preview rail.
+            The icon shows the view you'll switch TO. */}
+        <button
+          class="pdp-breadcrumb__view"
+          aria-label={imgLayout.value === "rail" ? "Full-width image" : "Show image previews"}
+          onClick$={() => (imgLayout.value = imgLayout.value === "rail" ? "full" : "rail")}
+        >
+          {imgLayout.value === "rail" ? (
+            // next: full-width image — expand-corners icon
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+          ) : (
+            // next: preview rail — panel-right icon
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+          )}
+        </button>
       </nav>
-      <div class="product-detail">
+      <div class={`product-detail ${imgLayout.value === "full" ? "product-detail--imgfull" : ""}`}>
         <div class="product-modal__layout">
           <div class="product-image-row">
             <div
