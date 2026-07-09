@@ -7972,8 +7972,8 @@ details[open] > .cart-drawer__checkout-title::after {
 }
 .nav-drawer__brand--img .brand-apparel { font-size: 0.95rem; margin-left: -1.5rem; }
 .login-modal__brand--img .brand-apparel { font-size: 1rem; margin-left: -1.5rem; }
-@media (min-width: 768px) and (max-width: 1024px) { .site-header .brand-apparel { font-size: 1.45rem; margin-left: -2.8rem; } }
-@media (max-width: 767px) { .site-header .brand-apparel { font-size: 1rem; letter-spacing: 0.08em; margin-left: -1.95rem; } }
+@media (min-width: 768px) and (max-width: 1024px) { .site-header .brand-apparel { font-size: 1.45rem; margin-left: -2.95rem; } }
+@media (max-width: 767px) { .site-header .brand-apparel { font-size: 1rem; letter-spacing: 0.08em; margin-left: -2.1rem; } }
 
 /* ---- White wordmark logo image ---- */
 /* Logo sits in the same darker-orange overlay box as the buttons. */
