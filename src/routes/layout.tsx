@@ -596,7 +596,7 @@ export default component$(() => {
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ cleanup, track }) => {
     track(() => loc.url.pathname);
-    const stickyTop = () => (window.innerWidth < 768 ? 49 : window.innerWidth <= 1024 ? 61 : 58);
+    const stickyTop = () => (window.innerWidth < 601 ? 53 : window.innerWidth <= 1024 ? 65 : 58);
     const onScroll = () => {
       headerScrolled.value = window.scrollY > 60;
       document.documentElement.classList.toggle("scrolled", window.scrollY > 60);
@@ -801,7 +801,11 @@ export default component$(() => {
       )}
 
       {(auth.value.loggedIn || (loginAction.value && !loginAction.value.failed)) && <>
-      <header class={`site-header site-header--white ${tabsStuck.value ? "site-header--tabs-stuck" : ""} ${searchOpen.value ? "site-header--search-open" : ""} ${cartOpen.value ? "site-header--cart-open" : ""} ${loc.url.pathname === "/" && !cartOpen.value ? `site-header--hero-hidden ${headerScrolled.value || searchOpen.value ? "site-header--hero-visible" : ""}` : ""}`}>
+      {/* SHOW_HERO: the home hero is temporarily disabled (see routes/index.tsx),
+          so the header's hero slide-in mode is off too — the header must be
+          visible at scrollY 0. Restore the `loc.url.pathname === "/"` guard
+          below when the hero comes back. */}
+      <header class={`site-header site-header--white ${tabsStuck.value ? "site-header--tabs-stuck" : ""} ${searchOpen.value ? "site-header--search-open" : ""} ${cartOpen.value ? "site-header--cart-open" : ""} ${false && loc.url.pathname === "/" && !cartOpen.value ? `site-header--hero-hidden ${headerScrolled.value || searchOpen.value ? "site-header--hero-visible" : ""}` : ""}`}>
         <div class="site-header__inner">
           <Link href="/" class="site-header__logo site-header__logo--img">
             <img src="/logo-white.png" alt="Wills Transfer" class="site-header__logo-white" width="1499" height="375" loading="eager" decoding="sync" />

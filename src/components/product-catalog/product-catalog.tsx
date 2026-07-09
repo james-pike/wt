@@ -58,7 +58,7 @@ function categoryForQuery(query: string, products: Product[]): string {
 // (auto-position, mirroring the cm storefront).
 function scrollProductsBelowBar() {
   const isDesktop = window.innerWidth > 1024;
-  const headerH = window.innerWidth < 768 ? 49 : (window.innerWidth <= 1024 ? 61 : 58);
+  const headerH = window.innerWidth < 601 ? 53 : (window.innerWidth <= 1024 ? 65 : 58);
   if (isDesktop) {
     const grid = document.querySelector('.home-catalog .apparel-grid');
     const gridTop = grid ? grid.getBoundingClientRect().top + window.scrollY - headerH - 8 : 0;
@@ -163,7 +163,12 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
         .slice()
         .sort((a, b) => rank(a.sku) - rank(b.sku));
     }
-    return allProducts.filter((p) => p.category !== "Flame Resistant");
+    // Clothing catalog: group the footwear products (safety boots + shoes) under
+    // the "Footwear" tab so they show when it's selected.
+    const isFootwear = (c: string) => c === "Safety Boots" || c === "Safety Shoes" || c === "Footwear";
+    return allProducts
+      .filter((p) => p.category !== "Flame Resistant")
+      .map((p) => (isFootwear(p.category) ? { ...p, category: "Footwear" } : p));
   });
 
   // eslint-disable-next-line qwik/no-use-visible-task
@@ -205,7 +210,7 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
       // re-scrolling while the keyboard opens leaves a gap above the tabs.
       const catalog = document.querySelector(".home-catalog") as HTMLElement | null;
       if (!catalog) return;
-      const headerH = window.innerWidth < 768 ? 49 : window.innerWidth <= 1024 ? 61 : 58;
+      const headerH = window.innerWidth < 601 ? 53 : window.innerWidth <= 1024 ? 65 : 58;
       const stickyPos = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2;
       if (window.scrollY < stickyPos - 1) {
         requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo({ top: stickyPos, behavior: "instant" })));
