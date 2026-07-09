@@ -1923,7 +1923,7 @@ body:has(.nav-drawer-overlay) .site-header {
   .home-catalog__title { display: none; }
   .home-catalog__search-desktop { display: none !important; }
   .home-catalog .apparel-titlebar__action--mobile-search { display: flex; }
-  .home-catalog .apparel-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: -3px; min-height: 100vh; align-content: start; padding: 8px 0 0; box-sizing: border-box; }
+  .home-catalog .apparel-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: -3px; min-height: 100vh; align-content: start; }
 }
 @media (min-width: 601px) and (max-width: 1024px) {
   .home-catalog { padding: 0; }
@@ -3867,7 +3867,9 @@ body:has(.nav-drawer-overlay) .site-header {
   .site-header--search-open .site-header__search {
     flex: 1 1 0;
     min-width: 0;
-    height: 44px;
+    /* Same height as the header buttons: leaves ~6px above/below inside the
+       bar, matching the field's inset from the bar's right edge. */
+    height: calc(var(--wt-box-h) - 12px);
     margin-right: 1px;
     gap: 3px;
     padding: 4px 6px;
@@ -6897,7 +6899,7 @@ details[open] > .cart-drawer__checkout-title::after {
      so the sticky breadcrumb runs flush with the viewport, the 0.25rem
      side inset moves onto the product image and details below. */
   .apparel-catalog:has(.product-detail) { padding: 0 0 0.35rem; }
-  .product-detail .product-image-row { padding-left: 0.15rem; padding-right: 0.15rem; }
+  .product-detail .product-image-row { padding-left: 0; padding-right: 0; }
   .product-detail { padding: 0; margin: -3px 0 0; max-width: 600px; }
   .product-detail .product-modal__image { border-radius: 2px; padding: 0; }
   .product-detail .product-carousel { border-radius: 2px; aspect-ratio: 1/1; margin: 0; }
@@ -6940,7 +6942,7 @@ details[open] > .cart-drawer__checkout-title::after {
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 0.15rem;
+    right: 0;
     width: 16%;
     gap: 4px;
     overflow-y: auto;
@@ -7970,8 +7972,8 @@ details[open] > .cart-drawer__checkout-title::after {
 }
 .nav-drawer__brand--img .brand-apparel { font-size: 0.95rem; margin-left: -1.5rem; }
 .login-modal__brand--img .brand-apparel { font-size: 1rem; margin-left: -1.5rem; }
-@media (min-width: 768px) and (max-width: 1024px) { .site-header .brand-apparel { font-size: 1.45rem; margin-left: -2.65rem; } }
-@media (max-width: 767px) { .site-header .brand-apparel { font-size: 1rem; letter-spacing: 0.08em; margin-left: -1.82rem; } }
+@media (min-width: 768px) and (max-width: 1024px) { .site-header .brand-apparel { font-size: 1.45rem; margin-left: -2.8rem; } }
+@media (max-width: 767px) { .site-header .brand-apparel { font-size: 1rem; letter-spacing: 0.08em; margin-left: -1.95rem; } }
 
 /* ---- White wordmark logo image ---- */
 /* Logo sits in the same darker-orange overlay box as the buttons. */
@@ -8125,7 +8127,6 @@ details[open] > .cart-drawer__checkout-title::after {
    bar and breadcrumb so the content area doesn't run full width past them. */
 @media (max-width: 1024px) {
   .product-detail {
-    padding-top: 8px;
     margin-left: var(--wt-box-my);
     margin-right: var(--wt-box-my);
   }
