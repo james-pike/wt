@@ -7928,7 +7928,7 @@ details[open] > .cart-drawer__checkout-title::after {
      (header − 2·margin) so the dark bar sits lower and the BOTTOM inset (the
      creamy band above the tabs) is smaller than the top. */
   --wt-box-h: 50px;
-  --wt-box-my: 7px;
+  --wt-box-my: 6px;
   /* Shared corner radius for the logo box and all header button boxes. */
   --wt-box-radius: 2px;
   /* Inset frame around the header/tab bars — the original greige, matching
@@ -7945,8 +7945,8 @@ details[open] > .cart-drawer__checkout-title::after {
 /* 3px header padding + box-h + 2px seam = header height (65 / 53) — see the
    seam block. Split at 600/601 to match the header-height breakpoints (601-767
    uses the 65px tablet header, so it needs the tablet bar too). */
-@media (min-width: 601px) and (max-width: 1024px) { :root { --wt-box-h: 60px; --wt-box-my: 6px; } }
-@media (max-width: 600px) { :root { --wt-box-h: 48px; --wt-box-my: 6px; }
+@media (min-width: 601px) and (max-width: 1024px) { :root { --wt-box-h: 60px; --wt-box-my: 5px; } }
+@media (max-width: 600px) { :root { --wt-box-h: 48px; --wt-box-my: 5px; }
 }
 
 /* ---- "APPAREL" clean uppercase label next to the script logo ----
@@ -7998,6 +7998,12 @@ details[open] > .cart-drawer__checkout-title::after {
 .site-header__logo-white { height: 44px; width: auto; display: block; }
 @media (min-width: 768px) and (max-width: 1024px) { .site-header__logo-white { height: 49px; } }
 @media (max-width: 767px) { .site-header__logo-white { height: 37px; } }
+/* Very narrow phones (<360px): scale the lockup down so the logo + three
+   header buttons fit without x-overflow. */
+@media (max-width: 359px) {
+  .site-header__logo-white { height: 30px; }
+  .site-header .brand-apparel { font-size: 0.85rem !important; margin-left: -1.75rem !important; }
+}
 
 /* ---- Header: an orange bar with ONE inset dark overlay bar (the inner) that
    holds the logo + buttons, so there's no lighter-orange gap between them but
@@ -8199,6 +8205,17 @@ details[open] > .cart-drawer__checkout-title::after {
 /* Edge padding equal to the vertical gap so the orange framing is uniform
    on every side, and the left-of-logo gap equals the right-of-last-button gap. */
 .site-header__inner { padding-left: var(--wt-box-my) !important; padding-right: var(--wt-box-my) !important; }
+/* Phones: no side margins between the header buttons — their own padding is
+   enough of a touch gap, and the saved width keeps the bar from x-overflowing
+   on narrow devices. */
+@media (max-width: 767px) {
+  .site-header .locale-btn,
+  .site-header .cart-btn,
+  .site-header .cart-btn.cart-btn--active,
+  .site-header .logout-btn,
+  .site-header .hamburger-btn,
+  .site-header .site-header__search-btn { margin: 0 !important; }
+}
 .site-header__nav { margin-right: 0 !important; }
 .site-header__nav > *:last-child,
 .site-header .hamburger-btn { margin-right: 0 !important; }
