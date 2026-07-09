@@ -21,6 +21,11 @@ import { allProducts } from "./apparel/products";
 const AUTH_COOKIE = "ce_auth"; // v2: orders persist to db
 const LOCALE_COOKIE = "ce_locale";
 
+// The home hero is temporarily disabled (see routes/index.tsx SHOW_HERO), so
+// the header's hero slide-in mode is off too — the header must be visible at
+// scrollY 0. Flip both back together when the hero returns.
+const SHOW_HERO_HEADER = false;
+
 // Canadian provincial sales tax rates (combined GST/HST/PST/QST)
 const PROVINCE_TAX: Record<string, number> = {
   AB: 0.05, BC: 0.12, MB: 0.12, NB: 0.15, NL: 0.15,
@@ -801,11 +806,7 @@ export default component$(() => {
       )}
 
       {(auth.value.loggedIn || (loginAction.value && !loginAction.value.failed)) && <>
-      {/* SHOW_HERO: the home hero is temporarily disabled (see routes/index.tsx),
-          so the header's hero slide-in mode is off too — the header must be
-          visible at scrollY 0. Restore the `loc.url.pathname === "/"` guard
-          below when the hero comes back. */}
-      <header class={`site-header site-header--white ${tabsStuck.value ? "site-header--tabs-stuck" : ""} ${searchOpen.value ? "site-header--search-open" : ""} ${cartOpen.value ? "site-header--cart-open" : ""} ${false && loc.url.pathname === "/" && !cartOpen.value ? `site-header--hero-hidden ${headerScrolled.value || searchOpen.value ? "site-header--hero-visible" : ""}` : ""}`}>
+      <header class={`site-header site-header--white ${tabsStuck.value ? "site-header--tabs-stuck" : ""} ${searchOpen.value ? "site-header--search-open" : ""} ${cartOpen.value ? "site-header--cart-open" : ""} ${SHOW_HERO_HEADER && loc.url.pathname === "/" && !cartOpen.value ? `site-header--hero-hidden ${headerScrolled.value || searchOpen.value ? "site-header--hero-visible" : ""}` : ""}`}>
         <div class="site-header__inner">
           <Link href="/" class="site-header__logo site-header__logo--img">
             <img src="/logo-white.png" alt="Wills Transfer" class="site-header__logo-white" width="1499" height="375" loading="eager" decoding="sync" />
