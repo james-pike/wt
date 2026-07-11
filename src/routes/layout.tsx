@@ -923,7 +923,7 @@ export default component$(() => {
                   value={searchValue.value}
                   onInput$={(_, el) => { searchValue.value = el.value; window.dispatchEvent(new CustomEvent("apparel-search", { detail: el.value })); }}
                   onKeyDown$={(e, el) => {
-                    if (e.key === "Enter") { e.preventDefault(); window.dispatchEvent(new CustomEvent("apparel-search", { detail: el.value })); }
+                    if (e.key === "Enter") { e.preventDefault(); window.dispatchEvent(new CustomEvent("apparel-search", { detail: el.value })); window.dispatchEvent(new CustomEvent("apparel-search-commit")); }
                     if (e.key === "Escape") { searchValue.value = ""; window.dispatchEvent(new CustomEvent("apparel-search", { detail: "" })); searchOpen.value = false; }
                   }}
                 />

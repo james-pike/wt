@@ -41,15 +41,22 @@ const CATEGORY_ICONS: Record<string, string> = {
 // tabs keep the short cat.* labels (see the --short/--full spans + CSS).
 const FULL_CAT_KEYS: Record<string, string> = {};
 
+// Search matcher for name/sku/category, with a simple plural fallback so
+// "boots" still hits "Safety Boot" (names are singular, and the footwear
+// categories are remapped to "Footwear" in the clothing catalog).
+function matchesQuery(p: Product, q: string): boolean {
+  const hay = `${p.name} ${p.sku} ${p.category}`.toLowerCase();
+  if (hay.includes(q)) return true;
+  return q.length > 3 && q.endsWith("s") && hay.includes(q.slice(0, -1));
+}
+
 // Return the category of the FIRST product that matches the search, so its tab
 // can be highlighted as active (matches the cm storefront). "All" if nothing
 // matches or the query is empty.
 function categoryForQuery(query: string, products: Product[]): string {
   const q = query.trim().toLowerCase();
   if (!q) return "All";
-  const match = products.find(
-    (p) => p.name.toLowerCase().includes(q) || p.sku.toLowerCase().includes(q) || p.category.toLowerCase().includes(q),
-  );
+  const match = products.find((p) => matchesQuery(p, q));
   return match ? match.category : "All";
 }
 
@@ -142,6 +149,17 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
   const isSingleCat = useComputed$(() => isTech.value);
   const activeCat = useSignal("All");
   const searchQuery = useSignal("");
+  // Mobile tab strip: true once scrolled to the end (flips the chevron cue).
+  const tabsAtEnd = useSignal(false);
+  // Center the active category tab in the scrollable strip. The double rAF
+  // waits out the render that applies the .active class after a signal change.
+  const centerActiveTab = $(() => {
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      document
+        .querySelector(".home-catalog__tabs .apparel-titlebar__tab.active")
+        ?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }));
+  });
   const searchOpen = useSignal(false); // tablet: search field opens over the tab bar
   const tabletCols = useSignal<number | "list">(3);
 
@@ -178,6 +196,7 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
       if (hash && HASH_TO_CAT[hash]) {
         activeCat.value = HASH_TO_CAT[hash];
         history.replaceState(null, "", window.location.pathname);
+        centerActiveTab();
       }
     };
     const onSelectCategory = (e: Event) => {
@@ -185,6 +204,7 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
       if (cat) {
         activeCat.value = cat;
         searchQuery.value = "";
+        centerActiveTab();
       }
     };
     // The phone search input lives in the site header (layout.tsx); it relays
@@ -216,15 +236,20 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
         requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo({ top: stickyPos, behavior: "instant" })));
       }
     };
+    // Header search Enter: the committed query's tab may be off-screen in the
+    // scrollable strip — center it now (live keystrokes deliberately don't).
+    const onSearchCommit = () => { centerActiveTab(); };
     applyHash();
     window.addEventListener("hashchange", applyHash);
     window.addEventListener("select-category", onSelectCategory);
     window.addEventListener("apparel-search", onExternalSearch);
+    window.addEventListener("apparel-search-commit", onSearchCommit);
     window.addEventListener("apparel-search-open", onSearchOpen);
     cleanup(() => {
       window.removeEventListener("hashchange", applyHash);
       window.removeEventListener("select-category", onSelectCategory);
       window.removeEventListener("apparel-search", onExternalSearch);
+      window.removeEventListener("apparel-search-commit", onSearchCommit);
       window.removeEventListener("apparel-search-open", onSearchOpen);
     });
   });
@@ -234,6 +259,8 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
       activeCat.value = categoryForQuery(query, baseProducts.value);
       searchQuery.value = query.trim();
       scrollProductsBelowBar();
+      // Committed search: bring the highlighted category's tab into view.
+      centerActiveTab();
     } else {
       searchQuery.value = "";
     }
@@ -253,14 +280,13 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
     return CLOTHING_CATEGORIES;
   });
 
+
   const filtered = useComputed$(() => {
     const products = baseProducts.value;
 
     if (searchQuery.value) {
       const q = searchQuery.value.toLowerCase();
-      return products.filter((p) =>
-        p.name.toLowerCase().includes(q) || p.sku.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)
-      );
+      return products.filter((p) => matchesQuery(p, q));
     }
 
     if (activeCat.value !== "All") {
@@ -273,7 +299,7 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
   return (
     <section class={`home-catalog ${cls || ""}`}>
       <div class="home-catalog__inner">
-        <div class="home-catalog__header">
+        <div class={`home-catalog__header ${tabsAtEnd.value ? "home-catalog__header--tabs-end" : ""}`}>
           <h2 class="home-catalog__title">{t("nav.apparel", locale.value)}</h2>
           <div class="home-catalog__sidebar-search">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -288,13 +314,22 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
               onBlur$={() => doSearch(searchQuery.value)}
             />
           </div>
-          <div class="home-catalog__tabs">
+          <div
+            class="home-catalog__tabs"
+            onScroll$={(_, el) => {
+              tabsAtEnd.value = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
+            }}
+          >
             {visibleCategories.value.map((cat) => (
               <button
                 key={cat}
                 class={`apparel-titlebar__tab ${isSingleCat.value || activeCat.value === cat ? "active" : ""}`}
-                onClick$={() => {
+                onClick$={(_, el) => {
                   if (isSingleCat.value) return;
+                  // Center the tapped tab in the scrollable strip so an
+                  // edge tap reveals the neighboring categories (no-op when
+                  // the strip doesn't overflow, e.g. desktop).
+                  el.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
                   // Changing category clears + exits the search (header + tab bar).
                   window.dispatchEvent(new CustomEvent("apparel-search-clear"));
                   searchOpen.value = false;

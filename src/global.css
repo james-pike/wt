@@ -8,6 +8,9 @@
   --ce-gold: #B26A00;
 
   --ce-white: #ffffff;
+  /* Product image panel. Images multiply onto this, so their baked-in white
+     backgrounds pick up the greige without any per-image editing. */
+  --ce-greige: #ece7dc;
   /* Neutrals carry a subtle warm (orange-leaning) tint so they harmonize with
      the primary orange while staying essentially grey — R ≥ G ≥ B, ~5% chroma
      (the warm counterpart to Facebook's blue-grey). */
@@ -39,7 +42,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 img, button, a, nav, .hero, .product-card, .category-card, .site-header, .apparel-titlebar, .home-catalog__header, .login-overlay, .login-modal { -webkit-user-select: none; user-select: none; }
 .login-modal input { -webkit-user-select: text; user-select: text; }
-html { font-size: 17px; scroll-behavior: auto; overflow-x: hidden; overflow-y: scroll; background: var(--ce-gray-100); overscroll-behavior: none; color-scheme: light; }
+html { font-size: 17px; scroll-behavior: auto; overflow-x: hidden; overflow-y: scroll; background: var(--ce-white); overscroll-behavior: none; color-scheme: light; }
 body {
   font-family: var(--font-sans);
   color: var(--ce-gray-900);
@@ -393,7 +396,7 @@ img { max-width: 100%; display: block; }
 }
 
 .home-page {
-  background: var(--ce-gray-200);
+  background: var(--ce-white);
 }
 .hero__bg {
   position: absolute;
@@ -1919,7 +1922,9 @@ body:has(.nav-drawer-overlay) .site-header {
   .home-catalog__hero-slot + .home-catalog__header { margin-top: 0; }
   /* Header bar bottom sits at 49.5px (4.5 margin + 43 bar + 2 greige band); pin
      the strip just above it so the band stays visible but no gap opens. */
-  .home-catalog__header { padding: 0; height: 30px; top: 55px; border-radius: 0; margin: 0 calc(-1 * var(--wt-box-my)); }
+  /* Taller strip: the orange seam under the header reads as the tabs' own
+     band, plus extra room below the labels. */
+  .home-catalog__header { padding: 0; height: 36px; top: 55px; border-radius: 0; margin: 0 calc(-1 * var(--wt-box-my)); }
   .home-catalog__title { display: none; }
   .home-catalog__search-desktop { display: none !important; }
   .home-catalog .apparel-titlebar__action--mobile-search { display: flex; }
@@ -1964,7 +1969,7 @@ body:has(.nav-drawer-overlay) .site-header {
      not inside a stacking-context-isolating wrapper like the apparel
      route's .apparel-catalog), so it covers the header's bottom border.
      It needs its own 1px top border to show the separator from the header. */
-  .home-catalog__header { height: 45px; padding: 0; top: 61px; border-radius: 0; margin-bottom: 0.1rem; border-top: 1px solid var(--ce-gray-200); }
+  .home-catalog__header { height: 50px; padding: 0; top: 61px; border-radius: 0; margin-bottom: 0.1rem; border-top: 1px solid var(--ce-gray-200); }
   /* Match mobile tab behavior on tablet — equal-width fill + container-query font scaling */
   .home-catalog__tabs { overflow-x: hidden; container-type: inline-size; }
   .home-catalog__tabs .apparel-titlebar__tab { flex: 1; text-align: center; justify-content: center; font-size: clamp(1.05rem, 2.8cqi, 1.7rem) !important; padding: 4px 2px !important; }
@@ -1980,6 +1985,10 @@ body:has(.nav-drawer-overlay) .site-header {
   /* Desktop: product cards keep rounded corners (flat look stays on tablet). */
   .product-card { border-radius: var(--radius-md); overflow: hidden; }
   .product-card__image { border-radius: var(--radius-md) var(--radius-md) 0 0; }
+  /* Desktop: white card image panels (the greige backing is mobile/tablet
+     only; the PDP image is white at every breakpoint). */
+  .product-card__image { background: var(--ce-white); }
+  .product-card:hover .product-card__image { background: var(--ce-gray-50); }
 }
 .apparel-titlebar__action.apparel-titlebar__action--tablet-cols { display: none; }
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -2707,7 +2716,7 @@ body:has(.nav-drawer-overlay) .site-header {
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 .product-card:hover .product-card__image {
-  background: var(--ce-gray-50);
+  background: var(--ce-gray-200);
 }
 .product-card:hover .product-card__info {
   background: var(--ce-gray-200);
@@ -2717,7 +2726,7 @@ body:has(.nav-drawer-overlay) .site-header {
   aspect-ratio: 1/1;
   position: relative;
   overflow: hidden;
-  background: var(--ce-white);
+  background: var(--ce-greige);
   transform: translateZ(0);
   backface-visibility: hidden;
 }
@@ -2742,10 +2751,14 @@ body:has(.nav-drawer-overlay) .site-header {
   height: 100%;
   object-fit: contain;
   object-position: center center;
+  /* White image backgrounds take on the panel greige. */
+  mix-blend-mode: multiply;
 }
 
 .product-card--cover .product-card__image img {
   object-fit: cover;
+  /* Lifestyle photo, not a white-background cutout. */
+  mix-blend-mode: normal;
 }
 .product-card--cover .product-card__image {
   background: var(--ce-gray-100);
@@ -3154,7 +3167,7 @@ body:has(.nav-drawer-overlay) .site-header {
 /* ===== Apparel Catalog ===== */
 .apparel-page {
   min-height: 100vh;
-  background: var(--ce-gray-200);
+  background: var(--ce-white);
   position: relative;
 }
 
@@ -3857,7 +3870,9 @@ body:has(.nav-drawer-overlay) .site-header {
      before it in the DOM). It extends left to just past the logo. */
   /* Comfortable gap to the logo cluster; collapses on narrow phones (below)
      where the width is needed for the field itself. */
-  .site-header--search-open .site-header__logo { margin-right: 12px; }
+  /* !important: the themed logo rule sets margin: 0 auto 0 0 !important,
+     which would otherwise swallow this gap. */
+  .site-header--search-open .site-header__logo--img { margin-right: 10px !important; }
   .site-header--search-open .site-header__nav { flex: 1 1 auto; min-width: 0; }
   .site-header--search-open .site-header__search-btn,
   .site-header--search-open .cart-btn { display: none; }
@@ -4142,7 +4157,7 @@ body:has(.apparel-page) .site-header .cart-btn .cart-btn__label { color: #ffffff
   overflow-y: visible;
 }
 .product-detail .product-carousel { border-radius: var(--radius-sm); aspect-ratio: 1/1; margin: 0; }
-.product-detail .product-modal__details { padding: 1.25rem 1rem 1rem; background: var(--ce-white); border-radius: var(--radius-sm); }
+.product-detail .product-modal__details { padding: 1.25rem 1rem 1rem; background: var(--ce-off-white); border-radius: var(--radius-sm); }
 .product-modal__name-row { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
 .apparel-catalog:has(.product-detail) { padding: 0.35rem 0.25rem 2rem; }
 
@@ -4228,7 +4243,9 @@ body:has(.apparel-page) .site-header .cart-btn .cart-btn__label { color: #ffffff
 .product-thumbs__item {
   width: 56px;
   aspect-ratio: 1/1;
-  border: 2px solid transparent;
+  /* Hairline-toned border so idle white thumbs separate from the white page;
+     the active item recolors it (green) rather than adding width. */
+  border: 2px solid var(--ce-gray-200);
   padding: 0;
   cursor: pointer;
   border-radius: var(--radius-sm);
@@ -4248,6 +4265,7 @@ body:has(.apparel-page) .site-header .cart-btn .cart-btn__label { color: #ffffff
   width: 100%;
   height: 100%;
   object-fit: cover;
+  mix-blend-mode: multiply;
 }
 
 /* Fullscreen image viewer */
@@ -4341,8 +4359,16 @@ body:has(.apparel-page) .site-header .cart-btn .cart-btn__label { color: #ffffff
   background: var(--ce-white);
   cursor: default;
 }
+/* Hairline keyline so the white image panel reads as a panel against the
+   white page margins (the standard white-on-white separator). */
 .product-carousel::after {
-  display: none;
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--ce-gray-200);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 5;
 }
 .product-carousel__slide {
   position: absolute;
@@ -4353,6 +4379,7 @@ body:has(.apparel-page) .site-header .cart-btn .cart-btn__label { color: #ffffff
   object-position: center center;
   opacity: 0;
   transition: opacity 0.4s ease;
+  mix-blend-mode: multiply;
 }
 .product-carousel__slide--contain {
   object-fit: contain;
@@ -5630,9 +5657,8 @@ details[open] > .cart-drawer__checkout-title::after {
     border-radius: 2px;
     z-index: -1;
   }
-  /* Drop the "All" tab on phones so the real categories fill the row. A lone
-     tab (e.g. tech = Work Wear only) is exempted by the :only-child rule. */
-  .home-catalog__tabs .apparel-titlebar__tab:first-child { display: none; }
+  /* The "All" tab shows on phones too — the strip scrolls horizontally now,
+     so the categories no longer have to fit the row. */
   .home-catalog__tabs .apparel-titlebar__tab:only-child { flex: 0 0 auto; margin-right: auto; text-align: left; justify-content: flex-start; padding-left: 0.75rem; }
   .home-catalog__tabs .apparel-titlebar__tab:only-child { display: flex; }
   .collection-hero { padding: 0; margin: 0 0.15rem 2px; margin-top: 0; }
@@ -6122,7 +6148,9 @@ details[open] > .cart-drawer__checkout-title::after {
     padding: 0 10px 10px;
     margin: 0 auto 2rem;
     display: grid;
-    grid-template-columns: 205px 1fr;
+    /* Single column: the categories are a horizontal bar above the grid
+       (styled like the PDP breadcrumb bar), not a sidebar. */
+    grid-template-columns: 1fr;
     grid-template-rows: auto auto 1fr;
     gap: 10px;
     box-shadow:
@@ -6139,91 +6167,94 @@ details[open] > .cart-drawer__checkout-title::after {
     margin: 0;
     max-width: none;
   }
+  /* Categories as a horizontal bar under the header, styled like the PDP
+     breadcrumb bar: flat sign orange, white labels, sticky at the same pin. */
   .home-catalog__header {
     grid-column: 1;
-    grid-row: 2 / -1;
-    flex-direction: column;
+    grid-row: 2;
+    flex-direction: row;
     align-items: stretch;
     border-bottom: none;
     padding: 0;
-    height: auto;
-    border-radius: 2px;
-    background: var(--ce-white);
+    height: 40px;
+    border-radius: 0;
+    background: var(--wt-orange);
     margin-bottom: 0;
     position: sticky;
     top: 58px;
-    align-self: start;
+    align-self: stretch;
   }
-  /* Smaller category text in the desktop sidebar so it fits a narrower column. */
   .home-catalog__header .apparel-titlebar__tab { font-size: 0.9rem !important; }
   .apparel-titlebar__tab-short { display: none; }
   .apparel-titlebar__tab-full { display: inline; }
-  .home-catalog__title {
-    font-size: 0;
-    padding: 0.35rem 0;
-    margin: 0;
-    line-height: 0;
-  }
+  .home-catalog__title { display: none; }
+  /* Search rides the bar's right end in the header's dark-box style. */
   .home-catalog__sidebar-search {
     display: flex;
     align-items: center;
     gap: 6px;
-    background: var(--ce-gray-100);
-    border: 1px solid var(--ce-gray-200);
-    border-radius: var(--radius-sm);
+    background: var(--wt-box);
+    border: 1px solid var(--wt-box-edge);
+    border-radius: var(--wt-box-radius);
     padding: 5px 10px;
-    margin: 0 0.5rem 0.5rem;
+    margin: 5px 8px 5px auto;
+    order: 2;
+    width: 220px;
   }
   .home-catalog__sidebar-search svg {
     flex-shrink: 0;
-    color: var(--ce-gray-500);
+    color: rgba(255,255,255,0.75);
+  }
+  .home-catalog__sidebar-search .apparel-titlebar__search-input {
+    color: #fff;
+    background: transparent;
+  }
+  .home-catalog__sidebar-search .apparel-titlebar__search-input::placeholder {
+    color: rgba(255,255,255,0.6);
   }
   .home-catalog__tabs {
-    flex-direction: column;
+    flex-direction: row;
     gap: 0;
-    width: 100%;
-    padding: 0.25rem;
+    width: auto;
+    padding: 0;
+    order: 1;
+    align-items: stretch;
   }
   .home-catalog__tabs .apparel-titlebar__tab {
-    white-space: normal; line-height: 1.25;
-    text-align: left;
-    padding: 8px 10px 8px 44px;
+    white-space: nowrap; line-height: 1.25;
+    text-align: center;
+    padding: 0 16px;
     border-right: none;
-    border-radius: 2px;
-    width: 100%;
+    border-radius: 0;
+    width: auto;
     font-size: 1rem;
-    font-weight: 400;
-    color: var(--ce-gray-700);
+    font-weight: 500;
+    color: #fff;
     display: flex;
     align-items: center;
     gap: 8px;
     position: relative;
   }
-  .home-catalog__tabs .apparel-titlebar__tab .apparel-titlebar__tab-icon {
-    position: absolute;
-    left: 10px;
-  }
-  .home-catalog__tabs .apparel-titlebar__tab::before {
-    content: '';
-    position: absolute;
-    left: 34px;
-    top: 6px;
-    bottom: 6px;
-    width: 1px;
-    background: var(--ce-gray-300);
-    border-bottom: 1px solid var(--ce-gray-200);
-  }
-  .home-catalog__tabs .apparel-titlebar__tab:last-child {
-    border-bottom: none;
-  }
   .home-catalog__tabs .apparel-titlebar__tab:hover {
-    background: var(--ce-gray-100);
-    color: var(--ce-gray-900);
+    background: rgba(255,255,255,0.10);
+    color: #fff;
   }
   .home-catalog__tabs .apparel-titlebar__tab.active {
-    background: var(--ce-gray-100);
-    color: var(--ce-green);
+    background: linear-gradient(var(--wt-box), var(--wt-box)), var(--wt-orange);
+    color: #fff;
   }
+  /* Thin white dividers between tabs, like the breadcrumb bar's separators. */
+  .home-catalog__tabs .apparel-titlebar__tab::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -50%);
+    width: 1px;
+    height: 55%;
+    background: rgba(255,255,255,0.5);
+  }
+  .home-catalog__tabs .apparel-titlebar__tab:last-child::after { display: none; }
   .home-catalog__right {
     display: none;
   }
@@ -6246,8 +6277,8 @@ details[open] > .cart-drawer__checkout-title::after {
     color: var(--ce-gray-600);
   }
   .home-catalog .apparel-grid {
-    grid-column: 2;
-    grid-row: 2 / -1;
+    grid-column: 1;
+    grid-row: 3;
     align-self: start;
     grid-template-columns: repeat(4, 1fr);
     gap: 8px;
@@ -6272,7 +6303,7 @@ details[open] > .cart-drawer__checkout-title::after {
   }
   .home-catalog { padding-top: 0; padding-bottom: 0; }
   .home-catalog__header {
-    border-radius: var(--radius-sm);
+    border-radius: 0;
     margin-bottom: 0.4rem;
   }
   .home-catalog .apparel-grid {
@@ -6359,7 +6390,7 @@ details[open] > .cart-drawer__checkout-title::after {
   /* Single row now that the breadcrumb (former row 1) is removed —
      image + details sit at the top with no empty gap above. */
   .product-modal__layout { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; column-gap: 0.1rem; row-gap: 0.1rem; }
-  .product-detail .product-modal__details { padding: 1.25rem 1rem 1rem; background: var(--ce-white); border-radius: 0; box-shadow: none; border: none; grid-column: 2; grid-row: 1; margin-right: 0.1rem; }
+  .product-detail .product-modal__details { padding: 1.25rem 1rem 1rem; background: var(--ce-off-white); border-radius: 0; box-shadow: none; border: none; grid-column: 2; grid-row: 1; margin-right: 0.1rem; }
   .product-detail .product-modal__details::after { display: none; }
   .product-detail .product-modal__details::before { display: none; }
   /* Tablet product page containers: flat. Matches the flat product
@@ -6913,7 +6944,7 @@ details[open] > .cart-drawer__checkout-title::after {
     pointer-events: none;
     z-index: 5;
   }
-  .product-detail .product-modal__details { position: relative; padding: 1.25rem 0.75rem 1.5rem; margin-left: 0.15rem; margin-right: 0.15rem; background: var(--ce-white); border-radius: 2px; }
+  .product-detail .product-modal__details { position: relative; padding: 1.25rem 0.75rem 1.5rem; margin-left: 0.15rem; margin-right: 0.15rem; background: var(--ce-off-white); border-radius: 2px; }
   .product-detail .product-modal__details::after {
     content: '';
     position: absolute;
@@ -7931,10 +7962,9 @@ details[open] > .cart-drawer__checkout-title::after {
   --wt-box-my: 6px;
   /* Shared corner radius for the logo box and all header button boxes. */
   --wt-box-radius: 2px;
-  /* Inset frame around the header/tab bars — the original greige, matching
-     the page background so the sign floats on a warm neutral, and the sand
-     product backing reads warm without having to go dark. */
-  --wt-frame: var(--ce-gray-200);
+  /* Inset frame around the header/tab bars — pure white, matching the page
+     background so the sign floats on the same white as the outside margins. */
+  --wt-frame: var(--ce-white);
   /* Iron texture for the header bar, extracted from "Iron texture.eps" (repo
      root). The EPS's brown is NOT used: a label-free band of the artwork was
      split against its median tone into darker-than-base marks (near-black
@@ -8292,10 +8322,14 @@ details[open] > .cart-drawer__checkout-title::after {
    mirroring the header's own orange + button-box relationship). */
 .apparel-titlebar__tab.active,
 .home-catalog__tabs .apparel-titlebar__tab.active { color: #fff !important; background: linear-gradient(var(--wt-box), var(--wt-box)), var(--wt-orange) !important; }
-/* Desktop sidebar: float each highlight with a uniform inset, smaller label. */
+/* Desktop: the categories are a horizontal breadcrumb-style bar (see the
+   1025px layout block) — flat sign orange, white labels, no per-tab floats. */
 @media (min-width: 1025px) {
-  .home-catalog__tabs .apparel-titlebar__tab { margin: 8px 12px !important; width: auto !important; border-radius: 3px !important; font-size: 0.82rem !important; }
-  .home-catalog__tabs .apparel-titlebar__tab::before { background: rgba(255,255,255,0.28) !important; border-bottom-color: rgba(255,255,255,0.12) !important; }
+  .home-catalog__header { background: var(--wt-orange) !important; }
+  .home-catalog__tabs .apparel-titlebar__tab { margin: 0 !important; width: auto !important; border-radius: 0 !important; font-size: 0.9rem !important; color: #fff !important; }
+  .home-catalog__tabs .apparel-titlebar__tab:hover { background: rgba(255,255,255,0.10) !important; color: #fff !important; }
+  .home-catalog__tabs .apparel-titlebar__tab.active { color: #fff !important; background: linear-gradient(var(--wt-box), var(--wt-box)), var(--wt-orange) !important; }
+  .home-catalog__tabs .apparel-titlebar__tab::before { display: none !important; }
 }
 /* Mobile strip (<=900px): keep the inset-pill pattern, recoloured; smaller label. */
 @media (max-width: 900px) {
@@ -8536,4 +8570,71 @@ details[open] > .cart-drawer__checkout-title::after {
   margin-left: -2.15em !important;
   position: relative !important;
   z-index: 2 !important;
+}
+
+
+/* ---- PDP image: white panel with greige side strips ----
+   Horizontal (x) greige bands on the image panel's left and right edges only
+   — no top/bottom bands — so the white product backing separates from the
+   white page laterally while staying flush vertically. */
+.product-detail .product-carousel {
+  border-left: 10px solid var(--ce-greige);
+  border-right: 10px solid var(--ce-greige);
+}
+
+/* ---- Mobile tab strip: horizontal scroll instead of shrink-to-fit ----
+   Tabs keep a comfortable size and scroll sideways when they overflow; a
+   fade + small chevron on the strip's right edge cues the scroll. */
+@media (max-width: 900px) {
+  .home-catalog__tabs {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    /* Just enough end inset that the last label doesn't touch the chevron. */
+    padding-right: 18px !important;
+  }
+  .home-catalog__tabs::-webkit-scrollbar { display: none; }
+  /* Grow to fill when everything fits, never shrink below the label —
+     overflow scrolls instead of crushing the type. */
+  .home-catalog__tabs .apparel-titlebar__tab {
+    flex: 1 0 auto !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0 !important;
+    padding: 1px 13px !important;
+  }
+  /* Right-edge scroll cue, pinned on the wrapper so it doesn't scroll with
+     the tabs (the wrapper's white frame is --wt-box-my wider on each side):
+     ::before is the orange fade, ::after the chevron. At the scroll end
+     (--tabs-end, toggled by the component) the fade lifts and the chevron
+     spins around to point back left. */
+  .home-catalog__header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: var(--wt-box-my);
+    width: 26px;
+    pointer-events: none;
+    z-index: 2;
+    background: linear-gradient(to right, rgba(230, 120, 25, 0), var(--wt-orange) 72%);
+    transition: opacity 0.25s ease;
+  }
+  .home-catalog__header::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: calc(var(--wt-box-my) + 6px);
+    width: 7px;
+    height: 7px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    pointer-events: none;
+    z-index: 2;
+    transform: translateY(-50%) rotate(45deg);
+    transition: transform 0.3s ease;
+  }
+  .home-catalog__header--tabs-end::before { opacity: 0; }
+  .home-catalog__header--tabs-end::after {
+    transform: translateY(-50%) rotate(225deg);
+  }
 }
