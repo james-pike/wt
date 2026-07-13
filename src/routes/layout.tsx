@@ -965,6 +965,18 @@ export default component$(() => {
         </div>
       </header>
 
+      {/* Phones: the sign's strip, painted ONCE and owned by the root layout.
+          The catalog's tab strip and the product page's breadcrumb are separate
+          elements in separate route components, so navigating between them tears
+          the orange bar down and rebuilds it — the background and its texture
+          repaint even though they're identical on both routes. This element never
+          unmounts across an /apparel nav, so there is nothing to repaint: only
+          the labels on top of it change. Both strips go transparent over it (see
+          global.css). */}
+      {loc.url.pathname.startsWith("/apparel") && (
+        <div class="wt-strip-bg" aria-hidden="true" />
+      )}
+
       {/* Mobile Nav Drawer */}
       {menuOpen.value && (
         <div class="nav-drawer-overlay" onClick$={() => (menuOpen.value = false)}>

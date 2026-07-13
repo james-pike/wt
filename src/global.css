@@ -9180,6 +9180,56 @@ details[open] > .cart-drawer__checkout-title::after {
   }
 }
 
+/* ---- Phones: one persistent strip across the apparel routes ----
+   The catalog's tab strip and the product page's breadcrumb are different
+   elements owned by different route components, so navigating between them
+   tears the orange bar down and builds a new one — its paint and its texture
+   are identical, but they still repaint, and that reads as a flash.
+
+   So the bar itself is painted by .wt-strip-bg, rendered by the ROOT layout
+   (see layout.tsx) and therefore untouched by an /apparel navigation. Both
+   strips go transparent and just carry their labels over it. Fixed, matching
+   the strips' own pin (55px header) and height (36px), and z-indexed below
+   them so tabs, the selected pill, the breadcrumb's slashes and the white seam
+   all still paint on top.
+
+   Phones only: tablet and desktop give the two strips different heights, so
+   one shared bar can't back both. */
+.wt-strip-bg { display: none; }
+@media (max-width: 600px) {
+  .wt-strip-bg {
+    display: block;
+    position: fixed;
+    top: 55px;
+    left: var(--wt-box-my);
+    right: var(--wt-box-my);
+    height: 36px;
+    z-index: 49;
+    pointer-events: none;
+    /* Same paint and the same texture offset the strips used, so the sample
+       still continues down from the header bar. */
+    background:
+      var(--wt-iron) left calc(-1 * (var(--wt-box-h) + var(--wt-seam))) / 100% auto no-repeat,
+      var(--wt-orange);
+    box-shadow:
+      inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
+      inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
+      inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
+  }
+  /* The strips stop painting themselves — the bar behind them does it. */
+  .apparel-page .home-catalog__tabs,
+  .apparel-page .pdp-breadcrumb {
+    background: none !important;
+    box-shadow: none !important;
+  }
+  /* Both route wrappers are stacking contexts (z-index: 1), which would trap
+     their strips below the root-level bar and hide the labels. Dropping the
+     context lets the strips (z-index: 50) sit above the bar, while the page's
+     in-flow content still passes underneath it. */
+  .apparel-page .home-catalog,
+  .apparel-page .apparel-catalog { z-index: auto; }
+}
+
 /* ---- Desktop: catalog view-mode toggle + list layout ----
    The button rides the category bar left of the search box (dark-box style,
    like the header buttons). List mode reuses the tablet extra mode: two
