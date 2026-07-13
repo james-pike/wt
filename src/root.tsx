@@ -12,8 +12,16 @@ export default component$(() => {
    * Don't remove the `<head>` and `<body>` elements.
    */
 
+  // viewTransition={false}: Qwik City otherwise wraps every SPA navigation in
+  // document.startViewTransition(), which cross-fades a snapshot of the old page
+  // into the new one. Navigating from a scrolled catalog, that fades the old
+  // scrolled viewport into the new page at the top — the header and the tab /
+  // breadcrumb strip visibly flash even though they are identical on both routes.
+  // From an unscrolled page the two snapshots match, so nothing shows. Without
+  // it, Qwik commits the DOM and sets the scroll in one synchronous block, so the
+  // swap paints once.
   return (
-    <QwikCityProvider>
+    <QwikCityProvider viewTransition={false}>
       <head>
         <meta charset="utf-8" />
         <meta name="theme-color" content="#ffffff" />
