@@ -592,22 +592,28 @@ export default component$(() => {
     cleanup(() => window.removeEventListener("open-cart", handler));
   }, { strategy: 'document-ready' });
 
-  // Settle the header's scroll-dependent state BEFORE the new route paints.
-  // A navigation lands at the top of the page, but the scroll reset happens
-  // after the render — so with only the visible task below (which runs post
-  // paint) the new route's first frame was drawn with the PREVIOUS page's
-  // scrolled state, then corrected. The header flashed: the search button
-  // (gated on --tabs-stuck) and, on the home route, the --hero-visible class.
-  // Only ever visible when the page being left was scrolled.
-  // Back/forward navigation restores a scroll position; the scroll handler
-  // below re-syncs from the real scrollY immediately after.
+  // Land the new route at the top BEFORE it renders, not after.
+  //
+  // Qwik City renders the incoming route while the window is still scrolled to
+  // the position of the page you left, and only calls scrollTo(0, 0) once the
+  // render is done (restoreScroll, on "link"/"form"). So a nav from a scrolled
+  // page paints a frame of the new page mid-scroll and then jumps to the top —
+  // the flicker across the header and the tab/breadcrumb strips. Navigating
+  // from an unscrolled page there's nothing to jump, hence no flicker.
+  //
+  // Client tasks run before render, so scrolling here means the new route's
+  // first frame is already at the top and Qwik's own scrollTo is a no-op. Same
+  // for the header's scroll-dependent state: --tabs-stuck (which gates the
+  // search button) and --hero-visible would otherwise be a frame stale.
   useTask$(({ track }) => {
     const path = track(() => loc.url.pathname);
     // The catalog strip is sticky from the top of the apparel route, so its
     // tabs are pinned there from the first frame.
     tabsStuck.value = path.startsWith("/apparel");
     headerScrolled.value = false;
-    if (isBrowser) document.documentElement.classList.remove("scrolled");
+    if (!isBrowser) return;
+    document.documentElement.classList.remove("scrolled");
+    window.scrollTo({ top: 0, behavior: "instant" });
   });
 
   // Sticky header on scroll (mobile landing page)
@@ -680,11 +686,11 @@ export default component$(() => {
     }
   }, { strategy: 'document-ready' });
 
-  // Every route opens at the top — a product page, and the catalog you go back
-  // to. Qwik City already scrolls to 0 for link/form navigations, but on
-  // popstate (back/forward) it restores the position saved in history, which
-  // would drop you back into the middle of the grid. The rAF puts this after
-  // that restore.
+  // Back/forward: Qwik City restores the scroll position saved in history, and
+  // it does so AFTER the render — undoing the pre-render scroll above and
+  // dropping you back into the middle of the grid. Re-assert the top once the
+  // restore has run. (Link/form navs are already at the top by then, so this is
+  // a no-op for them.)
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ track }) => {
     track(() => loc.url.pathname);

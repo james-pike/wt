@@ -4151,7 +4151,9 @@ body:has(.apparel-page) .site-header .cart-btn .cart-btn__label { color: #ffffff
 @media (max-width: 600px) {
   /* Pixel-match the catalog tab bar: same 36px height, square corners, flush
      bottom (the .home-catalog__header height in the phone block above). */
-  .pdp-breadcrumb { top: 48px; font-size: 0.8rem; height: 36px; padding: 0; overflow: hidden; border-radius: 0; margin: 0; }
+  /* font-size matches the catalog tab labels (0.95rem, set in the 900px
+     block) so the two strips read as the same bar across routes. */
+  .pdp-breadcrumb { top: 48px; font-size: 0.95rem; height: 36px; padding: 0; overflow: hidden; border-radius: 0; margin: 0; }
   .pdp-breadcrumb__link, .pdp-breadcrumb__sku { padding: 0 10px; }
 }
 
