@@ -5,6 +5,7 @@ import { allProducts, categoryLabel } from "../../routes/apparel/products";
 import type { Product } from "../../routes/apparel/products";
 import { sortColorsWhiteLast } from "../../routes/apparel/utils";
 import { LoginTypeContext } from "../../routes/layout";
+import { ProductImage } from "../product-image/product-image";
 
 const CLOTHING_CATEGORIES = ["All", "Work Wear", "Jackets", "Sweaters", "Shirts", "Hats", "Footwear"];
 
@@ -119,15 +120,29 @@ function scrollProductsBelowBar() {
   }
 }
 
-const ProductCard = component$<{ item: Product; sku: string }>(({ item, sku }) => {
+// Cards above the fold on a phone (2 columns): fetched eagerly so the first
+// screen isn't waiting on the lazy loader. Everything after this loads as it
+// scrolls into view — the "All" tab is 80+ products, and eager images meant
+// 80+ requests and megabytes of photos on the first paint.
+const EAGER_CARDS = 4;
+
+const ProductCard = component$<{ item: Product; sku: string; index: number }>(({ item, sku, index }) => {
   const locale = useContext(LocaleContext);
   const loginType = useContext(LoginTypeContext);
   const isTech = loginType.value === "tech";
+  const eager = index < EAGER_CARDS;
 
   return (
     <Link href={`/apparel/${sku}/`} class={`product-card product-card-link ${sku === "CAR-21" ? "product-card--cover" : ""}`}>
       <div class="product-card__image">
-        <img src={item.img} alt={item.name} width="440" height="440" />
+        <ProductImage
+          src={item.img}
+          alt={item.name}
+          width={440}
+          height={440}
+          loading={eager ? "eager" : "lazy"}
+          fetchPriority={eager ? "high" : "auto"}
+        />
       </div>
       <div class="product-card__info">
         <div class="product-card__name-row">
@@ -582,8 +597,8 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
           )}
         </aside>
         <div class={`apparel-grid ${tabletCols.value === "list" ? "apparel-grid--list" : `apparel-grid--cols-${tabletCols.value}`}`}>
-          {filtered.value.map((item) => (
-            <ProductCard key={item.sku} item={item} sku={item.sku} />
+          {filtered.value.map((item, i) => (
+            <ProductCard key={item.sku} item={item} sku={item.sku} index={i} />
           ))}
         </div>
       </div>

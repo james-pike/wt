@@ -6,6 +6,7 @@ import { LocaleContext, t } from "../../../i18n";
 import { allProducts, colorName, categoryLabel } from "../products";
 import { expandSizes, sortColorsWhiteLast } from "../utils";
 import { LoginTypeContext } from "../../layout";
+import { ProductImage } from "../../../components/product-image/product-image";
 
 export default component$(() => {
   const locale = useContext(LocaleContext);
@@ -268,15 +269,20 @@ export default component$(() => {
               }}
             >
               {(((p.imgs && p.imgs.length ? p.imgs : [p.img]) as string[])).map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt={p.name}
-                  width="600"
-                  height="400"
-                  class={`product-carousel__slide ${imgIndex.value === i ? "active" : ""} ${src.includes("spec") ? "product-carousel__slide--contain" : ""}`}
-                  style={src.includes("BACK") ? { objectPosition: "center 65%" } : {}}
-                />
+                <picture key={i}>
+                  <source srcset={src.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                  <img
+                    src={src}
+                    alt={p.name}
+                    width="600"
+                    height="400"
+                    loading={i === 0 ? "eager" : "lazy"}
+                    fetchPriority={i === 0 ? "high" : "auto"}
+                    decoding="async"
+                    class={`product-carousel__slide ${imgIndex.value === i ? "active" : ""} ${src.includes("spec") ? "product-carousel__slide--contain" : ""}`}
+                    style={src.includes("BACK") ? { objectPosition: "center 65%" } : {}}
+                  />
+                </picture>
               ))}
               {pdf && (
                 <a href={pdf} target="_blank" class="product-modal__pdf" onClick$={(e) => e.stopPropagation()}>
@@ -304,7 +310,7 @@ export default component$(() => {
                     class={`product-thumbs__item ${imgIndex.value === i ? "active" : ""}`}
                     onClick$={() => { imgIndex.value = i; }}
                   >
-                    <img src={src} alt={`${p.name} ${i + 1}`} width="80" height="80" />
+                    <ProductImage src={src} alt={`${p.name} ${i + 1}`} width={80} height={80} loading={i === 0 ? "eager" : "lazy"} />
                   </button>
                 ))}
               </div>
@@ -467,7 +473,7 @@ export default component$(() => {
               {related.slice(0, 4).map((item) => (
                 <Link key={item.sku} href={`/apparel/${item.sku}/`} class="product-card product-card-link">
                   <div class="product-card__image">
-                    <img src={item.img} alt={item.name} width="440" height="440" loading="eager" decoding="async" />
+                    <ProductImage src={item.img} alt={item.name} width={440} height={440} loading="eager" />
                   </div>
                   <div class="product-card__info">
                     <div class="product-card__name-row">
@@ -492,7 +498,7 @@ export default component$(() => {
                     <Carousel.Slide key={item.sku} class="related-carousel__slide">
                       <Link href={`/apparel/${item.sku}/`} class="product-card product-card-link">
                         <div class="product-card__image">
-                          <img src={item.img} alt={item.name} width="440" height="440" loading="lazy" decoding="async" />
+                          <ProductImage src={item.img} alt={item.name} width={440} height={440} loading="lazy" />
                         </div>
                         <div class="product-card__info">
                           <div class="product-card__name-row">

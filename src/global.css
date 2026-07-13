@@ -16,8 +16,16 @@
   --site-max: 1280px;
   /* Desktop: thickness of the white ring around the sign card — slightly
      slimmer than the sign's internal vertical bands so the side strips read
-     equal to the y strips above the header bar / below the footer. */
-  --wt-ring: 4px;
+     equal to the y strips above the header bar / below the footer.
+     Head of a golden-ratio chain, each step ≈ phi (1.618) times the last:
+       divider 2px  :  ring 3px  :  greige gap 5px  :  bottom gap 8px
+     so the white line, the white ring, the gaps around the products and the
+     sidebar, and the gap under the grid are all proportionally related. */
+  --wt-ring: 3px;
+  /* The greige gap around the products and the sidebar: phi x the ring. */
+  --wt-gap: 5px;
+  /* And phi again for the larger gap that closes the column underneath. */
+  --wt-gap-lg: 8px;
   /* Neutrals carry a subtle warm (orange-leaning) tint so they harmonize with
      the primary orange while staying essentially grey — R ≥ G ≥ B, ~5% chroma
      (the warm counterpart to Facebook's blue-grey). */
@@ -2742,9 +2750,14 @@ body:has(.nav-drawer-overlay) .site-header {
   /* Matches .product-card border-radius — only top corners since the
      image area is at the top of the card. */
   border-radius: 2px 2px 0 0;
+  /* Engraved, not shadowed-from-above: an even hairline all round with a soft
+     shade just inside it, and a light lip along the bottom edge — the panel
+     reads as pressed into the sign rather than a card with a shadow cast over
+     its top edge. */
   box-shadow:
-    inset 0 2px 4px rgba(0,0,0,0.15),
-    inset 0 1px 1px rgba(0,0,0,0.1);
+    inset 0 0 0 1px rgba(0,0,0,0.07),
+    inset 0 1px 2px rgba(0,0,0,0.07),
+    inset 0 -1px 0 rgba(255,255,255,0.55);
   pointer-events: none;
   z-index: 2;
 }
@@ -6155,7 +6168,7 @@ details[open] > .cart-drawer__checkout-title::after {
     border-radius: 0;
     /* No side padding: the tab bar, sidebar and grid edges sit exactly on
        --site-max, flush with the header bar and footer above/below. */
-    padding: 0 0 10px;
+    padding: 0 0 var(--wt-gap-lg);
     margin: 0 auto;
     display: grid;
     /* Categories are a horizontal bar spanning row 2 (styled like the PDP
@@ -6166,19 +6179,18 @@ details[open] > .cart-drawer__checkout-title::after {
        (zero-height) hero row and the tab bar, holding the bar ~10px below
        the header at rest — the spacing below the bar is on the row-3 items
        instead, so the bar hugs the header like it does when pinned. */
-    /* Content gaps: ~phi x the 4px ring (4 x 1.618 ≈ 6), continuing the
-       2 : 4 : 6 strip chain. */
-    column-gap: 6px;
+    /* Content gaps: phi x the ring (3 x 1.618 ≈ 5), continuing the
+       2 : 3 : 5 : 8 chain. */
+    column-gap: var(--wt-gap);
     row-gap: 0;
     box-shadow:
       0 2px 8px rgba(0,0,0,0.05),
       inset 0 0 6px rgba(0,0,0,0.02);
   }
-  /* Uniform 6px greige gap below the bar for BOTH columns — sidebar and
-     product grid start level, and the sidebar's left/right gaps match the
-     6px gaps inside the grid. */
-  .home-catalog__filters { margin: 6px 0 0 6px; }
-  .home-catalog .apparel-grid { margin-top: 6px; }
+  /* One greige gap for BOTH columns — sidebar and product grid start level,
+     and the sidebar's outer gap matches the gutter between it and the grid. */
+  .home-catalog__filters { margin: var(--wt-gap) 0 0 var(--wt-gap); }
+  .home-catalog .apparel-grid { margin-top: var(--wt-gap); }
   .home-catalog__hero-slot { margin-bottom: 10px; }
   .home-catalog__hero-slot:empty { display: none; }
   .home-catalog__hero-slot {
@@ -6947,7 +6959,14 @@ details[open] > .cart-drawer__checkout-title::after {
   .product-card__name { font-size: 0.82rem; line-height: 1.3; }
   .product-card__name-code { display: none; }
   .product-card { border-radius: 2px; }
-  .product-card__image::after { box-shadow: inset 0 1px 2px rgba(0,0,0,0.06); border-radius: 2px 2px 0 0; }
+  /* Same engraved edge as desktop, a touch lighter for the smaller panels. */
+  .product-card__image::after {
+    box-shadow:
+      inset 0 0 0 1px rgba(0,0,0,0.06),
+      inset 0 1px 2px rgba(0,0,0,0.05),
+      inset 0 -1px 0 rgba(255,255,255,0.5);
+    border-radius: 2px 2px 0 0;
+  }
   .related-items { margin-top: 1rem; }
   .related-items__grid { display: none; }
   .related-items__title { font-size: 0.9rem; margin-bottom: 0.5rem; }
@@ -8437,8 +8456,12 @@ details[open] > .cart-drawer__checkout-title::after {
    inset from the page edges, with rounded BOTTOM corners only (the card's
    end) and the same edge shading. ---- */
 .site-footer {
+  /* Same sampling as the header bar and the strips (left top / 100% auto), not
+     center/cover: cover rescales the grain and stretches the dark marks out of
+     it, which is why the footer read lighter than the header even though the
+     paint underneath is the same colour. */
   background:
-    var(--wt-iron) center / cover no-repeat,
+    var(--wt-iron) left top / 100% auto no-repeat,
     linear-gradient(var(--wt-box), var(--wt-box)),
     var(--wt-orange);
   border-radius: 0 0 6px 6px;
@@ -8583,10 +8606,13 @@ details[open] > .cart-drawer__checkout-title::after {
 .pdp-breadcrumb__view:hover { background: rgba(255,255,255,0.10); }
 @media (max-width: 600px) {
   .pdp-breadcrumb__view { display: inline-flex; }
-  /* The sku is no longer the last child (the toggle is), so hide its "/"
-     separator too — no divider between the sku and the toggle. */
-  .pdp-breadcrumb__sku::after { display: none; }
 }
+/* The sku ends the trail, but it is never :last-child — the fullscreen toggle
+   is, whether or not it's displayed — so the generic "/" separator would hang
+   off it. Hide it at every width: on phones the toggle follows and wants no
+   divider before it; everywhere else the toggle is display:none and the "/"
+   was simply dangling after the sku. */
+.pdp-breadcrumb__sku::after { display: none; }
 /* Slanted white "/" dividers between segments — reads as a route separator. */
 .pdp-breadcrumb > *::after {
   content: '';
@@ -8711,10 +8737,21 @@ details[open] > .cart-drawer__checkout-title::after {
 /* ---- PDP image: white panel with greige side strips ----
    Horizontal (x) greige bands on the image panel's left and right edges only
    — no top/bottom bands — so the white product backing separates from the
-   white page laterally while staying flush vertically. */
+   white page laterally while staying flush vertically. Sized to the page's own
+   inset rather than a standalone 10px, which read as too much air around the
+   photo once the panels got their proper gaps. */
 .product-detail .product-carousel {
-  border-left: 10px solid var(--ce-greige);
-  border-right: 10px solid var(--ce-greige);
+  border-left: var(--wt-box-my) solid var(--ce-greige);
+  border-right: var(--wt-box-my) solid var(--ce-greige);
+}
+/* Desktop: none at all. The panel already sits on the greige card with the
+   --wt-gap inset on every side, so a strip inside it just doubles the space —
+   the gap beside the photo should equal the gap above it. */
+@media (min-width: 1025px) {
+  .product-detail .product-carousel {
+    border-left: 0;
+    border-right: 0;
+  }
 }
 
 /* ---- Mobile tab strip: horizontal scroll instead of shrink-to-fit ----
@@ -8787,13 +8824,14 @@ details[open] > .cart-drawer__checkout-title::after {
     position: sticky;
     /* Header (4 + 64) + category bar (42) + the 6px gap, minus the 1px lap. */
     top: 115px;
-    /* Semi-transparent white over the greige column — halfway between the
-       two tones — with a soft inset edge so the panel reads pressed into
-       the layout rather than sitting flush on it. */
+    /* Semi-transparent white over the greige column — halfway between the two
+       tones — engraved into the sign like the product panels: hairline, shade
+       just inside it, and a light lip along the bottom outer edge. */
     background: rgba(255, 255, 255, 0.5);
     box-shadow:
-      inset 0 1px 3px rgba(0, 0, 0, 0.06),
-      inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+      inset 0 0 0 1px rgba(0, 0, 0, 0.07),
+      inset 0 2px 4px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.6);
     border-radius: 2px;
     padding: 0.35rem 0 0.85rem;
   }
@@ -8922,9 +8960,9 @@ details[open] > .cart-drawer__checkout-title::after {
     background: var(--ce-white);
   }
   /* Thin white strip at the bars' bottom edge too — the same divider the
-     header has above them. 3px rather than 2px: this one borders greige
-     (low contrast) instead of orange, so it needs the extra pixel to read
-     as the same thickness. */
+     header has above them. 3px rather than the 2px above: this one borders
+     greige (low contrast) instead of orange, so it needs the extra pixel to
+     READ as the same thickness. */
   .home-catalog__header::after,
   .pdp-breadcrumb::after {
     content: '';
@@ -8932,7 +8970,7 @@ details[open] > .cart-drawer__checkout-title::after {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 2px;
+    height: 3px;
     background: var(--ce-white);
     z-index: 3;
   }
@@ -9067,7 +9105,34 @@ details[open] > .cart-drawer__checkout-title::after {
   .product-card__image { background: var(--ce-white); }
   .product-card:hover .product-card__image { background: var(--ce-gray-50); }
   /* "More <category>" grid: thin gaps showing the greige section through. */
-  .related-items__grid { gap: 6px; }
+  .related-items__grid { gap: var(--wt-gap); }
+
+  /* Product page spacing, same chain as the catalog: every panel sits in the
+     greige card with the SAME gap around it — under the breadcrumb, at the
+     sides, between the image and the details, and between the panels — with the
+     larger phi step closing the column at the bottom. It previously had no gap
+     under the breadcrumb at all (the panels ran under the sticky bar), ran flush
+     to the card's side edges, and left a 36px drop above "More <category>". */
+  .apparel-catalog:has(.product-detail) { padding: 0 0 var(--wt-gap-lg); }
+  /* The breadcrumb used to be pulled up 1.4rem, which dragged the panels below
+     it up too — they started underneath the sticky bar. It sits in flow now, so
+     the gap under it is just the panel's own margin, like every other gap. */
+  .pdp-breadcrumb {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .product-detail {
+    margin: var(--wt-gap);
+  }
+  /* The image/details split is this grid, not .product-detail — its gutter was
+     1px. Same gap as everywhere else, so the space between the image and the
+     info reads equal to the space above the image and to the card's edge. */
+  .product-modal__layout {
+    column-gap: var(--wt-gap);
+    row-gap: var(--wt-gap);
+  }
+  .product-detail .product-modal__details { margin-right: 0; }
+  .related-items { margin: var(--wt-gap); }
 }
 
 /* ---- Mobile/tablet: white sign edge to the viewport ----
@@ -9304,4 +9369,37 @@ details[open] > .cart-drawer__checkout-title::after {
   /* The space the two strips used to occupy in flow. */
   .apparel-page .home-catalog__inner,
   .apparel-page .apparel-catalog { padding-top: 36px; }
+}
+
+/* ---- Footer content: legible on the sign ----
+   Everything in the footer was set in translucent white (links 0.6, body text
+   0.4) against a textured orange bar, so it all sank into the background. The
+   sign's own labels — the header wordmark, the tab bar, the breadcrumb — are
+   solid white; the footer should read the same way. */
+.site-footer {
+  color: rgba(255, 255, 255, 0.88);
+}
+.site-footer__links a {
+  color: #fff;
+  font-weight: 600;
+  /* A little depth so the type sits ON the sign rather than in it — the same
+     trick the wordmark uses against the texture. */
+  text-shadow: 0 1px 2px rgba(62, 24, 2, 0.45);
+}
+.site-footer__links a:hover {
+  color: var(--wt-orange-hi, #ffd9a3);
+}
+.site-footer__links a:not(:last-child)::after {
+  color: rgba(255, 255, 255, 0.55);
+}
+.site-footer__privacy-link,
+.site-footer__contact {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 2px rgba(62, 24, 2, 0.4);
+}
+.site-footer__privacy-link:hover { color: #fff; }
+.site-footer__contact-icon { opacity: 0.95; }
+/* The wordmark lockup: lift it off the texture the same way. */
+.site-footer__logo-white {
+  filter: drop-shadow(0 1px 3px rgba(62, 24, 2, 0.5));
 }
