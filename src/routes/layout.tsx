@@ -1,4 +1,4 @@
-import { component$, Slot, useSignal, useVisibleTask$, $, useContextProvider, useStore, useComputed$, createContextId } from "@builder.io/qwik";
+import { component$, Slot, useSignal, useTask$, useVisibleTask$, $, useContextProvider, useStore, useComputed$, createContextId, isBrowser } from "@builder.io/qwik";
 import type { Signal } from "@builder.io/qwik";
 import { Modal, Collapsible, Accordion } from '@qwik-ui/headless';
 import {
@@ -592,6 +592,24 @@ export default component$(() => {
     cleanup(() => window.removeEventListener("open-cart", handler));
   }, { strategy: 'document-ready' });
 
+  // Settle the header's scroll-dependent state BEFORE the new route paints.
+  // A navigation lands at the top of the page, but the scroll reset happens
+  // after the render — so with only the visible task below (which runs post
+  // paint) the new route's first frame was drawn with the PREVIOUS page's
+  // scrolled state, then corrected. The header flashed: the search button
+  // (gated on --tabs-stuck) and, on the home route, the --hero-visible class.
+  // Only ever visible when the page being left was scrolled.
+  // Back/forward navigation restores a scroll position; the scroll handler
+  // below re-syncs from the real scrollY immediately after.
+  useTask$(({ track }) => {
+    const path = track(() => loc.url.pathname);
+    // The catalog strip is sticky from the top of the apparel route, so its
+    // tabs are pinned there from the first frame.
+    tabsStuck.value = path.startsWith("/apparel");
+    headerScrolled.value = false;
+    if (isBrowser) document.documentElement.classList.remove("scrolled");
+  });
+
   // Sticky header on scroll (mobile landing page)
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ cleanup, track }) => {
@@ -660,6 +678,17 @@ export default component$(() => {
       document.body.style.cssText = "";
       window.scrollTo({ top: scrollY, behavior: "instant" });
     }
+  }, { strategy: 'document-ready' });
+
+  // Every route opens at the top — a product page, and the catalog you go back
+  // to. Qwik City already scrolls to 0 for link/form navigations, but on
+  // popstate (back/forward) it restores the position saved in history, which
+  // would drop you back into the middle of the grid. The rAF puts this after
+  // that restore.
+  // eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(({ track }) => {
+    track(() => loc.url.pathname);
+    requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "instant" }));
   }, { strategy: 'document-ready' });
 
   // Close the cart and the search bar on navigation. We do NOT clear the search
