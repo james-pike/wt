@@ -450,11 +450,6 @@ export default component$(() => {
   // keyboard raises with no flash.
   const tabsStuck = useSignal(false);
 
-  const toggleLocale = $(() => {
-    locale.value = locale.value === "en" ? "fr" : "en";
-    document.cookie = `${LOCALE_COOKIE}=${locale.value};path=/;max-age=31536000`;
-  });
-
   // Load cart from localStorage — eager strategy to ensure it runs immediately
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(
@@ -886,11 +881,6 @@ export default component$(() => {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
               </button>
             )}
-            <button class={`locale-btn ${locale.value === "en" ? "locale-btn--to-fr" : "locale-btn--to-en"} ${cartOpen.value ? "locale-btn--cart-open" : ""}`} onClick$={toggleLocale} aria-label="Toggle language">
-              <span class="locale-btn__full">{locale.value === "en" ? "Français" : "English"}</span>
-              <span class="locale-btn__short">{locale.value === "en" ? "FR" : "EN"}</span>
-              <svg class="locale-btn__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-            </button>
             <button class={`cart-btn ${cart.items.length > 0 ? "cart-btn--active" : ""}`} onClick$={() => { cartOpen.value = !cartOpen.value; if (!cartOpen.value) checkoutStep.value = "cart"; }}>
               <span class="cart-btn__label">{t("cart.mycart", locale.value)}</span>
               {cartOpen.value ? (
@@ -953,21 +943,21 @@ export default component$(() => {
               </button>
             </div>
             <div class="nav-drawer__links">
-              <a href="/" class={`nav-drawer__link ${loc.url.pathname === "/" ? "active" : ""}`} onClick$={() => (menuOpen.value = false)}>
+              <Link href="/" class={`nav-drawer__link ${loc.url.pathname === "/" ? "active" : ""}`} onClick$={() => (menuOpen.value = false)}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 {t("nav.home", locale.value)}
-              </a>
+              </Link>
               {loginType.value === "tech" && (
-                <a href="/apparel/" class={`nav-drawer__link ${loc.url.pathname.startsWith("/apparel") ? "active" : ""}`} onClick$={() => { menuOpen.value = false; window.dispatchEvent(new CustomEvent("select-category", { detail: "Work Wear" })); }}>
+                <Link href="/apparel/" class={`nav-drawer__link ${loc.url.pathname.startsWith("/apparel") ? "active" : ""}`} onClick$={() => { menuOpen.value = false; window.dispatchEvent(new CustomEvent("select-category", { detail: "Work Wear" })); }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M4 6h16v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"/><path d="M4 6l-2 4v2h4V8"/><path d="M20 6l2 4v2h-4V8"/></svg>
                   {t("cat.Work Wear", locale.value)}
-                </a>
+                </Link>
               )}
               {loginType.value === "safety" && (
-                <a href="/apparel/" class={`nav-drawer__link ${loc.url.pathname.startsWith("/apparel") ? "active" : ""}`} onClick$={() => { menuOpen.value = false; window.dispatchEvent(new CustomEvent("select-category", { detail: "Flame Resistant" })); }}>
+                <Link href="/apparel/" class={`nav-drawer__link ${loc.url.pathname.startsWith("/apparel") ? "active" : ""}`} onClick$={() => { menuOpen.value = false; window.dispatchEvent(new CustomEvent("select-category", { detail: "Flame Resistant" })); }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
                   {t("cat.Flame Resistant", locale.value)}
-                </a>
+                </Link>
               )}
               {loginType.value !== "tech" && (() => {
                 const NAV_CATS: { key: TranslationKey; cat: string; icon: string }[] = [
@@ -1026,10 +1016,6 @@ export default component$(() => {
               })()}
             </div>
             <div class="nav-drawer__footer">
-              <button class={`nav-drawer__locale ${locale.value === "en" ? "nav-drawer__locale--to-fr" : "nav-drawer__locale--to-en"}`} onClick$={() => { toggleLocale(); }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-                {locale.value === "en" ? "Français" : "English"}
-              </button>
               <Form action={logoutAction} reloadDocument>
                 <button type="submit" class="nav-drawer__locale nav-drawer__logout">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
@@ -1055,20 +1041,20 @@ export default component$(() => {
           {loginType.value === "safety" && (
           <nav class="site-footer__links">
             <Link href="/">{t("nav.home", locale.value)}</Link>
-            <a href="/apparel/#fr" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Flame Resistant" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Flame Resistant", locale.value)}</a>
-            <a href="/apparel/#shirts" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Shirts" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Shirts", locale.value)}</a>
-            <a href="/apparel/#hats" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Hats" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Hats", locale.value)}</a>
+            <Link href="/apparel/#fr" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Flame Resistant" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Flame Resistant", locale.value)}</Link>
+            <Link href="/apparel/#shirts" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Shirts" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Shirts", locale.value)}</Link>
+            <Link href="/apparel/#hats" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Hats" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Hats", locale.value)}</Link>
             <Link class="site-footer__links-privacy" href="/privacy/">{t("footer.privacypolicy", locale.value)}</Link>
           </nav>
           )}
           {(loginType.value !== "tech" && loginType.value !== "safety") && (
           <nav class="site-footer__links">
             <Link href="/">{t("nav.home", locale.value)}</Link>
-            <a href="/apparel/#shirts" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Shirts" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Shirts", locale.value)}</a>
-            <a href="/apparel/#jackets" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Jackets" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Jackets", locale.value)}</a>
-            <a href="/apparel/#hats" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Hats" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Hats", locale.value)}</a>
-            <a href="/apparel/#swag" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "SWAG" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.SWAG", locale.value)}</a>
-            <a href="/apparel/#new-hire-kit" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "New Hire Kit" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}><span class="site-footer__officekit-short">{t("cat.New Hire Kit", locale.value)}</span><span class="site-footer__officekit-full">{t("nav.officewelcomekit", locale.value)}</span></a>
+            <Link href="/apparel/#shirts" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Shirts" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Shirts", locale.value)}</Link>
+            <Link href="/apparel/#jackets" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Jackets" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Jackets", locale.value)}</Link>
+            <Link href="/apparel/#hats" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Hats" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Hats", locale.value)}</Link>
+            <Link href="/apparel/#swag" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "SWAG" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.SWAG", locale.value)}</Link>
+            <Link href="/apparel/#new-hire-kit" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "New Hire Kit" })); const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}><span class="site-footer__officekit-short">{t("cat.New Hire Kit", locale.value)}</span><span class="site-footer__officekit-full">{t("nav.officewelcomekit", locale.value)}</span></Link>
             <Link class="site-footer__links-privacy" href="/privacy/">{t("footer.privacypolicy", locale.value)}</Link>
           </nav>
           )}
@@ -1079,12 +1065,6 @@ export default component$(() => {
             </div>
             <Link class="site-footer__privacy-link" href="/privacy/">{t("footer.privacypolicy", locale.value)}</Link>
           </div>
-          {/* Tablet language toggle lives in the footer (the header has no room
-              and there's no hamburger drawer at tablet widths). */}
-          <button class="site-footer__locale" onClick$={() => { toggleLocale(); }} aria-label="Toggle language">
-            {locale.value === "en" ? "FR" : "EN"}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-          </button>
           </div>
         </div>
       </footer>
@@ -1111,7 +1091,7 @@ export default component$(() => {
             {cart.items.length === 0 ? (
               <div class="cart-drawer__empty">
                 <p>{t("cart.empty", locale.value)}</p>
-                <a href="/apparel/" class="cart-drawer__back-link" onClick$={() => (cartOpen.value = false)}>{t("cart.backtoapparel", locale.value)}</a>
+                <Link href="/apparel/" class="cart-drawer__back-link" onClick$={() => (cartOpen.value = false)}>{t("cart.backtoapparel", locale.value)}</Link>
               </div>
             ) : checkoutStep.value === "cart" ? (
               <>
@@ -1354,7 +1334,7 @@ export default component$(() => {
           <div class="modal order-confirm">
             <h2 class="order-confirm__title">{t("order.title", locale.value)}</h2>
             <p class="order-confirm__text">{t("order.text", locale.value)}</p>
-            <a href="/" class="btn btn--primary">{t("order.continue", locale.value)}</a>
+            <Link href="/" class="btn btn--primary">{t("order.continue", locale.value)}</Link>
           </div>
         </Modal.Panel>
       </Modal.Root>

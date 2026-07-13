@@ -11,6 +11,13 @@
   /* Product image panel. Images multiply onto this, so their baked-in white
      backgrounds pick up the greige without any per-image editing. */
   --ce-greige: #ece7dc;
+  /* Shared content max-width (Tailwind max-w-7xl): header bar, category tab
+     bar, catalog, product page and footer all align to this. */
+  --site-max: 1280px;
+  /* Desktop: thickness of the white ring around the sign card — slightly
+     slimmer than the sign's internal vertical bands so the side strips read
+     equal to the y strips above the header bar / below the footer. */
+  --wt-ring: 4px;
   /* Neutrals carry a subtle warm (orange-leaning) tint so they harmonize with
      the primary orange while staying essentially grey — R ≥ G ≥ B, ~5% chroma
      (the warm counterpart to Facebook's blue-grey). */
@@ -311,7 +318,7 @@ img { max-width: 100%; display: block; }
 
 
 .site-header__inner {
-  max-width: 1536px;
+  max-width: var(--site-max);
   margin: 0 auto;
   padding: 0 0.75rem;
   height: 58px;
@@ -408,7 +415,7 @@ img { max-width: 100%; display: block; }
 .hero__content {
   position: relative;
   z-index: 2;
-  max-width: 1536px;
+  max-width: var(--site-max);
   margin: 0 auto;
   padding: 0 3rem 0.5rem;
   display: grid;
@@ -642,7 +649,7 @@ img { max-width: 100%; display: block; }
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin: 0 auto;
-  max-width: 1536px;
+  max-width: var(--site-max);
   width: 100%;
   padding-top: 0;
   transform: translateZ(0);
@@ -694,7 +701,7 @@ img { max-width: 100%; display: block; }
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
   padding: 0 0 1rem;
-  max-width: 1536px;
+  max-width: var(--site-max);
   margin: 0 auto;
 }
 .category-card {
@@ -985,12 +992,12 @@ img { max-width: 100%; display: block; }
   justify-content: space-between;
   padding-block: 0.6rem;
   /* Match the sticky .site-header's content edge exactly: it lives in a
-     max-width: 1536px inner with 0.75rem padding. At viewports >= 1536px
+     max-width: var(--site-max) inner with 0.75rem padding. At viewports >= 1536px
      the calc grows the inset; below that, the 0.75rem floor (same as the
      site-header inner padding) keeps both headers' buttons in the same
      horizontal position so there's no shift when the on-scroll header
      replaces this one. */
-  padding-inline: max(0.75rem, calc((100% - 1536px) / 2 + 0.75rem));
+  padding-inline: max(0.75rem, calc((100% - var(--site-max)) / 2 + 0.75rem));
   background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 70%, transparent 100%);
   border: none;
   border-radius: 0;
@@ -1292,7 +1299,7 @@ img { max-width: 100%; display: block; }
   grid-template-columns: 220px 1fr;
   gap: 1.5rem;
   align-items: start;
-  max-width: 1536px;
+  max-width: var(--site-max);
   width: 100%;
   margin: 0 auto;
   padding: 1.5rem 2rem 2rem;
@@ -1634,7 +1641,7 @@ body:has(.nav-drawer-overlay) .site-header {
   flex-shrink: 0;
 }
 .site-footer__inner {
-  max-width: 1536px;
+  max-width: var(--site-max);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -1841,7 +1848,7 @@ body:has(.nav-drawer-overlay) .site-header {
   margin-top: 0;
 }
 .home-catalog__inner {
-  max-width: 1536px;
+  max-width: var(--site-max);
   margin: 0 auto;
   padding: 0;
 }
@@ -1985,10 +1992,8 @@ body:has(.nav-drawer-overlay) .site-header {
   /* Desktop: product cards keep rounded corners (flat look stays on tablet). */
   .product-card { border-radius: var(--radius-md); overflow: hidden; }
   .product-card__image { border-radius: var(--radius-md) var(--radius-md) 0 0; }
-  /* Desktop: white card image panels (the greige backing is mobile/tablet
-     only; the PDP image is white at every breakpoint). */
-  .product-card__image { background: var(--ce-white); }
-  .product-card:hover .product-card__image { background: var(--ce-gray-50); }
+  /* Desktop card image panels are white — set in the end-of-file desktop
+     block (the base greige rules below would out-cascade rules placed here). */
 }
 .apparel-titlebar__action.apparel-titlebar__action--tablet-cols { display: none; }
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -2283,11 +2288,11 @@ body:has(.nav-drawer-overlay) .site-header {
 }
 
 /* ===== Section Shared ===== */
-.section { padding: 6rem 2rem; max-width: 1536px; margin: 0 auto; }
+.section { padding: 6rem 2rem; max-width: var(--site-max); margin: 0 auto; }
 .section--full { max-width: none; }
 .section--teasers {
   padding: 0;
-  max-width: 1536px;
+  max-width: var(--site-max);
   margin: 0 auto;
   position: relative;
   z-index: 3;
@@ -2352,7 +2357,7 @@ body:has(.nav-drawer-overlay) .site-header {
 .stats-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  max-width: 1536px;
+  max-width: var(--site-max);
   margin: 0 auto;
   padding: 0 2rem;
   position: relative;
@@ -3075,7 +3080,7 @@ body:has(.nav-drawer-overlay) .site-header {
   box-shadow: 0 4px 0 0 var(--ce-gray-900);
 }
 .site-footer__inner {
-  max-width: 1536px; margin: 0 auto;
+  max-width: var(--site-max); margin: 0 auto;
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 1rem;
 }
@@ -3172,7 +3177,7 @@ body:has(.nav-drawer-overlay) .site-header {
 }
 
 .apparel-catalog {
-  max-width: 1536px;
+  max-width: var(--site-max);
   margin: 0 auto;
   padding: 0;
   position: relative;
@@ -3199,7 +3204,7 @@ body:has(.nav-drawer-overlay) .site-header {
   position: sticky;
   top: 58px;
   z-index: 50;
-  max-width: 1536px;
+  max-width: var(--site-max);
   margin: 0 auto;
   padding: 0;
 }
@@ -3207,7 +3212,7 @@ body:has(.nav-drawer-overlay) .site-header {
 /* Desktop sidebar layout */
 .apparel-layout {
   display: flex;
-  max-width: 1536px;
+  max-width: var(--site-max);
   margin: 0 auto;
   gap: 0;
 }
@@ -3586,7 +3591,7 @@ body:has(.nav-drawer-overlay) .site-header {
 /* ===== Collection Hero Banner Carousel ===== */
 .collection-hero {
   position: relative;
-  max-width: 1536px;
+  max-width: var(--site-max);
   margin: 0 auto 0.1rem;
   padding: 0;
   z-index: 1;
@@ -4103,7 +4108,7 @@ body:has(.apparel-page) .site-header .cart-btn .cart-btn__label { color: #ffffff
   display: flex;
   align-items: stretch;
   gap: 0.15rem;
-  max-width: 1536px;
+  max-width: var(--site-max);
   margin: 0 auto 0.2rem;
   padding: 0;
   background: var(--ce-white);
@@ -4144,15 +4149,16 @@ body:has(.apparel-page) .site-header .cart-btn .cart-btn__label { color: #ffffff
   .pdp-breadcrumb { top: 60px; }
 }
 @media (max-width: 600px) {
-  /* Pixel-match the catalog tab bar: 26px tall, square corners, flush bottom. */
-  .pdp-breadcrumb { top: 48px; font-size: 0.8rem; height: 30px; padding: 0; overflow: hidden; border-radius: 0; margin: 0; }
+  /* Pixel-match the catalog tab bar: same 36px height, square corners, flush
+     bottom (the .home-catalog__header height in the phone block above). */
+  .pdp-breadcrumb { top: 48px; font-size: 0.8rem; height: 36px; padding: 0; overflow: hidden; border-radius: 0; margin: 0; }
   .pdp-breadcrumb__link, .pdp-breadcrumb__sku { padding: 0 10px; }
 }
 
 .product-detail {
   padding: 0;
   margin: 0;
-  max-width: 1536px;
+  max-width: var(--site-max);
   overflow: clip;
   overflow-y: visible;
 }
@@ -5834,7 +5840,7 @@ details[open] > .cart-drawer__checkout-title::after {
   }
   .hero__content {
     grid-template-columns: 1fr;
-    max-width: 1536px;
+    max-width: var(--site-max);
     padding: 0 1rem;
     gap: 0.5rem;
   }
@@ -6142,21 +6148,36 @@ details[open] > .cart-drawer__checkout-title::after {
   .site-header--hero-hidden.site-header--hero-visible .site-header__categories a { color: var(--ce-gray-700); }
   .site-header--hero-hidden.site-header--hero-visible .site-header__categories a.active { color: var(--ce-green); }
   .home-catalog__inner {
-    max-width: calc(1536px - 34px);
+    max-width: var(--site-max);
     background: rgba(255,255,255,0.14);
     border-radius: 0;
-    padding: 0 10px 10px;
-    margin: 0 auto 2rem;
+    /* No side padding: the tab bar, sidebar and grid edges sit exactly on
+       --site-max, flush with the header bar and footer above/below. */
+    padding: 0 0 10px;
+    margin: 0 auto;
     display: grid;
-    /* Single column: the categories are a horizontal bar above the grid
-       (styled like the PDP breadcrumb bar), not a sidebar. */
-    grid-template-columns: 1fr;
+    /* Categories are a horizontal bar spanning row 2 (styled like the PDP
+       breadcrumb bar); the left column below it holds the filter sidebar. */
+    grid-template-columns: 205px 1fr;
     grid-template-rows: auto auto 1fr;
-    gap: 10px;
+    /* Row gap 0: the grid gap would otherwise open white space between the
+       (zero-height) hero row and the tab bar, holding the bar ~10px below
+       the header at rest — the spacing below the bar is on the row-3 items
+       instead, so the bar hugs the header like it does when pinned. */
+    /* Content gaps: ~phi x the 4px ring (4 x 1.618 ≈ 6), continuing the
+       2 : 4 : 6 strip chain. */
+    column-gap: 6px;
+    row-gap: 0;
     box-shadow:
       0 2px 8px rgba(0,0,0,0.05),
       inset 0 0 6px rgba(0,0,0,0.02);
   }
+  /* Uniform 6px greige gap below the bar for BOTH columns — sidebar and
+     product grid start level, and the sidebar's left/right gaps match the
+     6px gaps inside the grid. */
+  .home-catalog__filters { margin: 6px 0 0 6px; }
+  .home-catalog .apparel-grid { margin-top: 6px; }
+  .home-catalog__hero-slot { margin-bottom: 10px; }
   .home-catalog__hero-slot:empty { display: none; }
   .home-catalog__hero-slot {
     grid-column: 1 / -1;
@@ -6170,13 +6191,15 @@ details[open] > .cart-drawer__checkout-title::after {
   /* Categories as a horizontal bar under the header, styled like the PDP
      breadcrumb bar: flat sign orange, white labels, sticky at the same pin. */
   .home-catalog__header {
-    grid-column: 1;
+    grid-column: 1 / -1;
     grid-row: 2;
     flex-direction: row;
     align-items: stretch;
     border-bottom: none;
     padding: 0;
-    height: 40px;
+    /* Rule of thirds: 2/3 of the 64px header (also a 3:4 step against the
+       56px dark bar) — taller tabs while keeping a clear hierarchy. */
+    height: 42px;
     border-radius: 0;
     background: var(--wt-orange);
     margin-bottom: 0;
@@ -6185,6 +6208,8 @@ details[open] > .cart-drawer__checkout-title::after {
     align-self: stretch;
   }
   .home-catalog__header .apparel-titlebar__tab { font-size: 0.9rem !important; }
+  /* Bar tabs are text-only; the icons belonged to the old sidebar list. */
+  .home-catalog__tabs .apparel-titlebar__tab-icon { display: none !important; }
   .apparel-titlebar__tab-short { display: none; }
   .apparel-titlebar__tab-full { display: inline; }
   .home-catalog__title { display: none; }
@@ -6197,7 +6222,7 @@ details[open] > .cart-drawer__checkout-title::after {
     border: 1px solid var(--wt-box-edge);
     border-radius: var(--wt-box-radius);
     padding: 5px 10px;
-    margin: 5px 8px 5px auto;
+    margin: 6px 8px 6px auto;
     order: 2;
     width: 220px;
   }
@@ -6277,11 +6302,11 @@ details[open] > .cart-drawer__checkout-title::after {
     color: var(--ce-gray-600);
   }
   .home-catalog .apparel-grid {
-    grid-column: 1;
+    grid-column: 2;
     grid-row: 3;
     align-self: start;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    gap: 6px;
     background: var(--ce-gray-200);
     border-radius: 2px;
     padding: 0;
@@ -6304,7 +6329,7 @@ details[open] > .cart-drawer__checkout-title::after {
   .home-catalog { padding-top: 0; padding-bottom: 0; }
   .home-catalog__header {
     border-radius: 0;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0;
   }
   .home-catalog .apparel-grid {
     grid-template-columns: repeat(4, 1fr);
@@ -6456,7 +6481,7 @@ details[open] > .cart-drawer__checkout-title::after {
   .hero__subtitle-inline { text-align: left; }
   .hero__apparel-row { align-items: flex-start; width: auto; margin-left: 0; }
   .hero__bento { display: none; }
-  .collection-hero { margin: 0 auto 2px; padding: 0 1rem; max-width: 1536px; }
+  .collection-hero { margin: 0 auto 2px; padding: 0 1rem; max-width: var(--site-max); }
   .collection-hero__viewport { aspect-ratio: 4/1; border-radius: var(--radius-sm); }
   .collection-hero__slide { grid-template-columns: 1fr 1fr; gap: 2px; }
   .collection-hero__panel:first-child {
@@ -7233,7 +7258,7 @@ details[open] > .cart-drawer__checkout-title::after {
      horizontal shift when the on-scroll header replaces this one. */
   .hero__upper .hero-card-header {
     padding-left: 0 !important;
-    padding-right: max(0.75rem, calc((100% - 1536px) / 2 + 0.75rem)) !important;
+    padding-right: max(0.75rem, calc((100% - var(--site-max)) / 2 + 0.75rem)) !important;
   }
   /* Buttons scale with the viewport so they stay visually proportional to
      the hero text + header padding (which are vw-based). Without this, the
@@ -7792,7 +7817,7 @@ details[open] > .cart-drawer__checkout-title::after {
   grid-template-columns: repeat(4, 1fr) !important;
   gap: 0.5rem !important;
   margin: 0 auto !important;
-  max-width: 1536px !important;
+  max-width: var(--site-max) !important;
   width: 100% !important;
   padding: 0 !important;
   grid-column: auto !important;
@@ -7960,11 +7985,21 @@ details[open] > .cart-drawer__checkout-title::after {
      creamy band above the tabs) is smaller than the top. */
   --wt-box-h: 50px;
   --wt-box-my: 6px;
+  /* Mobile/tablet: the frame band between the header bar's bottom edge and the
+     strip pinned below it (tabs / breadcrumb) — the white line under the
+     header. Header height = 4px top padding + --wt-box-h + --wt-seam, so a
+     thinner seam is paid for out of the bar, leaving the pin offsets alone. */
+  --wt-seam: 3px;
+  /* The rim on the white ring's outer edge — the same hairline the desktop
+     ring carries where it meets the greige surround. */
+  --wt-ring-edge: rgba(0, 0, 0, 0.10);
   /* Shared corner radius for the logo box and all header button boxes. */
   --wt-box-radius: 2px;
-  /* Inset frame around the header/tab bars — pure white, matching the page
-     background so the sign floats on the same white as the outside margins. */
-  --wt-frame: var(--ce-white);
+  /* Inset frame around the header/tab bars — greige again: the sign sits in
+     a greige surround, separated from it by a thin white ring (painted by
+     the page-background gradient on desktop, the white page margins on
+     mobile). */
+  --wt-frame: var(--ce-greige);
   /* Iron texture for the header bar, extracted from "Iron texture.eps" (repo
      root). The EPS's brown is NOT used: a label-free band of the artwork was
      split against its median tone into darker-than-base marks (near-black
@@ -7976,7 +8011,7 @@ details[open] > .cart-drawer__checkout-title::after {
    seam block. Split at 600/601 to match the header-height breakpoints (601-767
    uses the 65px tablet header, so it needs the tablet bar too). */
 @media (min-width: 601px) and (max-width: 1024px) { :root { --wt-box-h: 60px; --wt-box-my: 5px; } }
-@media (max-width: 600px) { :root { --wt-box-h: 48px; --wt-box-my: 5px; }
+@media (max-width: 600px) { :root { --wt-box-h: 49px; --wt-box-my: 4px; --wt-seam: 2px; }
 }
 
 /* ---- "APPAREL" clean uppercase label next to the script logo ----
@@ -8089,7 +8124,7 @@ details[open] > .cart-drawer__checkout-title::after {
   .site-header { padding-top: 4px !important; }
   .site-header__inner {
     margin-top: 0 !important;
-    margin-bottom: 3px !important;
+    margin-bottom: var(--wt-seam) !important;
     /* Outer depth on the left/right only (a downward cast would bleed into the
        seam). The inset shading is DIRECTIONAL — top + sides here, bottom + sides
        on the tab strip, identical side values — so the bar and the tabs read as
@@ -8101,38 +8136,19 @@ details[open] > .cart-drawer__checkout-title::after {
       inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
       inset -5px 0 6px -4px rgba(62, 24, 2, 0.55) !important;
   }
-  /* Seam underlay: orange continuing the tab strip's paint, overhanging 2px
-     BELOW the header under the pinned strip's top edge — the strip pins exactly
-     where the header ends, and sub-pixel rounding while scrolling otherwise
-     opens a hairline of the white frame between them. With the overlap, rounding
-     shifts land on painted orange either way. */
-  body:has(.home-catalog__header, .apparel-titlebar, .pdp-breadcrumb) .site-header::before {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    height: 5px;
-    z-index: 3;
-    left: var(--wt-box-my);
-    right: var(--wt-box-my);
-    background:
-      var(--wt-iron) left calc(-1 * var(--wt-box-h)) / 100% auto no-repeat,
-      var(--wt-orange);
-    /* Side shading matching the bars, so this 2px band doesn't glow bright at
-       the sign's edges. */
-    box-shadow:
-      inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
-      inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
-  }
-  /* The divider: a thin white stroke CUT OUT of the sign — a touch thicker at
-     the left (~1.6px) with an angled end cut, easing to ~1.3px at the straight
-     right end, whose midpoint sits on the bar/tab junction (3px above the
-     strip).
+  /* The divider: a thin white stroke — a touch thicker at the left (~1.6px)
+     with an angled end cut, easing to ~1.3px at the straight right end —
+     centred in the seam band between the header bar's bottom edge and the
+     pinned strip below it (tabs or breadcrumb). No orange underlay: the band
+     is the frame colour, so the strip below reads at its true height rather
+     than appearing to start 2px early.
      clip-path would clip a box-shadow away, so the light catch below the stroke
      is a drop-shadow filter, which follows the clipped shape. */
   body:has(.home-catalog__header, .apparel-titlebar, .pdp-breadcrumb) .site-header::after {
     content: '';
     position: absolute;
-    bottom: 2.2px;
+    /* Centred: equal frame slivers above and below the stroke. */
+    bottom: calc((var(--wt-seam) - 1.6px) / 2);
     height: 1.6px;
     z-index: 4;
     left: 13px;
@@ -8145,6 +8161,30 @@ details[open] > .cart-drawer__checkout-title::after {
   /* No bottom border: it would sit on this full-bleed white frame element and
      read as a greige line poking out wider than the inset orange tab bar. */
   .home-catalog__header { border-bottom: none; }
+  /* The same stroke cut across the sign at the tab bar's bottom edge — the
+     header's divider above the tabs, mirrored below them (and matching the
+     desktop bar, which carries a white line on both edges). It rides the
+     wrapper, not the tabs: the tabs scroll horizontally and an absolute child
+     would scroll away with them. */
+  .home-catalog__seam {
+    position: absolute;
+    bottom: 0;
+    height: 1.6px;
+    z-index: 4;
+    /* Edge to edge across the BAR, straight ends (unlike the header's tapered
+       divider) — but stopping at the bar, not the screen: running it into the
+       margins would cut the ring's rim and side shadow, breaking the card's
+       edge where the strip passes the tab bar. */
+    left: var(--wt-box-my);
+    right: var(--wt-box-my);
+    background: #ffffff;
+    pointer-events: none;
+    filter: drop-shadow(0 -1px 1px rgba(255, 255, 255, 0.3));
+  }
+}
+/* Desktop draws this divider with .home-catalog__header::after instead. */
+@media (min-width: 1025px) {
+  .home-catalog__seam { display: none; }
 }
 /* The tablet strip paints above the header (z-index 10000), so pin it just below
    the divider instead of over it. Bar bottom: 4 + 60 + 3 = 67px. */
@@ -8298,7 +8338,7 @@ details[open] > .cart-drawer__checkout-title::after {
        --wt-box-h + 3px (seam) below the bar's top, where the image anchors.
        Same width and 100%-auto scale as the bar, so the sample lines up. */
     background:
-      var(--wt-iron) left calc(-1 * (var(--wt-box-h) + 3px)) / 100% auto no-repeat,
+      var(--wt-iron) left calc(-1 * (var(--wt-box-h) + var(--wt-seam))) / 100% auto no-repeat,
       var(--wt-orange) !important;
     border-radius: 0 !important;
     align-self: stretch !important;
@@ -8323,12 +8363,35 @@ details[open] > .cart-drawer__checkout-title::after {
 .apparel-titlebar__tab.active,
 .home-catalog__tabs .apparel-titlebar__tab.active { color: #fff !important; background: linear-gradient(var(--wt-box), var(--wt-box)), var(--wt-orange) !important; }
 /* Desktop: the categories are a horizontal breadcrumb-style bar (see the
-   1025px layout block) — flat sign orange, white labels, no per-tab floats. */
+   1025px layout block) — sign orange with the iron texture continuing down
+   from the header bar (the bar pins 52px below the header bar's top, where
+   the texture is anchored), white labels, no per-tab floats. */
 @media (min-width: 1025px) {
-  .home-catalog__header { background: var(--wt-orange) !important; }
+  .home-catalog__header {
+    background:
+      var(--wt-iron) left calc(-1 * (var(--wt-box-h) + 2px)) / 100% auto no-repeat,
+      var(--wt-orange) !important;
+  }
   .home-catalog__tabs .apparel-titlebar__tab { margin: 0 !important; width: auto !important; border-radius: 0 !important; font-size: 0.9rem !important; color: #fff !important; }
   .home-catalog__tabs .apparel-titlebar__tab:hover { background: rgba(255,255,255,0.10) !important; color: #fff !important; }
-  .home-catalog__tabs .apparel-titlebar__tab.active { color: #fff !important; background: linear-gradient(var(--wt-box), var(--wt-box)), var(--wt-orange) !important; }
+  /* Active tab: inset dark pill (like the breadcrumb's category pill) with
+     the bar's lighter orange framing it — the inset matches the 6px white
+     ring band around the header. */
+  .home-catalog__tabs .apparel-titlebar__tab.active { color: #fff !important; background: none !important; }
+  .home-catalog__tabs .apparel-titlebar__tab.active::before {
+    content: '';
+    display: block !important;
+    position: absolute;
+    /* Full height — the overlay runs edge to edge between the white divider
+       lines above and below the bar; only the sides are inset. */
+    inset: 0 4px;
+    width: auto;
+    height: auto;
+    background: linear-gradient(var(--wt-box), var(--wt-box)), var(--wt-orange);
+    border: none;
+    border-radius: 0;
+    z-index: -1;
+  }
   .home-catalog__tabs .apparel-titlebar__tab::before { display: none !important; }
 }
 /* Mobile strip (<=900px): keep the inset-pill pattern, recoloured; smaller label. */
@@ -8343,8 +8406,10 @@ details[open] > .cart-drawer__checkout-title::after {
      labels grow UP but not sideways (all six categories must still fit). */
   .home-catalog__tabs .apparel-titlebar__tab { font-size: min(calc(var(--text-tab) * 0.99), 0.86rem) !important; letter-spacing: -0.06em !important; padding: 1px 6px !important; border-right: none !important; }
   .home-catalog__tabs .apparel-titlebar__tab.active { background: none !important; }
-  /* Larger inset so the orange selected pill is a touch shorter and narrower. */
-  .home-catalog__tabs .apparel-titlebar__tab.active::before { background: linear-gradient(var(--wt-box), var(--wt-box)), var(--wt-orange) !important; inset: 3px 2px !important; }
+  /* Full height, sides inset only — as on tablet and desktop. A top/bottom
+     inset leaves a band of the bar's lighter orange above the selected tab,
+     which reads as extra bar height. */
+  .home-catalog__tabs .apparel-titlebar__tab.active::before { background: linear-gradient(var(--wt-box), var(--wt-box)), var(--wt-orange) !important; inset: 0 2px !important; }
 }
 /* Horizontal strip (mobile + tablet): thin white dividers between tabs, inset
    from top/bottom (not full-height). */
@@ -8385,6 +8450,30 @@ details[open] > .cart-drawer__checkout-title::after {
     inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
     inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
 }
+/* Desktop: the footer bar spans the same shared width as the header bar and
+   the category tab bar, wrapped in the white ring (which follows its rounded
+   bottom corners) carrying the depth shadow. */
+@media (min-width: 1025px) {
+  .site-footer {
+    max-width: var(--site-max);
+    margin-left: auto;
+    margin-right: auto;
+    /* Attached to the content column above — its ring's top edge forms the
+       sign's usual white slot at the junction instead of a floating gap. */
+    margin-top: 0;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.12),
+      0 0 0 2px rgba(0, 0, 0, 0.04),
+      0 0 0 var(--wt-ring) var(--ce-white),
+      /* Outer rim at the same weight as the bars' outline above. */
+      0 0 0 calc(var(--wt-ring) + 1px) rgba(0, 0, 0, 0.14),
+      0 6px 16px var(--wt-ring) rgba(0, 0, 0, 0.22),
+      inset 0 6px 8px -4px rgba(62, 24, 2, 0.5),
+      inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
+      inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
+      inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
+  }
+}
 /* Footer brand: the white wordmark lockup, same as the header. */
 .site-footer__brand--img { display: flex; align-items: center; }
 .site-footer__logo-white { height: 36px; width: auto; display: block; }
@@ -8405,7 +8494,7 @@ details[open] > .cart-drawer__checkout-title::after {
     margin-left: var(--wt-box-my) !important;
     margin-right: var(--wt-box-my) !important;
     background:
-      var(--wt-iron) left calc(-1 * (var(--wt-box-h) + 3px)) / 100% auto no-repeat,
+      var(--wt-iron) left calc(-1 * (var(--wt-box-h) + var(--wt-seam))) / 100% auto no-repeat,
       var(--wt-orange) !important;
     box-shadow:
       -4px 0 6px -3px rgba(0,0,0,0.35),
@@ -8414,10 +8503,32 @@ details[open] > .cart-drawer__checkout-title::after {
       inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
       inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
   }
+  /* Bottom edge stroke, same as the catalog tab bar's (.home-catalog__seam):
+     the white line under the header bar, repeated below the strip. The
+     children's separator pseudos are `> *::after`, so the bar's own ::after
+     is free. */
+  .pdp-breadcrumb::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1.6px;
+    z-index: 4;
+    background: #ffffff;
+    pointer-events: none;
+    filter: drop-shadow(0 -1px 1px rgba(255, 255, 255, 0.3));
+  }
 }
 @media (max-width: 600px) {
   .pdp-breadcrumb { top: 55px; }
+  /* Phones: a slightly heavier bottom stroke under the strip — the header's
+     divider above it reads as a 2px band of the white frame, so 1.6px was
+     coming up light against it. */
+  .home-catalog__seam,
+  .pdp-breadcrumb::after { height: 2.2px; }
 }
+
 @media (min-width: 768px) and (max-width: 1024px) {
   .pdp-breadcrumb { top: 67px; }
 }
@@ -8431,6 +8542,28 @@ details[open] > .cart-drawer__checkout-title::after {
 .pdp-breadcrumb__back { color: #fff !important; }
 .pdp-breadcrumb__sku { color: rgba(255,255,255,0.82) !important; }
 .pdp-breadcrumb__link:hover { color: #fff !important; background: rgba(255,255,255,0.10) !important; }
+/* The product's category reads as the selected item — the same darker box
+   overlay as the active catalog tab, inset as a pill so the bar's lighter
+   orange shows around it. */
+.pdp-breadcrumb__cat,
+.pdp-breadcrumb__cat:hover {
+  background: transparent !important;
+  color: #fff !important;
+}
+.pdp-breadcrumb__cat::before {
+  content: '';
+  position: absolute;
+  /* Full height — edge to edge between the white divider lines above and
+     below the bar (like the active catalog tab); only the sides are inset. */
+  inset: 0 7px;
+  background: linear-gradient(var(--wt-box), var(--wt-box)), var(--wt-orange);
+  border-radius: 0;
+  /* Parallelogram: the pill's sides lean at the same angle as the "/"
+     separators in the trail — Montserrat's slash measures ~19.3° from
+     vertical (label stays upright). */
+  transform: skewX(-19.3deg);
+  z-index: -1;
+}
 /* Image-layout toggle on the bar's far right (mobile only — the preview rail
    it controls is a mobile layout). */
 .pdp-breadcrumb__view {
@@ -8637,4 +8770,493 @@ details[open] > .cart-drawer__checkout-title::after {
   .home-catalog__header--tabs-end::after {
     transform: translateY(-50%) rotate(225deg);
   }
+}
+
+/* ---- Desktop filter sidebar (left column under the category bar) ----
+   Filters apply within the selected category; the component tags them with
+   the category so switching tabs discards them automatically. */
+.home-catalog__filters { display: none; }
+@media (min-width: 1025px) {
+  .home-catalog__filters {
+    display: block;
+    grid-column: 1;
+    grid-row: 3;
+    align-self: start;
+    position: sticky;
+    /* Header (4 + 64) + category bar (42) + the 6px gap, minus the 1px lap. */
+    top: 115px;
+    /* Semi-transparent white over the greige column — halfway between the
+       two tones — with a soft inset edge so the panel reads pressed into
+       the layout rather than sitting flush on it. */
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow:
+      inset 0 1px 3px rgba(0, 0, 0, 0.06),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+    border-radius: 2px;
+    padding: 0.35rem 0 0.85rem;
+  }
+  .home-catalog__filter-group { padding-bottom: 0.35rem; }
+  .home-catalog__filter-group + .home-catalog__filter-group { border-top: 1px solid rgba(0, 0, 0, 0.07); }
+  .home-catalog__filter-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 5px 12px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.88rem;
+    color: var(--ce-gray-700);
+  }
+  .home-catalog__filter-opt:hover { color: var(--ce-gray-900); background: rgba(0, 0, 0, 0.04); }
+  .home-catalog__filter-check {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    border: 1px solid var(--ce-gray-300);
+    border-radius: 3px;
+    background: var(--ce-white);
+  }
+  .home-catalog__filter-opt.active { color: var(--ce-gray-900); font-weight: 600; }
+  .home-catalog__filter-opt.active .home-catalog__filter-check {
+    background: var(--ce-green);
+    border-color: var(--ce-green);
+    /* White check mark drawn into the box. */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+    background-size: 10px 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .home-catalog__filter-sizes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 4px 12px 2px;
+  }
+  .home-catalog__filter-size {
+    min-width: 32px;
+    padding: 3px 7px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--ce-gray-700);
+    background: var(--ce-white);
+    border: 1px solid var(--ce-gray-300);
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .home-catalog__filter-size:hover { border-color: var(--ce-gray-500); color: var(--ce-gray-900); }
+  .home-catalog__filter-size.active {
+    background: var(--ce-green);
+    border-color: var(--ce-green);
+    color: #fff;
+  }
+  .home-catalog__filter-clear {
+    display: block;
+    margin: 0.6rem 12px 0;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ce-gold);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .home-catalog__filter-clear:hover { color: var(--ce-orange); }
+}
+
+/* ---- Desktop: unified sign column ---- */
+@media (min-width: 1025px) {
+  /* The white ring's top cap: a white panel behind the header bar, spanning
+     the card plus the ring width, inset 2px from the top (the thin greige
+     edge) with ROUNDED top corners — the ring's outer corners echo the
+     sign's own rounded corners. The dark bar paints over its middle, leaving
+     the white visible as the band above the bar, the side strips, and the
+     2px divider below (the same white-slot treatment as mobile). */
+  .site-header::before {
+    content: '';
+    position: absolute;
+    /* Starts at the header's top edge: the white band above the bar equals
+       the bar's 6px top margin — the same thickness as the side strips. */
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: min(calc(var(--site-max) + 2 * var(--wt-ring)), 100%);
+    height: auto;
+    background: var(--ce-white);
+    border-radius: 12px 12px 0 0;
+    /* Sign-edge depth: a defined 1px rim plus the card's cast onto the
+       greige surround. */
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.08),
+      0 4px 18px rgba(0, 0, 0, 0.28),
+      /* Pressed edges: the strip shades inward like the header/tab paint. */
+      inset 0 1px 3px rgba(0, 0, 0, 0.16),
+      inset 0 0 6px rgba(0, 0, 0, 0.10);
+    z-index: 0;
+    /* The 1025px dot-pattern ::before rule sets opacity: 0.5 — the ring
+       panel must be fully opaque. */
+    opacity: 1;
+  }
+  /* The pinned strips also overhang 2px above their own top edge: while
+     scrolling, fractional scroll positions can open a sub-pixel slot between
+     the header (bottom 58px) and the strip (top 58px) where content peeks
+     through — the overhang keeps that slot painted (white, continuing the
+     divider). The header's higher z-index covers it above 58px. */
+  .home-catalog__header::before,
+  .pdp-breadcrumb::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--ce-white);
+  }
+  /* Thin white strip at the bars' bottom edge too — the same divider the
+     header has above them. 3px rather than 2px: this one borders greige
+     (low contrast) instead of orange, so it needs the extra pixel to read
+     as the same thickness. */
+  .home-catalog__header::after,
+  .pdp-breadcrumb::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--ce-white);
+    z-index: 3;
+  }
+  /* Product page: breadcrumb + product panels span the full shared width,
+     same as the header bar (the side padding was a mobile-era inset). */
+  .apparel-catalog:has(.product-detail) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* The whole max-width content column sits on greige on both routes; the
+     white/off-white cards and panels float on it. The white ring around the
+     column is a spread shadow (so it hugs the card edges exactly), and the
+     depth shadow sits on the ring, not on the sign elements inside it. */
+  .home-catalog__inner {
+    background: var(--ce-greige);
+    box-shadow:
+      /* Pressed inner edge: dark line + soft shade where the ring meets the
+         card, mirroring the sign surfaces' inset shading. */
+      0 0 0 1px rgba(0, 0, 0, 0.12),
+      0 0 0 2px rgba(0, 0, 0, 0.04),
+      0 0 0 var(--wt-ring) var(--ce-white),
+      0 0 0 calc(var(--wt-ring) + 1px) rgba(0, 0, 0, 0.08),
+      /* Spread pushes the cast out past the ring's outer edge, so the white
+         strip itself throws the depth onto the greige. */
+      0 6px 16px var(--wt-ring) rgba(0, 0, 0, 0.22);
+  }
+  .home-catalog .apparel-grid { background: transparent; }
+  .apparel-catalog:has(.product-detail) {
+    background: var(--ce-greige);
+    box-shadow:
+      /* Pressed inner edge: dark line + soft shade where the ring meets the
+         card, mirroring the sign surfaces' inset shading. */
+      0 0 0 1px rgba(0, 0, 0, 0.12),
+      0 0 0 2px rgba(0, 0, 0, 0.04),
+      0 0 0 var(--wt-ring) var(--ce-white),
+      0 0 0 calc(var(--wt-ring) + 1px) rgba(0, 0, 0, 0.08),
+      /* Spread pushes the cast out past the ring's outer edge, so the white
+         strip itself throws the depth onto the greige. */
+      0 6px 16px var(--wt-ring) rgba(0, 0, 0, 0.22);
+  }
+  /* The header's inner bar loses its own outer casts (the ring carries the
+     depth now); only the weathered inset vignette stays. */
+  .site-header__inner {
+    box-shadow:
+      /* Same thin grey outline the product-area card has at its edge. */
+      0 0 0 1px rgba(0, 0, 0, 0.14),
+      inset 0 0 14px rgba(62, 24, 2, 0.45) !important;
+  }
+  /* Outside the card: greige surround with a thin white ring hugging the
+     card's sides (matching the white rounded-corner margin around the sign).
+     One horizontal gradient paints greige → white strip → greige column →
+     white strip → greige, centered on the --site-max card. */
+  html { background: var(--ce-greige); }
+  body { background: var(--wt-surround); }
+  /* A slim strip of the greige surround above the card — PERMANENT: the
+     header pins at top: 4px (not 0) and its ::after paints the band above
+     it, so the greige strip stays put while content scrolls beneath. The
+     fixed-position hero header is exempt. */
+  /* Taller header bar: more breathing room above/below the wordmark. */
+  :root { --wt-box-h: 56px; }
+  .site-header { height: 64px; }
+  .site-header:not(.site-header--hero-hidden) {
+    margin-top: 4px;
+    top: 4px;
+    /* The 1025px base sets overflow: hidden, which would clip the ::after
+       greige strip painted above the header's box. But the overflow was also
+       containing the inner bar's top margin — flow-root keeps that margin
+       contained (bar stays 6px down, white band above it) without clipping
+       the pseudo. */
+    overflow: visible;
+    display: flow-root;
+  }
+  .site-header:not(.site-header--hero-hidden)::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--wt-surround);
+  }
+  /* Pinned strips shift down with the header (its bottom sits at 68px now),
+     and carry the same thin grey outline as the card and header bar. */
+  .home-catalog__header { top: 67px; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14); }
+  .pdp-breadcrumb { top: 67px; height: 42px; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14) !important; }
+  .apparel-titlebar { top: 67px; }
+  /* Cart drawer slides in at the card's right edge (max-w-7xl column), not
+     the viewport edge. */
+  .drawer {
+    right: max(0px, calc((100vw - var(--site-max)) / 2));
+  }
+  /* Surround gradient: pure greige at the viewport edges, lightening toward
+     the card so the card's greige interior separates from its surroundings.
+     One shared token so every full-width layer (page, body, header, strip)
+     samples the identical gradient and stays seamless. */
+  :root {
+    --wt-surround: linear-gradient(
+      to right,
+      var(--ce-greige) 0,
+      #f6f3ee calc(50% - var(--site-max) / 2),
+      #f6f3ee calc(50% + var(--site-max) / 2),
+      var(--ce-greige) 100%
+    );
+  }
+  .apparel-page,
+  .home-page {
+    background: var(--wt-surround);
+  }
+  /* Header: plain greige — ALL of the white (top band, side strips, divider)
+     comes from the rounded ::before panel, so its rounded corners show
+     against greige instead of being masked by a square white layer behind
+     them. */
+  .site-header,
+  .site-header--white,
+  .site-header--solid,
+  .site-header--hero-hidden,
+  .site-header--hero-hidden.site-header--hero-visible {
+    background: var(--wt-surround) !important;
+  }
+  /* The catalog's white radial-glow overlay would wash the greige back to
+     white across the middle of the page (visibly under "More <category>"). */
+  .apparel-catalog:has(.product-detail)::before { display: none; }
+  /* Product page breadcrumb: same iron texture continuation as the tab bar. */
+  .pdp-breadcrumb {
+    background:
+      var(--wt-iron) left calc(-1 * (var(--wt-box-h) + 2px)) / 100% auto no-repeat,
+      var(--wt-orange) !important;
+  }
+  /* Card image panels are white on desktop. These live at the end of the
+     file because the base (mobile greige) rules come later in the sheet than
+     the old 1025px block and would win the cascade otherwise. */
+  .product-card__image { background: var(--ce-white); }
+  .product-card:hover .product-card__image { background: var(--ce-gray-50); }
+  /* "More <category>" grid: thin gaps showing the greige section through. */
+  .related-items__grid { gap: 6px; }
+}
+
+/* ---- Mobile/tablet: white sign edge to the viewport ----
+   The white strip IS the outer margin on small screens: everything outside
+   the sign's bars and content — side insets, the band above the header bar,
+   the tab-strip wrapper — is white, with no greige surround beyond it. */
+@media (max-width: 1024px) {
+  .apparel-page,
+  .home-page,
+  .site-header,
+  .site-header--white,
+  .site-header--solid,
+  .home-catalog__header {
+    background: var(--ce-white) !important;
+  }
+  html { background: var(--ce-white); }
+}
+
+/* ---- Phones: the white margin IS the sign's ring ----
+   Rather than a bare white page, the margin becomes a panel of the sign: a 1px
+   rim and rounded tips echoing the card's own corners, with the greige surround
+   showing outside it — the same relationship the desktop ring has, at phone
+   scale where the ring reaches the screen edge. Must sit after the white-page
+   block above, which paints the same elements with !important.
+
+   The ring is painted in three places, because three elements own those rows:
+   the sticky header (its ::before), the sticky tab strip's wrapper, and — for
+   the content and footer rows — a panel behind the document. The sticky two
+   must stay opaque or content scrolls through them, so they carry greige
+   backgrounds with the ring drawn on top, not a hole onto the panel behind. */
+@media (max-width: 600px) {
+  html { background: var(--ce-greige) !important; }
+  body { position: relative; background: transparent; }
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--ce-white);
+    /* The card's corners are 6px; the ring's sit --wt-box-my outside them. */
+    border-radius: calc(6px + var(--wt-box-my));
+    box-shadow: inset 0 0 0 1px var(--wt-ring-edge);
+  }
+  /* The card's edge shadow, cast onto the ring in ONE continuous column down
+     the whole document. Every piece casting its own (header bar, tab strip,
+     grid, footer) pinched the strip lighter at each junction, where the casts
+     tapered off against each other — the edge has to read as one card. */
+  body::after {
+    content: '';
+    position: absolute;
+    /* Traces the card exactly: its top edge is the header's 4px padding, its
+       bottom the footer's margin, its corners the 6px the bars and footer use.
+       Square corners here would run the shadow straight past the card's curve
+       and leave a stub of shading in each corner with nothing casting it. */
+    top: 4px;
+    bottom: var(--wt-box-my);
+    left: var(--wt-box-my);
+    right: var(--wt-box-my);
+    border-radius: 6px;
+    z-index: -1;
+    pointer-events: none;
+    /* Tight: the margin is only --wt-box-my wide, so the bars' full 6px blur
+       flooded the whole strip grey. This hugs the card's edge and leaves the
+       ring white. */
+    box-shadow:
+      -2px 0 3px -2px rgba(0, 0, 0, 0.30),
+      2px 0 3px -2px rgba(0, 0, 0, 0.30);
+  }
+  /* Nothing below the header may paint over the margins, or it hides the ring
+     and that column. Safe even for the sticky strip: the card's pieces are all
+     inset by --wt-box-my, so no content ever scrolls through the margin. */
+  .apparel-page,
+  .home-page,
+  .home-catalog__header { background: transparent !important; }
+  /* The header carries the ring's top cap — rounded tips, rim, and the greige
+     surround outside them — rather than the document-level ring: it's sticky,
+     so the cap stays pinned at the top of the viewport. Left to the ring below,
+     the tips would scroll away and the side rims would run up into a bare white
+     strip at the screen's top edge. */
+  .site-header,
+  .site-header--white,
+  .site-header--solid { background: var(--ce-greige) !important; }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--ce-white);
+    border-radius: calc(6px + var(--wt-box-my)) calc(6px + var(--wt-box-my)) 0 0;
+    box-shadow:
+      inset 1px 0 0 var(--wt-ring-edge),
+      inset -1px 0 0 var(--wt-ring-edge),
+      inset 0 1px 0 var(--wt-ring-edge);
+  }
+  /* The header's cap hides the shadow column across its own rows, so the bar
+     keeps casting there; every piece below it leaves the sideways cast to the
+     column. Inset shading (the pressed sign face) stays on all of them. */
+  .home-catalog__tabs,
+  .pdp-breadcrumb {
+    box-shadow:
+      inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
+      inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
+      inset -5px 0 6px -4px rgba(62, 24, 2, 0.55) !important;
+  }
+  .site-footer {
+    box-shadow:
+      inset 0 6px 8px -4px rgba(62, 24, 2, 0.5),
+      inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
+      inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
+      inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
+  }
+}
+
+/* ---- Desktop: catalog view-mode toggle + list layout ----
+   The button rides the category bar left of the search box (dark-box style,
+   like the header buttons). List mode reuses the tablet extra mode: two
+   columns of short thumbnail + details rows, fitting far more per view. */
+.home-catalog__viewmode { display: none; }
+@media (min-width: 1025px) {
+  .home-catalog__viewmode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 2;
+    margin: 6px 0 6px auto;
+    align-self: center;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    background: var(--wt-box);
+    border: 1px solid var(--wt-box-edge);
+    border-radius: var(--wt-box-radius);
+    color: #fff;
+    cursor: pointer;
+    padding: 0;
+  }
+  .home-catalog__viewmode:hover { background: rgba(0, 0, 0, 0.3); }
+  /* The toggle carries the auto-margin now; the search sits right of it. */
+  .home-catalog__sidebar-search { margin-left: 8px; }
+  .home-catalog .apparel-grid.apparel-grid--list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+  .apparel-grid--list .product-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  /* Datatable-style rows: a small square thumbnail, then one compact line per
+     product — name (ellipsized) | sizes | price hard right. The row is sized by
+     the thumb, so it stands a little taller than the text alone would need. */
+  .apparel-grid--list .product-card__image {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    background: var(--ce-white);
+  }
+  .apparel-grid--list .product-card:hover .product-card__image { background: var(--ce-gray-50); }
+  /* Breathing room so the cutout doesn't touch the row's edges. */
+  .apparel-grid--list .product-card__image img { padding: 3px; }
+  .apparel-grid--list .product-card__info {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 10px;
+  }
+  /* Lift the name and price out of their row wrapper so the price can sit
+     past the sizes at the row's far right. */
+  .apparel-grid--list .product-card__name-row { display: contents; }
+  .apparel-grid--list .product-card__name {
+    order: 1;
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.82rem;
+  }
+  .apparel-grid--list .product-card__color-size-row {
+    order: 2;
+    margin-top: 0;
+    flex-shrink: 0;
+  }
+  .apparel-grid--list .product-card__colors { display: none; }
+  .apparel-grid--list .product-card__sizes { font-size: 0.72rem; }
+  .apparel-grid--list .product-card__price-group {
+    order: 3;
+    flex-shrink: 0;
+    margin-left: 2px;
+  }
+  .apparel-grid--list .product-card__price { font-size: 0.82rem; }
 }

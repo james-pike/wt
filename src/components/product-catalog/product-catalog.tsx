@@ -1,4 +1,5 @@
 import { component$, useSignal, useComputed$, useContext, $, useVisibleTask$ } from "@builder.io/qwik";
+import { Link } from "@builder.io/qwik-city";
 import { LocaleContext, t } from "../../i18n";
 import { allProducts, categoryLabel } from "../../routes/apparel/products";
 import type { Product } from "../../routes/apparel/products";
@@ -60,6 +61,43 @@ function categoryForQuery(query: string, products: Product[]): string {
   return match ? match.category : "All";
 }
 
+// ---- Filter-sidebar facets (desktop) ----
+// The data has no explicit gender/fit field, so derive it from the name.
+// Check "women"/"ladies" first: "women's" contains "men's" as a substring.
+function genderOf(p: Product): string {
+  const n = p.name.toLowerCase();
+  if (/\bwomen['’]?s?\b|ladies/.test(n)) return "Women";
+  if (/\bmen['’]?s?\b/.test(n)) return "Men";
+  return "Unisex";
+}
+const GENDER_ORDER = ["Men", "Women", "Unisex"];
+// Letter sizes in range order; products store ranges like "S - 4XL".
+const SIZE_ORDER = ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"];
+function sizeSpanOf(p: Product): string[] {
+  const parts = p.sizes.split("-").map((s) => s.trim().toUpperCase().replace(/^(LADIES|UK)\s+/, ""));
+  const a = SIZE_ORDER.indexOf(parts[0]);
+  const b = SIZE_ORDER.indexOf(parts[1] ?? parts[0]);
+  if (a !== -1 && b !== -1) return SIZE_ORDER.slice(a, b + 1);
+  // Footwear ranges are numeric ("6 - 10", "UK 5 - 13"): enumerate whole sizes.
+  // Suffixed ranges like "28 - 46 waist" parse as NaN and stay excluded.
+  const lo = Number(parts[0]);
+  const hi = Number(parts[1] ?? parts[0]);
+  if (Number.isInteger(lo) && Number.isInteger(hi) && lo <= hi) {
+    return Array.from({ length: hi - lo + 1 }, (_, i) => String(lo + i));
+  }
+  return [];
+}
+// Brands recognizable in product names (word-boundary matched).
+const BRAND_LIST = [
+  "ATC", "Blundstone", "Coal Harbour", "Columbia", "Core365", "Devon & Jones",
+  "Harriton", "New Balance", "Nike", "Roots", "The North Face", "Timberland",
+  "Under Armour",
+];
+function brandOf(p: Product): string | null {
+  const n = p.name.toLowerCase();
+  for (const b of BRAND_LIST) if (n.includes(b.toLowerCase())) return b;
+  return null;
+}
 // Scroll the product grid up so it pins just below the sticky tab bar, so the
 // first results aren't hidden under it. Used by the category tabs and by search
 // (auto-position, mirroring the cm storefront).
@@ -87,7 +125,7 @@ const ProductCard = component$<{ item: Product; sku: string }>(({ item, sku }) =
   const isTech = loginType.value === "tech";
 
   return (
-    <a href={`/apparel/${sku}/`} class={`product-card product-card-link ${sku === "CAR-21" ? "product-card--cover" : ""}`}>
+    <Link href={`/apparel/${sku}/`} class={`product-card product-card-link ${sku === "CAR-21" ? "product-card--cover" : ""}`}>
       <div class="product-card__image">
         <img src={item.img} alt={item.name} width="440" height="440" />
       </div>
@@ -137,7 +175,7 @@ const ProductCard = component$<{ item: Product; sku: string }>(({ item, sku }) =
           </div>
         )}
       </div>
-    </a>
+    </Link>
   );
 });
 
@@ -281,19 +319,57 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
   });
 
 
+  // Sidebar filters, tagged with the category they were set for — switching
+  // category makes them stale (ignored) without needing a reset hook.
+  const filters = useSignal<{ cat: string; genders: string[]; sizes: string[]; brands: string[] }>(
+    { cat: "All", genders: [], sizes: [], brands: [] },
+  );
+  const effFilters = useComputed$(() =>
+    filters.value.cat === activeCat.value
+      ? filters.value
+      : { cat: activeCat.value, genders: [], sizes: [], brands: [] },
+  );
+  // Facet options offered by the sidebar, from the selected category's
+  // products (pre-filter, so picking one option doesn't hide its siblings).
+  const facetOptions = useComputed$(() => {
+    const inCat = activeCat.value === "All"
+      ? baseProducts.value
+      : baseProducts.value.filter((p) => p.category === activeCat.value);
+    const genders = new Set(inCat.map(genderOf));
+    const sizes = new Set(inCat.flatMap((p) => sizeSpanOf(p)));
+    const brands = new Set(inCat.map(brandOf).filter(Boolean) as string[]);
+    // Letter sizes first (in range order), then numeric shoe sizes ascending.
+    const shoeSizes = [...sizes]
+      .filter((s) => !SIZE_ORDER.includes(s))
+      .sort((x, y) => Number(x) - Number(y));
+    return {
+      genders: GENDER_ORDER.filter((g) => genders.has(g)),
+      sizes: [...SIZE_ORDER.filter((s) => sizes.has(s)), ...shoeSizes],
+      brands: BRAND_LIST.filter((b) => brands.has(b)),
+    };
+  });
+
   const filtered = useComputed$(() => {
     const products = baseProducts.value;
+    const f = effFilters.value;
+    const applyFacets = (list: Product[]) => {
+      let out = list;
+      if (f.genders.length) out = out.filter((p) => f.genders.includes(genderOf(p)));
+      if (f.sizes.length) out = out.filter((p) => sizeSpanOf(p).some((s) => f.sizes.includes(s)));
+      if (f.brands.length) out = out.filter((p) => f.brands.includes(brandOf(p) || ""));
+      return out;
+    };
 
     if (searchQuery.value) {
       const q = searchQuery.value.toLowerCase();
-      return products.filter((p) => matchesQuery(p, q));
+      return applyFacets(products.filter((p) => matchesQuery(p, q)));
     }
 
     if (activeCat.value !== "All") {
-      return products.filter((p) => p.category === activeCat.value);
+      return applyFacets(products.filter((p) => p.category === activeCat.value));
     }
 
-    return products;
+    return applyFacets(products);
   });
 
   return (
@@ -301,6 +377,22 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
       <div class="home-catalog__inner">
         <div class={`home-catalog__header ${tabsAtEnd.value ? "home-catalog__header--tabs-end" : ""}`}>
           <h2 class="home-catalog__title">{t("nav.apparel", locale.value)}</h2>
+          {/* Desktop: catalog view mode — grid of tall cards vs. compact list
+              rows (the same list layout as the tablet's extra mode). */}
+          <button
+            class="home-catalog__viewmode"
+            aria-label={tabletCols.value === "list" ? "Show grid view" : "Show list view"}
+            title={tabletCols.value === "list" ? "Grid view" : "List view"}
+            onClick$={() => { tabletCols.value = tabletCols.value === "list" ? 3 : "list"; }}
+          >
+            {tabletCols.value === "list" ? (
+              // next: grid view
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            ) : (
+              // next: list view — rows with a thumbnail + detail lines
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="4" height="4"/><line x1="10" y1="6" x2="21" y2="6"/><rect x="3" y="10" width="4" height="4"/><line x1="10" y1="12" x2="21" y2="12"/><rect x="3" y="16" width="4" height="4"/><line x1="10" y1="18" x2="21" y2="18"/></svg>
+            )}
+          </button>
           <div class="home-catalog__sidebar-search">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             <input
@@ -407,7 +499,88 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
               </button>
             </div>
           )}
+          {/* Mobile/tablet: the white stroke cut across the sign at the tab
+              bar's bottom edge, matching the one under the header bar. Both of
+              this element's pseudos are taken by the scroll cue, so the stroke
+              needs its own node. */}
+          <span class="home-catalog__seam" aria-hidden="true" />
         </div>
+        <aside class="home-catalog__filters" aria-label="Filter products">
+          {facetOptions.value.genders.length > 1 && (
+            <div class="home-catalog__filter-group">
+              <div class="home-catalog__filter-title">Fit</div>
+              {facetOptions.value.genders.map((g) => (
+                <button
+                  key={g}
+                  class={`home-catalog__filter-opt ${effFilters.value.genders.includes(g) ? "active" : ""}`}
+                  onClick$={() => {
+                    const f = effFilters.value;
+                    filters.value = {
+                      ...f,
+                      genders: f.genders.includes(g) ? f.genders.filter((x) => x !== g) : [...f.genders, g],
+                    };
+                  }}
+                >
+                  <span class="home-catalog__filter-check" />
+                  {g}
+                </button>
+              ))}
+            </div>
+          )}
+          {facetOptions.value.brands.length > 1 && (
+            <div class="home-catalog__filter-group">
+              <div class="home-catalog__filter-title">Brand</div>
+              {facetOptions.value.brands.map((b) => (
+                <button
+                  key={b}
+                  class={`home-catalog__filter-opt ${effFilters.value.brands.includes(b) ? "active" : ""}`}
+                  onClick$={() => {
+                    const f = effFilters.value;
+                    filters.value = {
+                      ...f,
+                      brands: f.brands.includes(b) ? f.brands.filter((x) => x !== b) : [...f.brands, b],
+                    };
+                  }}
+                >
+                  <span class="home-catalog__filter-check" />
+                  {b}
+                </button>
+              ))}
+            </div>
+          )}
+          {facetOptions.value.sizes.length > 1 && (
+            <div class="home-catalog__filter-group">
+              <div class="home-catalog__filter-title">Size</div>
+              <div class="home-catalog__filter-sizes">
+                {facetOptions.value.sizes.map((s) => (
+                  <button
+                    key={s}
+                    class={`home-catalog__filter-size ${effFilters.value.sizes.includes(s) ? "active" : ""}`}
+                    onClick$={() => {
+                      const f = effFilters.value;
+                      filters.value = {
+                        ...f,
+                        sizes: f.sizes.includes(s) ? f.sizes.filter((x) => x !== s) : [...f.sizes, s],
+                      };
+                    }}
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          {(effFilters.value.genders.length > 0 || effFilters.value.sizes.length > 0 || effFilters.value.brands.length > 0) && (
+            <button
+              class="home-catalog__filter-clear"
+              onClick$={() => {
+                filters.value = { cat: activeCat.value, genders: [], sizes: [], brands: [] };
+              }}
+            >
+              Clear filters
+            </button>
+          )}
+        </aside>
         <div class={`apparel-grid ${tabletCols.value === "list" ? "apparel-grid--list" : `apparel-grid--cols-${tabletCols.value}`}`}>
           {filtered.value.map((item) => (
             <ProductCard key={item.sku} item={item} sku={item.sku} />

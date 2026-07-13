@@ -1,6 +1,6 @@
 import { component$, useSignal, useComputed$, useVisibleTask$, $, useContext } from "@builder.io/qwik";
 import { Carousel } from "@qwik-ui/headless";
-import { useLocation, useNavigate } from "@builder.io/qwik-city";
+import { Link, useLocation, useNavigate } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { LocaleContext, t } from "../../../i18n";
 import { allProducts, colorName, categoryLabel } from "../products";
@@ -219,11 +219,11 @@ export default component$(() => {
   return (
     <div class="apparel-catalog" id="products">
       <nav class="pdp-breadcrumb" aria-label="Breadcrumb">
-        <a href="/apparel/" class="pdp-breadcrumb__link pdp-breadcrumb__back">
+        <Link href="/apparel/" class="pdp-breadcrumb__link pdp-breadcrumb__back">
           <svg class="pdp-breadcrumb__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           <span>{backLabel}</span>
-        </a>
-        <a href={`/apparel/#${catHash}`} class="pdp-breadcrumb__link pdp-breadcrumb__cat">{catLabel}</a>
+        </Link>
+        <Link href={`/apparel/#${catHash}`} class="pdp-breadcrumb__link pdp-breadcrumb__cat">{catLabel}</Link>
         <span class="pdp-breadcrumb__sku">{p.sku}</span>
         {/* Mobile: toggle between full-width image and the right preview rail.
             The icon shows the view you'll switch TO. */}
@@ -465,7 +465,7 @@ export default component$(() => {
             {/* Desktop grid */}
             <div class="related-items__grid">
               {related.slice(0, 4).map((item) => (
-                <a key={item.sku} href={`/apparel/${item.sku}/`} class="product-card product-card-link">
+                <Link key={item.sku} href={`/apparel/${item.sku}/`} class="product-card product-card-link">
                   <div class="product-card__image">
                     <img src={item.img} alt={item.name} width="440" height="440" loading="eager" decoding="async" />
                   </div>
@@ -478,7 +478,7 @@ export default component$(() => {
                       </div>
                     </div>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
             {/* Mobile carousel */}
@@ -490,7 +490,7 @@ export default component$(() => {
                 <Carousel.Scroller class="related-carousel__scroller">
                   {related.map((item) => (
                     <Carousel.Slide key={item.sku} class="related-carousel__slide">
-                      <a href={`/apparel/${item.sku}/`} class="product-card product-card-link">
+                      <Link href={`/apparel/${item.sku}/`} class="product-card product-card-link">
                         <div class="product-card__image">
                           <img src={item.img} alt={item.name} width="440" height="440" loading="lazy" decoding="async" />
                         </div>
@@ -503,7 +503,7 @@ export default component$(() => {
                             </div>
                           </div>
                         </div>
-                      </a>
+                      </Link>
                     </Carousel.Slide>
                   ))}
                 </Carousel.Scroller>
