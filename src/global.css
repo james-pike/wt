@@ -26,6 +26,12 @@
   --wt-gap: 5px;
   /* And phi again for the larger gap that closes the column underneath. */
   --wt-gap-lg: 8px;
+  /* The tight, uniform gap for the desktop catalog area: every gap around the
+     products and sidebar is ONE value — product-to-product, sidebar-to-grid,
+     the gap under the tab bar, and the padding closing the column below. It's
+     phi-cubed times the 1px border line above/below the tabs on desktop
+     (1 -> 1.618 -> 2.618 -> 4.236), a tighter step down from the old ~6.4px. */
+  --wt-gap-tight: 4.236px;
   /* Neutrals carry a subtle warm (orange-leaning) tint so they harmonize with
      the primary orange while staying essentially grey — R ≥ G ≥ B, ~5% chroma
      (the warm counterpart to Facebook's blue-grey). */
@@ -1770,6 +1776,11 @@ body:has(.nav-drawer-overlay) .site-header {
   color: rgba(255,255,255,0.4);
 }
 .site-footer__links a.is-line-end::after { content: none; }
+/* Desktop: the category links live in the sticky tab bar, so drop them from the
+   footer rather than repeat the whole category list. Home + Privacy stay. */
+@media (min-width: 1025px) {
+  .site-footer__links a[href^="/apparel/#"] { display: none; }
+}
 /* Mobile + tablet: links wrap and center; the Privacy Policy link joins the
    links row (its under-email copy is hidden); a touch more space above the
    email. The spread row layout is reserved for desktop (>=1025px). */
@@ -1939,7 +1950,7 @@ body:has(.nav-drawer-overlay) .site-header {
      the strip just above it so the band stays visible but no gap opens. */
   /* Taller strip: the orange seam under the header reads as the tabs' own
      band, plus extra room below the labels. */
-  .home-catalog__header { padding: 0; height: 36px; top: 55px; border-radius: 0; margin: 0 calc(-1 * var(--wt-box-my)); }
+  .home-catalog__header { padding: 0; height: 44px; top: 64px; border-radius: 0; margin: 0 calc(-1 * var(--wt-box-my)); }
   .home-catalog__title { display: none; }
   .home-catalog__search-desktop { display: none !important; }
   .home-catalog .apparel-titlebar__action--mobile-search { display: flex; }
@@ -4166,7 +4177,7 @@ body:has(.apparel-page) .site-header .cart-btn .cart-btn__label { color: #ffffff
      bottom (the .home-catalog__header height in the phone block above). */
   /* font-size matches the catalog tab labels (0.95rem, set in the 900px
      block) so the two strips read as the same bar across routes. */
-  .pdp-breadcrumb { top: 48px; font-size: 0.95rem; height: 36px; padding: 0; overflow: hidden; border-radius: 0; margin: 0; }
+  .pdp-breadcrumb { top: 48px; font-size: 1.05rem; height: 44px; padding: 0; overflow: hidden; border-radius: 0; margin: 0; }
   .pdp-breadcrumb__link, .pdp-breadcrumb__sku { padding: 0 10px; }
 }
 
@@ -4381,12 +4392,16 @@ body:has(.apparel-page) .site-header .cart-btn .cart-btn__label { color: #ffffff
   cursor: default;
 }
 /* Hairline keyline so the white image panel reads as a panel against the
-   white page margins (the standard white-on-white separator). */
+   white page margins (the standard white-on-white separator). Drawn as an
+   inset box-shadow, not a border: a border sits on the box's outer edge —
+   exactly where the carousel's overflow:hidden rounds the corner away, so the
+   keyline reads as clipped at the tips — whereas the inset shadow draws 1px
+   inward and traces the full rounded corner. */
 .product-carousel::after {
   content: '';
   position: absolute;
   inset: 0;
-  border: 1px solid var(--ce-gray-200);
+  box-shadow: inset 0 0 0 1px var(--ce-gray-200);
   border-radius: inherit;
   pointer-events: none;
   z-index: 5;
@@ -5656,7 +5671,7 @@ details[open] > .cart-drawer__checkout-title::after {
   .teaser-grid { display: grid; }
   .apparel-catalog { padding: 0 0.15rem 0.35rem; }
   .apparel-titlebar { padding: 0; }
-  .apparel-titlebar { top: 55px; }
+  .apparel-titlebar { top: 64px; }
   .apparel-titlebar__row { height: 34px; padding: 0 0.35rem; padding-left: 0.5rem; margin: 0 0.15rem; border-radius: 0; }
   .apparel-catalog__title { display: none; }
   .apparel-titlebar__left { gap: 0; flex: 1; }
@@ -5703,7 +5718,7 @@ details[open] > .cart-drawer__checkout-title::after {
   .stats-row__card:last-child { border-radius: 0 0 var(--radius-lg) 0; }
   .site-header--cart-open { position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
   .site-header__categories { display: none; }
-  .site-header { height: 55px; top: 0; background: var(--ce-off-white); }
+  .site-header { height: 64px; top: 0; background: var(--ce-off-white); }
   .site-header__inner { padding: 0 0.1rem 0 0.38rem; height: 49px; overflow: hidden; }
   .site-header__logo { margin-left: -1px; gap: 0; }
   /* Logo-img shrunk so the cluster gains 2px of breathing room above and
@@ -5717,7 +5732,7 @@ details[open] > .cart-drawer__checkout-title::after {
   .site-header__logo-text { height: 22px; }
   .site-header__logo-apparel { font-size: 0.65rem; }
   .apparel-page { }
-  .hero { margin-top: -55px; padding-top: 55px; }
+  .hero { margin-top: -64px; padding-top: 64px; }
   .site-header__nav { gap: 0; margin-right: -0.3rem; }
   .site-header__apparel-link { display: none; }
   .cart-btn__label { display: none; }
@@ -6168,7 +6183,7 @@ details[open] > .cart-drawer__checkout-title::after {
     border-radius: 0;
     /* No side padding: the tab bar, sidebar and grid edges sit exactly on
        --site-max, flush with the header bar and footer above/below. */
-    padding: 0 0 var(--wt-gap-lg);
+    padding: 0 0 var(--wt-gap-tight);
     margin: 0 auto;
     display: grid;
     /* Categories are a horizontal bar spanning row 2 (styled like the PDP
@@ -6179,18 +6194,20 @@ details[open] > .cart-drawer__checkout-title::after {
        (zero-height) hero row and the tab bar, holding the bar ~10px below
        the header at rest — the spacing below the bar is on the row-3 items
        instead, so the bar hugs the header like it does when pinned. */
-    /* Content gaps: phi x the ring (3 x 1.618 ≈ 5), continuing the
-       2 : 3 : 5 : 8 chain. */
-    column-gap: var(--wt-gap);
+    /* One tight gap everywhere in the catalog area: phi-cubed x the tab bar's
+       1px border line — the x-gap here matches the y-gap under the tabs. */
+    column-gap: var(--wt-gap-tight);
     row-gap: 0;
     box-shadow:
       0 2px 8px rgba(0,0,0,0.05),
       inset 0 0 6px rgba(0,0,0,0.02);
   }
   /* One greige gap for BOTH columns — sidebar and product grid start level,
-     and the sidebar's outer gap matches the gutter between it and the grid. */
-  .home-catalog__filters { margin: var(--wt-gap) 0 0 var(--wt-gap); }
-  .home-catalog .apparel-grid { margin-top: var(--wt-gap); }
+     and the sidebar's outer gap matches the gutter between it and the grid.
+     Same tight value as the column gap, so the y-gap under the tabs reads
+     equal to the x-gap between the sidebar and the first product column. */
+  .home-catalog__filters { margin: var(--wt-gap-tight) 0 0 var(--wt-gap-tight); }
+  .home-catalog .apparel-grid { margin-top: var(--wt-gap-tight); }
   .home-catalog__hero-slot { margin-bottom: 10px; }
   .home-catalog__hero-slot:empty { display: none; }
   .home-catalog__hero-slot {
@@ -6221,7 +6238,7 @@ details[open] > .cart-drawer__checkout-title::after {
     top: 58px;
     align-self: stretch;
   }
-  .home-catalog__header .apparel-titlebar__tab { font-size: 0.9rem !important; }
+  .home-catalog__header .apparel-titlebar__tab { font-size: 1.05rem !important; }
   /* Bar tabs are text-only; the icons belonged to the old sidebar list. */
   .home-catalog__tabs .apparel-titlebar__tab-icon { display: none !important; }
   .apparel-titlebar__tab-short { display: none; }
@@ -6231,25 +6248,31 @@ details[open] > .cart-drawer__checkout-title::after {
   .home-catalog__sidebar-search {
     display: flex;
     align-items: center;
-    gap: 6px;
-    background: var(--wt-box);
-    border: 1px solid var(--wt-box-edge);
+    gap: 7px;
+    /* White field, not the dark button-box: reads as a proper search input and
+       stands out clearly against the orange bar. */
+    background: var(--ce-white);
+    border: 1px solid var(--ce-gray-200);
     border-radius: var(--wt-box-radius);
-    padding: 5px 10px;
+    padding: 6px 12px;
     margin: 6px 8px 6px auto;
     order: 2;
-    width: 220px;
+    width: 280px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.12), inset 0 1px 1px rgba(255,255,255,0.6);
+  }
+  .home-catalog__sidebar-search:focus-within {
+    border-color: var(--ce-gray-300);
   }
   .home-catalog__sidebar-search svg {
     flex-shrink: 0;
-    color: rgba(255,255,255,0.75);
+    color: var(--ce-gray-500);
   }
   .home-catalog__sidebar-search .apparel-titlebar__search-input {
-    color: #fff;
+    color: var(--ce-gray-900);
     background: transparent;
   }
   .home-catalog__sidebar-search .apparel-titlebar__search-input::placeholder {
-    color: rgba(255,255,255,0.6);
+    color: var(--ce-gray-500);
   }
   .home-catalog__tabs {
     flex-direction: row;
@@ -6320,7 +6343,7 @@ details[open] > .cart-drawer__checkout-title::after {
     grid-row: 3;
     align-self: start;
     grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
+    gap: var(--wt-gap-tight);
     background: var(--ce-gray-200);
     border-radius: 2px;
     padding: 0;
@@ -6347,7 +6370,7 @@ details[open] > .cart-drawer__checkout-title::after {
   }
   .home-catalog .apparel-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 0.4rem;
+    gap: var(--wt-gap-tight);
   }
   .product-carousel {
     cursor: zoom-in;
@@ -7031,7 +7054,7 @@ details[open] > .cart-drawer__checkout-title::after {
   .product-detail--imgfull .product-image-row:has(.product-thumbs--column) { padding-right: 0.15rem; }
   .product-detail--imgfull .product-thumbs--column { display: none; }
   .product-detail--imgfull .product-carousel__indicators { display: flex; }
-  .product-modal__breadcrumb { grid-column: 1; grid-row: 1; padding: 0; background: var(--ce-white); border-radius: 0; font-size: 0.92rem; margin-top: 0; margin-bottom: -0.08rem; border-bottom: 1px solid var(--ce-gray-200); display: flex; align-items: center; height: 34px; padding-left: 0.5rem; position: sticky; top: 55px; z-index: 50; }
+  .product-modal__breadcrumb { grid-column: 1; grid-row: 1; padding: 0; background: var(--ce-white); border-radius: 0; font-size: 0.92rem; margin-top: 0; margin-bottom: -0.08rem; border-bottom: 1px solid var(--ce-gray-200); display: flex; align-items: center; height: 34px; padding-left: 0.5rem; position: sticky; top: 64px; z-index: 50; }
   .product-modal__breadcrumb .breadcrumb__link { font-size: 0.92rem; padding: 4px 6px; text-decoration: underline; text-underline-offset: 3px; font-weight: 500; color: var(--ce-gray-500); }
   .product-modal__breadcrumb .breadcrumb__link:hover { color: var(--ce-gray-900); }
   .product-modal__breadcrumb .breadcrumb__sep { color: var(--ce-gray-200); font-size: 0.92rem; }
@@ -7079,11 +7102,11 @@ details[open] > .cart-drawer__checkout-title::after {
   .cart-drawer__footer { padding: 0.5rem 0.75rem; margin: 0 2px 2px; border-radius: 0; }
   .modal { padding: 0.5rem 1rem 1rem; margin: 0 0.5rem; }
   .modal .modal__close { top: 0.35rem; right: 0.5rem; width: 28px; height: 28px; font-size: 0.85rem; }
-  .modal-overlay { padding: 0; align-items: flex-start; top: 55px; }
+  .modal-overlay { padding: 0; align-items: flex-start; top: 64px; }
   .modal-overlay:has(.cart-drawer) {
     position: fixed;
     inset: 0;
-    top: 55px;
+    top: 64px;
     background: var(--ce-gray-200);
     backdrop-filter: none;
     z-index: 99;
@@ -8032,7 +8055,7 @@ details[open] > .cart-drawer__checkout-title::after {
    seam block. Split at 600/601 to match the header-height breakpoints (601-767
    uses the 65px tablet header, so it needs the tablet bar too). */
 @media (min-width: 601px) and (max-width: 1024px) { :root { --wt-box-h: 60px; --wt-box-my: 5px; } }
-@media (max-width: 600px) { :root { --wt-box-h: 49px; --wt-box-my: 4px; --wt-seam: 2px; }
+@media (max-width: 600px) { :root { --wt-box-h: 58px; --wt-box-my: 6px; --wt-seam: 2px; }
 }
 
 /* ---- "APPAREL" clean uppercase label next to the script logo ----
@@ -8133,7 +8156,7 @@ details[open] > .cart-drawer__checkout-title::after {
    under the header bar, with a white divider slot cut across the junction.
 
    Geometry is whole pixels on purpose and sums exactly to the header's height:
-   4px above the bar + --wt-box-h + 3px seam = 55px phone / 67px tablet, putting
+   4px above the bar + --wt-box-h + 3px seam = 64px phone / 67px tablet, putting
    the dark-bar/tab junction exactly 3px above the strip — the slot's midpoint. The 3px above the bar is header PADDING, not inner margin — a top
    margin on the inner collapses through .site-header (no border/padding to
    stop it) at some breakpoints, rendering the bar at y=0 with white slack below.
@@ -8393,7 +8416,7 @@ details[open] > .cart-drawer__checkout-title::after {
       var(--wt-iron) left calc(-1 * (var(--wt-box-h) + 2px)) / 100% auto no-repeat,
       var(--wt-orange) !important;
   }
-  .home-catalog__tabs .apparel-titlebar__tab { margin: 0 !important; width: auto !important; border-radius: 0 !important; font-size: 0.9rem !important; color: #fff !important; }
+  .home-catalog__tabs .apparel-titlebar__tab { margin: 0 !important; width: auto !important; border-radius: 0 !important; font-size: 1.05rem !important; color: #fff !important; }
   .home-catalog__tabs .apparel-titlebar__tab:hover { background: rgba(255,255,255,0.10) !important; color: #fff !important; }
   /* Active tab: inset dark pill (like the breadcrumb's category pill) with
      the bar's lighter orange framing it — the inset matches the 6px white
@@ -8546,7 +8569,7 @@ details[open] > .cart-drawer__checkout-title::after {
   }
 }
 @media (max-width: 600px) {
-  .pdp-breadcrumb { top: 55px; }
+  .pdp-breadcrumb { top: 64px; }
   /* Phones: a slightly heavier bottom stroke under the strip — the header's
      divider above it reads as a 2px band of the white frame, so 1.6px was
      coming up light against it. */
@@ -8822,8 +8845,8 @@ details[open] > .cart-drawer__checkout-title::after {
     grid-row: 3;
     align-self: start;
     position: sticky;
-    /* Header (4 + 64) + category bar (42) + the 6px gap, minus the 1px lap. */
-    top: 115px;
+    /* Header (4 + 64) + category bar (42) + the tight gap, minus the 1px lap. */
+    top: 113px;
     /* Semi-transparent white over the greige column — halfway between the two
        tones — engraved into the sign like the product panels: hairline, shade
        just inside it, and a light lip along the bottom outer edge. */
@@ -9102,18 +9125,34 @@ details[open] > .cart-drawer__checkout-title::after {
   /* Card image panels are white on desktop. These live at the end of the
      file because the base (mobile greige) rules come later in the sheet than
      the old 1025px block and would win the cascade otherwise. */
-  .product-card__image { background: var(--ce-white); }
+  .product-card__image {
+    background: var(--ce-white);
+    /* Own the top corners so the engraved hairline traces the FULL rounded
+       corner. The hairline sits at inset 0; without the image owning its own
+       radius, the parent card's overflow:hidden clip rounds off that outer
+       corner pixel and the border reads as clipped at the tips — the sidebar
+       looks full because its radius and hairline live on the same element. */
+    border-radius: 2px 2px 0 0;
+  }
   .product-card:hover .product-card__image { background: var(--ce-gray-50); }
+  /* Stronger engraved outline: the 0.07 hairline all but vanished on the white
+     panel, so the edge reads as crisply as the sidebar's greige border. */
+  .product-card__image::after {
+    box-shadow:
+      inset 0 0 0 1px rgba(0,0,0,0.14),
+      inset 0 2px 4px rgba(0,0,0,0.06),
+      inset 0 -1px 0 rgba(255,255,255,0.55);
+  }
   /* "More <category>" grid: thin gaps showing the greige section through. */
-  .related-items__grid { gap: var(--wt-gap); }
+  .related-items__grid { gap: var(--wt-gap-tight); }
 
-  /* Product page spacing, same chain as the catalog: every panel sits in the
-     greige card with the SAME gap around it — under the breadcrumb, at the
-     sides, between the image and the details, and between the panels — with the
-     larger phi step closing the column at the bottom. It previously had no gap
+  /* Product page spacing, same tight gap as the catalog: every panel sits in
+     the greige card with the SAME gap around it — under the breadcrumb, at the
+     sides, between the image and the details, and between the panels — and the
+     gap closing the column at the bottom matches too. It previously had no gap
      under the breadcrumb at all (the panels ran under the sticky bar), ran flush
      to the card's side edges, and left a 36px drop above "More <category>". */
-  .apparel-catalog:has(.product-detail) { padding: 0 0 var(--wt-gap-lg); }
+  .apparel-catalog:has(.product-detail) { padding: 0 0 var(--wt-gap-tight); }
   /* The breadcrumb used to be pulled up 1.4rem, which dragged the panels below
      it up too — they started underneath the sticky bar. It sits in flow now, so
      the gap under it is just the panel's own margin, like every other gap. */
@@ -9122,17 +9161,28 @@ details[open] > .cart-drawer__checkout-title::after {
     margin-bottom: 0;
   }
   .product-detail {
-    margin: var(--wt-gap);
+    margin: var(--wt-gap-tight);
   }
   /* The image/details split is this grid, not .product-detail — its gutter was
      1px. Same gap as everywhere else, so the space between the image and the
      info reads equal to the space above the image and to the card's edge. */
   .product-modal__layout {
-    column-gap: var(--wt-gap);
-    row-gap: var(--wt-gap);
+    column-gap: var(--wt-gap-tight);
+    row-gap: var(--wt-gap-tight);
   }
   .product-detail .product-modal__details { margin-right: 0; }
-  .related-items { margin: var(--wt-gap); }
+  .related-items { margin: var(--wt-gap-tight); }
+  /* Tighter info-panel padding on desktop — the 1.25rem/1rem base left a lot of
+     air inside the off-white panel next to the now-tight gaps around it. */
+  .product-detail .product-modal__details { padding: 0.8rem 0.9rem 0.9rem; }
+  /* Product image keyline: a REAL border on the carousel, which traces its own
+     6px radius cleanly and isn't clipped by its own overflow. The inset-shadow
+     ::after pseudo was pinched ("capped") at the rounded corners because the
+     carousel's overflow:hidden rounds off the pseudo's corner tip. */
+  .product-detail .product-carousel {
+    border: 1px solid var(--ce-gray-200);
+  }
+  .product-detail .product-carousel::after { display: none; }
 }
 
 /* ---- Mobile/tablet: white sign edge to the viewport ----
@@ -9169,7 +9219,10 @@ details[open] > .cart-drawer__checkout-title::after {
   body::before {
     content: '';
     position: absolute;
-    inset: 0;
+    /* 2px greige gutter outside the card on every side (was inset:0, i.e. the
+       card ran to the screen edge). --wt-box-my is 2px larger to match, so the
+       white ring keeps its width and the greige shows beyond it. */
+    inset: 2px;
     z-index: -1;
     background: var(--ce-white);
     /* The card's corners are 6px; the ring's sit --wt-box-my outside them. */
@@ -9218,7 +9271,12 @@ details[open] > .cart-drawer__checkout-title::after {
   .site-header::before {
     content: '';
     position: absolute;
-    inset: 0;
+    /* Match the 2px greige gutter on the header's top + sides; bottom stays flush
+       where the header meets the tab strip below it. */
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 0;
     background: var(--ce-white);
     border-radius: calc(6px + var(--wt-box-my)) calc(6px + var(--wt-box-my)) 0 0;
     box-shadow:
@@ -9255,20 +9313,27 @@ details[open] > .cart-drawer__checkout-title::after {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 6px;
     order: 2;
     margin: 6px 0 6px auto;
     align-self: center;
-    width: 30px;
     height: 30px;
     flex-shrink: 0;
-    background: var(--wt-box);
-    border: 1px solid var(--wt-box-edge);
+    /* White pill with a "Catalog" label, matching the white search field —
+       reads clearly against the orange bar rather than as a dark icon box. */
+    background: var(--ce-white);
+    border: 1px solid var(--ce-gray-200);
     border-radius: var(--wt-box-radius);
-    color: #fff;
+    color: var(--ce-gray-900);
     cursor: pointer;
-    padding: 0;
+    padding: 0 12px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.12), inset 0 1px 1px rgba(255,255,255,0.6);
   }
-  .home-catalog__viewmode:hover { background: rgba(0, 0, 0, 0.3); }
+  .home-catalog__viewmode svg { color: var(--ce-gray-600); }
+  .home-catalog__viewmode:hover { background: var(--ce-gray-50); border-color: var(--ce-gray-300); }
+  .home-catalog__viewmode-label { display: inline; line-height: 1; }
   /* The toggle carries the auto-margin now; the search sits right of it. */
   .home-catalog__sidebar-search { margin-left: 8px; }
   .home-catalog .apparel-grid.apparel-grid--list {
@@ -9338,7 +9403,7 @@ details[open] > .cart-drawer__checkout-title::after {
    nothing to re-solve.
 
    Their in-flow space is given back as padding, so the page's geometry is
-   unchanged: 55px for the header, 36px for the strip. Scoped to the apparel
+   unchanged: 64px for the header, 36px for the strip. Scoped to the apparel
    routes, where both bars are pinned from the top anyway — on the home route
    the strip only pins once you scroll past the hero, so it has to stay sticky. */
 @media (max-width: 600px) {
@@ -9348,17 +9413,17 @@ details[open] > .cart-drawer__checkout-title::after {
     left: 0;
     right: 0;
   }
-  .apparel-page { padding-top: 55px; }
+  .apparel-page { padding-top: 64px; }
   .apparel-page .home-catalog__header {
     position: fixed;
-    top: 55px;
+    top: 64px;
     left: 0;
     right: 0;
     margin: 0;
   }
   .apparel-page .pdp-breadcrumb {
     position: fixed;
-    top: 55px;
+    top: 64px;
     /* left/right carry the card inset now; its own side margins would add to
        them and pull the bar in twice. */
     left: var(--wt-box-my);
@@ -9368,7 +9433,7 @@ details[open] > .cart-drawer__checkout-title::after {
   }
   /* The space the two strips used to occupy in flow. */
   .apparel-page .home-catalog__inner,
-  .apparel-page .apparel-catalog { padding-top: 36px; }
+  .apparel-page .apparel-catalog { padding-top: 44px; }
 }
 
 /* ---- Footer content: legible on the sign ----
@@ -9402,4 +9467,148 @@ details[open] > .cart-drawer__checkout-title::after {
 /* The wordmark lockup: lift it off the texture the same way. */
 .site-footer__logo-white {
   filter: drop-shadow(0 1px 3px rgba(62, 24, 2, 0.5));
+}
+
+/* ---- Cart: the same sign as the catalog and the product page ----
+   It was inverted: a white body running edge to edge, with the column header
+   ("PRODUCT / QTY / TOTAL") and the desktop title bar as white strips. Now the
+   card reads like every other view — greige body, white margins around it, and
+   the header strip in sign orange with white labels, like the tab bar and the
+   breadcrumb. */
+.drawer.cart-drawer {
+  /* The white ring the greige card sits in. */
+  background: var(--ce-white);
+}
+.cart-drawer__items,
+.cart-drawer__summary {
+  background: var(--ce-greige);
+  /* Sides get the card inset; the TOP gets the seam — the same 2px white line
+     the tab bar and the breadcrumb sit under. Using the (wider) side inset here
+     pushed the orange strip down and read as a thick white band. */
+  margin: var(--wt-seam) var(--wt-box-my) var(--wt-box-my);
+  border-radius: 0;
+  /* The header strip runs edge to edge inside the card, so the side padding
+     moves onto the cells (below) rather than sitting on the container. */
+  padding: 0;
+}
+.cart-drawer__summary { margin-top: 0; padding: 0.2rem 0.75rem 0.5rem; }
+
+/* The column header: an orange strip, textured and lit like the other bars.
+   The paint goes on the ROW, not the cells — a background on each <th> makes the
+   texture restart at every cell, so the bar reads as three different pieces of
+   rust instead of one continuous face. Same inline --wt-iron and the same offset
+   the tab bar and breadcrumb use, so the grain continues from the header bar. */
+.cart-table thead tr {
+  background:
+    var(--wt-iron) left calc(-1 * (var(--wt-box-h) + var(--wt-seam))) / 100% auto no-repeat,
+    var(--wt-orange);
+  /* The white divider is drawn INSIDE the bar, not as a border: a table cell
+     treats `height` as a minimum content height, so a border-bottom is added on
+     top of it and the strip came out taller than the tab bar by exactly the
+     divider's width. */
+  box-shadow:
+    inset 0 -2.2px 0 var(--ce-white),
+    inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
+    inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
+    inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
+}
+.cart-table thead th {
+  background: none;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  /* Same height as the catalog's tab strip and the PDP breadcrumb (44px on
+     phones), rather than whatever the cell padding happened to add up to. */
+  height: 44px;
+  padding: 0 0.25rem;
+  vertical-align: middle;
+  border-bottom: none;
+}
+.cart-table thead th:first-child { padding-left: 0.75rem; }
+.cart-table thead th:last-child { padding-right: 0.75rem; }
+@media (min-width: 601px) and (max-width: 1024px) {
+  .cart-table thead th { height: 50px; }
+}
+@media (min-width: 1025px) {
+  /* Desktop strips are 42px, and their divider is 3px against greige. */
+  .cart-table thead th { height: 42px; }
+  .cart-table thead tr {
+    box-shadow:
+      inset 0 -3px 0 var(--ce-white),
+      inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
+      inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
+      inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
+  }
+}
+/* Cells carry the side padding now that the container has none. */
+.cart-table tbody td,
+.cart-table tfoot td { padding-left: 0.75rem; padding-right: 0.75rem; }
+.cart-table tbody td:first-child { padding-left: 0.75rem; }
+
+/* Desktop title bar ("CART"): the same strip. */
+.cart-drawer__header {
+  background:
+    var(--wt-iron) left calc(-1 * (var(--wt-box-h) + var(--wt-seam))) / 100% auto no-repeat,
+    var(--wt-orange);
+  /* Seam above (like the header/tab junction), card inset at the sides, and the
+     same 42px height + 3px divider the desktop tab bar and breadcrumb have. */
+  margin: var(--wt-seam) var(--wt-box-my) 0;
+  height: 42px;
+  padding: 0 0.75rem;
+  border-bottom: 3px solid var(--ce-white);
+  box-shadow:
+    inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
+    inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
+    inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
+}
+.cart-drawer__title { color: #fff; }
+.cart-drawer__header .modal__close { color: #fff; }
+.cart-drawer__empty { background: var(--ce-greige); margin: var(--wt-box-my); }
+/* Below desktop the drawer opens flush under the site header, which already
+   paints the seam at its own bottom edge — so the strip must add NOTHING on
+   top, or the two stack and the white line comes out twice as thick as the one
+   under the tab bar. (The desktop drawer starts at the top of the viewport, not
+   under the header, so it keeps its own seam.) */
+@media (max-width: 1024px) {
+  .cart-drawer__items,
+  .cart-drawer__header {
+    margin-top: 0;
+  }
+}
+
+/* ---- Phones: scaled-up header + tab bar ----
+   The header (64px) and tab bar (44px) are taller than before, so the logo,
+   icons, button squares and tab labels scale up to match — the default phone
+   view now reads at the size the old Display-Zoom view did. Placed last so it
+   wins over the ≤900 base and the 0.86rem !important tab-font cap; scoped to
+   ≤600 so tablets (601–900) keep their own sizing. */
+@media (max-width: 600px) {
+  .site-header__inner { height: 58px; }
+  /* The wordmark PNG (1448px source, so it stays crisp) scales up with the
+     taller header too — it's the .site-header__logo-white class, separate from
+     the logo-img/brand-cluster ones, so it needs its own bump. */
+  .site-header__logo-white { height: 44px; }
+  .site-header__logo-img { height: 46px; }
+  .site-header .brand-cluster--small .brand-cluster__mark { width: 46px !important; height: 46px !important; }
+  .site-header__logo-text { height: 26px; }
+  .site-header__logo-apparel { font-size: 0.78rem; }
+  /* Button squares + their icons, one step up. */
+  .cart-btn { padding: 13px 12px; }
+  .hamburger-btn { padding: 13px 12px; }
+  .site-header__search-btn { padding: 13px 12px; }
+  .locale-btn { padding: 12px 11px; }
+  .cart-btn svg,
+  .hamburger-btn svg,
+  .site-header__search-btn svg,
+  .locale-btn__icon svg { width: 26px; height: 26px; }
+  .locale-btn__short { font-size: 0.82rem; }
+  .site-header__nav a { font-size: 0.85rem; }
+  /* Tab labels: raise the font cap (was 0.86rem) and give the taller strip a
+     touch more padding so the labels fill it. */
+  .home-catalog__tabs .apparel-titlebar__tab {
+    font-size: min(calc(var(--text-tab) * 1.05), 1.08rem) !important;
+    padding: 5px 7px !important;
+    letter-spacing: -0.04em !important;
+  }
 }

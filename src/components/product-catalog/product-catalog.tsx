@@ -104,10 +104,15 @@ function brandOf(p: Product): string | null {
 // (auto-position, mirroring the cm storefront).
 function scrollProductsBelowBar() {
   const isDesktop = window.innerWidth > 1024;
-  const headerH = window.innerWidth < 601 ? 55 : (window.innerWidth <= 1024 ? 67 : 58);
+  const headerH = window.innerWidth < 601 ? 64 : (window.innerWidth <= 1024 ? 67 : 58);
   if (isDesktop) {
     const grid = document.querySelector('.home-catalog .apparel-grid');
-    const gridTop = grid ? grid.getBoundingClientRect().top + window.scrollY - headerH - 8 : 0;
+    // The grid must clear BOTH sticky bars: the site header (4 + 64) and the
+    // 42px category tab bar pinned beneath it (−1px lap = 109 total), plus the
+    // tight gap. Offsetting only past the site header tucked the first product
+    // row behind the tab bar on every tab switch.
+    const barsBottom = 4 + 64 + 42 - 1;
+    const gridTop = grid ? grid.getBoundingClientRect().top + window.scrollY - barsBottom - 4 : 0;
     const needsScrollUp = gridTop < window.scrollY;
     window.scrollTo({ top: gridTop, behavior: needsScrollUp ? 'instant' : 'smooth' });
   } else {
@@ -283,7 +288,7 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
       // re-scrolling while the keyboard opens leaves a gap above the tabs.
       const catalog = document.querySelector(".home-catalog") as HTMLElement | null;
       if (!catalog) return;
-      const headerH = window.innerWidth < 601 ? 55 : window.innerWidth <= 1024 ? 67 : 58;
+      const headerH = window.innerWidth < 601 ? 64 : window.innerWidth <= 1024 ? 67 : 58;
       const stickyPos = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2;
       if (window.scrollY < stickyPos - 1) {
         requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo({ top: stickyPos, behavior: "instant" })));
@@ -407,6 +412,7 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
               // next: list view — rows with a thumbnail + detail lines
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="4" height="4"/><line x1="10" y1="6" x2="21" y2="6"/><rect x="3" y="10" width="4" height="4"/><line x1="10" y1="12" x2="21" y2="12"/><rect x="3" y="16" width="4" height="4"/><line x1="10" y1="18" x2="21" y2="18"/></svg>
             )}
+            <span class="home-catalog__viewmode-label">Catalog</span>
           </button>
           <div class="home-catalog__sidebar-search">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -440,7 +446,7 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
                   // Changing category clears + exits the search (header + tab bar).
                   window.dispatchEvent(new CustomEvent("apparel-search-clear"));
                   searchOpen.value = false;
-                  if (activeCat.value === cat) { activeCat.value = "All"; searchQuery.value = ""; return; }
+                  if (activeCat.value === cat) { activeCat.value = "All"; searchQuery.value = ""; scrollProductsBelowBar(); return; }
                   activeCat.value = cat;
                   searchQuery.value = "";
                   scrollProductsBelowBar();
