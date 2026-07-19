@@ -401,18 +401,18 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
               rows (the same list layout as the tablet's extra mode). */}
           <button
             class="home-catalog__viewmode"
-            aria-label={tabletCols.value === "list" ? "Show grid view" : "Show list view"}
-            title={tabletCols.value === "list" ? "Grid view" : "List view"}
+            aria-label={tabletCols.value === "list" ? "Show gallery view" : "Show catalog view"}
+            title={tabletCols.value === "list" ? "Gallery view" : "Catalog view"}
             onClick$={() => { tabletCols.value = tabletCols.value === "list" ? 3 : "list"; }}
           >
             {tabletCols.value === "list" ? (
-              // next: grid view
+              // in catalog/list mode → offer gallery (grid) view
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
             ) : (
-              // next: list view — rows with a thumbnail + detail lines
+              // in gallery/grid mode → offer catalog (list) view
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="4" height="4"/><line x1="10" y1="6" x2="21" y2="6"/><rect x="3" y="10" width="4" height="4"/><line x1="10" y1="12" x2="21" y2="12"/><rect x="3" y="16" width="4" height="4"/><line x1="10" y1="18" x2="21" y2="18"/></svg>
             )}
-            <span class="home-catalog__viewmode-label">Catalog</span>
+            <span class="home-catalog__viewmode-label">{tabletCols.value === "list" ? "Gallery" : "Catalog"}</span>
           </button>
           <div class="home-catalog__sidebar-search">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>

@@ -11,9 +11,9 @@
   /* Product image panel. Images multiply onto this, so their baked-in white
      backgrounds pick up the greige without any per-image editing. */
   --ce-greige: #ece7dc;
-  /* Shared content max-width (Tailwind max-w-7xl): header bar, category tab
-     bar, catalog, product page and footer all align to this. */
-  --site-max: 1280px;
+  /* Shared content max-width (Tailwind max-w-8xl = 88rem): header bar, category
+     tab bar, catalog, product page and footer all align to this. */
+  --site-max: 1408px;
   /* Desktop: thickness of the white ring around the sign card — slightly
      slimmer than the sign's internal vertical bands so the side strips read
      equal to the y strips above the header bar / below the footer.
@@ -1644,6 +1644,24 @@ body:has(.nav-drawer-overlay) .site-header {
   right: 0 !important;
   transform: none !important;
   opacity: 1 !important;
+  /* Keep the header above the drawer scrim so it stays fully visible and
+     undimmed — the menu slides in over the tabs/content only, never the
+     header (which is identical whether the menu is open or closed). */
+  z-index: 10003 !important;
+}
+/* Drop the overlay + drawer below the fixed header so the header is neither
+   covered nor darkened. Header bottom: 64px phones, 67px tablets. */
+@media (max-width: 600px) {
+  .nav-drawer-overlay { top: 64px; }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .nav-drawer-overlay { top: 67px; }
+}
+/* The drawer's own logo header duplicated the real one now that the header
+   stays visible above the menu — drop it so the links start at the top. Close
+   is still the hamburger toggle or a tap on the scrim. */
+@media (max-width: 1024px) {
+  .nav-drawer__header { display: none !important; }
 }
 
 /* ===== Home Catalog Section ===== */
@@ -3964,18 +3982,21 @@ body:has(.nav-drawer-overlay) .site-header {
 .cart-btn--active svg { stroke: #ffffff; }
 .cart-btn--active .cart-btn__label { color: #ffffff; }
 @media (hover: hover) { .cart-btn--active:hover { border-color: var(--ce-gold); background: #2a6789; color: #ffffff; } .cart-btn--active:hover svg { stroke: #ffffff; } }
-/* On apparel route, the cart button is always shown in the active (blue) state */
-body:has(.apparel-page) .site-header .cart-btn {
-  border-color: #B26A00;
-  background: #B26A00;
-  color: #ffffff;
-  box-shadow: inset 0 1px 4px rgba(0,0,0,0.18), inset 0 0 6px rgba(0,0,0,0.08);
+/* Wherever the catalog header shows (home + apparel routes), the cart reads as
+   an actual button in the bright tab-bar orange on the darker textured header,
+   instead of the old brown / transparent outline that blended in. !important
+   to win over the header-state (--white / --tabs-stuck) cart rules. */
+body:has(.home-catalog) .site-header .cart-btn {
+  border: 1px solid rgba(0,0,0,0.18) !important;
+  background: var(--wt-orange) !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 1px 2px rgba(0,0,0,0.25) !important;
 }
-body:has(.apparel-page) .site-header .cart-btn svg { stroke: #ffffff; }
-body:has(.apparel-page) .site-header .cart-btn .cart-btn__label { color: #ffffff; }
+body:has(.home-catalog) .site-header .cart-btn svg { stroke: #ffffff !important; }
+body:has(.home-catalog) .site-header .cart-btn .cart-btn__label { color: #ffffff !important; }
 @media (hover: hover) {
-  body:has(.apparel-page) .site-header .cart-btn:hover { border-color: var(--ce-gold); background: #2a6789; color: #ffffff; }
-  body:has(.apparel-page) .site-header .cart-btn:hover svg { stroke: #ffffff; }
+  body:has(.home-catalog) .site-header .cart-btn:hover { border-color: var(--ce-gold) !important; background: #2a6789 !important; color: #ffffff !important; }
+  body:has(.home-catalog) .site-header .cart-btn:hover svg { stroke: #ffffff !important; }
 }
 /* Logout button in site-header gets a subtle green tint to match the other accented buttons */
 .site-header .logout-btn {
@@ -5037,7 +5058,7 @@ body:has(.apparel-page) .site-header .cart-btn .cart-btn__label { color: #ffffff
 }
 .cart-drawer__header .modal__close { position: static; }
 .cart-drawer__title {
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.09em;
@@ -6244,35 +6265,37 @@ details[open] > .cart-drawer__checkout-title::after {
   .apparel-titlebar__tab-short { display: none; }
   .apparel-titlebar__tab-full { display: inline; }
   .home-catalog__title { display: none; }
-  /* Search rides the bar's right end in the header's dark-box style. */
+  /* Search rides the bar's right end. */
   .home-catalog__sidebar-search {
     display: flex;
     align-items: center;
     gap: 7px;
-    /* White field, not the dark button-box: reads as a proper search input and
-       stands out clearly against the orange bar. */
-    background: var(--ce-white);
-    border: 1px solid var(--ce-gray-200);
+    /* Frosted translucent white: reads as a field but sits back into the orange
+       bar instead of a hard solid-white block. */
+    background: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.45);
     border-radius: var(--wt-box-radius);
     padding: 6px 12px;
     margin: 6px 8px 6px auto;
     order: 2;
     width: 280px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.12), inset 0 1px 1px rgba(255,255,255,0.6);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.4);
+    backdrop-filter: blur(3px);
   }
   .home-catalog__sidebar-search:focus-within {
-    border-color: var(--ce-gray-300);
+    background: rgba(255,255,255,0.68);
+    border-color: rgba(255,255,255,0.7);
   }
   .home-catalog__sidebar-search svg {
     flex-shrink: 0;
-    color: var(--ce-gray-500);
+    color: var(--ce-gray-700);
   }
   .home-catalog__sidebar-search .apparel-titlebar__search-input {
     color: var(--ce-gray-900);
     background: transparent;
   }
   .home-catalog__sidebar-search .apparel-titlebar__search-input::placeholder {
-    color: var(--ce-gray-500);
+    color: var(--ce-gray-700);
   }
   .home-catalog__tabs {
     flex-direction: row;
@@ -8628,7 +8651,9 @@ details[open] > .cart-drawer__checkout-title::after {
 }
 .pdp-breadcrumb__view:hover { background: rgba(255,255,255,0.10); }
 @media (max-width: 600px) {
-  .pdp-breadcrumb__view { display: inline-flex; }
+  .pdp-breadcrumb__view { display: inline-flex; padding: 0 12px; }
+  /* Bigger toggle icon to match the scaled-up mobile bars (was 17px). */
+  .pdp-breadcrumb__view svg { width: 25px; height: 25px; }
 }
 /* The sku ends the trail, but it is never :last-child — the fullscreen toggle
    is, whether or not it's displayed — so the generic "/" separator would hang
@@ -8660,7 +8685,38 @@ details[open] > .cart-drawer__checkout-title::after {
   box-shadow:
     4px 0 24px rgba(0,0,0,0.25),
     inset -6px 0 8px -5px rgba(62, 24, 2, 0.5),
-    inset 6px 0 8px -5px rgba(62, 24, 2, 0.5) !important;
+    inset 6px 0 8px -5px rgba(62, 24, 2, 0.5),
+    /* Top + bottom pressed-sign shading so the whole drawer reads as one
+       recessed sign face (like the header/tab bar), not a flat orange fill —
+       a seam under the header at the top, and the face closed at the bottom. */
+    inset 0 7px 9px -5px rgba(62, 24, 2, 0.45),
+    inset 0 -7px 9px -5px rgba(62, 24, 2, 0.45) !important;
+}
+/* Link + category rows read as white panels PRESSED into the orange sign —
+   the same engraved treatment the product panels use (hairline rim, inset top
+   shade, light lower lip). The orange iron texture shows in the gaps between
+   them as the dividers, so the whole menu reads as one weathered sign face. */
+.nav-drawer__link,
+.nav-drawer__cat-trigger {
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.10),
+    inset 0 1px 2px rgba(0,0,0,0.08),
+    inset 0 -1px 0 rgba(255,255,255,0.6);
+}
+/* The icon/label divider becomes an engraved hairline (dark line + light lip)
+   like the sign's pressed seams, instead of a flat grey rule. */
+.nav-drawer__link::before,
+.nav-drawer__cat-trigger::before {
+  background: rgba(0,0,0,0.12);
+  box-shadow: 1px 0 0 rgba(255,255,255,0.6);
+}
+/* Sub-category rows (accordion items) get the same pressed-panel face so the
+   expanded list stays part of the sign. */
+.nav-drawer__cat-content .nav-drawer__cat-item {
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.08),
+    inset 0 1px 2px rgba(0,0,0,0.06),
+    inset 0 -1px 0 rgba(255,255,255,0.55);
 }
 .nav-drawer__header {
   position: relative;
@@ -9319,20 +9375,21 @@ details[open] > .cart-drawer__checkout-title::after {
     align-self: center;
     height: 30px;
     flex-shrink: 0;
-    /* White pill with a "Catalog" label, matching the white search field —
-       reads clearly against the orange bar rather than as a dark icon box. */
-    background: var(--ce-white);
-    border: 1px solid var(--ce-gray-200);
+    /* Frosted translucent pill matching the search field — sits back into the
+       orange bar instead of a hard solid-white block. */
+    background: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.45);
     border-radius: var(--wt-box-radius);
     color: var(--ce-gray-900);
     cursor: pointer;
     padding: 0 12px;
     font-size: 0.82rem;
     font-weight: 600;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.12), inset 0 1px 1px rgba(255,255,255,0.6);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.4);
+    backdrop-filter: blur(3px);
   }
-  .home-catalog__viewmode svg { color: var(--ce-gray-600); }
-  .home-catalog__viewmode:hover { background: var(--ce-gray-50); border-color: var(--ce-gray-300); }
+  .home-catalog__viewmode svg { color: var(--ce-gray-700); }
+  .home-catalog__viewmode:hover { background: rgba(255,255,255,0.68); border-color: rgba(255,255,255,0.7); }
   .home-catalog__viewmode-label { display: inline; line-height: 1; }
   /* The toggle carries the auto-margin now; the search sits right of it. */
   .home-catalog__sidebar-search { margin-left: 8px; }
@@ -9584,7 +9641,10 @@ details[open] > .cart-drawer__checkout-title::after {
    wins over the ≤900 base and the 0.86rem !important tab-font cap; scoped to
    ≤600 so tablets (601–900) keep their own sizing. */
 @media (max-width: 600px) {
-  .site-header__inner { height: 58px; }
+  /* Trim the header's left inset and nudge the whole logo cluster left, freeing
+     more room on the right for the three buttons on narrow phones. */
+  .site-header__inner { height: 58px; padding-left: 2px; padding-right: 2px; }
+  .site-header__logo { margin-left: -3px; }
   /* The wordmark PNG (1448px source, so it stays crisp) scales up with the
      taller header too — it's the .site-header__logo-white class, separate from
      the logo-img/brand-cluster ones, so it needs its own bump. */
@@ -9593,22 +9653,44 @@ details[open] > .cart-drawer__checkout-title::after {
   .site-header .brand-cluster--small .brand-cluster__mark { width: 46px !important; height: 46px !important; }
   .site-header__logo-text { height: 26px; }
   .site-header__logo-apparel { font-size: 0.78rem; }
-  /* Button squares + their icons, one step up. */
-  .cart-btn { padding: 13px 12px; }
-  .hamburger-btn { padding: 13px 12px; }
-  .site-header__search-btn { padding: 13px 12px; }
-  .locale-btn { padding: 12px 11px; }
+  /* Pull APPAREL tighter to the wordmark: the wider 44px logo pushed it right,
+     so on a 375px iPhone SE the cluster overran the three buttons and clipped
+     the menu button. Less gap here keeps the header within the viewport. */
+  .site-header .brand-apparel { margin-left: -2.8rem; }
+  /* Button squares + their icons, one step up — but tight horizontal padding
+     and no inter-button gap so the three buttons + the wider logo still fit a
+     375px iPhone SE without clipping the menu button. */
+  .cart-btn { padding: 13px 7px; }
+  .hamburger-btn { padding: 13px 7px; }
+  .site-header__search-btn { padding: 13px 7px; }
+  .locale-btn { padding: 12px 7px; }
+  .site-header__nav { gap: 0; margin-right: 0; }
   .cart-btn svg,
   .hamburger-btn svg,
   .site-header__search-btn svg,
   .locale-btn__icon svg { width: 26px; height: 26px; }
   .locale-btn__short { font-size: 0.82rem; }
   .site-header__nav a { font-size: 0.85rem; }
-  /* Tab labels: raise the font cap (was 0.86rem) and give the taller strip a
-     touch more padding so the labels fill it. */
+  /* Tab labels: scaled up to match the taller strip — bigger, so ~4–5
+     categories show at once instead of 6 (the rest scroll). */
   .home-catalog__tabs .apparel-titlebar__tab {
-    font-size: min(calc(var(--text-tab) * 1.05), 1.08rem) !important;
-    padding: 5px 7px !important;
-    letter-spacing: -0.04em !important;
+    font-size: min(calc(var(--text-tab) * 1.35), 1.4rem) !important;
+    padding: 5px 10px !important;
+    letter-spacing: -0.02em !important;
   }
+}
+
+/* ---- Narrow phones: shrink the wordmark so the buttons always fit ----
+   The scaled-up 44px logo overruns the three header buttons on ~360–409px
+   phones (iPhone SE/12/13/14), clipping the menu button. Rather than overlap
+   APPAREL onto the logo, scale the whole wordmark down a touch — the menu
+   button matters more than a slightly larger logo. Must sit AFTER the ≤600
+   block (which sets 44px) to win; ordered 409 → 359 so the smallest wins. */
+@media (max-width: 409px) {
+  .site-header__logo-white { height: 38px; }
+  .site-header .brand-apparel { font-size: 0.92rem; margin-left: -2.35rem; }
+}
+@media (max-width: 359px) {
+  .site-header__logo-white { height: 32px; }
+  .site-header .brand-apparel { font-size: 0.82rem; margin-left: -1.95rem; }
 }
