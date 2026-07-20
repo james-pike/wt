@@ -42,6 +42,32 @@ const taxRateFor = (code: string): number | undefined => PROVINCE_TAX[code];
 const SINGLE_BRANCH_PROVINCES = new Set(["AB", "BC"]);
 const needsLocation = (code: string): boolean => !!code && !SINGLE_BRANCH_PROVINCES.has(code);
 
+// The header's height drives every scroll offset in the app: the sticky strips
+// (catalog tabs, apparel titlebar, product breadcrumb) pin directly beneath it,
+// so anything scrolling content "to just below the bars" has to know it. This
+// used to be a hardcoded `innerWidth < 601 ? 64 : (<= 1024 ? 67 : 58)` chain,
+// copied into a dozen call sites — and it silently desynced from the CSS every
+// time a bar height changed, parking content a few px under the header.
+// Measure the element instead; fall back to the CSS custom property that sets
+// the same height, and only then to a literal.
+// NB this is the header's BOTTOM EDGE once pinned, not its height. On desktop
+// the header is pinned 4px down from the viewport top (a strip of the greige
+// surround shows above the card), so bottom = 4 + height. Using the height
+// alone puts content 4px too high — under the header — which is what made the
+// tab bar and breadcrumb look short after a tab click.
+export function stickyTop(): number {
+  const el = document.querySelector(".site-header") as HTMLElement | null;
+  if (el) {
+    const rect = el.getBoundingClientRect();
+    if (rect.height > 0) {
+      const cs = getComputedStyle(el);
+      const offset = cs.position === "sticky" || cs.position === "fixed" ? parseFloat(cs.top) || 0 : 0;
+      return Math.round(offset + rect.height);
+    }
+  }
+  return 64;
+}
+
 export const LoginTypeContext = createContextId<Signal<string>>("loginType");
 
 export const useLocaleLoader = routeLoader$(({ cookie }) => {
@@ -190,10 +216,11 @@ export const useSubmitOrder = routeAction$(
       args: [
         vendor,
         "",
-        // Customer name and address are intentionally NOT stored in the
-        // database — they appear only in the confirmation email below (built
-        // from the submitted form data). See the privacy policy.
-        "",
+        // The name IS stored, alongside the order number and items — that's
+        // how the admin knows who placed an order. Email and phone are NOT:
+        // they appear only in the confirmation email below (built from the
+        // submitted form data), never in a column here. See the privacy policy.
+        employee.name || "",
         "",
         employee.po || "",
         JSON.stringify(items),
@@ -613,7 +640,7 @@ export default component$(() => {
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ cleanup, track }) => {
     track(() => loc.url.pathname);
-    const stickyTop = () => (window.innerWidth < 601 ? 64 : window.innerWidth <= 1024 ? 67 : 58);
+    const stickyTop = () => (window.innerWidth < 601 ? 64 : window.innerWidth <= 1024 ? 67 : 66);
     const onScroll = () => {
       headerScrolled.value = window.scrollY > 60;
       document.documentElement.classList.toggle("scrolled", window.scrollY > 60);
@@ -854,7 +881,7 @@ export default component$(() => {
                 cartOpen.value = false;
                 const header = document.querySelector(".site-header") as (HTMLElement & { __pin?: (() => void) | null }) | null;
                 const catalog = document.querySelector(".home-catalog") as HTMLElement | null;
-                const headerH = window.innerWidth < 601 ? 64 : (window.innerWidth <= 1024 ? 67 : 58);
+                const headerH = stickyTop();
                 const stickyPos = catalog ? catalog.getBoundingClientRect().top + window.scrollY - headerH + 2 : 0;
                 // FLASH FIX: on the home page, before the catalog tabs have scrolled
                 // into their sticky position, opening the search animates the hero
@@ -1077,20 +1104,20 @@ export default component$(() => {
           {loginType.value === "safety" && (
           <nav class="site-footer__links">
             <Link href="/">{t("nav.home", locale.value)}</Link>
-            <Link href="/apparel/#fr" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Flame Resistant" })); const headerH = window.innerWidth < 601 ? 64 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Flame Resistant", locale.value)}</Link>
-            <Link href="/apparel/#shirts" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Shirts" })); const headerH = window.innerWidth < 601 ? 64 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Shirts", locale.value)}</Link>
-            <Link href="/apparel/#hats" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Hats" })); const headerH = window.innerWidth < 601 ? 64 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Hats", locale.value)}</Link>
+            <Link href="/apparel/#fr" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Flame Resistant" })); const headerH = stickyTop(); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Flame Resistant", locale.value)}</Link>
+            <Link href="/apparel/#shirts" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Shirts" })); const headerH = stickyTop(); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Shirts", locale.value)}</Link>
+            <Link href="/apparel/#hats" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Hats" })); const headerH = stickyTop(); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Hats", locale.value)}</Link>
             <Link class="site-footer__links-privacy" href="/privacy/">{t("footer.privacypolicy", locale.value)}</Link>
           </nav>
           )}
           {(loginType.value !== "tech" && loginType.value !== "safety") && (
           <nav class="site-footer__links">
             <Link href="/">{t("nav.home", locale.value)}</Link>
-            <Link href="/apparel/#shirts" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Shirts" })); const headerH = window.innerWidth < 601 ? 64 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Shirts", locale.value)}</Link>
-            <Link href="/apparel/#jackets" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Jackets" })); const headerH = window.innerWidth < 601 ? 64 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Jackets", locale.value)}</Link>
-            <Link href="/apparel/#hats" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Hats" })); const headerH = window.innerWidth < 601 ? 64 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Hats", locale.value)}</Link>
-            <Link href="/apparel/#swag" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "SWAG" })); const headerH = window.innerWidth < 601 ? 64 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.SWAG", locale.value)}</Link>
-            <Link href="/apparel/#new-hire-kit" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "New Hire Kit" })); const headerH = window.innerWidth < 601 ? 64 : (window.innerWidth <= 1024 ? 67 : 58); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}><span class="site-footer__officekit-short">{t("cat.New Hire Kit", locale.value)}</span><span class="site-footer__officekit-full">{t("nav.officewelcomekit", locale.value)}</span></Link>
+            <Link href="/apparel/#shirts" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Shirts" })); const headerH = stickyTop(); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Shirts", locale.value)}</Link>
+            <Link href="/apparel/#jackets" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Jackets" })); const headerH = stickyTop(); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Jackets", locale.value)}</Link>
+            <Link href="/apparel/#hats" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Hats" })); const headerH = stickyTop(); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Hats", locale.value)}</Link>
+            <Link href="/apparel/#swag" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "SWAG" })); const headerH = stickyTop(); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.SWAG", locale.value)}</Link>
+            <Link href="/apparel/#new-hire-kit" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "New Hire Kit" })); const headerH = stickyTop(); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}><span class="site-footer__officekit-short">{t("cat.New Hire Kit", locale.value)}</span><span class="site-footer__officekit-full">{t("nav.officewelcomekit", locale.value)}</span></Link>
             <Link class="site-footer__links-privacy" href="/privacy/">{t("footer.privacypolicy", locale.value)}</Link>
           </nav>
           )}

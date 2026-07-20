@@ -4,7 +4,7 @@ import { LocaleContext, t } from "../../i18n";
 import { allProducts, categoryLabel } from "../../routes/apparel/products";
 import type { Product } from "../../routes/apparel/products";
 import { sortColorsWhiteLast } from "../../routes/apparel/utils";
-import { LoginTypeContext } from "../../routes/layout";
+import { LoginTypeContext, stickyTop } from "../../routes/layout";
 import { ProductImage } from "../product-image/product-image";
 
 const CLOTHING_CATEGORIES = ["All", "Work Wear", "Jackets", "Sweaters", "Shirts", "Hats", "Footwear"];
@@ -104,15 +104,22 @@ function brandOf(p: Product): string | null {
 // (auto-position, mirroring the cm storefront).
 function scrollProductsBelowBar() {
   const isDesktop = window.innerWidth > 1024;
-  const headerH = window.innerWidth < 601 ? 64 : (window.innerWidth <= 1024 ? 67 : 58);
+  const headerH = stickyTop();
   if (isDesktop) {
     const grid = document.querySelector('.home-catalog .apparel-grid');
-    // The grid must clear BOTH sticky bars: the site header (4 + 64) and the
-    // 42px category tab bar pinned beneath it (−1px lap = 109 total), plus the
-    // tight gap. Offsetting only past the site header tucked the first product
-    // row behind the tab bar on every tab switch.
-    const barsBottom = 4 + 64 + 42 - 1;
-    const gridTop = grid ? grid.getBoundingClientRect().top + window.scrollY - barsBottom - 4 : 0;
+    // The grid must clear BOTH sticky bars: the site header and the category
+    // tab bar pinned beneath it. Offsetting only past the site header tucked
+    // the first product row behind the tab bar on every tab switch.
+    // MEASURED, not hardcoded: these heights are set in CSS and have changed
+    // more than once. A stale constant here doesn't fail loudly — it just
+    // parks the grid a few px under the tab bar, which reads as the bar
+    // getting shorter on every tab switch.
+    // stickyTop() is the header's pinned BOTTOM edge, so the tab bar's height
+    // is all that's left to add. (offsetHeight on the header would miss the
+    // 4px the header is pinned down by on desktop.)
+    const bar = document.querySelector('.home-catalog__header') as HTMLElement | null;
+    const barsBottom = headerH + (bar?.offsetHeight ?? 50);
+    const gridTop = grid ? grid.getBoundingClientRect().top + window.scrollY - barsBottom : 0;
     const needsScrollUp = gridTop < window.scrollY;
     window.scrollTo({ top: gridTop, behavior: needsScrollUp ? 'instant' : 'smooth' });
   } else {
@@ -288,7 +295,7 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
       // re-scrolling while the keyboard opens leaves a gap above the tabs.
       const catalog = document.querySelector(".home-catalog") as HTMLElement | null;
       if (!catalog) return;
-      const headerH = window.innerWidth < 601 ? 64 : window.innerWidth <= 1024 ? 67 : 58;
+      const headerH = window.innerWidth < 601 ? 64 : window.innerWidth <= 1024 ? 67 : 66;
       const stickyPos = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2;
       if (window.scrollY < stickyPos - 1) {
         requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo({ top: stickyPos, behavior: "instant" })));

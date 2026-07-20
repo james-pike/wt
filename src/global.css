@@ -1794,11 +1794,14 @@ body:has(.nav-drawer-overlay) .site-header {
   color: rgba(255,255,255,0.4);
 }
 .site-footer__links a.is-line-end::after { content: none; }
-/* Desktop: the category links live in the sticky tab bar, so drop them from the
-   footer rather than repeat the whole category list. Home + Privacy stay. */
-@media (min-width: 1025px) {
-  .site-footer__links a[href^="/apparel/#"] { display: none; }
-}
+/* The category links live in the sticky tab bar at every breakpoint, so drop
+   them from the footer rather than repeat the whole category list. Home +
+   Privacy stay. (Desktop-only until now; mobile/tablet were still listing the
+   full set under the tabs that already carry it.)
+   The trailing separator dots take care of themselves: the is-line-end pass in
+   layout.tsx filters on offsetParent, so a display:none link is skipped and the
+   last VISIBLE link loses its dot. */
+.site-footer__links a[href^="/apparel/#"] { display: none; }
 /* Mobile + tablet: links wrap and center; the Privacy Policy link joins the
    links row (its under-email copy is hidden); a touch more space above the
    email. The spread row layout is reserved for desktop (>=1025px). */
@@ -6270,32 +6273,32 @@ details[open] > .cart-drawer__checkout-title::after {
     display: flex;
     align-items: center;
     gap: 7px;
-    /* Frosted translucent white: reads as a field but sits back into the orange
-       bar instead of a hard solid-white block. */
-    background: rgba(255,255,255,0.5);
-    border: 1px solid rgba(255,255,255,0.45);
+    /* Dark overlay box, the same one the header logo/buttons ride in — a
+       recessed near-black field on the orange bar (the original look, before
+       it went white and then frosted-translucent). */
+    background: var(--wt-box-strong);
+    border: 1px solid var(--wt-box-edge);
     border-radius: var(--wt-box-radius);
     padding: 6px 12px;
     margin: 6px 8px 6px auto;
     order: 2;
     width: 280px;
-    box-shadow: inset 0 1px 1px rgba(255,255,255,0.4);
-    backdrop-filter: blur(3px);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.25);
   }
   .home-catalog__sidebar-search:focus-within {
-    background: rgba(255,255,255,0.68);
-    border-color: rgba(255,255,255,0.7);
+    background: rgba(0,0,0,0.5);
+    border-color: rgba(0,0,0,0.2);
   }
   .home-catalog__sidebar-search svg {
     flex-shrink: 0;
-    color: var(--ce-gray-700);
+    color: rgba(255,255,255,0.75);
   }
   .home-catalog__sidebar-search .apparel-titlebar__search-input {
-    color: var(--ce-gray-900);
+    color: #fff;
     background: transparent;
   }
   .home-catalog__sidebar-search .apparel-titlebar__search-input::placeholder {
-    color: var(--ce-gray-700);
+    color: rgba(255,255,255,0.6);
   }
   .home-catalog__tabs {
     flex-direction: row;
@@ -8855,9 +8858,10 @@ details[open] > .cart-drawer__checkout-title::after {
   }
   /* Right-edge scroll cue, pinned on the wrapper so it doesn't scroll with
      the tabs (the wrapper's white frame is --wt-box-my wider on each side):
-     ::before is the orange fade, ::after the chevron. At the scroll end
-     (--tabs-end, toggled by the component) the fade lifts and the chevron
-     spins around to point back left. */
+     the orange fade over the strip's right edge. At the scroll end
+     (--tabs-end, toggled by the component) it lifts.
+     There was a chevron here too (::after) — dropped: a half-visible tab at
+     the fade already reads as "there's more", so the arrow was redundant. */
   .home-catalog__header::before {
     content: '';
     position: absolute;
@@ -8870,24 +8874,7 @@ details[open] > .cart-drawer__checkout-title::after {
     background: linear-gradient(to right, rgba(230, 120, 25, 0), var(--wt-orange) 72%);
     transition: opacity 0.25s ease;
   }
-  .home-catalog__header::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: calc(var(--wt-box-my) + 6px);
-    width: 7px;
-    height: 7px;
-    border-top: 2px solid #fff;
-    border-right: 2px solid #fff;
-    pointer-events: none;
-    z-index: 2;
-    transform: translateY(-50%) rotate(45deg);
-    transition: transform 0.3s ease;
-  }
   .home-catalog__header--tabs-end::before { opacity: 0; }
-  .home-catalog__header--tabs-end::after {
-    transform: translateY(-50%) rotate(225deg);
-  }
 }
 
 /* ---- Desktop filter sidebar (left column under the category bar) ----
@@ -9375,21 +9362,19 @@ details[open] > .cart-drawer__checkout-title::after {
     align-self: center;
     height: 30px;
     flex-shrink: 0;
-    /* Frosted translucent pill matching the search field — sits back into the
-       orange bar instead of a hard solid-white block. */
-    background: rgba(255,255,255,0.5);
-    border: 1px solid rgba(255,255,255,0.45);
+    /* Dark overlay box, matching the search field beside it. */
+    background: var(--wt-box-strong);
+    border: 1px solid var(--wt-box-edge);
     border-radius: var(--wt-box-radius);
-    color: var(--ce-gray-900);
+    color: #fff;
     cursor: pointer;
     padding: 0 12px;
     font-size: 0.82rem;
     font-weight: 600;
-    box-shadow: inset 0 1px 1px rgba(255,255,255,0.4);
-    backdrop-filter: blur(3px);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.25);
   }
-  .home-catalog__viewmode svg { color: var(--ce-gray-700); }
-  .home-catalog__viewmode:hover { background: rgba(255,255,255,0.68); border-color: rgba(255,255,255,0.7); }
+  .home-catalog__viewmode svg { color: rgba(255,255,255,0.85); }
+  .home-catalog__viewmode:hover { background: rgba(0,0,0,0.5); border-color: rgba(0,0,0,0.2); }
   .home-catalog__viewmode-label { display: inline; line-height: 1; }
   /* The toggle carries the auto-margin now; the search sits right of it. */
   .home-catalog__sidebar-search { margin-left: 8px; }
@@ -9672,9 +9657,11 @@ details[open] > .cart-drawer__checkout-title::after {
   .locale-btn__short { font-size: 0.82rem; }
   .site-header__nav a { font-size: 0.85rem; }
   /* Tab labels: scaled up to match the taller strip — bigger, so ~4–5
-     categories show at once instead of 6 (the rest scroll). */
+     categories show at once instead of 6 (the rest scroll). Backed off half a
+     step from 1.35x so the strip ends mid-label more often: a sliver of the
+     next tab is the cue that the strip scrolls. */
   .home-catalog__tabs .apparel-titlebar__tab {
-    font-size: min(calc(var(--text-tab) * 1.35), 1.4rem) !important;
+    font-size: min(calc(var(--text-tab) * 1.25), 1.3rem) !important;
     padding: 5px 10px !important;
     letter-spacing: -0.02em !important;
   }
@@ -9694,3 +9681,458 @@ details[open] > .cart-drawer__checkout-title::after {
   .site-header__logo-white { height: 32px; }
   .site-header .brand-apparel { font-size: 0.82rem; margin-left: -1.95rem; }
 }
+
+/* ---- Desktop: My Cart reads as an actual button, like mobile ----
+   The generic header rules above flatten every action button to a transparent
+   icon on the dark bar. On desktop the cart is the one primary action, so it
+   keeps the bright tab-bar orange fill it has on phones — placed last so it
+   wins over the flattening rules regardless of header state. */
+@media (min-width: 1025px) {
+  .site-header .cart-btn,
+  .site-header .cart-btn.cart-btn--active,
+  .site-header--hero-hidden .cart-btn,
+  .site-header--hero-hidden.site-header--hero-visible .cart-btn {
+    background: var(--wt-orange) !important;
+    border: 1px solid rgba(0,0,0,0.18) !important;
+    border-radius: var(--wt-box-radius) !important;
+    color: #fff !important;
+    padding: 0 14px !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 1px 2px rgba(0,0,0,0.25) !important;
+  }
+  .site-header .cart-btn svg,
+  .site-header .cart-btn.cart-btn--active svg,
+  .site-header--hero-hidden .cart-btn svg { stroke: #fff !important; }
+  .site-header .cart-btn__label { display: inline !important; color: #fff !important; }
+  .site-header .cart-btn:hover,
+  .site-header .cart-btn.cart-btn--active:hover,
+  .site-header--hero-hidden .cart-btn:hover {
+    background: var(--wt-orange-dark) !important;
+    border-color: rgba(0,0,0,0.28) !important;
+    color: #fff !important;
+  }
+  .site-header .cart-btn:hover svg { stroke: #fff !important; }
+}
+
+/* ============================================================
+   Desktop: taller header + tab bar, type scaled to match
+   ------------------------------------------------------------
+   At 1025px+ the bars kept the phone-era 58px/42px geometry, so the
+   logotype, tab labels and control text all read small on a big screen.
+   Everything below scales by ~1.17x together — bar heights, the sticky
+   pins that depend on them, the logo, the tab labels, and the controls
+   riding the bars (search, catalog toggle, cart, locale, logout) — so the
+   proportions of the sign are unchanged, just larger.
+
+   Header height = --wt-box-my (6) + --wt-box-h (58) + 2px seam = 66px.
+   The seam is the white line showing between the dark bar's bottom edge and
+   the tab strip pinned under it: it's whatever the header height leaves over
+   after the top margin and the bar, so it must stay 2px (as it was at the old
+   58/50 geometry) rather than growing with the bar. Every sticky strip pins
+   at 66 as a result.
+   ============================================================ */
+@media (min-width: 1025px) {
+  :root { --wt-box-h: 58px; }
+
+  /* Header height and the strips' sticky `top` are BOTH derived from
+     --wt-header-h at the end of this file — don't set either here, or they can
+     drift apart again. Only the offsets with no sticky counterpart stay: */
+  .apparel-sidebar { top: var(--wt-header-pin); max-height: calc(100vh - var(--wt-header-pin)); }
+  .not-found-page { min-height: calc(100vh - var(--wt-header-pin)); }
+
+  /* Wordmark grows with the bar it rides in. */
+  .site-header__logo-white { height: 52px; }
+  .site-header__logo-img { height: 58px; }
+  .site-header__logo-text { height: 28px; }
+
+  /* Tab bar: same 3:4 relationship to the header bar, one size up. */
+  .home-catalog__header { height: 50px; }
+  .home-catalog__header .apparel-titlebar__tab { font-size: 1.24rem !important; }
+  .home-catalog__tabs .apparel-titlebar__tab { font-size: 1.18rem; padding: 0 19px; }
+
+  /* Controls on the bars, scaled to the new heights. */
+  .home-catalog__viewmode { height: 36px; padding: 0 14px; font-size: 0.92rem; }
+  .home-catalog__viewmode svg { width: 18px; height: 18px; }
+  .home-catalog__sidebar-search { width: 320px; padding: 8px 14px; }
+  .home-catalog__sidebar-search .apparel-titlebar__search-input { font-size: 0.95rem; }
+
+  /* No height on these: the flattening rules near the end of this file set it
+     to calc(--wt-box-h - 12px) !important, which now resolves to 46px (was
+     38px) — already in step with the taller bar. */
+  .site-header .cart-btn,
+  .site-header .locale-btn,
+  .site-header .logout-btn,
+  .site-header .site-header__search-btn { font-size: 0.88rem; }
+  .site-header .cart-btn svg,
+  .site-header .locale-btn svg,
+  .site-header .logout-btn svg,
+  .site-header .site-header__search-btn svg { width: 23px; height: 23px; }
+  .site-header__nav a,
+  .site-header__categories a { font-size: 0.95rem; }
+}
+
+/* Desktop: the product-page breadcrumb is the tab bar's counterpart, so it
+   takes the same scale-up — 50px tall with matching label size, segment
+   padding and separator weight, so navigating catalog <-> product doesn't
+   shift the bar. (Its height was content-driven off the link padding here,
+   unlike the tab bar's explicit height, hence the explicit 50px.) */
+@media (min-width: 1025px) {
+  .pdp-breadcrumb { height: 50px; font-size: 1.18rem; }
+  .pdp-breadcrumb__link,
+  .pdp-breadcrumb__sku { padding: 0 19px; }
+  .pdp-breadcrumb__arrow,
+  .pdp-breadcrumb svg { width: 20px; height: 20px; }
+  .pdp-breadcrumb > *::after { height: 19px; width: 1.7px; }
+}
+
+/* Desktop: no gap under the tab bar — the first product row (and the filter
+   sidebar beside it) butt straight up against the tabs. This is the state a
+   tab click scrolls into, so making it the resting state means the layout
+   doesn't appear to shift when you switch categories. The left/column gaps
+   stay at --wt-gap-tight; only the y-gap under the bar goes. */
+@media (min-width: 1025px) {
+  .home-catalog .apparel-grid { margin-top: 0; }
+  .home-catalog__filters { margin-top: 0; }
+}
+
+/* Desktop: the product page gets the same treatment — no gap under the
+   breadcrumb bar, so the image/details panels butt straight up against it the
+   way the product grid now does against the catalog tabs. Only the TOP margin
+   goes: the side and bottom gaps around the panels stay at --wt-gap-tight so
+   the panel still sits in the greige card on its other three edges. */
+@media (min-width: 1025px) {
+  .product-detail { margin-top: 0; }
+}
+
+/* Desktop: a hard floor under the sticky strips' scaled-up height. Both bars
+   size themselves off their content — the tab bar via align-self:stretch on
+   its grid row, the breadcrumb via its segments' padding — so neither had a
+   floor independent of what happened to sit inside it. box-sizing keeps the
+   value literal so a border can't eat into it.
+   NB the "bar gets shorter on tab change" symptom was NOT this: it was a stale
+   hardcoded bar height in scrollProductsBelowBar (product-catalog.tsx), which
+   parked the grid a few px under the bar. That's measured from the DOM now. */
+@media (min-width: 1025px) {
+  .home-catalog__header,
+  .pdp-breadcrumb {
+    min-height: 50px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+  }
+  /* The apparel route's own titlebar is the tab bar's counterpart there and
+     was never given the scale-up — it would read as the "short" bar next to
+     the home catalog's. Same height and label size. */
+  .apparel-titlebar {
+    min-height: 50px;
+    box-sizing: border-box;
+  }
+}
+
+/* ============================================================
+   ONE source of truth for the header height
+   ------------------------------------------------------------
+   The sticky strips (catalog tabs, apparel titlebar, product breadcrumb) pin
+   directly under the header bar. Their `top` was hardcoded per breakpoint —
+   58/61/64/67px scattered across a dozen rules — while the header's own height
+   is BUILT from --wt-box-h + the seam + the top padding. Every time the bar
+   height changed, the two drifted apart and the strip pinned a few px too high,
+   sliding under the header: the bar looks shorter the moment you scroll or
+   click a tab, which is exactly the symptom.
+
+   --wt-header-h derives the pin from the same parts that lay the header out,
+   so they cannot disagree. Desktop has no top padding on the header (that rule
+   is <=1024 only) and a 2px seam; mobile/tablet have 4px padding + --wt-seam.
+   !important because the values it replaces are spread through the sheet.
+   ============================================================ */
+:root {
+  /* The trailing value is the SEAM — the white line between the header bar's
+     bottom edge and the strip pinned under it. It was 2px on desktop, which
+     read thin against the 3px line under the tab bar; 3px makes the two match.
+     Because the seam is part of the header's height, widening it also moves
+     every sticky pin down by 1px automatically. */
+  --wt-header-h: calc(var(--wt-box-my) + var(--wt-box-h) + 3px);
+  /* Desktop pins the header 4px DOWN from the viewport top, so a strip of the
+     greige surround shows above the card (see the .site-header rule in the
+     1025px block). The strips therefore have to pin at the header's BOTTOM
+     EDGE — offset + height — not at its height. Getting this wrong is what
+     made the tab bar and breadcrumb look short: the header covered their top
+     4px, clipping the tops off the search field and the Catalog button. */
+  --wt-header-top: 4px;
+}
+/* Mobile/tablet pin the header at 0 and pay for that 4px with PADDING inside
+   the box, which --wt-header-h already counts — so no extra offset here. */
+@media (max-width: 1024px) {
+  :root {
+    --wt-header-h: calc(4px + var(--wt-box-h) + var(--wt-seam));
+    --wt-header-top: 0px;
+  }
+}
+:root { --wt-header-pin: calc(var(--wt-header-top) + var(--wt-header-h)); }
+.site-header,
+.site-header--white,
+.site-header--solid,
+.site-header--hero-hidden { height: var(--wt-header-h) !important; }
+.home-catalog__header,
+.apparel-titlebar,
+.pdp-breadcrumb { top: var(--wt-header-pin) !important; }
+/* The apparel route pins these as `fixed` rather than sticky on phones — same
+   offset, same source. */
+@media (max-width: 600px) {
+  .apparel-page .home-catalog__header,
+  .apparel-page .pdp-breadcrumb { top: var(--wt-header-pin) !important; }
+}
+
+/* Desktop: tighten the product page's HORIZONTAL rhythm one step — the gutter
+   between the image and the info panel, and the card's side margins outside
+   them. One step down the same phi chain the other gaps use
+   (4.236 / 1.618 = 2.618), so it stays in the system rather than becoming an
+   arbitrary number. Vertical spacing is untouched: the row gap and the gap
+   closing the column at the bottom stay at --wt-gap-tight. */
+@media (min-width: 1025px) {
+  /* WHOLE pixels here, deliberately breaking from the phi chain the larger
+     gaps use. At this size the fractional values were the problem: a 2.618px
+     margin lands differently on each side depending on where the panel edge
+     falls in the device pixel grid, so the left and right margins rendered a
+     pixel apart and shifted with zoom — visible as lopsidedness, not as a gap.
+     The gutter runs between two 1px panel borders that eat into it, so it
+     needs the extra pixel to read equal to the open-edged side margins. */
+  :root { --wt-gap-hair: 2px; }
+  .product-detail {
+    margin-left: 1px;
+    margin-right: 1px;
+  }
+  .product-modal__layout { column-gap: var(--wt-gap-hair); }
+}
+/* Square corners on the two panels: with the gutter this tight, a radius on
+   facing edges reads as a gap that isn't there. Only the panels themselves —
+   the option chips and thumbnails inside keep their own rounding. */
+@media (min-width: 1025px) {
+  .product-detail,
+  .product-detail .product-carousel,
+  .product-detail .product-modal__image,
+  .product-detail .product-modal__details { border-radius: 0; }
+}
+
+/* Desktop: the gutter between the filter sidebar and the product grid, now at
+   2px — the same gutter the product page uses between its image and info
+   panels, so the whole desktop layout runs on one gap. Down from
+   --wt-gap-tight (4.236px), then 3px. Below this the grid's gray-200 background
+   stops reading as a seam and the cards look like they're touching. */
+@media (min-width: 1025px) {
+  .home-catalog__inner { column-gap: 2px; }
+}
+
+/* Desktop: close the greige AROUND the catalog pair, not just between them.
+   The sidebar carried its own 4.236px left margin on top of the card's inset,
+   so it sat ~4px right of the tab bar's left edge while the product grid ran
+   flush to the card's right edge — greige of two different widths framing the
+   same row. Flush left matches the grid's flush right AND lines the sidebar up
+   with the bar above it; the bottom gap drops to the same 2px as the gutter. */
+@media (min-width: 1025px) {
+  .home-catalog__filters { margin-left: 0; }
+  .home-catalog__inner { padding-bottom: 2px; }
+}
+
+/* Desktop: the gaps between product cards come down to the same 2px as the
+   sidebar gutter and the bottom inset — one gap size everywhere in the catalog
+   area, so the grid reads as a single field rather than cards on a mat. The
+   grid's gray-200 background is what shows through these gaps. */
+@media (min-width: 1025px) {
+  .home-catalog .apparel-grid { gap: 2px; }
+}
+
+/* Desktop: ONE outline around the whole product card, not just its image.
+   The engraved hairline lived on .product-card__image::after, so the image
+   panel was ringed and the info block below it was bare — the two read as a
+   bordered photo with a caption stuck underneath rather than as one card. Move
+   the ring to the card itself and leave the image with only its inner shading,
+   so the border encloses image + info together.
+   The bottom lip goes too: it was drawing a light line across the image/info
+   junction, which is exactly the seam we want to disappear. */
+@media (min-width: 1025px) {
+  .product-card__image::after {
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+  }
+  .product-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow:
+      inset 0 0 0 1px rgba(0,0,0,0.14),
+      inset 0 -1px 0 rgba(255,255,255,0.55);
+    pointer-events: none;
+    z-index: 3;
+  }
+}
+
+/* Desktop: the white band that paints the seam grows with it (2px -> 3px), so
+   the line under the header matches the one under the tab bar. These pseudos
+   overhang their own strip's top edge to keep the band painted while scrolling
+   at fractional offsets, so the overhang has to equal the seam. */
+@media (min-width: 1025px) {
+  .home-catalog__header::before,
+  .pdp-breadcrumb::before {
+    top: -3px;
+    height: 3px;
+  }
+}
+
+/* Desktop: white sides on the SELECTED tab, so the dark pill is framed by an
+   even white border on all four edges. The top and bottom already come free —
+   the pill runs full height, so it meets the white seam above the bar and the
+   white strip below it. Only the left and right were missing: the pill was
+   inset 4px, which showed the bar's lighter ORANGE down its sides instead of
+   white, so the framing was white-white-orange-orange.
+   3px inset shadows match the seam and the strip, giving equal white all round.
+   Same treatment for the breadcrumb's category pill — its shadows skew with the
+   parallelogram, so the white sides lean at the same angle as the "/" marks. */
+@media (min-width: 1025px) {
+  /* 2px here against the breadcrumb pill's 3px, and they read as equal: the
+     breadcrumb pill is skewed ~19.3deg, so its 3px bands measure ~2.83px
+     across (3 x cos 19.3), while the tab's sides are dead vertical and show
+     their full width. Matching the numbers made the tabs look heavier. */
+  .home-catalog__tabs .apparel-titlebar__tab.active::before {
+    inset: 0 !important;
+    box-shadow:
+      inset 2px 0 0 var(--ce-white),
+      inset -2px 0 0 var(--ce-white);
+  }
+  .pdp-breadcrumb__cat::before {
+    inset: 0;
+    box-shadow:
+      inset 3px 0 0 var(--ce-white),
+      inset -3px 0 0 var(--ce-white);
+  }
+}
+
+/* Desktop: drop the slanted "/" separators between breadcrumb segments. The
+   selected pill's white sides now do that job — they lean at the same angle
+   the slashes did, so keeping both put two marks in the same place.
+   Targets `> *::after` (the per-segment marks) only; the bar's OWN ::after is
+   the white strip along its bottom edge and must survive. */
+@media (min-width: 1025px) {
+  .pdp-breadcrumb > *::after { content: none; }
+}
+
+/* ============================================================
+   Add to Cart — MN button, Wills palette
+   ------------------------------------------------------------
+   Keeps the Modern Niagara button wholesale: the mark chip, the staggered
+   fade-in of the triangles, the square->diamond rotate, the travelling sheen,
+   the cart->check crossfade. Only the COLOUR changes.
+   Was: a #B26A00 -> #4689b3 gradient (brown into MN blue) with the triangles
+   staggering through MN's brand reds, greens, blue and yellow — none of which
+   appear anywhere else in this app.
+   Now: the sign palette. The ramp is one warm family (cream -> orange ->
+   burnt brown) so the triangles read as the Wills orange catching light at
+   different angles, rather than eight unrelated brand colours.
+   The mark artwork itself is being replaced — these fills are per-polygon and
+   will carry over to whatever shape lands, as long as it keeps 8 polygons.
+   ============================================================ */
+:root {
+  --wt-pin-1: #ffe6c9;  /* --wt-orange-hi, the cream highlight */
+  --wt-pin-2: #7c3f06;  /* deepest burnt edge */
+  --wt-pin-3: #a95208;  /* the dark-box orange (30% black over the sign) */
+  --wt-pin-4: #f9a24f;  /* lifted orange */
+  --wt-pin-5: #f58322;  /* --wt-orange, the sign itself */
+  --wt-pin-6: #d96f14;  /* --wt-orange-dark */
+  --wt-pin-7: #b26a00;  /* the brown-orange already used on the cart button */
+  --wt-pin-8: #ffc98a;  /* pale warm, closes the ring back to the highlight */
+}
+.product-modal__add--branded:active .product-modal__add-pinwheel polygon:nth-child(1),
+.product-modal__add--added .product-modal__add-pinwheel polygon:nth-child(1) { fill: var(--wt-pin-1); }
+.product-modal__add--branded:active .product-modal__add-pinwheel polygon:nth-child(2),
+.product-modal__add--added .product-modal__add-pinwheel polygon:nth-child(2) { fill: var(--wt-pin-2); }
+.product-modal__add--branded:active .product-modal__add-pinwheel polygon:nth-child(3),
+.product-modal__add--added .product-modal__add-pinwheel polygon:nth-child(3) { fill: var(--wt-pin-3); }
+.product-modal__add--branded:active .product-modal__add-pinwheel polygon:nth-child(4),
+.product-modal__add--added .product-modal__add-pinwheel polygon:nth-child(4) { fill: var(--wt-pin-4); }
+.product-modal__add--branded:active .product-modal__add-pinwheel polygon:nth-child(5),
+.product-modal__add--added .product-modal__add-pinwheel polygon:nth-child(5) { fill: var(--wt-pin-5); }
+.product-modal__add--branded:active .product-modal__add-pinwheel polygon:nth-child(6),
+.product-modal__add--added .product-modal__add-pinwheel polygon:nth-child(6) { fill: var(--wt-pin-6); }
+.product-modal__add--branded:active .product-modal__add-pinwheel polygon:nth-child(7),
+.product-modal__add--added .product-modal__add-pinwheel polygon:nth-child(7) { fill: var(--wt-pin-7); }
+.product-modal__add--branded:active .product-modal__add-pinwheel polygon:nth-child(8),
+.product-modal__add--added .product-modal__add-pinwheel polygon:nth-child(8) { fill: var(--wt-pin-8); }
+@media (hover: hover) {
+  .product-modal__add--branded:hover .product-modal__add-pinwheel polygon:nth-child(1) { fill: var(--wt-pin-1); }
+  .product-modal__add--branded:hover .product-modal__add-pinwheel polygon:nth-child(2) { fill: var(--wt-pin-2); }
+  .product-modal__add--branded:hover .product-modal__add-pinwheel polygon:nth-child(3) { fill: var(--wt-pin-3); }
+  .product-modal__add--branded:hover .product-modal__add-pinwheel polygon:nth-child(4) { fill: var(--wt-pin-4); }
+  .product-modal__add--branded:hover .product-modal__add-pinwheel polygon:nth-child(5) { fill: var(--wt-pin-5); }
+  .product-modal__add--branded:hover .product-modal__add-pinwheel polygon:nth-child(6) { fill: var(--wt-pin-6); }
+  .product-modal__add--branded:hover .product-modal__add-pinwheel polygon:nth-child(7) { fill: var(--wt-pin-7); }
+  .product-modal__add--branded:hover .product-modal__add-pinwheel polygon:nth-child(8) { fill: var(--wt-pin-8); }
+}
+/* The button face: the sign orange with a burnt-edge fall, and a shadow tinted
+   from the same orange rather than the old blue one. Deeper on hover so the
+   press still reads on a warm background. */
+.product-modal__add.btn--primary {
+  background: linear-gradient(135deg, var(--wt-orange) 0%, var(--wt-orange-dark) 100%);
+  color: var(--ce-white);
+  border: none;
+  box-shadow: 0 6px 22px rgba(217, 111, 20, 0.34);
+}
+.product-modal__add.btn--primary:hover {
+  background: linear-gradient(135deg, var(--wt-orange-dark) 0%, #a95208 100%);
+  box-shadow: 0 10px 30px rgba(169, 82, 8, 0.42);
+}
+
+/* Desktop: the fullscreen image viewer stays inside the site card.
+   It's `position: fixed; inset: 0`, so the black wash covered the entire
+   viewport — including the greige surround outside the card, which made the
+   sign look like it had been replaced by a black screen. Constrain it to the
+   card's width — full height, header included — so the viewer reads as the
+   card itself going dark rather than the whole screen.
+   Left/right have to be overridden explicitly: `inset: 0` set all four sides,
+   and centring needs left:50% with right:auto.
+   Not applied below 1025px — there the card already runs to the screen edges,
+   so full-viewport IS inside the site. */
+@media (min-width: 1025px) {
+  .product-fullscreen {
+    /* Top of the CARD, not below the header: the header carries z-index 9999
+       against the viewer's 200, so it punched through the black wash and sat
+       lit on top of it. Covering it — and outranking it — means the whole card
+       goes dark as one surface. */
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    width: min(var(--site-max), 100%);
+    transform: translateX(-50%);
+    z-index: 10000;
+  }
+  /* Sized off the panel now, not the viewport — 90vw inside a 1408px panel on
+     a wide screen would overflow it. */
+  .product-fullscreen__img {
+    max-width: 88%;
+    max-height: 84%;
+  }
+}
+
+/* The viewer's z-index can't reach the header on its own: .apparel-catalog is
+   `position: relative; z-index: 1`, which makes it a STACKING CONTEXT, so the
+   viewer's 10000 only orders it against its siblings inside that container.
+   The container as a whole sits at z-index 1 and loses to the header's 9999 —
+   which is why the header stayed sharp on top of the black wash no matter how
+   high the viewer went.
+   So lift the CONTAINER above the header, but only while the viewer is open.
+   The viewer is the topmost thing inside it, so it covers the card (breadcrumb
+   included) and the header region with it. Every other page state keeps the
+   container at z-index 1, below the header, exactly as before.
+   Not scoped to desktop: the same stacking trap applies at every width. */
+.apparel-catalog:has(.product-fullscreen) { z-index: 10000; }
+
+/* Lock the page while the viewer is open. `overflow: hidden` on the scrolling
+   element alone would remove the scrollbar and let the whole layout jump ~15px
+   right as it re-centres, so the gutter is reserved permanently — the space is
+   then already accounted for when the scrollbar goes away.
+   overscroll-behavior stops a swipe that reaches the viewer's edge from
+   chaining through to the page behind it on touch. Pinch-zoom is deliberately
+   left alone (no touch-action) — it's the one gesture worth having on a
+   full-size product photo. */
+html { scrollbar-gutter: stable; }
+html:has(.product-fullscreen),
+body:has(.product-fullscreen) { overflow: hidden; }
+.product-fullscreen { overscroll-behavior: contain; }
