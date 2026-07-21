@@ -8436,7 +8436,9 @@ details[open] > .cart-drawer__checkout-title::after {
     order: -1; /* sit to the LEFT of the cart button in the nav */
     align-self: stretch;
     height: auto !important;
-    width: 260px;
+    /* Roughly a third of the header, capped so it never crowds the cart button
+       on narrower desktops. */
+    width: min(32vw, 440px);
     box-sizing: border-box;
     margin: 0 !important;
     padding: 0 14px;
@@ -9573,7 +9575,12 @@ details[open] > .cart-drawer__checkout-title::after {
     inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
 }
 .cart-table thead th {
-  background: none;
+  /* White bottom divider, painted via the CELL background (a bottom-anchored
+     gradient) rather than a box-shadow on the <tr>: this table uses
+     border-collapse: collapse, and collapsed tables drop box-shadow on rows in
+     most browsers (it vanished on mobile). The transparent top lets the row's
+     orange texture show through. Matches the tab bar / breadcrumb bottom stroke. */
+  background: linear-gradient(to top, var(--ce-white) 2.2px, transparent 2.2px);
   color: #fff;
   font-size: 0.72rem;
   font-weight: 600;
@@ -9591,11 +9598,14 @@ details[open] > .cart-drawer__checkout-title::after {
   .cart-table thead th { height: 50px; }
 }
 @media (min-width: 1025px) {
-  /* Desktop strips are 42px, and their divider is 3px against greige. */
-  .cart-table thead th { height: 42px; }
+  /* Desktop strips are 50px tall (matching the catalog tab bar and the PDP
+     breadcrumb), and their white divider is 3px. */
+  .cart-table thead th {
+    height: 50px;
+    background: linear-gradient(to top, var(--ce-white) 3px, transparent 3px);
+  }
   .cart-table thead tr {
     box-shadow:
-      inset 0 -3px 0 var(--ce-white),
       inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
       inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
       inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
@@ -10354,12 +10364,8 @@ body:has(.product-fullscreen) { overflow: hidden; }
   .site-header .logout-form {
     display: flex;
     align-self: stretch;
-    /* Full-height white gap between the cart and logout cells, matching the one
-       between the view toggle and the search field on the tab bar. 2.75px
-       against that pair's 2.5px: white reads narrower against the cart's orange
-       than it does between two dark boxes. */
+    /* No divider between the cart and logout cells — they butt directly together. */
     margin-left: 0;
-    border-left: 2.75px solid var(--ce-white);
   }
 }
 
@@ -10456,15 +10462,24 @@ body:has(.product-fullscreen) { overflow: hidden; }
    no longer an "outside" that the panel is floating over.) */
 @media (min-width: 1025px) {
   .modal-overlay:has(.cart-drawer) {
-    background: transparent;
+    /* The card no longer fills the viewport (its height follows its content),
+       so the backdrop paints the page's own greige surround — the catalog
+       behind is covered and the card reads as a sign floating in the surround,
+       like every other view. Clickable now (an "outside" exists again): a click
+       on the surround closes the cart, and also stops clicks falling through to
+       the hidden catalog. */
+    background: var(--wt-surround);
     backdrop-filter: none;
     padding: 0;
-    pointer-events: none;
+    pointer-events: auto;
   }
   .drawer.cart-drawer {
     pointer-events: auto;
     top: var(--wt-header-pin);
-    bottom: 0;
+    /* A small greige gap at the bottom mirroring the strip above the header, so
+       the card's bottom edge (and its ring) shows instead of running off the
+       viewport edge — like the other cards' bottom margin. */
+    bottom: 4px;
     left: 50%;
     right: auto;
     transform: translateX(-50%);
@@ -10580,4 +10595,52 @@ body:has(.product-fullscreen) { overflow: hidden; }
   .home-catalog__tabs .apparel-titlebar__tab { padding-bottom: 2px; }
   .pdp-breadcrumb__link,
   .pdp-breadcrumb__sku { padding-bottom: 2px; }
+}
+
+/* ============================================================
+   Desktop cart polish
+   ============================================================ */
+@media (min-width: 1025px) {
+  /* My Cart button: rust texture over the orange, matching the tab bar /
+     breadcrumb strips (which layer --wt-iron over --wt-orange) instead of a
+     flat fill. Sized to the header/strip scale (--site-max) so the grain reads
+     the same, and offset up by the bar's top margin so it continues the header
+     bar's own texture. Resting state only — the open (active) blue and the hover
+     colour are left alone. */
+  .site-header:not(.site-header--cart-open) .cart-btn:not(:hover) {
+    background-color: var(--wt-orange) !important;
+    background-image: var(--wt-iron) !important;
+    background-size: var(--site-max) auto !important;
+    /* Same vertical sample the tab bar and breadcrumb use, so the button shows
+       the same grungy region of the texture rather than its smoother top edge. */
+    background-position: left calc(-1 * (var(--wt-box-h) + var(--wt-seam))) !important;
+    background-repeat: no-repeat !important;
+  }
+
+  /* Card height follows its content instead of filling the viewport, so a
+     near-empty cart doesn't leave a tall white void — the bottom edge (and its
+     ring) sits just under the checkout bar. Capped at the viewport (minus the
+     header pin and the 4px bottom gap) so a long cart still scrolls its items. */
+  .drawer.cart-drawer {
+    bottom: auto;
+    height: auto;
+    max-height: calc(100dvh - var(--wt-header-pin) - 4px);
+  }
+  .drawer.cart-drawer .cart-drawer__items { min-height: 0; }
+
+  /* Scale the contents up to suit the full-width card (there's a lot of width
+     for relatively little content). */
+  .cart-drawer__items .cart-table { font-size: 1.05rem; }
+  .cart-drawer__items .cart-table tbody td { padding-top: 1.05rem; padding-bottom: 1.05rem; }
+  .cart-drawer__items .cart-table__product-row { gap: 1.1rem; }
+  .cart-drawer__items .cart-table__img { width: 76px; height: 76px; }
+  .cart-drawer__items .cart-table__name-link { font-size: 1.15rem; }
+  .cart-drawer__items .cart-table__meta { font-size: 0.95rem; margin-top: 0.35rem; }
+  .cart-drawer__items .cart-table__swatch { width: 14px; height: 14px; }
+  .cart-drawer__items .cart-table__qty-controls span { width: 36px; font-size: 1.1rem; }
+  .cart-drawer__items .cart-table__qty-btn { width: 36px; height: 38px; font-size: 1.25rem; }
+  .cart-drawer__items .cart-table__total,
+  .cart-drawer__items .cart-table__subtotal-val { font-size: 1.15rem; }
+  .cart-drawer__items .cart-table__subtotal-label { font-size: 1.05rem; }
+  .cart-drawer__footer .cart-drawer__total { font-size: 1.1rem; }
 }
