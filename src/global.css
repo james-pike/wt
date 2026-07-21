@@ -10479,6 +10479,13 @@ body:has(.product-fullscreen) { overflow: hidden; }
       0 0 0 calc(var(--wt-ring) + 1px) rgba(0, 0, 0, 0.08),
       0 6px 16px var(--wt-ring) rgba(0, 0, 0, 0.22);
   }
+  /* The panel floats above the header (z 10001) so it stays interactive, but
+     that also lifted the ring's TOP edge over the header's bottom seam — a
+     doubled, too-thick white line. Lift the header above the panel while the
+     cart is open so the ring's top tucks behind it, exactly like the catalog
+     and product cards (whose ring top hides under the header). The strip below
+     sits at the header's pin, so nothing of it is covered — only the ring. */
+  .site-header--cart-open { z-index: 10002; }
 }
 
 /* Desktop: no "My Cart" title bar. Mobile already hides it (the rule further
