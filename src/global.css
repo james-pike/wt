@@ -1653,6 +1653,12 @@ body:has(.nav-drawer-overlay) .site-header {
    covered nor darkened. Header bottom: 64px phones, 67px tablets. */
 @media (max-width: 600px) {
   .nav-drawer-overlay { top: 64px; }
+  /* The drawer aligns with the header's dark bar, not the viewport: its LEFT
+     edge sits at the same --wt-box-my inset the header inner uses (so it lines
+     up with the sign's left edge, not the greige frame), and its RIGHT edge
+     runs to the hamburger button's left edge (52px = the button plus the
+     header's right inset). */
+  .nav-drawer { left: var(--wt-box-my); width: calc(100vw - 52px - var(--wt-box-my)); }
 }
 @media (min-width: 601px) and (max-width: 1024px) {
   .nav-drawer-overlay { top: 67px; }
@@ -1726,13 +1732,6 @@ body:has(.nav-drawer-overlay) .site-header {
 /* Inline copy of the Privacy Policy link that joins the footer links row on
    mobile only; hidden elsewhere (the under-email copy is used on tablet/desktop). */
 .site-footer__links-privacy { display: none; }
-/* Office Kit footer link: short label on mobile/tablet, full "Office Welcome
-   Kit" on desktop where there's room. */
-.site-footer__officekit-full { display: none; }
-@media (min-width: 1025px) {
-  .site-footer__officekit-full { display: inline; }
-  .site-footer__officekit-short { display: none; }
-}
 .site-footer__privacy-link:hover {
   color: rgba(255,255,255,0.95);
   text-decoration: underline;
@@ -1829,10 +1828,8 @@ body:has(.nav-drawer-overlay) .site-header {
   .site-footer__contact-block .site-footer__privacy-link { display: inline; margin-top: 0.15rem; }
   .site-footer__contact-block { align-items: flex-end; }
   /* Privacy is hidden in the nav now, so the office-kit link is last visible —
-     drop its trailing separator dot. And show the full "Office Welcome Kit". */
+     drop its trailing separator dot. */
   .site-footer__links a:nth-last-child(2)::after { content: none; }
-  .site-footer__officekit-short { display: none; }
-  .site-footer__officekit-full { display: inline; }
 }
 .site-footer__copy {
   font-size: 0.7rem;
@@ -4304,7 +4301,9 @@ body:has(.home-catalog) .site-header .cart-btn .cart-btn__label { color: #ffffff
   border: 2px solid var(--ce-gray-200);
   padding: 0;
   cursor: pointer;
-  border-radius: var(--radius-sm);
+  /* Square, matching the squared product cards and image panels — the rounded
+     thumbs were the last rounded corner left in the PDP image column. */
+  border-radius: 0;
   overflow: hidden;
   opacity: 0.6;
   transition: all var(--transition-fast);
@@ -6291,7 +6290,9 @@ details[open] > .cart-drawer__checkout-title::after {
   }
   .home-catalog__sidebar-search svg {
     flex-shrink: 0;
-    color: rgba(255,255,255,0.75);
+    /* Full white, not the 75% it had — at 18px on the dark box the alpha read
+       as grey rather than as a softer white. */
+    color: var(--ce-white);
   }
   .home-catalog__sidebar-search .apparel-titlebar__search-input {
     color: #fff;
@@ -6340,7 +6341,9 @@ details[open] > .cart-drawer__checkout-title::after {
     transform: translate(50%, -50%);
     width: 1px;
     height: 55%;
-    background: rgba(255,255,255,0.5);
+    /* Full white, not 50% — the alpha let the orange bar through and the
+       separators read grey against the white rules elsewhere on the bar. */
+    background: var(--ce-white);
   }
   .home-catalog__tabs .apparel-titlebar__tab:last-child::after { display: none; }
   .home-catalog__right {
@@ -7007,6 +7010,12 @@ details[open] > .cart-drawer__checkout-title::after {
   .apparel-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: -3px; padding: 0; }
   .product-card__name { font-size: 0.82rem; line-height: 1.3; }
   .product-card__name-code { display: none; }
+  /* Stack name over price: at 2 columns the card is too narrow to share the
+     row, so the title kept wrapping to 3-4 lines next to the price. Full-width
+     title on top, price on its own line below it (left-aligned under the
+     title, not floated right). */
+  .product-card__name-row { flex-direction: column; align-items: stretch; gap: 0.1rem; margin-bottom: 0.25rem; }
+  .product-card__price-group { flex-direction: row; align-items: baseline; align-self: flex-start; }
   .product-card { border-radius: 2px; }
   /* Same engraved edge as desktop, a touch lighter for the smaller panels. */
   .product-card__image::after {
@@ -7016,7 +7025,11 @@ details[open] > .cart-drawer__checkout-title::after {
       inset 0 -1px 0 rgba(255,255,255,0.5);
     border-radius: 2px 2px 0 0;
   }
-  .related-items { margin-top: 1rem; }
+  /* Inset to the card's outer edge instead of running full-bleed: the product
+     image and details above sit ~--wt-box-my in from the viewport, so the More
+     carousel matched to them reads as part of the same card rather than a
+     separate full-width band. */
+  .related-items { margin-top: 1rem; margin-left: var(--wt-box-my); margin-right: var(--wt-box-my); }
   .related-items__grid { display: none; }
   .related-items__title { font-size: 0.9rem; margin-bottom: 0.5rem; }
   .product-modal__category { display: none; }
@@ -8496,7 +8509,10 @@ details[open] > .cart-drawer__checkout-title::after {
     width: 1px;
     height: 55%;
     border-radius: 0.5px;
-    background: rgba(255,255,255,0.5) !important;
+    /* Full white, not 50% — the alpha let the orange bar through and the
+       separators read grey next to the solid white rules elsewhere on the bar
+       (matching the same fix made to the desktop separators). */
+    background: var(--ce-white) !important;
   }
   .home-catalog__tabs .apparel-titlebar__tab:last-child::after { display: none !important; }
 }
@@ -8844,8 +8860,11 @@ details[open] > .cart-drawer__checkout-title::after {
     overflow-x: auto;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    /* Just enough end inset that the last label doesn't touch the chevron. */
-    padding-right: 18px !important;
+    /* No end inset: this was 18px to keep the last label clear of the scroll
+       chevron, and the chevron is gone. With it, the strip ended in a band of
+       bare orange — and when the tabs fit without scrolling they stopped 18px
+       short of the bar's edge. The right-edge fade still cues the scroll. */
+    padding-right: 0 !important;
   }
   .home-catalog__tabs::-webkit-scrollbar { display: none; }
   /* Grow to fill when everything fits, never shrink below the label —
@@ -9378,61 +9397,6 @@ details[open] > .cart-drawer__checkout-title::after {
   .home-catalog__viewmode-label { display: inline; line-height: 1; }
   /* The toggle carries the auto-margin now; the search sits right of it. */
   .home-catalog__sidebar-search { margin-left: 8px; }
-  .home-catalog .apparel-grid.apparel-grid--list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
-  }
-  .apparel-grid--list .product-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  /* Datatable-style rows: a small square thumbnail, then one compact line per
-     product — name (ellipsized) | sizes | price hard right. The row is sized by
-     the thumb, so it stands a little taller than the text alone would need. */
-  .apparel-grid--list .product-card__image {
-    flex: 0 0 44px;
-    width: 44px;
-    height: 44px;
-    background: var(--ce-white);
-  }
-  .apparel-grid--list .product-card:hover .product-card__image { background: var(--ce-gray-50); }
-  /* Breathing room so the cutout doesn't touch the row's edges. */
-  .apparel-grid--list .product-card__image img { padding: 3px; }
-  .apparel-grid--list .product-card__info {
-    flex: 1 1 auto;
-    min-width: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    padding: 4px 10px;
-  }
-  /* Lift the name and price out of their row wrapper so the price can sit
-     past the sizes at the row's far right. */
-  .apparel-grid--list .product-card__name-row { display: contents; }
-  .apparel-grid--list .product-card__name {
-    order: 1;
-    flex: 1 1 auto;
-    min-width: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 0.82rem;
-  }
-  .apparel-grid--list .product-card__color-size-row {
-    order: 2;
-    margin-top: 0;
-    flex-shrink: 0;
-  }
-  .apparel-grid--list .product-card__colors { display: none; }
-  .apparel-grid--list .product-card__sizes { font-size: 0.72rem; }
-  .apparel-grid--list .product-card__price-group {
-    order: 3;
-    flex-shrink: 0;
-    margin-left: 2px;
-  }
-  .apparel-grid--list .product-card__price { font-size: 0.82rem; }
 }
 
 /* ---- Phones, apparel routes: the header and the strip leave the flow ----
@@ -9707,7 +9671,8 @@ details[open] > .cart-drawer__checkout-title::after {
   .site-header .cart-btn.cart-btn--active:hover,
   .site-header--hero-hidden .cart-btn:hover {
     background: var(--wt-orange-dark) !important;
-    border-color: rgba(0,0,0,0.28) !important;
+    /* Full shorthand, not just border-color — see the logout note above. */
+    border: 1px solid rgba(0,0,0,0.28) !important;
     color: #fff !important;
   }
   .site-header .cart-btn:hover svg { stroke: #fff !important; }
@@ -9752,7 +9717,7 @@ details[open] > .cart-drawer__checkout-title::after {
   /* Controls on the bars, scaled to the new heights. */
   .home-catalog__viewmode { height: 36px; padding: 0 14px; font-size: 0.92rem; }
   .home-catalog__viewmode svg { width: 18px; height: 18px; }
-  .home-catalog__sidebar-search { width: 320px; padding: 8px 14px; }
+  .home-catalog__sidebar-search { width: 370px; padding: 8px 14px; }
   .home-catalog__sidebar-search .apparel-titlebar__search-input { font-size: 0.95rem; }
 
   /* No height on these: the flattening rules near the end of this file set it
@@ -9896,9 +9861,12 @@ details[open] > .cart-drawer__checkout-title::after {
      The gutter runs between two 1px panel borders that eat into it, so it
      needs the extra pixel to read equal to the open-edged side margins. */
   :root { --wt-gap-hair: 2px; }
+  /* Sides at 0: the panels run flush to the card edge, lining them up exactly
+     with the breadcrumb bar above (both resolve to the same --site-max inset).
+     A 1px sliver just made the panels look narrower than the bar. */
   .product-detail {
-    margin-left: 1px;
-    margin-right: 1px;
+    margin-left: 0;
+    margin-right: 0;
   }
   .product-modal__layout { column-gap: var(--wt-gap-hair); }
 }
@@ -10011,7 +9979,30 @@ details[open] > .cart-drawer__checkout-title::after {
    Targets `> *::after` (the per-segment marks) only; the bar's OWN ::after is
    the white strip along its bottom edge and must survive. */
 @media (min-width: 1025px) {
-  .pdp-breadcrumb > *::after { content: none; }
+
+  /* ...and white rules take their place, the same divider the tab bar uses
+     between its cells: 2.5px, full height, with the shaded lip on the inside
+     edge so it reads as cut into the bar.
+     border-left on every segment but the first, so the count follows however
+     many segments a route has. The hidden fullscreen toggle is display:none
+     at this width and paints nothing, so it can't leave a trailing rule. */
+  /* gap: 0 so no orange sliver sits beside each divider; the dividers
+     themselves are defined once for every breakpoint at the end of this file. */
+  .pdp-breadcrumb { gap: 0; }
+  /* The category pill's own white sides are dropped: they sat exactly where
+     two of these dividers now fall, so keeping both doubled the line. The pill
+     keeps its dark overlay fill, which is what marks it as the current page.
+     The skew goes too — that's the actual source of the "slashes". The pill is
+     a parallelogram (skewX -19.3deg, matching the old "/" separators), so its
+     slanted edges left orange wedges between the straight white dividers and
+     the dark fill, which read as diagonal marks. Un-skewed, the pill fills its
+     cell squarely and the only thing between segments is the white rule. */
+  /* Pill keeps its skew — the dividers lean to match it. Only the duplicate
+     white sides go, since a divider now falls at each of its edges. */
+  .pdp-breadcrumb__cat::before {
+    inset: 0;
+    box-shadow: none;
+  }
 }
 
 /* ============================================================
@@ -10136,3 +10127,390 @@ html { scrollbar-gutter: stable; }
 html:has(.product-fullscreen),
 body:has(.product-fullscreen) { overflow: hidden; }
 .product-fullscreen { overscroll-behavior: contain; }
+
+/* ---- Desktop: the bar's right-hand cells + the Catalog view ---- */
+/* The view toggle and the search field read as full-height cells on the tab
+   bar rather than pills floating in it: same height, label size and side
+   padding as the category tabs, so the bar carries one type size across.
+   align-self: stretch with zero vertical margins is what fills the height;
+   the auto left margin still pushes the pair to the right end. Square corners
+   because a radius on a full-height cell cuts into the bar's own edges. */
+@media (min-width: 1025px) {
+  .home-catalog__viewmode {
+    align-self: stretch;
+    height: auto;
+    margin: 0 0 0 auto;
+    padding: 0 19px;
+    /* Matches the tabs' rendered size — they resolve to 1.24rem via the
+       .home-catalog__header rule, not the 1.18rem on .home-catalog__tabs. */
+    font-size: 1.24rem;
+    /* Same weight as the tabs (500). The button's base rule sets 600, which
+       read heavier than the category labels beside it at this size. */
+    font-weight: 500;
+    border-radius: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  .home-catalog__viewmode svg { width: 22px; height: 22px; }
+  .home-catalog__viewmode-icon { display: inline-flex; align-items: center; }
+
+  .home-catalog__sidebar-search {
+    align-self: stretch;
+    height: auto;
+    /* The divider between the toggle and the search is WHITE, matching the
+       lines under the header and under the tab bar — so all three rules on the
+       bar are the same colour. It's a border rather than a margin: a margin
+       can only show whatever is behind it, which is the orange bar.
+       A full-height white gap, not the thin inset rule the tab strip uses
+       between categories: these are two solid cells butted together, so the
+       divider reads better running edge to edge like the seams do. */
+    margin: 0;
+    border-left: 2.5px solid var(--ce-white);
+    /* Existing top inset plus the same shaded lip beside the divider. */
+    box-shadow:
+      inset 0 1px 3px rgba(0, 0, 0, 0.25),
+      inset 4px 0 5px -3px rgba(0, 0, 0, 0.55);
+    padding: 0 16px;
+    border-top: none;
+    border-bottom: none;
+    border-radius: 0;
+  }
+  .home-catalog__sidebar-search .apparel-titlebar__search-input { font-size: 1.05rem; }
+  .home-catalog__sidebar-search svg { width: 18px; height: 18px; }
+
+  /* Gallery view: HORIZONTAL cards — a small square thumbnail on the left,
+     details stacked beside it. Three columns of short rows, so roughly twice
+     as many products fit a screen as Catalog while the image is still large
+     enough to identify a garment by. Replaces the old datatable treatment
+     (2 columns, 44px thumb, one ellipsized line per product), which packed
+     more in but was hard to scan by eye.
+     The card's flex-direction is what turns it horizontal; the image keeps its
+     1:1 box at a fixed 92px rather than stretching, so the 4:5 photos letterbox
+     evenly instead of distorting. */
+  .home-catalog .apparel-grid.apparel-grid--list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .apparel-grid--list .product-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .apparel-grid--list .product-card__image {
+    flex: 0 0 92px;
+    width: 92px;
+    height: 92px;
+    background: var(--ce-white);
+  }
+  .apparel-grid--list .product-card:hover .product-card__image { background: var(--ce-gray-50); }
+  .apparel-grid--list .product-card__image img { padding: 4px; }
+  .apparel-grid--list .product-card__info {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    padding: 8px 11px;
+  }
+  /* Two lines then ellipsis: names vary a lot in length and a third line would
+     push the row past the thumbnail, leaving the grid ragged. */
+  .apparel-grid--list .product-card__name {
+    font-size: 0.8rem;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .apparel-grid--list .product-card__name-row { width: 100%; }
+  .apparel-grid--list .product-card__color-size-row { margin-top: 0; }
+  .apparel-grid--list .product-card__colors { display: none; }
+  .apparel-grid--list .product-card__sizes { font-size: 0.72rem; }
+  .apparel-grid--list .product-card__price { font-size: 0.8rem; }
+}
+
+
+/* Desktop: My Cart runs the full height of the dark header bar, the way the
+   view toggle does on the tab bar — a cell on the bar rather than a button
+   floating in it. Logout sits beside it with a recessed dark-overlay fill so
+   the two read as a pair; it stays visually secondary because it's the box
+   colour rather than the sign orange.
+   Both .site-header__inner and __nav are align-items: center flex rows, so
+   stretching the buttons alone does nothing — the nav has to stretch inside
+   the inner first, hence align-self on the nav AND align-items on it.
+   The heights carry !important because the flattening rules near the end of
+   this file pin every header button to calc(--wt-box-h - 12px) !important. */
+@media (min-width: 1025px) {
+  .site-header__nav {
+    align-self: stretch;
+    align-items: stretch;
+  }
+  /* .cart-btn--active is listed too: the flattening rules spell out
+     `.site-header .cart-btn.cart-btn--active` with the fixed height, which at
+     (0,3,0) outranks a plain `.site-header .cart-btn`. Without it the button
+     kept its 46px the moment the cart had items — and since the row now
+     stretches, a fixed-height item aligns to the top, leaving a gap BELOW it
+     rather than centring as before. */
+  .site-header .cart-btn,
+  .site-header .cart-btn.cart-btn--active,
+  .site-header .logout-btn {
+    align-self: stretch !important;
+    height: auto !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+  .site-header .cart-btn,
+  .site-header .cart-btn.cart-btn--active { padding: 0 20px !important; }
+  .site-header .logout-btn { padding: 0 16px !important; }
+  /* Ghost fill: the same dark overlay the logo box and search field use, so it
+     reads as recessed into the bar rather than as a second orange action. */
+  .site-header .logout-btn {
+    background: var(--wt-box) !important;
+    border: 1px solid var(--wt-box-edge) !important;
+    color: #fff !important;
+    /* Soft dark cast just inside the white divider, so the line reads as cut
+       into the bar rather than laid on top of it — the same pressed-edge
+       treatment the header and tab bars carry. */
+    box-shadow: inset 4px 0 5px -3px rgba(0, 0, 0, 0.55) !important;
+  }
+  /* Restate the border on hover. The shared hover rule near the end of this
+     file sets `border: none !important`, which drops the resting 1px border and
+     shrinks the button by 2px — that collapse is the shift on hover, not a
+     transform. Only the colour should change. */
+  .site-header .logout-btn:hover {
+    background: var(--wt-box-strong) !important;
+    border: 1px solid var(--wt-box-edge) !important;
+    color: #fff !important;
+    box-shadow: inset 4px 0 5px -3px rgba(0, 0, 0, 0.55) !important;
+  }
+  .site-header .logout-btn svg { stroke: #fff !important; }
+  /* The logout button is wrapped in a form, which is the actual flex child —
+     stretching the button inside it needs the form to stretch too. */
+  /* Divider between the cart and logout: the same white rule as the one on the
+     tab bar, not the brown of the bar showing through a margin. It lives on
+     the form because the form — not the button — is the flex child here. */
+  /* The bar's 6px right padding left a strip of the bar itself showing past
+     the logout button — darker orange, reading brown against the button's grey
+     overlay. Dropping the padding on this side runs the last cell out to the
+     bar's edge, so the overlay reaches the end. The button takes over the
+     bar's rounded top-right corner, which the padding used to keep clear. */
+  .site-header__inner { padding-right: 0 !important; }
+  .site-header .logout-btn { border-top-right-radius: 6px !important; }
+  .site-header .logout-form {
+    display: flex;
+    align-self: stretch;
+    /* Full-height white gap between the cart and logout cells, matching the one
+       between the view toggle and the search field on the tab bar. 2.75px
+       against that pair's 2.5px: white reads narrower against the cart's orange
+       than it does between two dark boxes. */
+    margin-left: 0;
+    border-left: 2.75px solid var(--ce-white);
+  }
+}
+
+/* Mobile + tablet: the breadcrumb gets the same full-height white dividers as
+   desktop, replacing the little slanted "/" marks. Same reasoning as there —
+   the marks are dropped, the flex gap goes to 0 so no orange sliver sits beside
+   each rule, and the category pill is un-skewed and un-inset so its dark fill
+   squares off against the divider instead of leaving a diagonal wedge.
+   2px rather than desktop's 2.5: the bar is 44-45px here against 50, and the
+   strip's own bottom rule is 2.2px, so a lighter divider keeps them in step. */
+@media (max-width: 1024px) {
+  .pdp-breadcrumb { gap: 0; }
+  .pdp-breadcrumb__cat::before {
+    inset: 0;
+    box-shadow: none;
+  }
+}
+
+/* ---- Breadcrumb dividers: skewed white rules, every breakpoint ----
+   The separators are full-height white bars that lean at the same ~19.3deg as
+   the category pill (Montserrat's "/" measures that from vertical, which is
+   where the angle came from). They replace the small slash glyphs: same rake,
+   but running the full height of the bar so they read as gaps cut through it,
+   matching the dividers on the tab bar.
+   These reuse `> *::after`, which used to draw the slash glyph — hence the
+   repositioning from a centred mark to a left-edge bar.
+   A border can't be skewed, so this has to be a pseudo-element. The vertical
+   overhang matters: skewing about the centre pulls the top and bottom corners
+   sideways, and without it the bar would fall short of the bar's edges. */
+/* The first segment has nothing to its left to divide, and its ORIGINAL slash
+   glyph — a 19px mark at its right edge — is still defined earlier in the
+   sheet. Suppress it, or the trail shows a small centred slash after the first
+   link alongside the full-height rules on the others. */
+.pdp-breadcrumb > *:first-child::after { content: none; }
+.pdp-breadcrumb > *:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: -3px;
+  bottom: -3px;
+  width: 2.5px;
+  height: auto;
+  border-radius: 0;
+  background: var(--ce-white);
+  transform: skewX(-19.3deg);
+  z-index: 2;
+  pointer-events: none;
+}
+/* The fullscreen toggle is a button and isn't in the positioned set the links
+   and sku share, so its divider would escape to the bar. */
+.pdp-breadcrumb__view { position: relative; }
+/* The sku's own ::after was suppressed back when it ended the visible trail;
+   as a left-edge divider it belongs. */
+.pdp-breadcrumb__sku::after { display: block; }
+@media (max-width: 1024px) {
+  /* Lighter to suit the 44px bar, as with the tab strip's rules, and a
+     shallower rake — about halfway between desktop's 19.3deg and vertical.
+     The bar is shorter here, so the same angle throws the top and bottom of
+     each rule much further apart relative to its height and reads as a much
+     wider slash. The PILL takes the same angle, or its edges stop running
+     parallel to the dividers that sit on them. */
+  .pdp-breadcrumb > *:not(:first-child)::after {
+    width: 2px;
+    transform: skewX(-10deg);
+  }
+  .pdp-breadcrumb__cat::before { transform: skewX(-10deg); }
+}
+
+/* Mobile + tablet: the selected tab gets the white sides it has on desktop, so
+   the dark pill is framed on all four edges — top and bottom come free from
+   the bar's own rules above and below it, and these supply left and right.
+   inset: 0 so the pill runs the bar's full height; it was inset 2px on the
+   sides, which showed the bar's lighter orange there instead of white.
+   2px matches the tab separators, the breadcrumb dividers and the strip's own
+   edge rules at this width — one weight for every line on the bar. */
+@media (max-width: 1024px) {
+  .home-catalog__tabs .apparel-titlebar__tab.active::before {
+    inset: 0 !important;
+    box-shadow:
+      inset 2px 0 0 var(--ce-white),
+      inset -2px 0 0 var(--ce-white);
+  }
+}
+
+/* ---- Desktop: the cart is a VIEW, not a drawer ----
+   Clicking My Cart used to slide a 460px panel in over the right edge. On a
+   wide screen that left most of the catalog visible behind a dim wash, and the
+   cart itself was squeezed into a column. Instead the cart takes over the card
+   — the same --site-max area the catalog occupies — starting under the header,
+   so the page reads as switching views rather than covering itself.
+   The backdrop goes transparent and stops taking pointer events, which keeps
+   the header live: the My Cart button turns into a close X while open, so it
+   remains the way out. (Losing click-outside-to-close is the point — there is
+   no longer an "outside" that the panel is floating over.) */
+@media (min-width: 1025px) {
+  .modal-overlay:has(.cart-drawer) {
+    background: transparent;
+    backdrop-filter: none;
+    padding: 0;
+    pointer-events: none;
+  }
+  .drawer.cart-drawer {
+    pointer-events: auto;
+    top: var(--wt-header-pin);
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: min(var(--site-max), 100%);
+    max-width: none;
+    /* No cast: it sits in the page now, it isn't floating above it. */
+    box-shadow: none;
+  }
+}
+
+/* Desktop: no "My Cart" title bar. Mobile already hides it (the rule further
+   up this file), and the label is redundant — the header's My Cart button is
+   what opened the view and turns into a close X while it's open, so it names
+   the view and provides the way out. Without this the card showed two orange
+   bars stacked: the site header and a second one repeating its label.
+   Content keeps the catalog's 2px gaps, edge to edge in the card rather than
+   inset by the drawer's old side margins. */
+@media (min-width: 1025px) {
+  .cart-drawer__header { display: none; }
+  /* margin-top 0, not the catalog's 2px gap: the panel's top edge already sits
+     at the header's pin, so the header's own 3px seam is the white line here.
+     A 2px gap on top of it painted a 5px band — the seam plus the drawer's
+     white background showing through — which read far heavier than the line
+     under the header everywhere else. */
+  .cart-drawer__items,
+  .cart-drawer__summary,
+  .cart-drawer__empty {
+    margin: 0;
+  }
+}
+
+/* Colour names, desktop Catalog view only. The horizontal card leaves its
+   bottom-right corner empty, and swatches read poorly next to a 92px thumb, so
+   the colours are spelled out there instead. Absolutely placed rather than put
+   in the info column so it can't push the row taller than the thumbnail.
+   ONE line, always: the list can run long and a second line would make the
+   rows ragged, so it ellipsizes. max-width keeps it clear of the price. */
+.product-card__colors-text { display: none; }
+@media (min-width: 1025px) {
+  .apparel-grid--list .product-card__colors-text {
+    display: block;
+    position: absolute;
+    right: 11px;
+    bottom: 7px;
+    max-width: 58%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.68rem;
+    line-height: 1.2;
+    color: var(--ce-gray-500);
+    text-align: right;
+    pointer-events: none;
+  }
+  /* Swatches stay hidden here — the text replaces them. */
+  .apparel-grid--list .product-card__colors { display: none; }
+}
+
+/* Visually-hidden utility: removes an element from view and from layout flow
+   (no height/width) while keeping it available to screen readers. Used for the
+   related-items "More …" heading, which is redundant visually but useful as a
+   landmark. */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Active tab at the strip's ends: drop the OUTER white side. The first tab
+   (All) sits against the strip's own left edge and the last (Footwear) against
+   its right, both of which already carry the bar's white rule — so a second
+   white line there doubled up. Keep the inner side (the one facing the next
+   tab). The :first-child/:last-child pseudo raises specificity above the plain
+   .active::before rules in both breakpoints, so no !important is needed.
+   Every breakpoint at once: the ends are the ends at any width. */
+.home-catalog__tabs .apparel-titlebar__tab.active:first-child::before {
+  box-shadow: inset -2px 0 0 var(--ce-white);
+}
+.home-catalog__tabs .apparel-titlebar__tab.active:last-child::before {
+  box-shadow: inset 2px 0 0 var(--ce-white);
+}
+
+/* Optically centre the bar labels in the VISIBLE orange, not the full box.
+   Each bar paints a 3px white rule along its bottom via an absolutely-
+   positioned ::after — which doesn't affect layout, so text centred in the
+   50px box lands ~1.5px low, leaving more orange above the text than below.
+   A 3px bottom pad shrinks the flex content box to the top 47px, so the text
+   centres in the orange region above the rule. */
+@media (min-width: 1025px) {
+  .home-catalog__tabs .apparel-titlebar__tab { padding-bottom: 3px; }
+  .pdp-breadcrumb__link,
+  .pdp-breadcrumb__sku { padding-bottom: 3px; }
+}
+/* Same compensation on mobile/tablet, where the bottom rule is ~2px. */
+@media (max-width: 1024px) {
+  .home-catalog__tabs .apparel-titlebar__tab { padding-bottom: 2px; }
+  .pdp-breadcrumb__link,
+  .pdp-breadcrumb__sku { padding-bottom: 2px; }
+}

@@ -1,11 +1,19 @@
 import { component$, useSignal, useComputed$, useContext, $, useVisibleTask$ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
 import { LocaleContext, t } from "../../i18n";
-import { allProducts, categoryLabel } from "../../routes/apparel/products";
+import { allProducts, categoryLabel, colorName } from "../../routes/apparel/products";
 import type { Product } from "../../routes/apparel/products";
 import { sortColorsWhiteLast } from "../../routes/apparel/utils";
 import { LoginTypeContext, stickyTop } from "../../routes/layout";
 import { ProductImage } from "../product-image/product-image";
+
+// The two desktop view modes. The toggle shows the one you'll switch TO.
+// Labels are the single source for the button text, aria-label and title.
+const VIEW_MODES: { key: number | "list"; label: string; icon: string }[] = [
+  { key: 3, label: "Catalog", icon: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>' },
+  { key: "list", label: "Gallery", icon: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="4" height="4"/><line x1="10" y1="6" x2="21" y2="6"/><rect x="3" y="10" width="4" height="4"/><line x1="10" y1="12" x2="21" y2="12"/><rect x="3" y="16" width="4" height="4"/><line x1="10" y1="18" x2="21" y2="18"/></svg>' },
+];
+
 
 const CLOTHING_CATEGORIES = ["All", "Work Wear", "Jackets", "Sweaters", "Shirts", "Hats", "Footwear"];
 
@@ -166,7 +174,7 @@ const ProductCard = component$<{ item: Product; sku: string; index: number }>(({
             {!isTech && <div class="product-card__price">${(Number(item.price) || 0).toFixed(2)}</div>}
           </div>
         </div>
-        {item.name === "Office Welcome Kit" ? (
+        {item.name === "New Hire Kit" ? (
           // The bundle: no colour/size, so use that gray text area to list the
           // kit's contents (same size/colour as the sizes text).
           <div class="product-card__color-size-row">
@@ -199,6 +207,20 @@ const ProductCard = component$<{ item: Product; sku: string; index: number }>(({
               ) : <span />;
             })()}
             <span class="product-card__sizes">{item.sizes === "One Size" ? t("modal.onesize", locale.value) : item.sizes}</span>
+            {/* Colour names as text. Hidden in every mode but desktop Catalog,
+                where the wide horizontal card leaves the bottom-right corner
+                empty and swatches would be lost against the small thumbnail. */}
+            {(() => {
+              const all = item.colors || [];
+              const shown = all.filter((c) => !CARD_HIDDEN_COLORS.has(c));
+              const visible = sortColorsWhiteLast(shown.length ? shown : all);
+              if (!visible.length) return null;
+              return (
+                <span class="product-card__colors-text">
+                  {visible.map((c) => (c.startsWith("#") ? colorName(c, locale.value) : c)).join(", ")}
+                </span>
+              );
+            })()}
           </div>
         )}
       </div>
@@ -404,22 +426,17 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
       <div class="home-catalog__inner">
         <div class={`home-catalog__header ${tabsAtEnd.value ? "home-catalog__header--tabs-end" : ""}`}>
           <h2 class="home-catalog__title">{t("nav.apparel", locale.value)}</h2>
-          {/* Desktop: catalog view mode — grid of tall cards vs. compact list
-              rows (the same list layout as the tablet's extra mode). */}
+          {/* Desktop view mode: Catalog (tall photo-led cards) vs Gallery (short
+              horizontal rows, thumbnail left). Two modes, so a toggle — the
+              button shows the mode it will switch to. */}
           <button
             class="home-catalog__viewmode"
-            aria-label={tabletCols.value === "list" ? "Show gallery view" : "Show catalog view"}
-            title={tabletCols.value === "list" ? "Gallery view" : "Catalog view"}
+            aria-label={`Show ${(tabletCols.value === "list" ? VIEW_MODES[0] : VIEW_MODES[1]).label.toLowerCase()} view`}
+            title={`${(tabletCols.value === "list" ? VIEW_MODES[0] : VIEW_MODES[1]).label} view`}
             onClick$={() => { tabletCols.value = tabletCols.value === "list" ? 3 : "list"; }}
           >
-            {tabletCols.value === "list" ? (
-              // in catalog/list mode → offer gallery (grid) view
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-            ) : (
-              // in gallery/grid mode → offer catalog (list) view
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="4" height="4"/><line x1="10" y1="6" x2="21" y2="6"/><rect x="3" y="10" width="4" height="4"/><line x1="10" y1="12" x2="21" y2="12"/><rect x="3" y="16" width="4" height="4"/><line x1="10" y1="18" x2="21" y2="18"/></svg>
-            )}
-            <span class="home-catalog__viewmode-label">{tabletCols.value === "list" ? "Gallery" : "Catalog"}</span>
+            <span class="home-catalog__viewmode-icon" dangerouslySetInnerHTML={(tabletCols.value === "list" ? VIEW_MODES[0] : VIEW_MODES[1]).icon} />
+            <span class="home-catalog__viewmode-label">{(tabletCols.value === "list" ? VIEW_MODES[0] : VIEW_MODES[1]).label}</span>
           </button>
           <div class="home-catalog__sidebar-search">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
