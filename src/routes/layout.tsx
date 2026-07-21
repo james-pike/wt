@@ -427,8 +427,12 @@ export default component$(() => {
   const searchValue = useSignal("");
   // The catalog (and therefore search) is only rendered on the home page and
   // the apparel listing — not on product detail or 404 pages.
+  // Search shows on the home page, the apparel listing, AND product pages. On a
+  // product page there's no catalog mounted, so the first keystroke navigates to
+  // the listing (see the input handlers) — the search bar itself stays put in
+  // the header the whole time.
   const showSearch = useComputed$(
-    () => loc.url.pathname === "/" || /^\/apparel\/?$/.test(loc.url.pathname),
+    () => loc.url.pathname === "/" || loc.url.pathname.startsWith("/apparel"),
   );
 
   useContextProvider(LocaleContext, locale);
@@ -895,10 +899,17 @@ export default component$(() => {
                 const open = () => {
                   searchOpen.value = true;
                   header?.classList.add("site-header--search-open");
-                  // Reposition here only when we didn't already do it above.
+                  // Reposition here only when we didn't already do it above,
+                  // and ONLY to pull the catalog UP to the bar when it sits
+                  // below it. Previously this scrolled to `top` unconditionally,
+                  // which yanked the page upward whenever the user opened search
+                  // already scrolled past the pinned position — the visible
+                  // "shift" on open. When already pinned (or scrolled past), the
+                  // header search field and sticky tabs are already in place, so
+                  // no scroll is needed.
                   if (!needsReposition && catalog) {
                     const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2;
-                    window.scrollTo({ top, behavior: "instant" });
+                    if (window.scrollY < top - 1) window.scrollTo({ top, behavior: "instant" });
                   }
                   window.dispatchEvent(new CustomEvent("apparel-search-open"));
                   // preventScroll stops the browser from scroll-jumping the field
@@ -973,10 +984,31 @@ export default component$(() => {
                   type="text"
                   class="site-header__search-input"
                   aria-label="Search apparel"
+                  placeholder={t("search.placeholder", locale.value)}
                   value={searchValue.value}
-                  onInput$={(_, el) => { searchValue.value = el.value; window.dispatchEvent(new CustomEvent("apparel-search", { detail: el.value })); }}
+                  onInput$={(_, el) => {
+                    searchValue.value = el.value;
+                    // With the catalog on the page (home / apparel listing), relay
+                    // keystrokes to it for live filtering. On a page without a
+                    // catalog (e.g. a product page) typing just fills the field —
+                    // nothing moves until Enter (see below).
+                    if (document.querySelector(".home-catalog")) {
+                      window.dispatchEvent(new CustomEvent("apparel-search", { detail: el.value }));
+                    }
+                  }}
                   onKeyDown$={(e, el) => {
-                    if (e.key === "Enter") { e.preventDefault(); window.dispatchEvent(new CustomEvent("apparel-search", { detail: el.value })); window.dispatchEvent(new CustomEvent("apparel-search-commit")); }
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      if (document.querySelector(".home-catalog")) {
+                        window.dispatchEvent(new CustomEvent("apparel-search", { detail: el.value }));
+                        window.dispatchEvent(new CustomEvent("apparel-search-commit"));
+                      } else {
+                        // No catalog here (product page): Enter takes the user to the
+                        // listing, swapping the breadcrumb bar for the tabs + grid,
+                        // with the typed term carried along in ?q=.
+                        nav(`/apparel/?q=${encodeURIComponent(el.value)}`);
+                      }
+                    }
                     if (e.key === "Escape") { searchValue.value = ""; window.dispatchEvent(new CustomEvent("apparel-search", { detail: "" })); searchOpen.value = false; }
                   }}
                 />
@@ -1103,7 +1135,6 @@ export default component$(() => {
           <div class="site-footer__col">
           {loginType.value === "safety" && (
           <nav class="site-footer__links">
-            <Link href="/">{t("nav.home", locale.value)}</Link>
             <Link href="/apparel/#fr" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Flame Resistant" })); const headerH = stickyTop(); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Flame Resistant", locale.value)}</Link>
             <Link href="/apparel/#shirts" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Shirts" })); const headerH = stickyTop(); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Shirts", locale.value)}</Link>
             <Link href="/apparel/#hats" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Hats" })); const headerH = stickyTop(); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Hats", locale.value)}</Link>
@@ -1112,7 +1143,6 @@ export default component$(() => {
           )}
           {(loginType.value !== "tech" && loginType.value !== "safety") && (
           <nav class="site-footer__links">
-            <Link href="/">{t("nav.home", locale.value)}</Link>
             <Link href="/apparel/#shirts" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Shirts" })); const headerH = stickyTop(); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Shirts", locale.value)}</Link>
             <Link href="/apparel/#jackets" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Jackets" })); const headerH = stickyTop(); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Jackets", locale.value)}</Link>
             <Link href="/apparel/#hats" onClick$={(e) => { if (/^\/apparel\/?$/.test(loc.url.pathname)) { e.preventDefault(); } window.dispatchEvent(new CustomEvent("select-category", { detail: "Hats" })); const headerH = stickyTop(); const catalog = document.querySelector('.home-catalog'); if (catalog) { const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2; window.scrollTo({ top, behavior: 'instant' }); } }}>{t("cat.Hats", locale.value)}</Link>

@@ -96,6 +96,14 @@ function sizeSpanOf(p: Product): string[] {
   }
   return [];
 }
+// Sizes for facets/filtering. Falls back to a "One Size" chip when the size
+// string doesn't parse into a range — so one-size categories (hats, accessories)
+// still show a Size filter group rather than an empty sidebar.
+function sizesOf(p: Product): string[] {
+  const s = sizeSpanOf(p);
+  if (s.length) return s;
+  return p.sizes === "One Size" ? ["One Size"] : [];
+}
 // Brands recognizable in product names (word-boundary matched).
 const BRAND_LIST = [
   "ATC", "Blundstone", "Coal Harbour", "Columbia", "Core365", "Devon & Jones",
@@ -326,7 +334,21 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
     // Header search Enter: the committed query's tab may be off-screen in the
     // scrollable strip — center it now (live keystrokes deliberately don't).
     const onSearchCommit = () => { centerActiveTab(); };
+    // A search relayed from another route (e.g. the header search on a product
+    // page) arrives as ?q=. Apply it once on mount, then strip it from the URL
+    // so a later refresh doesn't re-pin the filter.
+    const applyQuery = () => {
+      const q = new URLSearchParams(window.location.search).get("q");
+      if (q) {
+        searchQuery.value = q;
+        activeCat.value = categoryForQuery(q, baseProducts.value);
+        history.replaceState(null, "", window.location.pathname);
+        centerActiveTab();
+        scrollProductsBelowBar();
+      }
+    };
     applyHash();
+    applyQuery();
     window.addEventListener("hashchange", applyHash);
     window.addEventListener("select-category", onSelectCategory);
     window.addEventListener("apparel-search", onExternalSearch);
@@ -385,7 +407,7 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
       ? baseProducts.value
       : baseProducts.value.filter((p) => p.category === activeCat.value);
     const genders = new Set(inCat.map(genderOf));
-    const sizes = new Set(inCat.flatMap((p) => sizeSpanOf(p)));
+    const sizes = new Set(inCat.flatMap((p) => sizesOf(p)));
     const brands = new Set(inCat.map(brandOf).filter(Boolean) as string[]);
     // Letter sizes first (in range order), then numeric shoe sizes ascending.
     const shoeSizes = [...sizes]
@@ -404,7 +426,7 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
     const applyFacets = (list: Product[]) => {
       let out = list;
       if (f.genders.length) out = out.filter((p) => f.genders.includes(genderOf(p)));
-      if (f.sizes.length) out = out.filter((p) => sizeSpanOf(p).some((s) => f.sizes.includes(s)));
+      if (f.sizes.length) out = out.filter((p) => sizesOf(p).some((s) => f.sizes.includes(s)));
       if (f.brands.length) out = out.filter((p) => f.brands.includes(brandOf(p) || ""));
       return out;
     };
@@ -551,7 +573,7 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
           <span class="home-catalog__seam" aria-hidden="true" />
         </div>
         <aside class="home-catalog__filters" aria-label="Filter products">
-          {facetOptions.value.genders.length > 1 && (
+          {facetOptions.value.genders.length >= 1 && (
             <div class="home-catalog__filter-group">
               <div class="home-catalog__filter-title">Fit</div>
               {facetOptions.value.genders.map((g) => (
@@ -572,7 +594,7 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
               ))}
             </div>
           )}
-          {facetOptions.value.brands.length > 1 && (
+          {facetOptions.value.brands.length >= 1 && (
             <div class="home-catalog__filter-group">
               <div class="home-catalog__filter-title">Brand</div>
               {facetOptions.value.brands.map((b) => (
@@ -593,7 +615,7 @@ export const ProductCatalog = component$<{ class?: string }>(({ "class": cls }) 
               ))}
             </div>
           )}
-          {facetOptions.value.sizes.length > 1 && (
+          {facetOptions.value.sizes.length >= 1 && (
             <div class="home-catalog__filter-group">
               <div class="home-catalog__filter-title">Size</div>
               <div class="home-catalog__filter-sizes">

@@ -21,6 +21,7 @@ const translations = {
   "nav.caps": { en: "Caps", fr: "Casquettes" },
   "nav.jackets": { en: "Jackets", fr: "Manteaux" },
   "nav.safety": { en: "Safety", fr: "Sécurité" },
+  "search.placeholder": { en: "Search apparel", fr: "Rechercher des vêtements" },
 
   // Login modal
   "login.title": { en: "Employee Login", fr: "Connexion employé" },
@@ -209,7 +210,7 @@ const translations = {
   "cat.Flame Resistant": { en: "Flame Resistant", fr: "Vêtements ignifuges" },
   "cat.Shirts": { en: "Shirts", fr: "Chemises" },
   "cat.Sweaters": { en: "Sweaters", fr: "Chandails" },
-  "cat.Footwear": { en: "Footwear", fr: "Chaussures" },
+  "cat.Footwear": { en: "Safety Footwear", fr: "Chaussures de sécurité" },
   "cat.Headwear": { en: "Headwear", fr: "Couvre-chefs" },
   "cat.Pants": { en: "Pants", fr: "Pantalons" },
   "cat.Safety Vests": { en: "Safety Vests", fr: "Gilets de sécurité" },

@@ -88,6 +88,14 @@ body:has(.privacy-page) {
 body:has(.privacy-page) > main {
   flex: 1 0 auto;
 }
+/* As a flex child, the footer's auto side-margins (which centre it at
+   --site-max on normal pages) collapse it to its content width. Force it to
+   the full column width so it caps at --site-max and lines up with the header
+   and the content card above it. */
+body:has(.privacy-page) .site-footer {
+  width: 100%;
+  align-self: stretch;
+}
 /* Tap highlight removal on mobile */
 button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 /* Disable the iOS double-tap-to-zoom gesture on interactive elements (pinch
@@ -1686,12 +1694,20 @@ body:has(.nav-drawer-overlay) .site-header {
   align-items: center;
   gap: 1.25rem;
 }
-/* Privacy Policy page */
-.privacy-page {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 3rem 1.25rem 4rem;
+/* Privacy Policy page — reuses the shared apparel-page frame (surround + card
+   ring + the orange strip below the header), so it must NOT clamp its own
+   width; the inner .apparel-catalog carries the --site-max card width. This
+   only opts out of the frame's full-viewport min-height so the sticky footer
+   pins to the viewport bottom under the short document card. */
+.privacy-page.apparel-page { min-height: 0; }
+/* The off-white reading card inside the shared content card — same treatment
+   as the product-detail panel. */
+.doc-panel {
+  background: var(--ce-off-white);
+  border-radius: var(--radius-sm);
+  padding: 1.75rem 1.75rem 2.25rem;
 }
+.doc-panel .privacy-page__body { max-width: 68ch; }
 .privacy-page__title {
   font-size: 1.6rem;
   font-weight: 800;
@@ -8406,6 +8422,33 @@ details[open] > .cart-drawer__checkout-title::after {
 .site-header .site-header__search-input::placeholder { color: rgba(255,255,255,0.6) !important; }
 .site-header .site-header__search-close svg { stroke: rgba(255,255,255,0.8) !important; }
 
+/* Desktop: the apparel search rides the header bar beside "My Cart" instead of
+   the orange catalog tab strip. Reuse the header search field (already wired to
+   relay keystrokes to the catalog via the apparel-search event) as an
+   always-visible input; drop its copy on the tab bar. */
+@media (min-width: 1025px) {
+  /* Full-height cell, matching the cart/logout buttons — on desktop those
+     stretch to the inner bar's height as squared cells (align-self: stretch,
+     height: auto, no margin/radius), not the floating rounded box used on
+     mobile. Stretch the search field the same way so it fills the bar. */
+  .site-header .site-header__search {
+    display: flex;
+    order: -1; /* sit to the LEFT of the cart button in the nav */
+    align-self: stretch;
+    height: auto !important;
+    width: 260px;
+    box-sizing: border-box;
+    margin: 0 !important;
+    padding: 0 14px;
+    border-radius: 0 !important;
+  }
+  .site-header .site-header__search-input { flex: 1; min-width: 0; font-size: 0.9rem; }
+  /* Permanent field — no close button (it never opens/closes here). */
+  .site-header .site-header__search-close { display: none; }
+  /* Search now lives in the header; drop the one on the catalog tab bar. */
+  .home-catalog__sidebar-search { display: none !important; }
+}
+
 /* ---- Catalog tabs tie into the orange header ---- */
 /* A mid orange BETWEEN the header orange (#f58322) and the darker box overlay
    (~#ab5c18): an ~18% black overlay over the header orange. Distinct from the
@@ -9474,6 +9517,15 @@ details[open] > .cart-drawer__checkout-title::after {
 .site-footer__logo-white {
   filter: drop-shadow(0 1px 3px rgba(62, 24, 2, 0.5));
 }
+/* Desktop footer: logo left, email in the middle (where the Home link used to
+   sit), Privacy on the right — all on one line. The links nav is now empty
+   (Home removed), so drop it; flatten the contact block so the email and the
+   Privacy link become their own flex children and space-between spreads them. */
+@media (min-width: 1025px) {
+  .site-footer__links { display: none; }
+  .site-footer__contact-block { display: contents; }
+  .site-footer__contact-block .site-footer__privacy-link { display: inline; }
+}
 
 /* ---- Cart: the same sign as the catalog and the product page ----
    It was inverted: a white body running edge to edge, with the column header
@@ -9487,7 +9539,9 @@ details[open] > .cart-drawer__checkout-title::after {
 }
 .cart-drawer__items,
 .cart-drawer__summary {
-  background: var(--ce-greige);
+  /* Lighter, creamier body — the off-white the privacy document card uses,
+     rather than the darker greige of the catalog surround. */
+  background: var(--ce-off-white);
   /* Sides get the card inset; the TOP gets the seam — the same 2px white line
      the tab bar and the breadcrumb sit under. Using the (wider) side inset here
      pushed the orange strip down and read as a thick white band. */
@@ -9570,7 +9624,7 @@ details[open] > .cart-drawer__checkout-title::after {
 }
 .cart-drawer__title { color: #fff; }
 .cart-drawer__header .modal__close { color: #fff; }
-.cart-drawer__empty { background: var(--ce-greige); margin: var(--wt-box-my); }
+.cart-drawer__empty { background: var(--ce-off-white); margin: var(--wt-box-my); }
 /* Below desktop the drawer opens flush under the site header, which already
    paints the seam at its own bottom edge — so the strip must add NOTHING on
    top, or the two stack and the white line comes out twice as thick as the one
@@ -10416,8 +10470,14 @@ body:has(.product-fullscreen) { overflow: hidden; }
     transform: translateX(-50%);
     width: min(var(--site-max), 100%);
     max-width: none;
-    /* No cast: it sits in the page now, it isn't floating above it. */
-    box-shadow: none;
+    /* The same white ring the other cards carry (catalog / product / privacy),
+       so the cart reads as the same sign with white strips down its sides. */
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.12),
+      0 0 0 2px rgba(0, 0, 0, 0.04),
+      0 0 0 var(--wt-ring) var(--ce-white),
+      0 0 0 calc(var(--wt-ring) + 1px) rgba(0, 0, 0, 0.08),
+      0 6px 16px var(--wt-ring) rgba(0, 0, 0, 0.22);
   }
 }
 

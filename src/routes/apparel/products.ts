@@ -29,7 +29,7 @@ export const allProducts = [
       "/wt/122368_f_fm.jpg"
     ],
     "material": "",
-    "details": "4.5 oz./yd²/155 gsm (US), 7.5 oz./L yd (CA), 55% cotton, 45% polyester twill, Tested to 50 industrial washes in accordance with AATTC (American Association of Textile Chemists & Colorists) industry standards, Wrinkle resistant fabric properties for a crisp, polished look, Stain release fabric properties allows stains to detach during washing, Button-down collar, Left chest pocket, Hemmed sleeves, Extra stitching at seams and buttons, Flat-felled seam finishing, Full back yoke and back pleat, Signature horn-style buttons with Harriton logo, Carbon neutral style in partnership with Green Story third party verified carbon offset program, #S&S M500S"
+    "details": "55% cotton / 45% polyester twill (4.5 oz), wrinkle-resistant and stain-release finish, button-down collar, left chest pocket, flat-felled seams, signature horn buttons, carbon-neutral (Green Story verified), #S&S M500S"
   },
   {
     "sku": "WT-2",
@@ -58,7 +58,7 @@ export const allProducts = [
       "/wt/126962_f_fm.jpg"
     ],
     "material": "",
-    "details": "4.7 oz./yd²., (US), 7.8 oz./L yd (CA), 100% recycled polyester, Moisture-management properties, Anti-odor technology, Generous half-zip front makes for easy layering, #UA 1376862"
+    "details": "100% recycled polyester (4.7 oz), moisture-wicking, anti-odor, generous half-zip front for easy layering, #UA 1376862"
   },
   {
     "sku": "WT-3",
@@ -89,7 +89,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-02-09-184946.png"
     ],
     "material": "",
-    "details": "5.3 oz./yd²., (US), 8.8 oz./L yd (CA), 100% polyester, Moisture-management properties, Textured fabric that’s soft, light and breathable, Anti-odor technology prevents the growth of odor-causing microbes, Self-fabric collar, Four-button placket, #UA11370431"
+    "details": "100% polyester (5.3 oz), moisture-wicking, anti-odor, soft light breathable textured fabric, self-fabric collar, four-button placket, #UA11370431"
   },
   {
     "sku": "WT-4",
@@ -112,7 +112,7 @@ export const allProducts = [
       "/wt/l2018_form_back_athletic-grey_032019.webp"
     ],
     "material": "",
-    "details": "15.7-oz, 75/25 cotton/polyester fleece, Combed and RING SPUN cotton, 3-end fleece, 100% cotton jersey lined hood with contrast drawstring, Thumbhole at cuffs, Tear away label, YKK zipper, Scuba hood, Superior printing surface, Classic fit, *60/40 cotton/polyester, **84/12/4 cotton/polyester/viscose, #ATC F2018-1"
+    "details": "75/25 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined scuba hood with contrast drawstring, thumbhole cuffs, YKK zipper, tear-away label, classic fit, #ATC F2018-1"
   },
   {
     "sku": "WT-5",
@@ -145,7 +145,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-195154.png"
     ],
     "material": "",
-    "details": "9.1-oz, 100% cotton, Compacted yarns to minimize shrinkage, Taped neck and shoulders for comfort and durability, Tear away label for private branding, 1×1 rib knit collar, Rib knit cuffs, Double needle cover stitch at sleeve and bottom hem, Classic fit, *90/10 cotton/polyester, **50/50 cotton/polyester, ***98/2 cotton/polyester, OEKO-TEX® STANDARD 100, #ATC1015"
+    "details": "100% cotton (9.1 oz), compacted yarns to reduce shrinkage, taped neck and shoulders, 1x1 rib collar and cuffs, double-needle hems, tear-away label, OEKO-TEX Standard 100, classic fit, #ATC1015"
   },
   {
     "sku": "WT-6",
@@ -169,7 +169,7 @@ export const allProducts = [
       "/wt/126884_f_fm.jpg"
     ],
     "material": "",
-    "details": "4.7 oz./yd²., (US), 7.8 oz./L yd (CA), 100% recycled polyester, Moisture-management properties, Anti-odor technology, Quarter-zip front makes for easy layering, #UA1376844"
+    "details": "100% recycled polyester (4.7 oz), moisture-wicking, anti-odor, quarter-zip front for easy layering, #UA1376844"
   },
   {
     "sku": "WT-7",
@@ -204,7 +204,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-193104.png"
     ],
     "material": "",
-    "details": "6.4 oz, 100% performance polyester interlock with wicking technology, No Bleed Fabric (NBF) created with a unique cationic dye process for easy printing, Taped neck for comfort and durability, Side seamed, Contoured fit, Double needle cover stitch at sleeve and bottom hem, Breathable, Snag resistant, Classic fit, #ATC3700L"
+    "details": "100% performance polyester interlock (6.4 oz) with wicking, No-Bleed Fabric for easy printing, taped neck, side-seamed, double-needle hems, breathable and snag-resistant, contoured fit, #ATC3700L"
   },
   {
     "sku": "WT-8",
@@ -239,7 +239,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-192234.png"
     ],
     "material": "",
-    "details": "6.4 oz, 100% performance polyester interlock with wicking technology, No Bleed Fabric (NBF) created with a unique cationic dye process for easy printing, Taped neck for comfort and durability, Side seamed, Double needle cover stitch at sleeve and bottom hem, Breathable, Snag resistant, Classic fit, #ATC3700"
+    "details": "100% performance polyester interlock (6.4 oz) with wicking, No-Bleed Fabric for easy printing, taped neck, side-seamed, double-needle hems, breathable and snag-resistant, classic fit, #ATC3700"
   },
   {
     "sku": "WT-9",
@@ -260,7 +260,7 @@ export const allProducts = [
       "/wt/nf0a7v4f_form-front_taupe-green_2025_cil-1.webp"
     ],
     "material": "",
-    "details": "Exterior: 50D WindWall™ 100% recycled polyester with non-PFC durable water-repellent (DWR) finish, Fill (Body): 550-fill goose down insulation, Fill (Collar, front yoke, back yoke & side panels): 200g Heatseeker™ Eco 30/70 virgin polyester/post-consumer recycled polyester insulation, Stand collar, Set-in sleeves, Reverse coil zipper at centre front, Full length inner storm flap with chin guard, Left chest zippered pocket, Zippered hand pockets, Elasticated sleeve binding, The North Face logo® on left chest and right back shoulder, Modern fit, #NF0A7V4F"
+    "details": "Shell: 50D WindWall recycled polyester with non-PFC DWR finish; 550-fill goose down body with 200g Heatseeker Eco insulation at collar and yokes, stand collar, centre-front zip with inner storm flap and chin guard, zippered chest and hand pockets, The North Face logo, modern fit, #NF0A7V4F"
   },
   {
     "sku": "WT-10",
@@ -281,7 +281,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-185449.png"
     ],
     "material": "",
-    "details": "Exterior: 50D WindWall™100% recycled polyester with non-PFC durable water-repellent (DWR) finish, Fill (Body): 550-fill goose down insulation, Fill (Collar, front yoke, back yoke & side panels): 200g Heatseeker™ Eco 30/70 virgin polyester/post-consumer recycled polyester insulation, Stand collar, Set-in sleeves, Reverse coil zipper at centre front, Full length inner storm flap with chin guard, Hidden elastic gussets at sleeve cuffs, Zippered hand pockets, The North Face® logo on left chest and right back shoulder, Modern fit, #NF0A7V4G"
+    "details": "Shell: 50D WindWall recycled polyester with non-PFC DWR finish; 550-fill goose down body with 200g Heatseeker Eco insulation at collar and yokes, stand collar, centre-front zip with inner storm flap and chin guard, zippered hand pockets, elastic cuff gussets, The North Face logo, modern fit, #NF0A7V4G"
   },
   {
     "sku": "WT-11",
@@ -310,7 +310,7 @@ export const allProducts = [
       "/wt/L00570-Black-front_1d244d46-7de6-4a42-a8c6-9cd410d56e51_2000x.webp"
     ],
     "material": "",
-    "details": "280 gsm – 8.3 oz./yd² – 14 oz./lin. yd solids 70% ring spun combed cotton, 30% polyester fleece. Heathers 60% ring spun combed cotton, 40% polyester fleece. 3-ply fleece. 100% cotton face for superior print surface. Rib knit cuff and hem with spandex. Side seam pockets. Metal YKK front zipper closure. Tear away label, #CSW L00570"
+    "details": "70/30 combed ring-spun cotton/polyester 3-ply fleece (280 gsm), 100% cotton print face, rib-knit cuffs and hem with spandex, side-seam pockets, metal YKK zip, tear-away label, #CSW L00570"
   },
   {
     "sku": "WT-12",
@@ -333,7 +333,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-184424.png"
     ],
     "material": "",
-    "details": "13.5-oz, 100% polyester with mechanical stretch bonded with 100% polyester micro fleece, 1000mm/1000g/m2 waterproof/breathability rating, Full length inner storm flap with chin guard, Water repellent, Wind resistant, Anti-Pill, YKK zippers, Classic fit, *92/8 polyester/spandex, #CH J7603-1"
+    "details": "100% polyester mechanical-stretch bonded to micro-fleece (13.5 oz), 1000mm waterproof/breathable, water-repellent and wind-resistant, inner storm flap with chin guard, anti-pill, YKK zippers, classic fit, #CH J7603-1"
   },
   {
     "sku": "WT-13",
@@ -356,7 +356,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-184020.png"
     ],
     "material": "",
-    "details": "13.5-oz, 100% polyester with mechanical stretch bonded with 100% polyester micro fleece, 1000mm/1000g/m2 waterproof/breathability rating, Full length inner storm flap with chin guard, Water repellent, Wind resistant, Anti-Pill, YKK zippers, Classic fit, *92/8 polyester/spandex, #CH J7603"
+    "details": "100% polyester mechanical-stretch bonded to micro-fleece (13.5 oz), 1000mm waterproof/breathable, water-repellent and wind-resistant, inner storm flap with chin guard, anti-pill, YKK zippers, classic fit, #CH J7603"
   },
   {
     "sku": "WT-14",
@@ -379,7 +379,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-182657.png"
     ],
     "material": "",
-    "details": "50% Recycled polyester 50% Polyester french terry knit, 209 g/m2 (6.2 oz/yd2), #T18140"
+    "details": "50/50 recycled polyester/polyester french terry knit (209 gsm / 6.2 oz), #T18140"
   },
   {
     "sku": "WT-15",
@@ -402,7 +402,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-182237.png"
     ],
     "material": "",
-    "details": "50% Recycled polyester 50% Polyester french terry knit, 209 g/m2 (6.2 oz/yd2), #T98140"
+    "details": "50/50 recycled polyester/polyester french terry knit (209 gsm / 6.2 oz), #T98140"
   },
   {
     "sku": "WT-16",
@@ -429,7 +429,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-180958.png"
     ],
     "material": "",
-    "details": "13.8-oz, 80/20 cotton/polyester, Zip-through collar, Dyed-to-match zipper, Taped neck for comfort and durability, Set-in sleeves, Side pockets, Rib knit cuffs and waistband, Contrast embroidered Swoosh logo on left sleeve, Classic fit, #NKD6718"
+    "details": "80/20 cotton/polyester (13.8 oz), zip-through collar with dyed-to-match zipper, taped neck, set-in sleeves, side pockets, rib-knit cuffs and waistband, embroidered Swoosh on left sleeve, classic fit, #NKD6718"
   },
   {
     "sku": "WT-17",
@@ -452,7 +452,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-180013.png"
     ],
     "material": "",
-    "details": "13.8-oz, 80/20 cotton/polyester, Zip-through collar, Dyed-to-match zipper, Taped neck for comfort and durability, Set-in sleeves, Front pouch pocket, Rib knit cuffs and waistband, Contrast embroidered Swoosh logo on left sleeve, Classic fit, #NKD6720"
+    "details": "80/20 cotton/polyester (13.8 oz), zip-through collar with dyed-to-match zipper, taped neck, set-in sleeves, front pouch pocket, rib-knit cuffs and waistband, embroidered Swoosh on left sleeve, classic fit, #NKD6720"
   },
   {
     "sku": "WT-18",
@@ -483,7 +483,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-175631.png"
     ],
     "material": "",
-    "details": "5.3 oz./yd²., (US), 8.8 oz./L yd (CA), 100% polyester, Moisture-management properties, Anti-odor technology, Textured fabric that’s soft, light and breathable, Self-fabric collar, Three-button placket, #UA1370399"
+    "details": "Moisture-management properties, anti-odor technology, textured fabric that's soft, light and breathable, self-fabric collar, three-button placket, #UA1370399"
   },
   {
     "sku": "WT-19",
@@ -504,7 +504,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-174836.png"
     ],
     "material": "",
-    "details": "60/40 cotton/polyester, Lining is 100% polyester MTR filament fleece 250g, Insulation is 100g Microtemp XF II 85/15 recycled polyester/polyester, Omni-Shields™ water and stain repellent, Regular fit, Chest pocket, interior security pocket, and zippered hand pockets, Adjustable cuffs, Columbia logo above chest pocket, Woven label, #C208855"
+    "details": "60/40 cotton/polyester shell, 250g MTR fleece lining, 100g Microtemp XF II recycled insulation, Omni-Shield water- and stain-repellent, chest pocket, interior security pocket, zippered hand pockets, adjustable cuffs, regular fit, #C208855"
   },
   {
     "sku": "WT-20",
@@ -527,7 +527,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-173946.png"
     ],
     "material": "",
-    "details": "9 oz/yd² / 310 gsm (US), 15 oz/L yd (CA), 100% recycled polyester two-tone jacquard fleece, Active fit, Contrast coverstitching, Contrast binding details collar, inner neckline, cuffs and hem, Reverse coil zipper at center front and pockets, Contrast heat-seal pocket detail with zipper on right sleeve, #NE730W"
+    "details": "100% recycled polyester two-tone jacquard fleece (310 gsm / 9 oz), contrast coverstitching and binding at collar, cuffs and hem, reverse-coil centre-front and pocket zips, zippered sleeve pocket, active fit, #NE730W"
   },
   {
     "sku": "WT-21",
@@ -550,7 +550,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-173442.png"
     ],
     "material": "",
-    "details": "9 oz/yd² / 310 gsm (US), 15 oz/L yd (CA), 100% recycled polyester two-tone jacquard fleece, Active fit, Contrast coverstitching, Contrast binding details at collar, inner neckline and cuffs, Reverse coil zipper at center front and pockets, Contrast heat-seal pocket detail with zipper on right sleeve, #NE730"
+    "details": "100% recycled polyester two-tone jacquard fleece (310 gsm / 9 oz), contrast coverstitching and binding at collar and cuffs, reverse-coil centre-front and pocket zips, zippered sleeve pocket, active fit, #NE730"
   },
   {
     "sku": "WT-22",
@@ -573,7 +573,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-172018.png"
     ],
     "material": "",
-    "details": "7 oz/yd² / 245 gsm (US), 12 oz/L yd (CA), 60/40 BCI cotton/recycled polyester, 12 gauge knit, Active fit, 1×1 rib knit at collar, cuffs, and hem, The cotton content in this style is sourced from a verified member of the Better Cotton Initiative (BCI). BCI members support more sustainable cotton farming via a system of mass balance, #DJ DG445W"
+    "details": "60/40 BCI cotton/recycled polyester, 12-gauge knit (245 gsm / 7 oz), 1x1 rib at collar, cuffs and hem, Better Cotton Initiative sourced, active fit, #DJ DG445W"
   },
   {
     "sku": "WT-23",
@@ -596,7 +596,7 @@ export const allProducts = [
       "/wt/Screenshot-2026-01-15-170218.png"
     ],
     "material": "",
-    "details": "7 oz/yd² / 245 gsm (US), 12 oz/L yd (CA), 60/40 BCI cotton/recycled polyester, 12 gauge knit, Active fit, 1×1 rib knit at collar, cuffs, and hem, The cotton content in this style is sourced from a verified member of the Better Cotton Initiative (BCI). BCI members support more sustainable cotton farming via a system of mass balance, #DJ DG445"
+    "details": "60/40 BCI cotton/recycled polyester, 12-gauge knit (245 gsm / 7 oz), 1x1 rib at collar, cuffs and hem, Better Cotton Initiative sourced, active fit, #DJ DG445"
   },
   {
     "sku": "WT-24",
@@ -636,7 +636,7 @@ export const allProducts = [
       "/wt/91578_f_fm.jpg"
     ],
     "material": "",
-    "details": "8.4 oz/sqyd, 80% ringspun US cotton, 20% polyester, 2-end 100% ringspun cotton face fleece, Made with 80% sustainably and fairly grown USA cotton, Dark Heather: 50% cotton, 50% polyester, RS Sport Grey: 75% cotton, 25% polyester, 2-piece color-matched jersey fabric lined hood with double-needle hem and, 3/8” flat drawcords, 1×1 rib with spandex cuffs and bottom band for enhanced stretch and recovery, Dropped shoulder, Double-needle topstitching throughout, Classic fit tubular body, Tear away label, #SF500"
+    "details": "80/20 ring-spun cotton/polyester 2-end face fleece (8.4 oz), jersey-lined hood with flat drawcords, 1x1 spandex rib cuffs and band, dropped shoulder, double-needle topstitching, tear-away label, classic fit, #SF500"
   },
   {
     "sku": "WT-25",
@@ -661,7 +661,7 @@ export const allProducts = [
       "/wt/Screenshot-2025-01-16-194610.png"
     ],
     "material": "",
-    "details": "With it’s trendy heather-knit design, the popular Tremblant sweater has the cozy look of a well-worn sweater – but it’s got some great functional features too, like thumb exits in the sleeves, two lower pockets, one upper chest pocket and an exit port for an earbud cord, FABRIC:, 100% Polyester sweater knit with brushed back. 305 g/m² (9 oz/yd²), LINING: 100% Polyester brushed tricot knit inner zipper flap and pocket bags, #TR-98610-1"
+    "details": "100% polyester sweater knit with brushed back (305 gsm / 9 oz), brushed tricot lining, thumb exits, two lower pockets, chest pocket, earbud-cord port, #TR-98610-1"
   },
   {
     "sku": "WT-26",
@@ -686,7 +686,7 @@ export const allProducts = [
       "/wt/Screenshot-2025-01-17-100807.png"
     ],
     "material": "",
-    "details": "55% cotton/45% polyester twill, 4.4 oz./yd2/150 gsm, UV protection performance, button-down collar, durable flat-felled side and underarm seams, adjustable cuffs, left-chest pocket, back yoke with box pleat, Deco Eligible, #AB-88193"
+    "details": "55/45 cotton/polyester twill (4.4 oz / 150 gsm), UV protection, button-down collar, flat-felled seams, adjustable cuffs, left chest pocket, back yoke with box pleat, #AB-88193"
   },
   {
     "sku": "WT-27",
@@ -736,7 +736,7 @@ export const allProducts = [
       "/wt/atc1000_form_angle_white_012017.webp"
     ],
     "material": "",
-    "details": "9.1-oz, 100% cotton, Compacted yarns to minimize shrinkage, Taped neck and shoulders for comfort and durability, Tear away label for private branding, Classic fit, *90/10 cotton/polyester, **50/50 cotton/polyester, ***98/2 cotton/polyester, #ATC1000"
+    "details": "100% cotton (9.1 oz), compacted yarns to reduce shrinkage, taped neck and shoulders, tear-away label, classic fit, #ATC1000"
   },
   {
     "sku": "WT-28",
@@ -787,7 +787,7 @@ export const allProducts = [
       "/wt/Screenshot-2025-01-16-183610.png"
     ],
     "material": "",
-    "details": "9.1-oz, 100% cotton, Compacted yarns to minimize shrinkage, Taped neck and shoulders for comfort and durability, Tear away label for private branding, Side seamed, Contoured fit, Classic fit, *90/10 cotton/polyester, **50/50 cotton/polyester, ***98/2 cotton/polyester, #ATC1000L"
+    "details": "100% cotton (9.1 oz), compacted yarns to reduce shrinkage, taped neck and shoulders, side-seamed, tear-away label, contoured fit, #ATC1000L"
   },
   {
     "sku": "WT-29",
@@ -818,7 +818,7 @@ export const allProducts = [
       "/wt/dg20w_ff_md_p.jpg"
     ],
     "material": "",
-    "details": "5 oz./yd2 / 172 gsm, 100% polyester face plaited to 60% polyester, 40% cotton back (total overall garment 61% polyester, 39% cotton), Proprietary dual-sided mesh pique knit constructed of fine denier wicking polyester on the outside and soft-as-cotton wicking blend on the inside, Moisture-wicking performance with UV 15-39 protection, Matching flat-knit collar, Luxury, comfort and performance in one, Stylized open placket, Curved back yoke with center pleat, Deco Eligible, #DG20W"
+    "details": "5 oz / 172 gsm dual-sided mesh pique, 100% polyester face plaited to 60/40 poly/cotton back, moisture-wicking with UPF 15-39, flat-knit collar, open placket, curved back yoke with centre pleat, #DG20W"
   },
   {
     "sku": "WT-30",
@@ -857,7 +857,7 @@ export const allProducts = [
       "/wt/102790_source_1704999680.jpg"
     ],
     "material": "",
-    "details": "Centre front button placket, Upper patch pocket, Button-down shirt collar, Dyed-to-match buttons, Contrast inner yoke, Centre back box pleat, Flat-felled seams, Back yoke, #Tri 17745"
+    "details": "Woven twill, button-down collar, upper patch pocket (left chest), center-back box pleat, back yoke, flat-felled seams, contrast inner yoke, EZ-Care fabric, designed for heavy wear, #Tri 17745"
   },
   {
     "sku": "WT-31",
@@ -896,7 +896,7 @@ export const allProducts = [
       "/wt/102718_source_1704999612.jpg"
     ],
     "material": "",
-    "details": "Centre front button placket, Upper patch pocket, Button-down shirt collar, Adjustable one button cuffs with single pleats, Dyed-to-match buttons, Contrast inner yoke, Centre back box pleat, Flat-felled seams, Back yoke, #Tri 97744"
+    "details": "Woven twill, button-down collar, upper patch pocket, adjustable one-button cuffs with single pleats, centre-back box pleat, back yoke, flat-felled seams, contrast inner yoke, dyed-to-match buttons, #Tri 97744"
   },
   {
     "sku": "WT-32",
@@ -935,7 +935,7 @@ export const allProducts = [
       "/wt/102922_source_1704999784.jpg"
     ],
     "material": "",
-    "details": "Centre front button placket, Shirt collar, Dyed-to-match buttons, Contrast inner yoke, Flat-felled seams, Shaped seams and tapered waist for flattering fit, Back yoke, #Tri 97745"
+    "details": "Woven twill, shirt collar, centre-front button placket, dyed-to-match buttons, contrast inner yoke, flat-felled seams, shaped seams and tapered waist, back yoke, #Tri 97745"
   },
   {
     "sku": "WT-33",
@@ -974,12 +974,12 @@ export const allProducts = [
       "/wt/Screenshot-2025-01-16-171319.png"
     ],
     "material": "",
-    "details": "The Wilshire is a classic woven that’s perfect as part of a work uniform. Available in both men’s and women’s styles, the durable Wilshire is designed for heavy wear. The men’s style features a left-chest pocket and center-back box pleat, while the women’s style has shaped seams and a tapered waist for a more flattering fit. With its decoration-friendly design and wide range of color options, the Wilshire projects a stylish, professional look for any industry. Made with the same durable fabric as the Stirling, #Tri 17744"
+    "details": "Woven twill, button-down collar, left chest pocket, adjustable one-button cuffs with single pleats, center-back box pleat, back yoke, flat-felled seams, contrast inner yoke, EZ-Care fabric, #Tri 17744"
   },
   {
     "sku": "WT-34",
     "name": "Lightweight Low profile Cap",
-    "category": "Headwear",
+    "category": "Hats",
     "sizes": "One Size",
     "badge": "",
     "colors": [
@@ -994,12 +994,12 @@ export const allProducts = [
       "/wt/2_5016_5586_i5000_800x800_white.jpg"
     ],
     "material": "",
-    "details": "one size, • Low profile six panel structured cap • Lightweight brushed cotton twill • Fabric strap with two piece hook & loop closure, #DML i5000"
+    "details": "Low-profile six-panel structured cap, lightweight brushed cotton twill, two-piece hook-and-loop fabric strap, one size, #DML i5000"
   },
   {
     "sku": "WT-35",
     "name": "Knit Toque (non fold)",
-    "category": "Headwear",
+    "category": "Hats",
     "sizes": "One Size",
     "badge": "",
     "colors": [],
@@ -1009,12 +1009,12 @@ export const allProducts = [
       "/wt/beanie-wills-black-e1736466271623.jpeg"
     ],
     "material": "",
-    "details": "Black, one size, 100% acrylic, **54/46 polyester/acrylic, #S C105"
+    "details": "100% acrylic knit toque, one size, #S C105"
   },
   {
     "sku": "WT-36",
     "name": "Women’s Tough Duck 360° Stretch-Waist Flex-Twill Cargo Pant",
-    "category": "Pants",
+    "category": "Work Wear",
     "sizes": "One Size",
     "badge": "",
     "colors": [],
@@ -1025,12 +1025,12 @@ export const allProducts = [
       "/wt/WP10-PANTS-BLACK-BACK_resized-01.webp"
     ],
     "material": "",
-    "details": "Looking for comfortable cargos with a stretch waist? Look no further. These work cargo pants, tailored for women, boast a 360° stretch waist for maximum mobility on the job site, Black, SHELL: 98% cotton, 2% spandex, flex twill with stain-repellent finish, FEATURES: 360° stretch waist Fly front closure 5-pocket upper detailing 2 lower cargo pockets with bellows Pencil pocket at cargo pocket Pockets and trim are reinforced with heavy-duty polyester 5 belt loops Gusset crotch reinforcement Rivets at all stress points Triple stitched, Stain Repellent Stretch (Flex ) Fabric 360° Stretch Waist, #R-WP10"
+    "details": "98/2 cotton/spandex flex twill with stain-repellent finish, 360° stretch waist, fly front, 5-pocket upper, two cargo pockets with bellows, pencil pocket, reinforced pockets and trim, gusset crotch, riveted stress points, triple-stitched, #R-WP10"
   },
   {
     "sku": "WT-37",
     "name": "Hat – Everyday knit cuff toque",
-    "category": "Headwear",
+    "category": "Hats",
     "sizes": "One Size Fit All",
     "badge": "",
     "colors": [
@@ -1044,12 +1044,12 @@ export const allProducts = [
       "/wt/Product-e1735936996431.jpeg"
     ],
     "material": "",
-    "details": "100% KNIT, One Size, #C100"
+    "details": "100% knit cuff toque, one size, #C100"
   },
   {
     "sku": "WT-38",
     "name": "Men’s Tough Duck Relaxed-Fit Flex Twill Cargo Pant",
-    "category": "Pants",
+    "category": "Work Wear",
     "sizes": "28 - 46 waist",
     "badge": "",
     "colors": [],
@@ -1062,7 +1062,7 @@ export const allProducts = [
       "/wt/6010-PANT-FRONT-BLACK_resized-01.webp"
     ],
     "material": "",
-    "details": "Upgrade your workwear game with our top-selling flex twill cargo pants, beloved by tradesmen everywhere. Engineered for durability and comfort, these pants feature seven belt loops for a secure fit and stretch twill fabric that moves with you. The heavy-duty reinforced pockets are strategically positioned for easy access to your tools, while the zipper fly and triple stitching guarantee long-lasting performance. With gusset crotch reinforcement and rivets at stress points, these cargo pants are built to withstand the toughest jobs, SHELL: 9.5 oz. flex twill, 98% cotton, 2% spandex flex twill with stain-repellent finish, FEATURES: Fly front closure 5-pocket upper detailing 2 lower cargo pockets with bellows Pencil pocket at cargo pocket Pockets and trim are reinforced with heavy-duty polyester 7 belt loops Gusset crotch reinforcement Rivets and bartacks at all stress points Triple stitched, Stain Repellent Stretch (Flex) Fabric, #T-6010"
+    "details": "98/2 cotton/spandex flex twill with stain-repellent finish (9.5 oz), fly front, 5-pocket upper, two cargo pockets with bellows, pencil pocket, reinforced pockets and trim, seven belt loops, gusset crotch, rivets and bartacks at stress points, triple-stitched, #T-6010"
   },
   {
     "sku": "WT-39",
@@ -1083,7 +1083,7 @@ export const allProducts = [
       "/wt/Screenshot-2024-12-31-143512.png"
     ],
     "material": "",
-    "details": "The men’s Rigi Eco Knit Full Zip is made with an eco-friendly polyblend doubleknit fabric certified by the Global Recycled Standard (GRS) and made in a bluesign®-approved facility. From the board meeting to drinks after work, this classic style is a versatile layering piece you can wear just about anywhere. Its fabric is breathable and moisture-wicking to keep you cool and comfy all day, and it features UPF 40+ protection to keep you safe from the sun. (It’s even anti-pill, so it looks new wear after wear.) This jacket also features a self-fabric waistband and cuffs. Made with the same comfy fabric as our Rigi Eco Knit Quarter Zip. And through a partnership with 1% For The Planet, one percent of sales of all Eco products are donated to environmental nonprofits, FABRIC:, 53% Cotton/ 47% Recycled Polyester textured doubleknit, 225 g/m² (7.5 oz/yd²), #TR-18157-BLK-1"
+    "details": "53/47 cotton/recycled-polyester textured doubleknit (225 gsm / 7.5 oz), GRS-certified and bluesign-approved, breathable, moisture-wicking, UPF 40+, anti-pill, self-fabric waistband and cuffs, full-zip, #TR-18157-BLK-1"
   },
   {
     "sku": "WT-40",
@@ -1117,7 +1117,7 @@ export const allProducts = [
       "/wt/Screenshot-2024-12-31-142313.png"
     ],
     "material": "",
-    "details": "5 oz./yd2 / 172 gsm, 100% polyester face plaited to 60% polyester, 40% cotton back (total overall garment 61% polyester, 39% cotton), Proprietary dual-sided mesh pique knit constructed of fine denier wicking polyester on the outside and soft-as-cotton wicking blend on the inside, Moisture-wicking performance with UV 15-39 protection, Matching flat-knit collar, Luxury, comfort and performance in one, Three-button placket, Dyed-to-match buttons, Deco Eligible, #AB-DG20-BLK"
+    "details": "5 oz / 172 gsm dual-sided mesh pique, 100% polyester face plaited to 60/40 poly/cotton back, moisture-wicking with UPF 15-39, flat-knit collar, three-button placket with dyed-to-match buttons, #AB-DG20-BLK"
   },
   {
     "sku": "WT-41",
@@ -1144,7 +1144,7 @@ export const allProducts = [
       "/wt/Screenshot-2025-01-03-133059.png"
     ],
     "material": "",
-    "details": "8.8-oz, 100% Dri-FIT polyester with moisture management technology, Rib knit collar, 3-button placket, Tag less, Moisture wicking, Breathable, #SM-203690"
+    "details": "100% Dri-FIT polyester (8.8 oz) with moisture management, rib-knit collar, three-button placket, tagless, breathable, #SM-203690"
   },
   {
     "sku": "WT-42",
@@ -1168,7 +1168,7 @@ export const allProducts = [
       "/wt/Screenshot-2025-01-03-134254.png"
     ],
     "material": "",
-    "details": "55% cotton/45% polyester twill, 4.4 oz./yd2/150 gsm, UV protection performance, button-down collar, durable flat-felled side and underarm seams, left chest pocket, back yoke with box pleat, Deco Eligible, #AB-88194"
+    "details": "55/45 cotton/polyester twill (4.4 oz / 150 gsm), UV protection, button-down collar, flat-felled seams, left chest pocket, back yoke with box pleat, #AB-88194"
   },
   {
     "sku": "WT-43",
@@ -1190,7 +1190,7 @@ export const allProducts = [
       "/wt/Screenshot-2025-01-03-141809.png"
     ],
     "material": "",
-    "details": "The women’s Rigi Eco Knit Full Zip is made with an eco-friendly polyblend doubleknit fabric certified by the Global Recycled Standard (GRS) and made in a bluesign®-approved facility. This classic style is a versatile layering piece you can wear just about anywhere. Its fabric is breathable and moisture-wicking to keep you cool and comfy all day, and it features UPF 40+ protection to keep you safe from the sun. (It’s even anti-pill, so it looks new wear after wear.) This jacket also features a self-fabric waistband and cuffs. The women’s styling features a pleated back and diminishing self-fabric stand collar, plus shaped seams for a better fit. Made with the same comfy fabric as our Rigi Eco Knit Quarter Zip. And through a partnership with 1% For The Planet, one percent of sales of all Eco products are donated to environmental nonprofits, FABRIC:, 53% Cotton/ 47% Recycled Polyester textured doubleknit, 225 g/m² (6.6 oz/yd²), Black, Heather Grey, Dark Heather Charcoal, #TR-98157-BLK"
+    "details": "53/47 cotton/recycled-polyester textured doubleknit (225 gsm / 6.6 oz), GRS-certified and bluesign-approved, breathable, moisture-wicking, UPF 40+, anti-pill, self-fabric cuffs, pleated back, stand collar, shaped seams, full-zip, #TR-98157-BLK"
   },
   {
     "sku": "WT-44",
@@ -1212,7 +1212,7 @@ export const allProducts = [
       "/wt/Screenshot-2025-01-03-142505.png"
     ],
     "material": "",
-    "details": "7 oz/yd2 / 240 gsm, 60% cotton, 40% polyester interlock, 60% cotton, 40% polyester interlock, Open cardigan with modified shawl collar, Side inset pockets, Note: Body Width measured from Back due to design, Deco Eligible, #AB-DG481W-BLK"
+    "details": "60/40 cotton/polyester interlock (240 gsm / 7 oz), open cardigan with modified shawl collar, side inset pockets, #AB-DG481W-BLK"
   },
   {
     "sku": "WT-45",
@@ -1232,7 +1232,7 @@ export const allProducts = [
       "/wt/Screenshot-2025-01-03-142215.png"
     ],
     "material": "",
-    "details": "The women’s Rigi Eco Knit Button Cardi has versatile style you can wear anywhere. It’s made with recycled polyester doubleknit fabric certified by the Global Recycled Standard (GRS) and made in a bluesign®-approved facility. It also features a recycled pinch label and recycled, dyed-to-match buttons. (It’s even anti-pill, so it looks new wear after wear.) Its breathable fabric is moisture-wicking to keep you cool and comfy all day. It has a self-fabric collar and cuffs, plus lower patch pockets. It also features a pleated back, shirttail hem and hem side slits, plus shaped seams for a better fit. Made with the same comfy fabric as our Rigi Eco Knit Quarter Zip and Rigi Eco Knit Full Zip. And through a partnership with 1% For The Planet, one percent of sales of all Eco products are donated to environmental nonprofits, FABRIC:, 53% Cotton/ 47% Recycled Polyester textured doubleknit, 225 g/m² (6.6 oz/yd²), #TR-98150-BLK"
+    "details": "53/47 cotton/recycled-polyester textured doubleknit (225 gsm / 6.6 oz), GRS-certified and bluesign-approved, moisture-wicking, anti-pill, self-fabric collar and cuffs, lower patch pockets, pleated back, shirttail hem with side slits, dyed-to-match buttons, #TR-98150-BLK"
   },
   {
     "sku": "WT-46",
@@ -1257,7 +1257,7 @@ export const allProducts = [
       "/wt/l2045_form_angle_charcoalheather_042018.webp"
     ],
     "material": "",
-    "details": "15.7-oz, 60/40 cotton/polyester fleece, Combed and RING SPUN cotton, 3-end fleece, 60/40 cotton/polyester jersey lined hood with contrast drawstring, Thumbhole at cuffs, Tear away label for private branding, Scuba hood, Superior printing surface, Classic fit, *80/20 cotton/polyester, #SM-F2045"
+    "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined scuba hood with contrast drawstring, thumbhole cuffs, tear-away label, classic fit, #SM-F2045"
   },
   {
     "sku": "WT-47",
@@ -1282,7 +1282,7 @@ export const allProducts = [
       "/wt/Screenshot-2025-01-16-194037.png"
     ],
     "material": "",
-    "details": "With it’s trendy heather-knit design, the popular Tremblant sweater has the cozy look of a well-worn sweater – but it’s got some great functional features too, like thumb exits in the sleeves, two lower pockets, one upper chest pocket and an exit port for an earbud cord, FABRIC:, 100% Polyester sweater knit with brushed back. 305 g/m² (9 oz/yd²), LINING: 100% Polyester brushed tricot knit inner zipper flap and pocket bags, #TR-98610"
+    "details": "100% polyester sweater knit with brushed back (305 gsm / 9 oz), brushed tricot lining, thumb exits, two lower pockets, chest pocket, earbud-cord port, #TR-98610"
   },
   {
     "sku": "WT-48",
@@ -1306,7 +1306,7 @@ export const allProducts = [
       "/wt/f2045_form_front_navyheather_042018.webp"
     ],
     "material": "",
-    "details": "15.7-oz, 60/40 cotton/polyester fleece, Combed and RING SPUN cotton, 3-end fleece, 60/40 cotton/polyester jersey lined hood with contrast drawstring, Tear away label for private branding, Superior printing surface, Classic fit, *80/20 cotton/polyester, #SM-F2045-BLKHeather"
+    "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined hood with contrast drawstring, tear-away label, classic fit, #SM-F2045-BLKHeather"
   },
   {
     "sku": "WT-49",
@@ -1363,7 +1363,7 @@ export const allProducts = [
       "/wt/91569_f_fm.jpg"
     ],
     "material": "",
-    "details": "8.4 oz/SqYd, 80% ringspun US cotton, 20% polyester, 2-end ringspun cotton face fleece, Made with 80% sustainably and fairly grown USA cotton, RS Sport Grey: 75% ringspun cotton, 25% polyester, 1×1 rib with spandex cuffs and bottom band for enhanced stretch and recovery, Dropped shoulder, Double-needle topstitching throughout, Classic fit tubular body, Tear away label, Gildan’s manufacturing process utilizes 45% renewable energy, Gildan’s Community Investment Program supports education, the environment, humanitarian aid and active living in the communities we do business in, #AB-SF000"
+    "details": "80/20 ring-spun cotton/polyester 2-end face fleece (8.4 oz), 1x1 spandex rib cuffs and band, dropped shoulder, double-needle topstitching, tear-away label, classic fit, #AB-SF000"
   },
   {
     "sku": "WT-51",
@@ -1401,7 +1401,7 @@ export const allProducts = [
       "/wt/Screenshot-2025-01-03-150023.png"
     ],
     "material": "",
-    "details": "Add an extra layer of warmth with the lightweight Mercer. Featuring 100% polyester faux down insulation, an interior storm flap with chin guard and water-repellent finish, the Mercer is designed for decoration with a high-visibility back-shoulder panel. Other great features include contrast binding on the hem and arm holes for men’s. The women’s style has a dropped back hem with shaped seams and a tapered waist for a more natural fit. With trendy retail styling, the Mercer is a fashion-forward look for any brand, FABRIC, OUTERSHELL: 100% Polyester 290T woven with water resistant (600mm) coating and water repellent finish, 60 g/m² (1.8 oz/yd²). LINING: 100% Polyester 290T, #TR-19542-BLK"
+    "details": "100% polyester 290T woven shell (60 gsm / 1.8 oz) with water-resistant coating and DWR finish, 100% polyester lining, faux-down fill, interior storm flap with chin guard, contrast-bound hem and armholes, hi-vis back-shoulder panel, #TR-19542-BLK"
   },
   {
     "sku": "WT-53",
@@ -1429,7 +1429,7 @@ export const allProducts = [
       "/wt/L00545-navy-f_720x.webp"
     ],
     "material": "",
-    "details": "Features, 280 gsm – 8.3 oz./yd² – 14 oz./lin. yd solids 70% ring spun combed cotton, 30% polyester fleece heathers 60% ring spun combed cotton, 40% polyester fleece. 100% ring spun combed cotton face for superior print surface. Rib knit cuff and hem. Metal YKK front zipper closure. Tear away label, #CSW-L00545"
+    "details": "70/30 combed ring-spun cotton/polyester fleece (280 gsm), 100% cotton print face, rib-knit cuffs and hem, metal YKK zip, tear-away label, quarter-zip, #CSW-L00545"
   },
   {
     "sku": "WT-54",
@@ -1455,12 +1455,12 @@ export const allProducts = [
       "/wt/f2042_form_front_athletic-grey_112019_7.jpg"
     ],
     "material": "",
-    "details": "15.7-oz, 60/40 cotton/polyester fleece, Combed and ring spun cotton, Tear away label, *80/20 cotton/polyester, **84/12/4 cotton/polyester/viscose, #SM-F2042"
+    "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), tear-away label, quarter-zip, #SM-F2042"
   },
   {
     "sku": "WT-55",
     "name": "Men’s RUGGED FLEX – Relaxed  Fit Canvas Work Pant",
-    "category": "Pants",
+    "category": "Work Wear",
     "sizes": "28 - 46 waist",
     "badge": "",
     "colors": [
@@ -1474,12 +1474,12 @@ export const allProducts = [
       "/wt/Screenshot-2025-01-03-174300.png"
     ],
     "material": "",
-    "details": "8.5-ounce, 98% cotton / 2% spandex canvas, Built to move with Rugged Flex stretch technology, Made with a little extra room through the hips and thigh, with cuffs that fit over most work boots, Reinforced front slash pocket, Cell phone pocket, Strong sewn-on-seam belt loops, #C-102291-BLK"
+    "details": "98/2 cotton/spandex canvas (8.5 oz) with Rugged Flex stretch, relaxed hip and thigh, boot-cut, reinforced front slash pocket, cell-phone pocket, sewn-on belt loops, #C-102291-BLK"
   },
   {
     "sku": "WT-56",
     "name": "Cap America -Snap Back /Mesh Trucker Hat",
-    "category": "Headwear",
+    "category": "Hats",
     "sizes": "One Size",
     "badge": "",
     "colors": [
@@ -1493,12 +1493,12 @@ export const allProducts = [
       "/wt/i8502-i8502-blank-black-right-side.png"
     ],
     "material": "",
-    "details": "Retro trucker cap in black, one size, • Mid profile structured original trucker cap with shapeable pre-curved visor • Poly/spandex blend fabric with performance mesh; UV protection and moisture wicking • 110 Technology® sweatband with adjustable plastic snap back closure • Grey under visor for reflection protection and a retail finish, #i8502 Blk/Blk"
+    "details": "Mid-profile structured trucker cap, shapeable pre-curved visor, UV protection, moisture wicking, 110 Technology® sweatband, adjustable plastic snapback, grey under visor, #i8502 Blk/Blk"
   },
   {
     "sku": "WT-57",
     "name": "Hat – Everyday pompon cuff toque",
-    "category": "Headwear",
+    "category": "Hats",
     "sizes": "One Size",
     "badge": "",
     "colors": [
@@ -1510,7 +1510,7 @@ export const allProducts = [
       "/wt/Product-2-e1735847330575.jpeg"
     ],
     "material": "",
-    "details": "100% acrylic- Stretchy with great shape retention, #1202"
+    "details": "100% acrylic pompon cuff toque, stretchy with strong shape retention, #1202"
   },
   {
     "sku": "WT-58",
@@ -1543,12 +1543,12 @@ export const allProducts = [
       "/wt/download-1.png"
     ],
     "material": "",
-    "details": "10.5-ounce, 50% cotton/50% polyester blend, Loose Fit (formerly known as Original Fit) – Loose and Original labeling is a change in name only, sizing/fit does not differ. Stock may vary in labeling, Attached three-piece hood with draw-cord closure, Front hand warmer pocket, Stretchable, spandex reinforced rib-knit cuffs and waistband, Carhartt signature logo printed on the sleeve, Triple-stitched main seams, Carhartt patch sewn on the pocket, Heather Gray fiber content is 70% cotton/30% polyester, #K288"
+    "details": "50/50 cotton/polyester (10.5 oz), loose fit, three-piece drawcord hood, front hand-warmer pocket, spandex-reinforced rib cuffs and waistband, triple-stitched seams, Carhartt sleeve logo and pocket patch, #K288"
   },
   {
     "sku": "WT-59",
     "name": "Cotton Canvas Hi-Vis Vest",
-    "category": "Safety Vests",
+    "category": "Work Wear",
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [],
@@ -1559,12 +1559,12 @@ export const allProducts = [
       "/wt/1295-Black-Back-LowRes_528db392-eb8c-49fe-82a6-b18ef6aab145_720x.webp"
     ],
     "material": "",
-    "details": "Black – 330 gsm – 9.7 oz./yd2 – 16.5 oz./lin. yd 100% cotton canvas with water repellent finish. Rib knit collar and side seam inserts. Body lined with polyester sherpa fleece. Kangaroo pouch pockets. Interior chest pocket. YKK zipper. 4” hi-vis contrast band with 2” reflective tape on front and back body. Meets CSA standards, #L01295-BLA-S"
+    "details": "100% cotton canvas (330 gsm / 9.7 oz) with water-repellent finish, polyester sherpa lining, rib-knit collar and side inserts, kangaroo and interior chest pockets, YKK zipper, 4\" hi-vis band with 2\" reflective tape front and back, meets CSA, #L01295-BLA-S"
   },
   {
     "sku": "WT-60",
     "name": "6323JB Open Road® 150D Jacket High Visibility, Rainwear",
-    "category": "Safety Jackets",
+    "category": "Work Wear",
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [],
@@ -1574,12 +1574,12 @@ export const allProducts = [
       "/wt/A-New-Design-Made-with-PosterMyWall-2-1-e1736538203714.jpg"
     ],
     "material": "",
-    "details": "Adjustable wrists cuffs, Detachable snap-off hood, Multi-vented front and back for breathability, Dual reflective chest straps, Mesh lining on inside upper back for added comfort, 2 sealed outside pockets, #V-6323JB"
+    "details": "150D Open Road rainwear jacket, adjustable cuffs, detachable snap-off hood, front and back venting, dual reflective chest straps, mesh upper-back lining, two sealed pockets, #V-6323JB"
   },
   {
     "sku": "WT-61",
     "name": "Hi-Vis Quilted Freezer Jacket – Black",
-    "category": "Safety Jackets",
+    "category": "Work Wear",
     "sizes": "S - 5XL",
     "badge": "",
     "colors": [],
@@ -1589,12 +1589,12 @@ export const allProducts = [
       "/wt/A-New-Design-Made-with-PosterMyWall-3-e1736538316369.jpg"
     ],
     "material": "",
-    "details": "Freezer jacket provides the wearer great range of movement and is ideal for workers who want to be seen in low-light situations and stay warm, • Material – These Pioneer Safety Jackets promote durability with a strongly woven diamond quilted polyester material with 3.5 oz (120 GSM) insulation. The durable fabric and the double stitched StarTech® reflective tape enhance visibility in low-light conditions, • Design – The Rib knit gusseted action back allows for breathability while the black micro fleece comfort collar keeps users comfortable and insulated in cold/harsh weather, #P-5017"
+    "details": "Diamond-quilted polyester with 3.5 oz (120 gsm) insulation, double-stitched StarTech reflective tape, rib-knit gusseted action back, micro-fleece collar, #P-5017"
   },
   {
     "sku": "WT-62",
     "name": "Hi-Vis Bird’s-Eye Safety T-Shirt – Black",
-    "category": "Safety Shirts",
+    "category": "Work Wear",
     "sizes": "XS / S / M / L / XL / 2XL / 4XL / 5XL",
     "badge": "",
     "colors": [],
@@ -1604,12 +1604,12 @@ export const allProducts = [
       "/wt/A-New-Design-Made-with-PosterMyWall-1-2-e1736538424819.jpg"
     ],
     "material": "",
-    "details": "These premium moisture-wicking Bird’s-Eye safety shirts are designed to keep you visible on the job and are ideal for traffic and construction work sites, • Bird’s-Eye material is soft, breathable, and wicks away moisture to keep you dry and comfortable, • Exclusive StarTech® reflective tape enhances visibility even in low light conditions, • Comes equipped with a front chest pocket with a hook and loop closure, • Includes radiophone clip strap, #P-6992"
+    "details": "Bird's-Eye moisture-wicking knit, breathable, StarTech reflective tape, front chest pocket with hook-and-loop, radiophone clip strap, #P-6992"
   },
   {
     "sku": "WT-63",
     "name": "Hi Vis -Fairway COTTON-POLY JERSEY POLO",
-    "category": "Safety Shirts",
+    "category": "Work Wear",
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [],
@@ -1619,12 +1619,12 @@ export const allProducts = [
       "/wt/A-New-Design-Made-with-PosterMyWall-2-2-e1736538526535.jpg"
     ],
     "material": "",
-    "details": "Fairway COTTON-POLY JERSEY POLO, 4.7 oz./yd2 – 8 oz./lin. yd 50% cotton, 50% recycled polyester carbon peached jersey, Soft hand feel. Features include a self fabric collar, contrast inner collar, and side seam splits, #C-S05750"
+    "details": "50/50 cotton/recycled-polyester carbon-peached jersey (4.7 oz), soft hand, self-fabric collar with contrast inner collar, side-seam splits, #C-S05750"
   },
   {
     "sku": "WT-64",
     "name": "6421BK Viking® Cotton-Lined Safety Hoodie",
-    "category": "Safety Hoodies",
+    "category": "Work Wear",
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [],
@@ -1635,12 +1635,12 @@ export const allProducts = [
       "/wt/6942-back-hoodie-pioneer.jpg"
     ],
     "material": "",
-    "details": "2″ Vi-brance® reflective material in 4″ contrasting tape meets WCB/Worksafe/DOT configuration, Premium durable 420 grams two-layer polyester/cotton jersey knitted fleece, Cotton-lined inner fabric offers breathability and comfort, Tear-away detachable three-piece hood with drawstring and barrel-locks for improved fit, Dual reflective chest straps, Full zipper front, 2 front storage pockets, Rib knit sleeve cuffs and waistband for comfort and snug fit, #V-6421BK"
+    "details": "420 gsm two-layer polyester/cotton jersey fleece, cotton-lined, tear-away three-piece hood with drawstring and barrel-locks, dual reflective chest straps, full-zip, two front pockets, rib-knit cuffs and waistband, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #V-6421BK"
   },
   {
     "sku": "WT-65",
     "name": "6420BK Viking® Safety Fleece Hoodie",
-    "category": "Safety Hoodies",
+    "category": "Work Wear",
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [],
@@ -1651,12 +1651,12 @@ export const allProducts = [
       "/wt/6942-back-hoodie-pioneer.jpg"
     ],
     "material": "",
-    "details": "Warm full-size hood with drawstring adjustors, Dual reflective chest straps, Taffeta-lined sleeves, 2 front storage pockets, Cell phone pocket on left side of chest, Comfort snug elastic wrist and waistband, Tear away detachable hood, UPF (Ultraviolet Protection Factor) rating of 50+ blocks 98% of UV radiation from passing through the shirt, 2″ Vi-brance® reflective material in 4″ contrasting tape meets WCB/Worksafe/DOT configuration, Premium knitted polyester fleece for warmth and breathability, Anti-pill, warm, quick-drying 260 gsm polyester, #V-6420BK"
+    "details": "260 gsm anti-pill polyester fleece, full hood with drawstring, dual reflective chest straps, taffeta-lined sleeves, two front pockets, left-chest phone pocket, elastic cuffs and waistband, tear-away hood, UPF 50+, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #V-6420BK"
   },
   {
     "sku": "WT-66",
     "name": "Black Hi-Viz Micro Fleece Zip Hoodie",
-    "category": "Safety Hoodies",
+    "category": "Work Wear",
     "sizes": "S - 5XL",
     "badge": "",
     "colors": [],
@@ -1667,12 +1667,12 @@ export const allProducts = [
       "/wt/6942-back-hoodie-pioneer.jpg"
     ],
     "material": "",
-    "details": "• 7 oz (240 GSM) micro fleece, • 4-way comfort stretch• CSA Z96-22 Class 1 Level 2 and ANSI/ISEA 107-2020 Class 1 Type O• StarTech® reflective tape• Full front zipper• Detachable drawstring hood• Elastic cuffs and hem• 2 front slash pockets• 2 radiophone clip straps, #P-6942"
+    "details": "7 oz (240 gsm) micro-fleece, 4-way stretch, CSA Z96-22 Class 1 Level 2 / ANSI 107 Class 1, StarTech reflective tape, full-zip, detachable drawstring hood, elastic cuffs and hem, two slash pockets, two radiophone clip straps, #P-6942"
   },
   {
     "sku": "WT-67",
     "name": "Open Road® Surveyor Vest",
-    "category": "Safety Vests",
+    "category": "Work Wear",
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [],
@@ -1682,12 +1682,12 @@ export const allProducts = [
       "/wt/6165BK.png"
     ],
     "material": "",
-    "details": "2″ Vi-brance® reflective material in 4″ contrasting tape meets WCB/Worksafe/DOT configuration, 150 Denier polyester twill material with double hemstitched pockets and seams to increase wear resistance from washing, Built to last heavy-duty brass snaps and grommets, Mesh side vents, Dual reflective chest strapst, Cell/radio pocket with hook-and-loop fastener, Safety D-ring slot access on back, 14″ zippered pack across entire back area, 8 pockets with hook-and-loop fasteners (5 outside; 3 inside), Brass grommets on lower front pockets for surveyor tape dispenser, Long ruler slot pocket on left back, #V-6165BK"
+    "details": "150D polyester twill surveyor vest, double-hemstitched pockets and seams, brass snaps and grommets, mesh side vents, dual reflective chest straps, cell/radio pocket, D-ring slot, 14\" zippered back pack, 8 pockets (5 outer, 3 inner), ruler slot, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #V-6165BK"
   },
   {
     "sku": "WT-68",
     "name": "Women’s Hi-Vis Tricot Poly Interlock Safety Vest – Zipper Closure",
-    "category": "Safety Vests",
+    "category": "Work Wear",
     "sizes": "XS - 3XL",
     "badge": "",
     "colors": [],
@@ -1697,12 +1697,12 @@ export const allProducts = [
       "/wt/139BK.png"
     ],
     "material": "",
-    "details": "Made with a tapered waist and flared bottom, these safety vests are uniquely tailored with the woman worker in mind. Tricot polyester material provides all-day comfort while 9 pockets conveniently store all your essentials, • Specially tailored with the woman worker in mind, • Tricot polyester material delivers a soft and breathable garment, • Premium Startech® reflective tape provides maximum visibility, • Made with 9 total pockets including compartments for ID and mobile phone, • Full front zipper keeps vest secure while on the job, • Comes complete with a radiophone clip strap, #P-139BK"
+    "details": "Tricot polyester, tapered waist and flared bottom tailored for women, StarTech reflective tape, 9 pockets incl. ID and phone, full-zip front, radiophone clip strap, #P-139BK"
   },
   {
     "sku": "WT-69",
     "name": "Mesh-Back Zip-Front Surveyor’s Vest",
-    "category": "Safety Vests",
+    "category": "Work Wear",
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
@@ -1717,12 +1717,12 @@ export const allProducts = [
       "/wt/Screenshot_20230320_015134__93047.webp"
     ],
     "material": "",
-    "details": "These mesh back surveyor’s vests offer a perfect blend of durability and comfort and has all the pockets necessary to store essential tools and plans, Made with a full mesh back panel for unsurpassed breathability and comfort, Premium Startech® reflective tape provides maximum visibility in all work environments, Oxford front panel is lightweight yet durable, Includes convenient bottom pouch to store maps and plans, 12 total pockets provide added versatility while keeping valuables and tools secure, Full length zipper for quick and easy donning and doffing, Includes ID pocket with transparent window, Made with D-ring harness access on back, #P-6937"
+    "details": "Oxford front with full mesh back for breathability, StarTech reflective tape, bottom map pouch, 12 pockets, full-zip, ID pocket with window, D-ring harness access, #P-6937"
   },
   {
     "sku": "WT-70",
     "name": "6328JB Viking Handyman® 7in1 Jacket",
-    "category": "Safety Jackets",
+    "category": "Work Wear",
     "sizes": "S - 5XL",
     "badge": "",
     "colors": [],
@@ -1732,12 +1732,12 @@ export const allProducts = [
       "/wt/6328JB_89f6896e-60f9-4eeb-bf27-16261e400ac5.png"
     ],
     "material": "",
-    "details": "1/ Outer and inner jacket together via loop-to-snap connector, 2/ Outer Jacket only, 3/ Inner jacket black side, 4/ Inner jacket reverse high-vis side, 5/ Sleeveless vest black side, 6/ Sleeveless vest hi-vis side, 7/ Jacket and zip-off vest, Detachable hood with adjustable drawcord, One chest zipped pocket, two storage pockets, one inner storage pocket, and one inner cell pocket, Two side zippers for ventilation, Embroidery zipper included, Embroidery zipper included, Dual reflective chest straps, Heavy-duty zipper with storm flap for weather protection, #V-6328JB"
+    "details": "7-in-1 convertible jacket (outer, inner, reversible hi-vis, sleeveless vest, zip-off vest combinations), detachable drawcord hood, chest and storage pockets plus inner cell pocket, side zip vents, dual reflective chest straps, heavy-duty zipper with storm flap, embroidery zipper included, #V-6328JB"
   },
   {
     "sku": "WT-71",
     "name": "Hi vis Fleece unlined safety hoodie",
-    "category": "Safety Hoodies",
+    "category": "Work Wear",
     "sizes": "S - 5XL",
     "badge": "",
     "colors": [
@@ -1750,12 +1750,12 @@ export const allProducts = [
       "/wt/S494-HOODIES-BLACK-BACK_resized-01.webp"
     ],
     "material": "",
-    "details": "Stay warm and prepared on the job site with our durable and comfortable hoodie, ideal for layering. Crafted from 100% polyester anti-pill fleece with durable water-repellent finish, this hoodie offers both strength and comfort. It features 3M™ Scotchlite™ reflective material with a 2″ contrast backing for enhanced visibility, along with a full zip front closure and quick-release hood with adjustable drawcord for convenience. Complete with lower pouch pockets, rib-knit cuffs, this hoodie combines functionality with rugged style, perfect for active work environments, SHELL: 100% polyester anti-pill fleece, 280 GSM with durable water-repellent finish, FEATURES: 3M™ 2″ Reflective Material with 4″ contrast backing Full-zipper front closure Quick-release hood with snaps and adjustable drawcord Lower pouch pockets Rib-knit cuffs and waist, #R-S494"
+    "details": "100% polyester anti-pill fleece (280 gsm) with DWR finish, 3M Scotchlite 2\" reflective on 4\" contrast backing, full-zip, quick-release hood with snaps and drawcord, lower pouch pockets, rib-knit cuffs and waist, #R-S494"
   },
   {
     "sku": "WT-72",
     "name": "Hi-Vis quilted vest",
-    "category": "Safety Vests",
+    "category": "Work Wear",
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
@@ -1772,7 +1772,7 @@ export const allProducts = [
   {
     "sku": "WT-73",
     "name": "Hi Vis Men’s Ultra cotton long sleeve Pocket t-shirt",
-    "category": "Safety Shirts",
+    "category": "Work Wear",
     "sizes": "XS - 4XL",
     "badge": "",
     "colors": [
@@ -1784,12 +1784,12 @@ export const allProducts = [
       "/wt/2400.png"
     ],
     "material": "",
-    "details": "Comes with 2″ silver heat-transferred tapes on arms, 2″ Vertical heat transferred tape on front and diagonal “X” pattern on back, 100% Pre-shrunk cotton T-shirt ensuring maximum breathability and comfort, Reinforced back, neck and shoulder seams for increased durability, Seamless ribbed neck, #G-2400"
+    "details": "100% pre-shrunk cotton long-sleeve pocket tee, 2\" silver heat-transfer tape on arms and front with diagonal X on back, reinforced neck and shoulder seams, seamless ribbed neck, #G-2400"
   },
   {
     "sku": "WT-74",
     "name": "Hi-Vis ultra cotton pocketed t-shirt",
-    "category": "Safety Shirts",
+    "category": "Work Wear",
     "sizes": "S - 5XL",
     "badge": "",
     "colors": [
@@ -1801,7 +1801,7 @@ export const allProducts = [
       "/wt/2300.png"
     ],
     "material": "",
-    "details": "Comes with 2″ silver heat-transferred tapes on arms, 2″ Vertical heat transferred tape on front and diagonal “X” pattern on back, 100% Pre-shrunk cotton T-shirt ensuring maximum breathability and comfort, Reinforced back, neck and shoulder seams for increased durability, Seamless ribbed neck, #G-2300"
+    "details": "100% pre-shrunk cotton pocket tee, 2\" silver heat-transfer tape on arms and front with diagonal X on back, reinforced neck and shoulder seams, seamless ribbed neck, #G-2300"
   },
   {
     "sku": "WT-75",
@@ -1821,7 +1821,7 @@ export const allProducts = [
       "/wt/womens-side.jpg"
     ],
     "material": "",
-    "details": "SAFETY TOE SHOES: Designed with Toe Protect technology, New Balance Cremorne shoes provide superior protection in a fashionable and modern package that doesnt compromise on comfort or style. COMFORT WHILE YOU WORK: Featuring Fresh Foam technology, Cremorne work sneakers are exceptionally comfortable and offer support no matter how long youre on your feet. WORKSITE READY: With a composite safety toe, electrical hazard defense and heat resistance, the Cremorne offers excellent protection against workplace hazards. The slip-resistant outsole ensures you have the confidence to get the job done. DURABLE, CONVENIENT CONSTRUCTION: Cremorne safety sneakers are extremely durable and feature debris-free construction and wicking mesh lining to keep your feet dry and comfortable throughout the day. ATHLETIC-INSPIRED DESIGN: With its vibrant, athletic-inspired design, the Cremorne CT appeals to those who value both functionality and fashion. Security-friendly design delivers hassle-free travel, #NBWUFCCEHBG"
+    "details": "New Balance Cremorne low, composite safety toe, Fresh Foam cushioning, slip- and heat-resistant outsole, electrical-hazard rated, wicking mesh lining, women's, #NBWUFCCEHBG"
   },
   {
     "sku": "WT-76",
@@ -1841,7 +1841,7 @@ export const allProducts = [
       "/wt/thumbnail_shoe-sheet.png"
     ],
     "material": "",
-    "details": "Lightweight Composite Toe Safety CSA Shoe, The Men’s New Balance Fresh Foam Cremorne Work Shoe brings high-performance innovation to the industrial footwear space, delivering unparalleled comfort, protection, and durability. Engineered with Fresh Foam midsole technology, this work shoe provides superior cushioning, support, and flexibility, ensuring all-day comfort for demanding jobs. The slip- and heat-resistant outsole, composite toe, and ESR protection offer advanced safety features without sacrificing a lightweight feel. Designed for versatility, it includes a reinforced heel counter for stability, a heel and tongue pull tab for easy wear, and an NB ETPU comfort insert for enhanced underfoot support, The advanced anti-perforation midsole, crafted from one of the world’s top high-performance fibers, offers exceptional strength—ten times greater than high-quality steel—while remaining lightweight, water-resistant, and highly durable. With a sleek, modern design and long-lasting construction, the Fresh Foam Cremorne is the perfect choice for those who refuse to compromise on comfort or safety, #NB-MCFCEHPBG SHOE"
+    "details": "New Balance Fresh Foam Cremorne low, composite toe, CSA-approved, Fresh Foam midsole, slip- and heat-resistant outsole, ESR protection, reinforced heel counter, ETPU comfort insert, lightweight anti-perforation midsole, men's, #NB-MCFCEHPBG SHOE"
   },
   {
     "sku": "WT-77",
@@ -1861,7 +1861,7 @@ export const allProducts = [
       "/wt/hiker-side-turn.jpg"
     ],
     "material": "",
-    "details": "Lightweight Composite Toe Safety CSA Shoe, The Men’s New Balance Fresh Foam Cremorne MID Work Shoe brings cutting-edge performance and protection to the workplace, combining advanced Fresh Foam midsole technology with a durable mid-cut design for enhanced ankle support. Engineered for all-day comfort, it delivers superior cushioning, flexibility, and stability, ensuring you stay comfortable even during long shifts. The composite toe, slip- and heat-resistant outsole, and ESR protection provide top-tier safety without adding unnecessary weight. A padded collar offers extra support, while the NB ETPU comfort insert enhances underfoot cushioning, Designed for durability, the anti-perforation midsole—crafted from one of the world’s leading high-performance fibers—offers exceptional strength, water resistance, and abrasion protection. With a sleek, modern design and rugged construction, the Fresh Foam Cremorne MID is the ideal choice for those who demand both safety and style in their work footwear, #NB MCFCMEHP-B"
+    "details": "New Balance Fresh Foam Cremorne mid, composite toe, CSA-approved, Fresh Foam midsole, mid-cut ankle support, slip- and heat-resistant outsole, ESR protection, padded collar, ETPU comfort insert, anti-perforation midsole, men's, #NB MCFCMEHP-B"
   },
   {
     "sku": "WT-78",
@@ -1879,7 +1879,7 @@ export const allProducts = [
       "/wt/Screenshot-2025-01-15-194530.png"
     ],
     "material": "",
-    "details": "Asymmetrical steel safety toe, Electric shock resistant sole, Timberland PRO® Flex Technology sole featuring anatomically positioned flex grooves, Steel puncture-resistant plate, Lightweight and shock absorbing injection molded EVA sole with an angled sidewall which delivers a comfortable and supportive foundation, 24/7 Comfort Platform absorption and energy return, Breathable, durable mesh upper with abrasion-resistant reinforcements, Microban technology provides an extra layer of protection on footwear fabrics to help against unpleasant odors, stains, and deterioration, Cement construction for flexibility, Imported, #TB0A5ZX3001"
+    "details": "Timberland PRO Intercept, asymmetrical steel toe, EH-resistant sole, PRO Flex grooved sole, steel puncture plate, injection-molded EVA midsole, breathable abrasion-resistant mesh upper, Microban treatment, cement construction, #TB0A5ZX3001"
   },
   {
     "sku": "WT-79",
@@ -1901,7 +1901,7 @@ export const allProducts = [
       "/wt/timberland-pro-women-s-intercept-steel-toe-steel-plate-athletic-safety-shoes-d0c2b7d4-aa39-48ba-a6ea-3d04ab0baf50-jpgrendition.jpg"
     ],
     "material": "",
-    "details": "Built on a women’s specific last for optimal fit and comfort, Asymmetrical steel safety toe, Electric shock resistant sole, Timberland PRO® Flex Technology sole featuring anatomically positioned flex grooves, Steel puncture-resistant plate, Lightweight and shock absorbing injection molded EVA sole with an angled sidewall which delivers a comfortable and supportive foundation, 24/7 Comfort Platform absorption and energy return, Breathable, durable mesh upper with abrasion-resistant reinforcements, Microban technology provides an extra layer of protection on footwear fabrics to help against unpleasant odors, stains, and deterioration, Cement construction for flexibility, Imported, #TB0A632U001"
+    "details": "Timberland PRO Intercept on a women's last, asymmetrical steel toe, EH-resistant sole, PRO Flex grooved sole, steel puncture plate, injection-molded EVA midsole, breathable abrasion-resistant mesh upper, Microban treatment, cement construction, #TB0A632U001"
   },
   {
     "sku": "WT-80",
@@ -1921,7 +1921,7 @@ export const allProducts = [
       "/wt/size-guide-combo-adult-youth_1_.webp"
     ],
     "material": "",
-    "details": "Weatherproof leather upper, Fused seamlessly into a non-slip PU sole, CSA approved Green Patch steel toe protection, Slip-on, kick-off convenience makes them the easiest safety boots to work with, Lightweight & durable with round toe for comfort, Kevlar shank in the sole, Durable TPU outsole, UK SIZING – Medium width- Please see size conversion chart, Oversize UK 13/ USA 14 is available under item ID 163-X, Leather, Leather Lining, Cushioned Insole, CSA Safety Approved, Moulded Insole, PU Sole, Removable Footbed, Slip Resistant Sole, #Blundstone 163"
+    "details": "Blundstone 163, weatherproof leather upper fused to non-slip PU sole, CSA Green Patch steel toe, Kevlar shank, TPU outsole, removable cushioned footbed, slip-on, UK sizing, #Blundstone 163"
   },
   {
     "sku": "WT-81",
@@ -1942,7 +1942,7 @@ export const allProducts = [
       "/wt/size-guide-combo-adult-youth_1_.webp"
     ],
     "material": "",
-    "details": "6-inch boot height, CSA Grade 1 protective toe cap, Weatherproof leather is an industry-leading 2.5 mm thick, yet ‘breathes’ for absolute comfort, Dual-density polyurethane midsole and thermo-polyurethan (TPU) outsole: weatherproof, durable, lightweight and provides reliable certified traction, XRD® footbed for all-day comfort and support, Puncture resistant mid-soles by Lenzi: lighter, safer, more flexible, more comfortable and warmer than steel, Injection molded soles — no adhesives to come unglued, no stitching to rot, Heat, slip, oil, acid and electric shock-resistant sole, Heat-formed heel for a snug fit, Comfort EVA removable footbed with XRD® in the heel pad, Unisex sizing, #Blundstone 180"
+    "details": "Blundstone 180, 6\" height, CSA Grade 1 toe cap, 2.5mm weatherproof breathable leather, dual-density PU midsole with TPU outsole, Lenzi puncture-resistant midsole, XRD footbed, heat/slip/oil/acid/EH-resistant sole, injection-molded, unisex, #Blundstone 180"
   },
   {
     "sku": "WT-82",
@@ -1962,7 +1962,7 @@ export const allProducts = [
       "/wt/size-guide-combo-adult-youth_1_.webp"
     ],
     "material": "",
-    "details": "Introducing the XFR 962 CSA Approved Work & Safety Boot in Waxy Rustic Brown from Blundstone Canada. The Blundstone XFR Safety Boot has a thicker, stronger, and grippy rubber lug sole that provides long-lasting comfort and stability in all seasons. Arched insoles protect your bones and knuckles by absorbing up to 90% of heel impact. Boots with a steel toe cap with a rubber toe protect the leather and increase the life of the boots. A work boot that protects itself while protecting you! Easy-to-slip work boots that won’t let you down. Chelsea boot height. The legendary Blundstone comfort, #Blundstone 962 XFR"
+    "details": "Blundstone XFR 962, CSA-approved, waxy rustic brown, steel toe with rubber toe guard, thick grippy rubber lug sole, arched impact-absorbing insole, Chelsea height, #Blundstone 962 XFR"
   }
 ];
 
