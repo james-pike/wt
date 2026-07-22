@@ -1032,8 +1032,12 @@ export default component$(() => {
                 </button>
               </div>
             )}
-            <button class="hamburger-btn" onClick$={() => (menuOpen.value = !menuOpen.value)} aria-label="Menu">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M3 6h18"/><path d="M3 18h18"/></svg>
+            <button class={`hamburger-btn ${menuOpen.value ? "hamburger-btn--open" : ""}`} onClick$={() => (menuOpen.value = !menuOpen.value)} aria-label={menuOpen.value ? "Close menu" : "Menu"}>
+              {menuOpen.value ? (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+              ) : (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M3 6h18"/><path d="M3 18h18"/></svg>
+              )}
             </button>
           </nav>
         </div>
@@ -1044,15 +1048,22 @@ export default component$(() => {
         <div class="nav-drawer-overlay" onClick$={() => (menuOpen.value = false)}>
           <nav class="nav-drawer" onClick$={(e) => e.stopPropagation()}>
             {/* Orange strip at the top of the menu takeover — the same "sign" bar
-                the catalog tabs, breadcrumb and cart header use. */}
+                the catalog tabs, breadcrumb and cart header use. The close (X) is
+                the header hamburger, which toggles to an X while the menu is open
+                (like the cart button), so this strip carries no redundant close. */}
             <div class="nav-drawer__header">
               <span class="nav-drawer__title">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M3 6h18"/><path d="M3 18h18"/></svg>
                 {t("nav.menu", locale.value)}
               </span>
-              <button class="nav-drawer__close" onClick$={() => (menuOpen.value = false)} aria-label="Close">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
-              </button>
+              {/* Logout rides the right end of the orange strip (moved out of a
+                  separate footer). */}
+              <Form action={logoutAction} reloadDocument class="nav-drawer__header-logout-form">
+                <button type="submit" class="nav-drawer__header-logout" aria-label={t("login.logout", locale.value)}>
+                  <span>{t("login.logout", locale.value)}</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                </button>
+              </Form>
             </div>
             <div class="nav-drawer__links">
               <Link href="/" class={`nav-drawer__link ${loc.url.pathname === "/" ? "active" : ""}`} onClick$={() => (menuOpen.value = false)}>
@@ -1126,14 +1137,6 @@ export default component$(() => {
                   </Accordion.Root>
                 );
               })()}
-            </div>
-            <div class="nav-drawer__footer">
-              <Form action={logoutAction} reloadDocument>
-                <button type="submit" class="nav-drawer__locale nav-drawer__logout">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-                  {t("login.logout", locale.value)}
-                </button>
-              </Form>
             </div>
           </nav>
         </div>

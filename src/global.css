@@ -1676,8 +1676,9 @@ body:has(.nav-drawer-overlay) .site-header {
     inset: 0;
     left: 0;
     width: 100%;
-    /* The white ring the off-white card body sits in. */
-    background: var(--ce-white);
+    /* Greige surround so the side margins around the card read greige, matching
+       the cart and the apparel/product routes (not a full-width white sheet). */
+    background: var(--ce-greige) !important;
     box-shadow: none;
     /* Just appears — no slide-in. */
     animation: none;
@@ -1717,6 +1718,27 @@ body:has(.nav-drawer-overlay) .site-header {
     letter-spacing: 0.02em;
     text-transform: uppercase;
   }
+  /* Logout on the right end of the orange strip — white text/icon on the sign,
+     no box (rides the bar like the other strip labels). */
+  .nav-drawer__header-logout-form { display: flex; align-items: center; }
+  .nav-drawer__header-logout {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 2px;
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .nav-drawer__header-logout svg { stroke: #fff; }
+  .nav-drawer__header-logout:hover { color: var(--wt-orange-hi); }
+  .nav-drawer__header-logout:hover svg { stroke: var(--wt-orange-hi); }
   .nav-drawer__close {
     background: none;
     width: auto;
@@ -1725,11 +1747,16 @@ body:has(.nav-drawer-overlay) .site-header {
     color: rgba(255, 255, 255, 0.85);
   }
   .nav-drawer__close:hover { color: #fff; background: none; }
-  /* Links on the off-white card body, inset like the cart's items. */
+  /* Links on the off-white card body, inset like the cart's items, with the same
+     white ring + gray edge sitting in the greige margin. */
   .nav-drawer__links {
     background: var(--ce-off-white);
     margin: var(--wt-seam) var(--wt-box-my) var(--wt-box-my);
     padding: 0.5rem;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.10),
+      0 0 0 3px var(--ce-white),
+      0 0 0 4px rgba(0, 0, 0, 0.06);
   }
 }
 @media (min-width: 601px) and (max-width: 1024px) {
@@ -2299,7 +2326,7 @@ body:has(.nav-drawer-overlay) .site-header {
   .nav-drawer__link, .nav-drawer__cat-trigger { padding: 9px 10px; }
   .nav-drawer__cat-content .nav-drawer__cat-item { padding: 7px 6px 7px 14px; }
   .nav-drawer__links, .nav-drawer__footer { padding: 2px 3px; }
-  .nav-drawer__header { margin: 0.1rem 3px 0; }
+  .nav-drawer__header { margin: 0 var(--wt-box-my); }
 }
 .nav-drawer__cat-item {
   display: flex;
@@ -4286,7 +4313,9 @@ body:has(.home-catalog) .site-header .cart-btn .cart-btn__label { color: #ffffff
      bottom (the .home-catalog__header height in the phone block above). */
   /* font-size matches the catalog tab labels (0.95rem, set in the 900px
      block) so the two strips read as the same bar across routes. */
-  .pdp-breadcrumb { top: 48px; font-size: 1.05rem; height: 44px; padding: 0; overflow: hidden; border-radius: 0; margin: 0; }
+  /* font-size a touch smaller (was 1.05rem) — the same slight reduction applied
+     to the catalog tab labels, so the two strips stay in step. */
+  .pdp-breadcrumb { top: 48px; font-size: 0.97rem; height: 44px; padding: 0; overflow: hidden; border-radius: 0; margin: 0; }
   .pdp-breadcrumb__link, .pdp-breadcrumb__sku { padding: 0 10px; }
 }
 
@@ -7283,14 +7312,32 @@ details[open] > .cart-drawer__checkout-title::after {
     inset: 0;
     width: 100%;
     /* Greige surround (like the apparel route's html background) so the side
-       margins around the card read greige, not white. */
-    background: var(--ce-greige);
+       margins around the card read greige, not white. !important because the
+       base `.drawer.cart-drawer` rule (same specificity, later in the source)
+       otherwise wins and paints it white — which is what left the margins white. */
+    background: var(--ce-greige) !important;
     box-shadow: none;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
   }
   .cart-drawer__site-header { display: none; }
+  /* White ring + gray edge around each content card, sitting in the greige
+     margin — the "white strip with a gray edge before the greige background"
+     the header, apparel and product cards carry. From the card edge outward:
+     1px inner gray hairline, a 2px white strip, then a 1px outer gray edge, and
+     the rest of the 6px margin stays greige. Excludes the orange strips (which
+     connect to the header via the greige seam, like the tab bar/breadcrumb). */
+  .cart-drawer__items,
+  .cart-drawer__summary,
+  .checkout-modal__form,
+  .cart-drawer__empty,
+  .cart-drawer__footer {
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.10),
+      0 0 0 3px var(--ce-white),
+      0 0 0 4px rgba(0, 0, 0, 0.06);
+  }
 }
 
 /* ===== 404 page ===== */
@@ -8857,22 +8904,13 @@ details[open] > .cart-drawer__checkout-title::after {
 }
 .pdp-breadcrumb > :last-child::after { display: none; }
 
-/* ---- Mobile menu drawer: the sign treatment — textured orange surface
-   (like the tab bar) with a dark textured brand bar on top (like the header)
-   and the white cut-out slot between them. White link cards float on it. ---- */
+/* ---- Mobile menu: a full-screen card view (see the @media block near the top
+   of this file). Greige surround so the side margins match the cart and the
+   apparel/product routes; the orange MENU strip and off-white links card sit
+   inside it. (This replaces the old orange side-drawer "sign" surface.) ---- */
 .nav-drawer {
-  background:
-    var(--wt-iron) left top / 100% auto repeat,
-    var(--wt-orange) !important;
-  box-shadow:
-    4px 0 24px rgba(0,0,0,0.25),
-    inset -6px 0 8px -5px rgba(62, 24, 2, 0.5),
-    inset 6px 0 8px -5px rgba(62, 24, 2, 0.5),
-    /* Top + bottom pressed-sign shading so the whole drawer reads as one
-       recessed sign face (like the header/tab bar), not a flat orange fill —
-       a seam under the header at the top, and the face closed at the bottom. */
-    inset 0 7px 9px -5px rgba(62, 24, 2, 0.45),
-    inset 0 -7px 9px -5px rgba(62, 24, 2, 0.45) !important;
+  background: var(--ce-greige) !important;
+  box-shadow: none !important;
 }
 /* Link + category rows read as white panels PRESSED into the orange sign —
    the same engraved treatment the product panels use (hairline rim, inset top
@@ -8900,32 +8938,9 @@ details[open] > .cart-drawer__checkout-title::after {
     inset 0 1px 2px rgba(0,0,0,0.06),
     inset 0 -1px 0 rgba(255,255,255,0.55);
 }
-.nav-drawer__header {
-  position: relative;
-  margin: 0 0 7px !important;
-  padding: 0.15rem 0.25rem 0.15rem 0.15rem;
-  background:
-    var(--wt-iron) left top / 100% auto no-repeat,
-    linear-gradient(var(--wt-box), var(--wt-box)),
-    var(--wt-orange);
-}
-/* Close button rides ON the dark bar — no white card box. */
-.nav-drawer__close {
-  background: transparent !important;
-  color: rgba(255,255,255,0.9) !important;
-}
-.nav-drawer__close:hover { background: rgba(255,255,255,0.12) !important; color: #fff !important; }
-/* The slot, same shape as the header's: angled left tip, straight right. */
-.nav-drawer__header::after {
-  content: '';
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: -4.5px;
-  height: 1.6px;
-  background: #ffffff;
-  clip-path: polygon(0% 100%, 0.6% 0%, 100% 19%, 100% 100%);
-}
+/* The old orange side-drawer header/close/slot treatment is superseded by the
+   full-screen menu styling in the @media (max-width: 1024px) block near the top
+   of this file; nothing to add here. */
 .nav-drawer__brand--img {
   background: transparent !important;
   padding: 4px 6px !important;
@@ -9836,9 +9851,35 @@ details[open] > .cart-drawer__checkout-title::after {
   .site-header__logo-white { height: 38px; }
   .site-header .brand-apparel { font-size: 0.92rem; margin-left: -2.35rem; }
 }
+/* iPhone SE (375px) and narrower: the three 46px icon squares plus the logo can
+   overflow and clip the last button. Shrink the squares (kept square, just
+   smaller) and drop the header's side padding so the cluster fits without
+   running off the right edge — the buttons pull in toward the logo rather than
+   overflow. */
+@media (max-width: 384px) {
+  .site-header .cart-btn,
+  .site-header .site-header__search-btn,
+  .site-header .hamburger-btn {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .cart-btn svg,
+  .hamburger-btn svg,
+  .site-header__search-btn svg { width: 22px !important; height: 22px !important; }
+  .site-header__inner { padding-left: 1px !important; padding-right: 1px !important; }
+}
 @media (max-width: 359px) {
   .site-header__logo-white { height: 32px; }
   .site-header .brand-apparel { font-size: 0.82rem; margin-left: -1.95rem; }
+  .site-header .cart-btn,
+  .site-header .site-header__search-btn,
+  .site-header .hamburger-btn {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .cart-btn svg,
+  .hamburger-btn svg,
+  .site-header__search-btn svg { width: 20px !important; height: 20px !important; }
 }
 
 /* ---- Desktop: My Cart reads as an actual button, like mobile ----
