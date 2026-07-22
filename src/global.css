@@ -7258,16 +7258,11 @@ details[open] > .cart-drawer__checkout-title::after {
      0.92rem/500 size. Sticky so it pins under the header while the form scrolls,
      matching the cart. */
   .cart-drawer__back-btn {
-    /* A <button> shrinks to its content even as a block-level flex box, so it
-       needs an explicit width to fill the strip like the other bars (div-based
-       strips fill on their own). */
-    width: calc(100% - 2 * var(--wt-box-my));
     box-sizing: border-box;
     justify-content: flex-start;
     gap: 8px;
     height: 44px;
     padding: 0 0.75rem;
-    margin: 0 var(--wt-box-my);
     color: #fff;
     font-size: 0.92rem;
     font-weight: 500;
@@ -7281,13 +7276,20 @@ details[open] > .cart-drawer__checkout-title::after {
       inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
       inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
       inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
-    position: sticky;
-    top: 0;
-    z-index: 3;
+    /* FIXED to the viewport (top 64px, under the header) — not sticky in the
+       scrolling form — so the touch overscroll bounce can't drag it away from
+       the header. left/right set the width and the card inset; the form is
+       padded by the strip height so it starts just below it. Mirrors the cart's
+       PRODUCT strip and the tab bar / breadcrumb. */
+    position: fixed;
+    top: 64px;
+    left: var(--wt-box-my);
+    width: calc(100vw - 2 * var(--wt-box-my));
+    z-index: 100;
   }
   .cart-drawer__back-btn svg { stroke: #fff; }
   .cart-drawer__back-btn:hover { color: #fff; }
-  .cart-drawer__details-step { padding-top: 0; }
+  .cart-drawer__details-step { padding-top: 44px; }
   .cart-drawer__checkout[open] { gap: 0.5rem; }
   .checkout-modal__field label { margin-bottom: 0.1rem; font-size: 0.65rem; }
   .checkout-modal__field input,
@@ -10898,17 +10900,22 @@ body:has(.product-fullscreen) { overflow: hidden; }
      <tr>; now that thead is a block and the tr is a grid (not a collapsed
      table-row), position:sticky on the tr holds and its background travels with
      it. */
-  .cart-drawer__items { padding-top: 0; }
-  /* Stick the whole <thead> block (not its <tr>): a sticky element can only
-     travel within its parent, and the thead's parent is the full-height table
-     block, whereas the tr's parent (thead) is only strip-tall — so a sticky tr
-     scrolls straight off. The tr's orange+texture background rides along inside
-     it. */
+  /* The strip is FIXED to the viewport (top 64px, under the header), NOT sticky
+     inside the scrolling list. A sticky element in an inner scroller can be
+     dragged down by the touch overscroll bounce — separating it from the header.
+     Fixed anchors it to the viewport exactly like the catalog tab bar and the
+     PDP breadcrumb (both position:fixed on mobile), so it never moves. The list
+     is padded by the strip height so its first row starts just below it. */
   .cart-table thead {
-    position: sticky;
-    top: 0;
-    z-index: 3;
+    position: fixed;
+    top: 64px;
+    left: var(--wt-box-my);
+    /* Explicit width (not right:) — the table gives the thead width:100%, which
+       would win over `right` and overflow the viewport by the inset. */
+    width: calc(100vw - 2 * var(--wt-box-my));
+    z-index: 100;
   }
+  .cart-drawer__items { padding-top: 44px; }
 
   /* The checkout footer is the BOTTOM of the same card, not a separate floating
      bar. It was inset only 2px (vs the 6px card body) on a white fill, sitting
