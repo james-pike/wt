@@ -13,6 +13,7 @@ const translations = {
   // Header nav
   "logo.apparel": { en: "Apparel", fr: "Vêtements" },
   "nav.home": { en: "Home", fr: "Accueil" },
+  "nav.menu": { en: "Menu", fr: "Menu" },
   "nav.apparel": { en: "Apparel", fr: "Vêtements" },
   "nav.shirts": { en: "Shirts", fr: "Chandails" },
   "nav.polos": { en: "Polos", fr: "Polos" },
@@ -22,6 +23,7 @@ const translations = {
   "nav.jackets": { en: "Jackets", fr: "Manteaux" },
   "nav.safety": { en: "Safety", fr: "Sécurité" },
   "search.placeholder": { en: "Search apparel", fr: "Rechercher des vêtements" },
+  "search.placeholder.short": { en: "Search...", fr: "Rechercher..." },
 
   // Login modal
   "login.title": { en: "Employee Login", fr: "Connexion employé" },

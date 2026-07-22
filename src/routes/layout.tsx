@@ -425,6 +425,11 @@ export default component$(() => {
   // strip). It relays keystrokes to the catalog via an "apparel-search" event.
   const searchOpen = useSignal(false);
   const searchValue = useSignal("");
+  // Phones use a shorter search placeholder ("Search...") than desktop
+  // ("Search apparel"); placeholder text can't be swapped by CSS, so track the
+  // breakpoint here. The mobile search field is hidden until tapped, so there's
+  // no flash before this settles.
+  const narrowSearch = useSignal(false);
   // The catalog (and therefore search) is only rendered on the home page and
   // the apparel listing — not on product detail or 404 pages.
   // Search shows on the home page, the apparel listing, AND product pages. On a
@@ -690,6 +695,16 @@ export default component$(() => {
       window.removeEventListener("select-category", onCategoryChange);
       window.removeEventListener("apparel-search-clear", onCategoryChange);
     });
+  }, { strategy: 'document-ready' });
+
+  // Track the phone breakpoint so the header search can use a shorter
+  // placeholder there ("Search..." vs "Search apparel").
+  // eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(({ cleanup }) => {
+    const update = () => { narrowSearch.value = window.innerWidth <= 600; };
+    update();
+    window.addEventListener("resize", update);
+    cleanup(() => window.removeEventListener("resize", update));
   }, { strategy: 'document-ready' });
 
   // Lock scroll when menu is open
@@ -984,7 +999,7 @@ export default component$(() => {
                   type="text"
                   class="site-header__search-input"
                   aria-label="Search apparel"
-                  placeholder={t("search.placeholder", locale.value)}
+                  placeholder={narrowSearch.value ? t("search.placeholder.short", locale.value) : t("search.placeholder", locale.value)}
                   value={searchValue.value}
                   onInput$={(_, el) => {
                     searchValue.value = el.value;
@@ -1028,13 +1043,15 @@ export default component$(() => {
       {menuOpen.value && (
         <div class="nav-drawer-overlay" onClick$={() => (menuOpen.value = false)}>
           <nav class="nav-drawer" onClick$={(e) => e.stopPropagation()}>
+            {/* Orange strip at the top of the menu takeover — the same "sign" bar
+                the catalog tabs, breadcrumb and cart header use. */}
             <div class="nav-drawer__header">
-              <div class="nav-drawer__brand nav-drawer__brand--img">
-                <img src="/logo-white.png" alt="Wills Transfer" class="nav-drawer__logo-white" width="1499" height="375" />
-                <span class="brand-apparel">Apparel</span>
-              </div>
+              <span class="nav-drawer__title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M3 6h18"/><path d="M3 18h18"/></svg>
+                {t("nav.menu", locale.value)}
+              </span>
               <button class="nav-drawer__close" onClick$={() => (menuOpen.value = false)} aria-label="Close">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
               </button>
             </div>
             <div class="nav-drawer__links">

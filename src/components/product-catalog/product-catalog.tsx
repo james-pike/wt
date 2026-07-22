@@ -201,9 +201,15 @@ const ProductCard = component$<{ item: Product; sku: string; index: number }>(({
               // colour is in the declutter list, like the Royal-blue notebook),
               // fall back to the product's own colours so its swatch still shows.
               const visible = sortColorsWhiteLast(shown.length ? shown : all);
+              // Cap the swatches at 4; beyond that a "+N" chip stands in for the
+              // rest, so a product with many colours doesn't spill a long row of
+              // dots across the card.
+              const MAX_DOTS = 4;
+              const dots = visible.slice(0, MAX_DOTS);
+              const extra = visible.length - dots.length;
               return visible.length > 0 ? (
                 <div class="product-card__colors">
-                  {visible.map((c) => (
+                  {dots.map((c) => (
                     <span
                       key={c}
                       class="product-card__color-dot"
@@ -211,6 +217,9 @@ const ProductCard = component$<{ item: Product; sku: string; index: number }>(({
                       aria-hidden="true"
                     />
                   ))}
+                  {extra > 0 && (
+                    <span class="product-card__color-more" aria-label={`+${extra} more colours`}>+{extra}</span>
+                  )}
                 </div>
               ) : <span />;
             })()}

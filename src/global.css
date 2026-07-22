@@ -1657,25 +1657,83 @@ body:has(.nav-drawer-overlay) .site-header {
      header (which is identical whether the menu is open or closed). */
   z-index: 10003 !important;
 }
-/* Drop the overlay + drawer below the fixed header so the header is neither
-   covered nor darkened. Header bottom: 64px phones, 67px tablets. */
-@media (max-width: 600px) {
-  .nav-drawer-overlay { top: 64px; }
-  /* The drawer aligns with the header's dark bar, not the viewport: its LEFT
-     edge sits at the same --wt-box-my inset the header inner uses (so it lines
-     up with the sign's left edge, not the greige frame), and its RIGHT edge
-     runs to the hamburger button's left edge (52px = the button plus the
-     header's right inset). */
-  .nav-drawer { left: var(--wt-box-my); width: calc(100vw - 52px - var(--wt-box-my)); }
+/* ===== Menu takeover (mobile + tablet) =====
+   The menu is a full-screen VIEW like the cart — it appears (no side-slide),
+   covers the card and page content below the header, and reads as the same
+   sign: an orange strip on top carrying a MENU label, then the links on an
+   off-white card body inside the white ring, matching the cart and the other
+   pages. Header bottom: 64px phones, 67px tablets. */
+@media (max-width: 1024px) {
+  .nav-drawer-overlay {
+    top: 64px;
+    /* Greige surround behind the card (not a dark scrim) — the menu takes over
+       the view rather than floating over it. */
+    background: var(--wt-surround);
+    animation: fade-in 0.15s ease;
+  }
+  .nav-drawer {
+    position: absolute;
+    inset: 0;
+    left: 0;
+    width: 100%;
+    /* The white ring the off-white card body sits in. */
+    background: var(--ce-white);
+    box-shadow: none;
+    /* Just appears — no slide-in. */
+    animation: none;
+    padding: 0;
+  }
+  /* Orange strip header (un-hidden and restyled from the old logo bar): the same
+     textured orange sign + white seam the catalog tab bar / breadcrumb / cart
+     strip use. */
+  .nav-drawer__header {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    grid-template-columns: none;
+    gap: 0;
+    margin: 0 var(--wt-box-my);
+    height: 44px;
+    /* 2.2px bottom padding offsets the white seam so the MENU label and the
+       close icon centre in the orange area, not in the full cell (which left
+       them sitting ~1px low). */
+    padding: 0 0.75rem 2.2px;
+    background:
+      var(--wt-iron) left calc(-1 * (var(--wt-box-h) + var(--wt-seam))) / 100% auto no-repeat,
+      var(--wt-orange);
+    box-shadow:
+      inset 0 -2.2px 0 var(--ce-white),
+      inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
+      inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
+      inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
+  }
+  .nav-drawer__title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    font-size: 0.92rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .nav-drawer__close {
+    background: none;
+    width: auto;
+    height: auto;
+    padding: 4px;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .nav-drawer__close:hover { color: #fff; background: none; }
+  /* Links on the off-white card body, inset like the cart's items. */
+  .nav-drawer__links {
+    background: var(--ce-off-white);
+    margin: var(--wt-seam) var(--wt-box-my) var(--wt-box-my);
+    padding: 0.5rem;
+  }
 }
 @media (min-width: 601px) and (max-width: 1024px) {
   .nav-drawer-overlay { top: 67px; }
-}
-/* The drawer's own logo header duplicated the real one now that the header
-   stays visible above the menu — drop it so the links start at the top. Close
-   is still the hamburger toggle or a tap on the scrim. */
-@media (max-width: 1024px) {
-  .nav-drawer__header { display: none !important; }
 }
 
 /* ===== Home Catalog Section ===== */
@@ -2940,7 +2998,18 @@ body:has(.nav-drawer-overlay) .site-header {
 }
 .product-card__colors {
   display: flex;
+  align-items: center;
   gap: 5px;
+}
+
+/* "+N" chip standing in for colours beyond the first four, so a many-coloured
+   product shows a compact cue instead of a long row of swatches. */
+.product-card__color-more {
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ce-gray-500);
+  white-space: nowrap;
 }
 
 .product-card__color-dot {
@@ -4002,11 +4071,14 @@ body:has(.nav-drawer-overlay) .site-header {
    an actual button in the bright tab-bar orange on the darker textured header,
    instead of the old brown / transparent outline that blended in. !important
    to win over the header-state (--white / --tabs-stuck) cart rules. */
+/* The cart button reads better with NO filled background — plain white icon on
+   the orange header bar, the same as on the product page. (It used to get an
+   orange fill only on the apparel route; that inconsistency is dropped.) */
 body:has(.home-catalog) .site-header .cart-btn {
-  border: 1px solid rgba(0,0,0,0.18) !important;
-  background: var(--wt-orange) !important;
+  border: none !important;
+  background: transparent !important;
   color: #ffffff !important;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 1px 2px rgba(0,0,0,0.25) !important;
+  box-shadow: none !important;
 }
 body:has(.home-catalog) .site-header .cart-btn svg { stroke: #ffffff !important; }
 body:has(.home-catalog) .site-header .cart-btn .cart-btn__label { color: #ffffff !important; }
@@ -7136,7 +7208,10 @@ details[open] > .cart-drawer__checkout-title::after {
   .cart-drawer__close-desktop { display: none; }
   .cart-drawer__items { padding: 0.2rem 0.75rem; margin: 0 2px 2px; border-radius: 0; }
   .cart-drawer__summary { margin: 0 2px 2px; border-radius: 0; }
-  .checkout-modal__form { margin: 2px; border-radius: 0; }
+  /* Match the 6px card inset used by the back bar / summary above it, so the
+     greige margin is uniform down the whole checkout card, and the same
+     off-white fill as the summary/items. */
+  .checkout-modal__form { margin: 0 var(--wt-box-my) var(--wt-box-my); border-radius: 0; background: var(--ce-off-white); }
   .cart-item { padding: 0.5rem 0; gap: 0.5rem; }
   .cart-item__img { width: 48px; height: 36px; }
   .cart-item__name { font-size: 0.8rem; }
@@ -7148,7 +7223,42 @@ details[open] > .cart-drawer__checkout-title::after {
   .cart-invoice__table tbody td { padding: 0.3rem 0; }
   .cart-invoice__table tfoot td { padding: 0.4rem 0 0; }
   .cart-drawer__checkout { padding: 0.5rem 0.75rem; gap: 0; margin: 0; border-radius: 0; }
-  .cart-drawer__back-btn { width: 100%; justify-content: flex-start; background: var(--ce-white); border-bottom: 1px solid var(--ce-gray-200); height: 34px; padding: 0 0.75rem; margin: 0 2px 1px; }
+  /* Back-to-cart bar: the same orange sign strip as the cart's PRODUCT header,
+     the tab bar and the breadcrumb — full width within the card inset, 44px
+     tall, textured orange with the white seam below, white label at the shared
+     0.92rem/500 size. Sticky so it pins under the header while the form scrolls,
+     matching the cart. */
+  .cart-drawer__back-btn {
+    /* A <button> shrinks to its content even as a block-level flex box, so it
+       needs an explicit width to fill the strip like the other bars (div-based
+       strips fill on their own). */
+    width: calc(100% - 2 * var(--wt-box-my));
+    box-sizing: border-box;
+    justify-content: flex-start;
+    gap: 8px;
+    height: 44px;
+    padding: 0 0.75rem;
+    margin: 0 var(--wt-box-my);
+    color: #fff;
+    font-size: 0.92rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border: none;
+    background:
+      var(--wt-iron) left calc(-1 * (var(--wt-box-h) + var(--wt-seam))) / 100% auto no-repeat,
+      var(--wt-orange);
+    box-shadow:
+      inset 0 -2.2px 0 var(--ce-white),
+      inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
+      inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
+      inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
+    position: sticky;
+    top: 0;
+    z-index: 3;
+  }
+  .cart-drawer__back-btn svg { stroke: #fff; }
+  .cart-drawer__back-btn:hover { color: #fff; }
+  .cart-drawer__details-step { padding-top: 0; }
   .cart-drawer__checkout[open] { gap: 0.5rem; }
   .checkout-modal__field label { margin-bottom: 0.1rem; font-size: 0.65rem; }
   .checkout-modal__field input,
@@ -7172,6 +7282,9 @@ details[open] > .cart-drawer__checkout-title::after {
     position: absolute;
     inset: 0;
     width: 100%;
+    /* Greige surround (like the apparel route's html background) so the side
+       margins around the card read greige, not white. */
+    background: var(--ce-greige);
     box-shadow: none;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -8560,6 +8673,11 @@ details[open] > .cart-drawer__checkout-title::after {
     background: var(--ce-white) !important;
   }
   .home-catalog__tabs .apparel-titlebar__tab:last-child::after { display: none !important; }
+  /* The selected tab already has a 2px white gap on each side (its ::before is
+     inset), so its own right divider and the left neighbour's divider stack up
+     right beside that gap and read as a doubled line — drop both. */
+  .home-catalog__tabs .apparel-titlebar__tab.active::after,
+  .home-catalog__tabs .apparel-titlebar__tab:has(+ .apparel-titlebar__tab.active)::after { display: none !important; }
 }
 
 /* ---- Footer: the end of the sign — dark textured bar like the header,
@@ -9677,6 +9795,17 @@ details[open] > .cart-drawer__checkout-title::after {
   .hamburger-btn { padding: 13px 7px; }
   .site-header__search-btn { padding: 13px 7px; }
   .locale-btn { padding: 12px 7px; }
+  /* Perfect squares: the flatten rules pin the height to (--wt-box-h − 12px);
+     match the width to it and drop the side padding so the icon buttons are
+     square, not taller-than-wide. */
+  .site-header .cart-btn,
+  .site-header .site-header__search-btn,
+  .site-header .hamburger-btn {
+    width: calc(var(--wt-box-h) - 12px) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    justify-content: center !important;
+  }
   .site-header__nav { gap: 0; margin-right: 0; }
   .cart-btn svg,
   .hamburger-btn svg,
@@ -9689,8 +9818,10 @@ details[open] > .cart-drawer__checkout-title::after {
      step from 1.35x so the strip ends mid-label more often: a sliver of the
      next tab is the cue that the strip scrolls. */
   .home-catalog__tabs .apparel-titlebar__tab {
-    font-size: min(calc(var(--text-tab) * 1.25), 1.3rem) !important;
-    padding: 5px 10px !important;
+    /* A touch smaller than before (1.25x/1.3rem) so a bit more of the next tab
+       peeks in as a scroll cue and the labels read slightly tighter. */
+    font-size: min(calc(var(--text-tab) * 1.16), 1.2rem) !important;
+    padding: 5px 9px !important;
     letter-spacing: -0.02em !important;
   }
 }
@@ -10601,22 +10732,6 @@ body:has(.product-fullscreen) { overflow: hidden; }
    Desktop cart polish
    ============================================================ */
 @media (min-width: 1025px) {
-  /* My Cart button: rust texture over the orange, matching the tab bar /
-     breadcrumb strips (which layer --wt-iron over --wt-orange) instead of a
-     flat fill. Sized to the header/strip scale (--site-max) so the grain reads
-     the same, and offset up by the bar's top margin so it continues the header
-     bar's own texture. Resting state only — the open (active) blue and the hover
-     colour are left alone. */
-  .site-header:not(.site-header--cart-open) .cart-btn:not(:hover) {
-    background-color: var(--wt-orange) !important;
-    background-image: var(--wt-iron) !important;
-    background-size: var(--site-max) auto !important;
-    /* Same vertical sample the tab bar and breadcrumb use, so the button shows
-       the same grungy region of the texture rather than its smoother top edge. */
-    background-position: left calc(-1 * (var(--wt-box-h) + var(--wt-seam))) !important;
-    background-repeat: no-repeat !important;
-  }
-
   /* Card height follows its content instead of filling the viewport, so a
      near-empty cart doesn't leave a tall white void — the bottom edge (and its
      ring) sits just under the checkout bar. Capped at the viewport (minus the
@@ -10643,4 +10758,134 @@ body:has(.product-fullscreen) { overflow: hidden; }
   .cart-drawer__items .cart-table__subtotal-val { font-size: 1.15rem; }
   .cart-drawer__items .cart-table__subtotal-label { font-size: 1.05rem; }
   .cart-drawer__footer .cart-drawer__total { font-size: 1.1rem; }
+}
+
+/* ============================================================
+   Mobile cart
+   ============================================================ */
+@media (max-width: 600px) {
+  /* Take the cart fully out of table-column layout. The tfoot's colspan=2 cells
+     were forcing a 3-column table model that fought the grid rows — leaving both
+     the strip and the item rows short of the right edge (product ~62%, orange
+     bar stopping at ~3/4). Making the table + every section block, and every row
+     its own grid, drops that shared column model: each row spans the full width
+     independently. */
+  .cart-table,
+  .cart-table thead,
+  .cart-table tbody,
+  .cart-table tfoot { display: block; width: 100%; }
+  .cart-table thead tr,
+  .cart-table tbody tr,
+  .cart-table tfoot tr { display: grid; align-items: center; }
+
+  /* Header strip: PRODUCT on the left (1fr), TOTAL pushed to the right edge; the
+     qty column is gone (the stepper needs no label). Full width now, so the
+     orange bar matches the header above it. */
+  .cart-table thead tr { grid-template-columns: 1fr auto; }
+  /* Vertically centre the PRODUCT / TOTAL labels in the orange bar: as grid
+     items the th ignore vertical-align, so flex-centre them. The 2.2px
+     padding-bottom offsets the white divider line so the text centres in the
+     orange area above it, not in the full cell. */
+  .cart-table thead th {
+    display: flex;
+    align-items: center;
+    padding-bottom: 2.2px;
+    /* Match the tab-bar / breadcrumb labels: same size (~1.05–1.2rem), the same
+       medium weight (500, not the heavier 600), and no wide caps tracking — the
+       old 0.72rem / 600 / 0.08em uppercase read smaller AND bolder than the
+       strips on the other pages. */
+    font-size: 0.92rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  /* Hidden — must out-specify the flex rule above (both target thead th), so it
+     carries the class twice via the element+class selector. */
+  .cart-table thead th.cart-table__th-qty { display: none; }
+  .cart-table__th-product { justify-content: flex-start; text-align: left; }
+  .cart-table__th-total { justify-content: flex-end; text-align: right !important; }
+
+  /* Item row: product spans the left at 1fr (so the title gets ~2/3+), with the
+     PRICE stacked on top of the QTY stepper in a narrow right rail (matches the
+     cm storefront). */
+  .cart-table tbody tr {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "prod total"
+      "prod qty";
+    column-gap: 0.6rem;
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--ce-gray-100);
+  }
+  .cart-table tbody tr:last-child { border-bottom: none; }
+  .cart-table tbody td { border: none !important; padding: 0 !important; display: block; }
+  .cart-table__product { grid-area: prod; }
+  .cart-table__total {
+    grid-area: total;
+    text-align: right;
+    align-self: end;
+    padding-bottom: 2px !important;
+  }
+  .cart-table__qty {
+    grid-area: qty;
+    justify-self: end;
+    align-self: start;
+    padding-top: 4px !important;
+  }
+  .cart-table__qty-btn { width: 22px; height: 24px; }
+  .cart-table__qty-controls span { width: 22px; }
+  /* A smaller thumbnail + tighter gap hands more of the product column to the
+     title itself (the thumbnail was eating a third of it). */
+  .cart-table__img { width: 44px; height: 44px; }
+  .cart-table__product-row { gap: 0.55rem; }
+  /* Scale the item titles up — the wide product column has room now, and the
+     small type read as an afterthought next to the price. */
+  .cart-table__name-link { font-size: 0.95rem; line-height: 1.25; }
+  .cart-table__meta { font-size: 0.78rem; }
+
+  /* Footer summary rows (subtotal / tax / total): label left (1fr), value at the
+     right edge — colspan is irrelevant now, so the values line up under the item
+     prices. */
+  .cart-table tfoot tr { grid-template-columns: 1fr auto; padding: 0 0.75rem; }
+  .cart-table tfoot td { border: none !important; padding: 0.5rem 0 !important; display: block; }
+  .cart-table__subtotal-label { text-align: left !important; }
+  .cart-table__subtotal-val { text-align: right !important; }
+
+  /* Sticky orange strip — the header pins under the site header while the items
+     scroll beneath it, like the catalog tab bar and the PDP breadcrumb. The
+     scroll container is .cart-drawer__items, so the strip sticks to its top
+     (right under the fixed header). The orange + texture background lives on the
+     <tr>; now that thead is a block and the tr is a grid (not a collapsed
+     table-row), position:sticky on the tr holds and its background travels with
+     it. */
+  .cart-drawer__items { padding-top: 0; }
+  /* Stick the whole <thead> block (not its <tr>): a sticky element can only
+     travel within its parent, and the thead's parent is the full-height table
+     block, whereas the tr's parent (thead) is only strip-tall — so a sticky tr
+     scrolls straight off. The tr's orange+texture background rides along inside
+     it. */
+  .cart-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+  }
+
+  /* The checkout footer is the BOTTOM of the same card, not a separate floating
+     bar. It was inset only 2px (vs the 6px card body) on a white fill, sitting
+     6px below the body — so it read wider, brighter, and disconnected. Match the
+     card body: same 6px side inset, same off-white fill, and butt it straight
+     against the body (no greige gap) with a single hairline divider — the card's
+     bottom edge (6px greige) shows beneath it, mirroring the seam under the
+     header strip up top. */
+  .cart-drawer__items { margin-bottom: 0; }
+  .cart-drawer__footer {
+    margin: 0 var(--wt-box-my) var(--wt-box-my);
+    background: var(--ce-off-white);
+    border-top: 1px solid var(--ce-gray-200);
+  }
+  /* The order-summary step (details view) shares the body's fill + inset too, so
+     it sits in the card the same way instead of as a 2px white strip. */
+  .cart-drawer__summary {
+    margin: 0 var(--wt-box-my) var(--wt-box-my);
+    background: var(--ce-off-white);
+  }
 }
