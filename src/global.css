@@ -2249,7 +2249,7 @@ body:has(.nav-drawer-overlay) .site-header {
   align-items: center;
   gap: 28px;
   padding: 10px 12px;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 400;
   color: var(--ce-gray-700);
   text-transform: capitalize;
@@ -2296,7 +2296,7 @@ body:has(.nav-drawer-overlay) .site-header {
   justify-content: space-between;
   width: 100%;
   padding: 10px 12px;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 400;
   color: var(--ce-gray-700);
   background: var(--ce-white);
@@ -11856,3 +11856,31 @@ body:has(.product-fullscreen) { overflow: hidden; }
    gap directly keeps it a clean 3px at every slides-per-view. Prop is gap={0}
    so flex-basis stays at the full 100%/spv and this is the only gap applied.
    ============================================================ */
+
+/* ============================================================
+   Phones: nudge the Wills + APPAREL lockup left a few px to free space on the
+   right of the header, and let the APPAREL wordmark grow taller — there's
+   headroom in the bar. Placed last so it wins over the ≤600 / ≤767 lockup
+   rules above.
+   ============================================================ */
+@media (max-width: 600px) {
+  /* Taller APPAREL, tighter tracking so it takes less width and leaves more
+     room for the search field. */
+  .site-header .brand-apparel { font-size: 1.22rem; letter-spacing: 0; }
+  /* Close the gap between the lockup and the search field. The logo's
+     margin-right: auto (!important) otherwise eats all the free space, so the
+     search field can't grow into it and a wide gap opens instead. */
+  .site-header--search-open .site-header__logo { margin-right: 1px !important; }
+  /* Let the open search field reach closer to the bar's right edge. */
+  .site-header--search-open .site-header__search { margin-right: 0; padding-right: 2px; }
+}
+
+/* Narrow phones: step the APPAREL wordmark back down so the lockup + open
+   search field fit without overflow (the ≤600 rule scales it up to 1.22rem).
+   Placed after that rule so these win at the smaller widths. */
+@media (max-width: 409px) {
+  .site-header .brand-apparel { font-size: 1.05rem; }
+}
+@media (max-width: 360px) {
+  .site-header .brand-apparel { font-size: 0.9rem; }
+}

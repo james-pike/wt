@@ -1127,7 +1127,7 @@ export default component$(() => {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
               </button>
             )}
-            <button class={`cart-btn ${cart.items.length > 0 ? "cart-btn--active" : ""}`} onClick$={() => { cartOpen.value = !cartOpen.value; if (!cartOpen.value) checkoutStep.value = "cart"; }}>
+            <button class={`cart-btn ${cart.items.length > 0 ? "cart-btn--active" : ""}`} onClick$={() => { cartOpen.value = !cartOpen.value; if (cartOpen.value) menuOpen.value = false; if (!cartOpen.value) checkoutStep.value = "cart"; }}>
               <span class="cart-btn__label">{t("cart.mycart", locale.value)}</span>
               {cartOpen.value ? (
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
@@ -1189,7 +1189,7 @@ export default component$(() => {
                 </button>
               </div>
             )}
-            <button class={`hamburger-btn ${menuOpen.value ? "hamburger-btn--open" : ""}`} onClick$={() => (menuOpen.value = !menuOpen.value)} aria-label={menuOpen.value ? "Close menu" : "Menu"}>
+            <button class={`hamburger-btn ${menuOpen.value ? "hamburger-btn--open" : ""}`} onClick$={() => { menuOpen.value = !menuOpen.value; if (menuOpen.value) cartOpen.value = false; }} aria-label={menuOpen.value ? "Close menu" : "Menu"}>
               {menuOpen.value ? (
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
               ) : (
