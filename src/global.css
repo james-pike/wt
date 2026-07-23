@@ -9668,10 +9668,11 @@ details[open] > .cart-drawer__checkout-title::after {
   body::before {
     content: '';
     position: absolute;
-    /* 2px greige gutter outside the card on every side (was inset:0, i.e. the
-       card ran to the screen edge). --wt-box-my is 2px larger to match, so the
-       white ring keeps its width and the greige shows beyond it. */
-    inset: 2px;
+    /* Greige gutter outside the card on every side (was inset:0, i.e. the card
+       ran to the screen edge). --wt-box-my is larger to match, so the white ring
+       keeps its width and the greige shows beyond it. Widened to 4px so a bit
+       more greige shows around the card and its grey border. */
+    inset: 4px;
     z-index: -1;
     background: var(--ce-white);
     /* The card's corners are 6px; the ring's sit --wt-box-my outside them. */
@@ -9720,11 +9721,11 @@ details[open] > .cart-drawer__checkout-title::after {
   .site-header::before {
     content: '';
     position: absolute;
-    /* Match the 2px greige gutter on the header's top + sides; bottom stays flush
+    /* Match the greige gutter on the header's top + sides; bottom stays flush
        where the header meets the tab strip below it. */
-    top: 2px;
-    left: 2px;
-    right: 2px;
+    top: 4px;
+    left: 4px;
+    right: 4px;
     bottom: 0;
     background: var(--ce-white);
     border-radius: calc(6px + var(--wt-box-my)) calc(6px + var(--wt-box-my)) 0 0;
@@ -10099,7 +10100,10 @@ details[open] > .cart-drawer__checkout-title::after {
   .cart-btn svg,
   .hamburger-btn svg,
   .site-header__search-btn svg { width: 22px !important; height: 22px !important; }
-  .site-header__inner { padding-left: 1px !important; padding-right: 1px !important; }
+  /* Was 1px — too tight, the logo and buttons touched the bar edge on iPhone
+     SE. With APPAREL scaled down at this width there's room to restore a real
+     side inset (still a touch under the 6px wider phones use). */
+  .site-header__inner { padding-left: 4px !important; padding-right: 4px !important; }
 }
 @media (max-width: 359px) {
   .site-header__logo-white { height: 32px; }
@@ -11883,4 +11887,16 @@ body:has(.product-fullscreen) { overflow: hidden; }
 }
 @media (max-width: 360px) {
   .site-header .brand-apparel { font-size: 0.9rem; }
+}
+
+/* ============================================================
+   Phones: the whole sign card sits a touch further in, so a bit more greige
+   shows around it and its grey border. --wt-box-my (the card/bar inset) goes
+   6px → 8px; paired with the 4px greige gutter above, the white ring stays 4px
+   (8 − 4) while the greige surround grows. The mobile header height derives
+   from box-h + seam, not box-my, so the bar heights and sticky pins are
+   unchanged.
+   ============================================================ */
+@media (max-width: 600px) {
+  :root { --wt-box-my: 8px; }
 }
