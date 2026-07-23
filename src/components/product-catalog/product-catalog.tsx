@@ -3,7 +3,7 @@ import { Link } from "@builder.io/qwik-city";
 import { LocaleContext, t } from "../../i18n";
 import { allProducts, categoryLabel, colorName } from "../../routes/apparel/products";
 import type { Product } from "../../routes/apparel/products";
-import { sortColorsWhiteLast } from "../../routes/apparel/utils";
+import { sizeGroups, sortColorsWhiteLast } from "../../routes/apparel/utils";
 import { LoginTypeContext, stickyTop } from "../../routes/layout";
 import { ProductImage } from "../product-image/product-image";
 
@@ -223,7 +223,13 @@ const ProductCard = component$<{ item: Product; sku: string; index: number }>(({
                 </div>
               ) : <span />;
             })()}
-            <span class="product-card__sizes">{item.sizes === "One Size" ? t("modal.onesize", locale.value) : item.sizes}</span>
+            {/* One line per fit, so a product stocked in regular AND tall shows
+                both instead of a single run-on list (see sizeGroups). */}
+            <span class="product-card__sizes">
+              {(item.sizes === "One Size" ? [t("modal.onesize", locale.value)] : sizeGroups(item.sizes)).map((g) => (
+                <span key={g} class="product-card__sizes-line">{g}</span>
+              ))}
+            </span>
             {/* Colour names as text. Hidden in every mode but desktop Catalog,
                 where the wide horizontal card leaves the bottom-right corner
                 empty and swatches would be lost against the small thumbnail. */}

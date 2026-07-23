@@ -12,11 +12,14 @@ import {
   zod$,
 } from "@builder.io/qwik-city";
 import type { Cookie } from "@builder.io/qwik-city";
-import { Resend } from "resend";
 import { createClient } from "@libsql/client";
 import { LocaleContext, t } from "../i18n";
 import type { Locale, TranslationKey } from "../i18n";
 import { allProducts } from "./apparel/products";
+import { getGiftCard, giftContribution, deductGiftCard } from "../lib/giftcards";
+import { sendConfirmationEmail } from "../lib/orders";
+import type { OrderEmailData, PaymentMethod } from "../lib/orders";
+import { createCheckoutSession } from "../lib/stripe";
 
 const AUTH_COOKIE = "ce_auth"; // v2: orders persist to db
 const LOCALE_COOKIE = "ce_locale";
@@ -157,19 +160,23 @@ export const useLogout = routeAction$(async (_, { cookie }) => {
   return { success: true };
 });
 
-// HTML-escape user-provided strings before they go into the order email body
-function esc(s: string | undefined | null): string {
-  if (s == null) return "";
-  return String(s)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
+// Look up a gift card's balance from the checkout form (before submitting), so
+// the UI can show how much it covers and how much is left for the card.
+export const useCheckGiftCard = routeAction$(
+  async ({ code }, { env, fail }) => {
+    const tursoUrl = env.get("TURSO_URL") || env.get("VITE_TURSO_URL");
+    const tursoToken = env.get("TURSO_AUTH_TOKEN") || env.get("VITE_TURSO_AUTH_TOKEN");
+    if (!tursoUrl || !tursoToken) return fail(500, { message: "Gift cards not configured" });
+    const db = createClient({ url: tursoUrl, authToken: tursoToken });
+    const card = await getGiftCard(db, code);
+    if (!card || !card.active) return { valid: false, balance: 0 };
+    return { valid: true, balance: card.balance };
+  },
+  zod$({ code: z.string().min(1).max(64) }),
+);
 
 export const useSubmitOrder = routeAction$(
-  async (data, { fail, env, cookie }) => {
+  async (data, { fail, env, cookie, url }) => {
     if (!isAuthenticated(cookie)) {
       return fail(401, { message: "Not authenticated" });
     }
@@ -180,163 +187,241 @@ export const useSubmitOrder = routeAction$(
     const tursoUrl = env.get("TURSO_URL") || env.get("VITE_TURSO_URL");
     const tursoToken = env.get("TURSO_AUTH_TOKEN") || env.get("VITE_TURSO_AUTH_TOKEN");
     const apiKey = env.get("RESEND_API_KEY") || env.get("VITE_RESEND_API_KEY");
+    const stripeKey = env.get("STRIPE_SECRET_KEY") || env.get("VITE_STRIPE_SECRET_KEY");
 
     const { employee, items, date } = data;
+    const paymentMethod = (data.paymentMethod || "po") as PaymentMethod;
+    const wantsGift = paymentMethod === "giftcard" || paymentMethod === "giftcard_card";
+    const wantsCard = paymentMethod === "card" || paymentMethod === "giftcard_card";
 
-  const colorMap: Record<string, string> = {
-    "#00703c": "Green", "#1a1a18": "Black", "#ffffff": "White",
-    "#2c3e50": "Navy", "#94a3b8": "Silver", "#4a4a4a": "Charcoal",
-    "#8d5f18": "Bronze", "#c0392b": "Red", "#6b3fa0": "Purple",
-    "#C97B0C": "Royal", "#b8b8b8": "Grey Heather", "#7dd3fc": "Light Blue",
-    "#6b8bb0": "Solace Blue", "#8a5d3b": "Carhartt Brown",
-    "#6e6e6e": "Grey", "#ff6600": "Safety Orange",
-  };
-  const cName = (hex: string) => colorMap[hex] || hex;
-
-  const province = employee.province;
-  if (!province || !PROVINCE_TAX[province]) {
-    return fail(400, { message: "Please select a province before submitting the order." });
-  }
-  const taxRate = PROVINCE_TAX[province];
-  const taxPct = +(taxRate * 100).toFixed(3);
-  const subtotal = items.reduce((sum, i) => sum + (Number(i.price) || 0) * i.quantity, 0);
-  const tax = subtotal * taxRate;
-  const total = subtotal + tax;
-
-  // Insert order into Turso database
-  if (!tursoUrl || !tursoToken) {
-    return fail(500, { message: "Order database not configured (missing env vars)" });
-  }
-  let orderNumber = "";
-  try {
-    const db = createClient({ url: tursoUrl, authToken: tursoToken });
-    const result = await db.execute({
-      sql: `INSERT INTO orders (vendor, emp_number, emp_name, emp_dept, po_number, items, total, status, created_at, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, 'pending', datetime('now'), datetime('now'))`,
-      args: [
-        vendor,
-        "",
-        // The name IS stored, alongside the order number and items — that's
-        // how the admin knows who placed an order. Email and phone are NOT:
-        // they appear only in the confirmation email below (built from the
-        // submitted form data), never in a column here. See the privacy policy.
-        employee.name || "",
-        "",
-        employee.po || "",
-        JSON.stringify(items),
-        total,
-      ],
-    });
-    const insertedId = result.lastInsertRowid;
-    if (insertedId != null) {
-      const seq = await db.execute({
-        sql: "SELECT COUNT(*) AS n FROM orders WHERE vendor LIKE 'wills%' AND id <= ?",
-        args: [insertedId as any],
-      });
-      const n = Number((seq.rows[0] as any)?.n) || Number(insertedId);
-      orderNumber = `WT-${n}`;
+    const province = employee.province;
+    if (!province || !PROVINCE_TAX[province]) {
+      return fail(400, { message: "Please select a province before submitting the order." });
     }
-  } catch (err) {
-    console.error("Failed to save order to database:", err);
-    return fail(500, { message: "Order could not be saved. Please try again." });
-  }
+    if (paymentMethod === "po" && !employee.po) {
+      return fail(400, { message: "A PO number is required for purchase-order checkout." });
+    }
+    const taxRate = PROVINCE_TAX[province];
+    const taxPct = +(taxRate * 100).toFixed(3);
+    const subtotal = items.reduce((sum, i) => sum + (Number(i.price) || 0) * i.quantity, 0);
+    const tax = subtotal * taxRate;
+    const total = +(subtotal + tax).toFixed(2);
 
-  // Send order confirmation email
-  if (!apiKey) {
-    console.warn("RESEND_API_KEY not configured — order saved but email not sent");
-    return { success: true };
-  }
+    if (!tursoUrl || !tursoToken) {
+      return fail(500, { message: "Order database not configured (missing env vars)" });
+    }
+    const db = createClient({ url: tursoUrl, authToken: tursoToken });
 
-  const itemRows = items.map((i: any) =>
-    `<tr>
-      <td style="padding:6px 12px;border-bottom:1px solid #eee">${esc(i.name)}${i.code ? ` <span style="color:#999;font-size:12px">${esc(i.code)}</span>` : i.sku ? ` <span style="color:#999;font-size:12px">(${esc(i.sku)})</span>` : ""}</td>
-      <td style="padding:6px 12px;border-bottom:1px solid #eee">${i.color ? esc(cName(i.color)) + " / " : ""}${esc(i.size)}</td>
-      <td style="padding:6px 12px;border-bottom:1px solid #eee;text-align:center">${i.quantity}</td>
-      <td style="padding:6px 12px;border-bottom:1px solid #eee;text-align:right">$${(((Number(i.price) || 0) * i.quantity)).toFixed(2)}</td>
-    </tr>`
-  ).join("");
+    // ---- Resolve the gift-card contribution (if any) ----
+    let giftAmount = 0;
+    let giftCode = "";
+    if (wantsGift) {
+      if (!data.giftCardCode) {
+        return fail(400, { message: "Enter a gift card code, or choose a different payment method." });
+      }
+      const card = await getGiftCard(db, data.giftCardCode);
+      if (!card || !card.active) {
+        return fail(400, { message: "Gift card not found or inactive." });
+      }
+      giftAmount = giftContribution(card, total);
+      giftCode = card.code;
+    }
+    const remaining = +(total - giftAmount).toFixed(2);
 
-  const fromAddress = env.get("RESEND_FROM") || env.get("VITE_RESEND_FROM") || "Wills Transfer <onboarding@resend.dev>";
-  // Staff notification address(es), comma-separated. The customer is the
-  // visible recipient (To); staff is BCC'd. If the customer didn't provide an
-  // email, send To staff directly so the order still arrives.
-  const staffAddresses = (env.get("ORDER_NOTIFY_TO") || env.get("VITE_ORDER_NOTIFY_TO") || "cs@safetyhouse.ca")
-    .split(",")
-    .map((a) => a.trim())
-    .filter(Boolean);
-  const customerEmail = (employee.email || "").trim();
-  const toAddresses = customerEmail ? [customerEmail] : staffAddresses;
-  const bccAddresses = customerEmail ? staffAddresses : [];
+    // Gift-card-only but the balance doesn't cover the order → they must add a card.
+    if (paymentMethod === "giftcard" && remaining > 0) {
+      return fail(400, {
+        message: `Gift card covers $${giftAmount.toFixed(2)} of $${total.toFixed(2)}. Choose "Gift card + credit card" to pay the $${remaining.toFixed(2)} balance.`,
+      });
+    }
+    const cardAmount = wantsCard ? remaining : 0;
+    if (wantsCard && cardAmount <= 0 && paymentMethod === "card") {
+      return fail(400, { message: "Order total is $0 — nothing to charge." });
+    }
+    // DEV-ONLY simulated payment: when there's no Stripe key AND we're running
+    // the dev server, the card charge is faked so the whole post-checkout flow
+    // (order finalized + email + gift-card deduction + success page) can be
+    // tested before a Stripe account exists. `import.meta.env.DEV` is compile-
+    // time false in a production build, so this branch is dead code in prod.
+    const simulateCard = !stripeKey && !!import.meta.env.DEV;
+    if (wantsCard && cardAmount > 0 && !stripeKey && !simulateCard) {
+      return fail(500, { message: "Card payments are not configured yet (missing Stripe key)." });
+    }
 
-  const html = `
-    <div style="font-family:sans-serif;max-width:600px;margin:0 auto">
-      <div style="background:#C97B0C;padding:20px 24px;border-radius:8px 8px 0 0">
-        <h1 style="color:#fff;margin:0;font-size:20px">Wills Transfer — Apparel Order</h1>
-        ${orderNumber ? `<p style="color:#ffe9c7;margin:6px 0 0;font-size:13px;letter-spacing:0.04em">Order ${esc(orderNumber)}</p>` : ""}
-      </div>
-      <div style="padding:24px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px">
-        ${orderNumber ? `<p style="margin:0 0 4px"><strong>Order #:</strong> ${esc(orderNumber)}</p>` : ""}
-        <p style="margin:0 0 4px"><strong>Date:</strong> ${esc(date)}</p>
-        <p style="margin:0 0 4px"><strong>Employee:</strong> ${esc(employee.name)}</p>
-        ${employee.email ? `<p style="margin:0 0 4px"><strong>Email:</strong> <a href="mailto:${esc(employee.email)}">${esc(employee.email)}</a></p>` : ""}
-        ${employee.phone ? `<p style="margin:0 0 4px"><strong>Phone:</strong> ${esc(employee.phone)}</p>` : ""}
-        ${employee.department ? `<p style="margin:0 0 4px"><strong>Location:</strong> ${esc(employee.department)}</p>` : ""}
-        <p style="margin:0 0 4px"><strong>Province:</strong> ${esc(PROVINCE_NAMES[province] || province)}</p>
-        ${employee.po ? `<p style="margin:0 0 4px"><strong>PO #:</strong> ${esc(employee.po)}</p>` : ""}
-        <hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0">
-        <table style="width:100%;border-collapse:collapse;font-size:14px">
-          <thead>
-            <tr style="background:#f9fafb">
-              <th style="padding:8px 12px;text-align:left">Product</th>
-              <th style="padding:8px 12px;text-align:left">Details</th>
-              <th style="padding:8px 12px;text-align:center">Qty</th>
-              <th style="padding:8px 12px;text-align:right">Total</th>
-            </tr>
-          </thead>
-          <tbody>${itemRows}</tbody>
-          <tfoot>
-            <tr>
-              <td colspan="3" style="padding:6px 12px;text-align:right">Subtotal</td>
-              <td style="padding:6px 12px;text-align:right">$${subtotal.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td colspan="3" style="padding:6px 12px;text-align:right">Tax (${esc(province)} ${taxPct}%)</td>
-              <td style="padding:6px 12px;text-align:right">$${tax.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td colspan="3" style="padding:10px 12px;text-align:right;font-weight:700">Total</td>
-              <td style="padding:10px 12px;text-align:right;font-weight:700;color:#F5A623">$${total.toFixed(2)}</td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    </div>
-  `;
+    // ---- Persist the order (status depends on whether a card charge follows) ----
+    // 'pending'          — PO / invoice, settled offline
+    // 'paid'             — gift card covered it in full
+    // 'awaiting_payment' — a Stripe card charge is required; the webhook flips it
+    //                      to 'paid' and deducts the gift card once payment lands.
+    const status = cardAmount > 0 ? "awaiting_payment" : paymentMethod === "po" ? "pending" : "paid";
+    let orderNumber = "";
+    let orderId: bigint | number | null = null;
+    try {
+      const result = await db.execute({
+        sql: `INSERT INTO orders (vendor, emp_number, emp_name, emp_dept, po_number, items, total, status, payment_method, gift_card_code, gift_amount, card_amount, created_at, updated_at)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'))`,
+        args: [
+          vendor,
+          "",
+          // The name IS stored (so the admin knows who ordered); email/phone are
+          // NOT — for card orders they travel through Stripe metadata to the
+          // webhook, never a column here. See the privacy policy.
+          employee.name || "",
+          "",
+          employee.po || "",
+          JSON.stringify(items),
+          total,
+          status,
+          paymentMethod,
+          giftCode,
+          giftAmount,
+          cardAmount,
+        ],
+      });
+      orderId = (result.lastInsertRowid as any) ?? null;
+      if (orderId != null) {
+        const seq = await db.execute({
+          sql: "SELECT COUNT(*) AS n FROM orders WHERE vendor LIKE 'wills%' AND id <= ?",
+          args: [orderId as any],
+        });
+        const n = Number((seq.rows[0] as any)?.n) || Number(orderId);
+        orderNumber = `WT-${n}`;
+      }
+    } catch (err) {
+      console.error("Failed to save order to database:", err);
+      return fail(500, { message: "Order could not be saved. Please try again." });
+    }
 
-  try {
-    const resend = new Resend(apiKey);
-    await resend.emails.send({
-      from: fromAddress,
-      to: toAddresses,
-      ...(bccAddresses.length ? { bcc: bccAddresses } : {}),
-      subject: `${orderNumber ? `${orderNumber} — ` : ""}Apparel Order — ${employee.name} — ${date}`,
-      html,
+    const provinceName = PROVINCE_NAMES[province] || province;
+    const fromAddress = env.get("RESEND_FROM") || env.get("VITE_RESEND_FROM") || "Wills Transfer <onboarding@resend.dev>";
+    const staffAddresses = (env.get("ORDER_NOTIFY_TO") || env.get("VITE_ORDER_NOTIFY_TO") || "cs@safetyhouse.ca")
+      .split(",").map((a) => a.trim()).filter(Boolean);
+
+    // Build the confirmation-email payload once (used by the no-card path and
+    // the dev simulated-card path).
+    const buildEmailData = (): OrderEmailData => ({
+      orderNumber, date,
+      employee: {
+        name: employee.name, email: employee.email, phone: employee.phone,
+        department: employee.department, provinceName, provinceCode: province, po: employee.po,
+      },
+      items: items as any,
+      subtotal, taxPct, tax, total,
+      payment: { method: paymentMethod, giftCardCode: giftCode || undefined, giftAmount, cardAmount },
     });
-  } catch (err) {
-    console.error("Failed to send order email:", err);
-    // Order was already saved — don't fail the whole action
-  }
 
-  return { success: true };
+    // ---- DEV simulated card payment (no Stripe key) ----
+    // Finalize exactly like the webhook would after a real charge, then land on
+    // the success page. Dev-only (see `simulateCard`).
+    if (cardAmount > 0 && simulateCard) {
+      if (giftAmount > 0) {
+        const ok = await deductGiftCard(db, giftCode, giftAmount);
+        if (ok) {
+          await db.execute({
+            sql: "INSERT INTO gift_card_transactions (code, amount, order_ref) VALUES (?, ?, ?)",
+            args: [giftCode, giftAmount, orderNumber],
+          });
+        }
+      }
+      await db.execute({
+        sql: "UPDATE orders SET status = 'paid', paid_at = datetime('now') WHERE id = ?",
+        args: [orderId as any],
+      });
+      if (apiKey) await sendConfirmationEmail({ apiKey, from: fromAddress, staffAddresses }, buildEmailData());
+      const siteUrl = env.get("SITE_URL") || url.origin;
+      console.warn(`[DEV] Simulated card payment for order ${orderNumber} — no Stripe key set.`);
+      return { redirectUrl: `${siteUrl}/checkout/success/?test=1`, orderNumber };
+    }
+
+    // ---- Card required → hand off to Stripe Checkout ----
+    if (cardAmount > 0) {
+      const siteUrl = env.get("SITE_URL") || url.origin;
+      try {
+        const session = await createCheckoutSession({
+          secretKey: stripeKey!,
+          amountCents: Math.round(cardAmount * 100),
+          currency: "cad",
+          description: `Wills Transfer apparel order ${orderNumber} — balance after gift card`,
+          successUrl: `${siteUrl}/checkout/success/?session_id={CHECKOUT_SESSION_ID}`,
+          cancelUrl: `${siteUrl}/checkout/cancelled/`,
+          customerEmail: (employee.email || "").trim() || undefined,
+          // Everything the webhook needs to finalize + email, WITHOUT storing PII
+          // in our DB. Items are loaded from the order row by id.
+          metadata: {
+            order_id: String(orderId ?? ""),
+            order_number: orderNumber,
+            employee_name: employee.name || "",
+            customer_email: (employee.email || "").trim(),
+            customer_phone: employee.phone || "",
+            department: employee.department || "",
+            po: employee.po || "",
+            province_code: province,
+            province_name: provinceName,
+            tax_pct: String(taxPct),
+            subtotal: subtotal.toFixed(2),
+            tax: tax.toFixed(2),
+            total: total.toFixed(2),
+            payment_method: paymentMethod,
+            gift_code: giftCode,
+            gift_amount: giftAmount.toFixed(2),
+            card_amount: cardAmount.toFixed(2),
+            date: date,
+          },
+        });
+        await db.execute({
+          sql: "UPDATE orders SET stripe_session_id = ? WHERE id = ?",
+          args: [session.id, orderId as any],
+        });
+        return { redirectUrl: session.url, orderNumber };
+      } catch (err) {
+        console.error("Stripe checkout session failed:", err);
+        return fail(502, { message: "Could not start the card payment. Please try again." });
+      }
+    }
+
+    // ---- No card: gift-card-only (deduct now) or PO (settle offline) ----
+    if (giftAmount > 0) {
+      const ok = await deductGiftCard(db, giftCode, giftAmount);
+      if (!ok) {
+        // Balance changed between the estimate and now.
+        await db.execute({ sql: "UPDATE orders SET status = 'gift_failed' WHERE id = ?", args: [orderId as any] });
+        return fail(409, { message: "Gift card balance is no longer sufficient. Please re-check your balance." });
+      }
+      await db.execute({
+        sql: "INSERT INTO gift_card_transactions (code, amount, order_ref) VALUES (?, ?, ?)",
+        args: [giftCode, giftAmount, orderNumber],
+      });
+      await db.execute({ sql: "UPDATE orders SET paid_at = datetime('now') WHERE id = ?", args: [orderId as any] });
+    }
+
+    if (apiKey) {
+      const emailData: OrderEmailData = {
+        orderNumber, date,
+        employee: {
+          name: employee.name, email: employee.email, phone: employee.phone,
+          department: employee.department, provinceName, provinceCode: province, po: employee.po,
+        },
+        items: items as any,
+        subtotal, taxPct, tax, total,
+        payment: { method: paymentMethod, giftCardCode: giftCode || undefined, giftAmount, cardAmount },
+      };
+      await sendConfirmationEmail({ apiKey, from: fromAddress, staffAddresses }, emailData);
+    } else {
+      console.warn("RESEND_API_KEY not configured — order saved but email not sent");
+    }
+
+    return { success: true, orderNumber };
   },
   zod$({
+    paymentMethod: z.enum(["po", "giftcard", "giftcard_card", "card"]).default("po"),
+    giftCardCode: z.string().max(64).optional(),
     employee: z.object({
       name: z.string().min(1).max(120),
       email: z.string().email().max(254).or(z.literal("")),
       phone: z.string().max(40),
       department: z.string().max(120),
       province: z.string().length(2),
-      po: z.string().min(1).max(60),
+      po: z.string().max(60).optional().default(""),
     }),
     items: z
       .array(
@@ -414,6 +499,7 @@ export default component$(() => {
   const loginAction = useLogin();
   const logoutAction = useLogout();
   const orderAction = useSubmitOrder();
+  const giftCheckAction = useCheckGiftCard();
 
   const showLogin = useSignal(false);
   const overlayFading = useSignal(false);
@@ -464,6 +550,35 @@ export default component$(() => {
   const empProvince = useSignal("");
   const empPO = useSignal("");
 
+  // Payment: 'po' (invoice), 'giftcard', 'giftcard_card', 'card'.
+  const payMethod = useSignal<"po" | "giftcard" | "giftcard_card" | "card">("po");
+  const giftCode = useSignal("");
+  const giftBalance = useSignal<number | null>(null); // null = not yet checked
+  const giftChecking = useSignal(false);
+  const giftError = useSignal("");
+  const usesGift = useComputed$(() => payMethod.value === "giftcard" || payMethod.value === "giftcard_card");
+
+  const checkGiftCard = $(async () => {
+    giftError.value = "";
+    if (!giftCode.value.trim()) { giftError.value = t("pay.gift.enter", locale.value); return; }
+    giftChecking.value = true;
+    try {
+      const res = await giftCheckAction.submit({ code: giftCode.value.trim() });
+      const v = res?.value as any;
+      if (v?.valid) {
+        giftBalance.value = Number(v.balance) || 0;
+      } else {
+        giftBalance.value = null;
+        giftError.value = t("pay.gift.invalid", locale.value);
+      }
+    } catch {
+      giftBalance.value = null;
+      giftError.value = t("pay.gift.invalid", locale.value);
+    } finally {
+      giftChecking.value = false;
+    }
+  });
+
   const cartCount = useComputed$(() => {
     const count = cart.items.reduce((sum, i) => sum + i.quantity, 0);
     return count > 0 ? count : ssrCartCount.value;
@@ -474,6 +589,11 @@ export default component$(() => {
   const taxRate = useComputed$(() => taxRateFor(empProvince.value));
   const taxAmount = useComputed$(() => taxRate.value === undefined ? undefined : subtotal.value * taxRate.value);
   const orderTotal = useComputed$(() => subtotal.value + (taxAmount.value ?? 0));
+  // How much the checked gift card covers of the current total, and the leftover.
+  const giftCovers = useComputed$(() =>
+    giftBalance.value == null ? 0 : Math.min(giftBalance.value, orderTotal.value),
+  );
+  const giftRemaining = useComputed$(() => Math.max(0, +(orderTotal.value - giftCovers.value).toFixed(2)));
   const taxLabel = useComputed$(() => {
     if (taxRate.value === undefined) return t("cart.invoice.tax", locale.value);
     const pct = +(taxRate.value * 100).toFixed(3);
@@ -533,8 +653,20 @@ export default component$(() => {
   const submitOrder = $(async () => {
     formTouched.value = true;
     const locationRequired = needsLocation(empProvince.value);
-    if (!empFirstName.value || !empLastName.value || !empEmail.value || !empPhone.value || !empProvince.value || (locationRequired && !empDept.value) || !empPO.value) {
+    const poRequired = payMethod.value === "po";
+    if (!empFirstName.value || !empLastName.value || !empEmail.value || !empPhone.value || !empProvince.value || (locationRequired && !empDept.value) || (poRequired && !empPO.value)) {
       formError.value = t("cart.error.required", locale.value);
+      checkoutOpen.value = true;
+      return;
+    }
+    // Gift-card methods need a checked, valid code.
+    if (usesGift.value && giftBalance.value == null) {
+      formError.value = t("pay.gift.check", locale.value);
+      checkoutOpen.value = true;
+      return;
+    }
+    if (payMethod.value === "giftcard" && giftRemaining.value > 0) {
+      formError.value = t("pay.gift.short", locale.value);
       checkoutOpen.value = true;
       return;
     }
@@ -555,6 +687,8 @@ export default component$(() => {
     formError.value = "";
 
     const orderData = {
+      paymentMethod: payMethod.value,
+      ...(usesGift.value ? { giftCardCode: giftCode.value.trim() } : {}),
       employee: { name: `${empFirstName.value} ${empLastName.value}`, email: empEmail.value, phone: empPhone.value, department: empDept.value, province: empProvince.value, po: empPO.value },
       items: cart.items.map((i: any) => ({
         name: i.name || "",
@@ -600,6 +734,14 @@ export default component$(() => {
       return;
     }
 
+    // Card / gift+card: the server created a Stripe Checkout session — hand off
+    // to Stripe. The cart is cleared on return (the /checkout/success page), not
+    // here, so it survives if the customer cancels the card payment.
+    if (v?.redirectUrl) {
+      window.location.href = v.redirectUrl;
+      return;
+    }
+
     cart.items = [];
     await saveCart();
     window.dispatchEvent(new CustomEvent("cart-updated"));
@@ -612,6 +754,10 @@ export default component$(() => {
     empDept.value = "";
     empProvince.value = "";
     empPO.value = "";
+    payMethod.value = "po";
+    giftCode.value = "";
+    giftBalance.value = null;
+    giftError.value = "";
     formTouched.value = false;
   });
 
@@ -1410,14 +1556,71 @@ export default component$(() => {
                         onInput$={(_, el) => { empPhone.value = el.value; formError.value = ""; }}
                       />
                     </div>
-                    <div class={`checkout-modal__field ${formTouched.value && !empPO.value ? "checkout-modal__field--error" : ""}`}>
-                      <label>{t("cart.po", locale.value)}</label>
-                      <input
-                        type="text"
-                        value={empPO.value}
-                        onInput$={(_, el) => (empPO.value = el.value)}
-                      />
+                  </div>
+
+                  {/* ---- Payment method ---- */}
+                  <div class="checkout-modal__pay">
+                    <h3 class="checkout-modal__form-title">{t("pay.title", locale.value)}</h3>
+                    <div class="checkout-modal__pay-options">
+                      {([
+                        { key: "po", label: t("pay.po", locale.value) },
+                        { key: "giftcard", label: t("pay.giftcard", locale.value) },
+                        { key: "giftcard_card", label: t("pay.giftcard_card", locale.value) },
+                        { key: "card", label: t("pay.card", locale.value) },
+                      ] as const).map((opt) => (
+                        <button
+                          key={opt.key}
+                          type="button"
+                          class={`checkout-modal__pay-opt ${payMethod.value === opt.key ? "active" : ""}`}
+                          onClick$={() => { payMethod.value = opt.key; formError.value = ""; }}
+                        >
+                          <span class="checkout-modal__pay-radio" />
+                          {opt.label}
+                        </button>
+                      ))}
                     </div>
+
+                    {/* PO number — only for the invoice method. */}
+                    {payMethod.value === "po" && (
+                      <div class={`checkout-modal__field ${formTouched.value && !empPO.value ? "checkout-modal__field--error" : ""}`}>
+                        <label>{t("cart.po", locale.value)}</label>
+                        <input type="text" value={empPO.value} onInput$={(_, el) => (empPO.value = el.value)} />
+                      </div>
+                    )}
+
+                    {/* Gift card code + balance — for gift methods. */}
+                    {usesGift.value && (
+                      <div class="checkout-modal__gift">
+                        <div class="checkout-modal__gift-row">
+                          <div class={`checkout-modal__field ${giftError.value ? "checkout-modal__field--error" : ""}`}>
+                            <label>{t("pay.gift.label", locale.value)}</label>
+                            <input
+                              type="text"
+                              value={giftCode.value}
+                              placeholder={t("pay.gift.placeholder", locale.value)}
+                              onInput$={(_, el) => { giftCode.value = el.value; giftBalance.value = null; giftError.value = ""; }}
+                            />
+                          </div>
+                          <button type="button" class="btn checkout-modal__gift-apply" onClick$={checkGiftCard} disabled={giftChecking.value}>
+                            {giftChecking.value ? t("pay.gift.checking", locale.value) : t("pay.gift.apply", locale.value)}
+                          </button>
+                        </div>
+                        {giftError.value && <div class="checkout-modal__gift-msg checkout-modal__gift-msg--err">{giftError.value}</div>}
+                        {giftBalance.value != null && !giftError.value && (
+                          <div class="checkout-modal__gift-summary">
+                            <div><span>{t("pay.gift.balance", locale.value)}</span><span>${giftBalance.value.toFixed(2)}</span></div>
+                            <div><span>{t("pay.gift.applied", locale.value)}</span><span>-${giftCovers.value.toFixed(2)}</span></div>
+                            <div class="checkout-modal__gift-remaining">
+                              <span>{giftRemaining.value > 0 ? t("pay.gift.balance.due", locale.value) : t("pay.gift.covered", locale.value)}</span>
+                              <span>${giftRemaining.value.toFixed(2)}</span>
+                            </div>
+                            {giftRemaining.value > 0 && payMethod.value === "giftcard" && (
+                              <div class="checkout-modal__gift-msg checkout-modal__gift-msg--err">{t("pay.gift.short", locale.value)}</div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
                 {formError.value && (
@@ -1432,7 +1635,9 @@ export default component$(() => {
                     onClick$={submitOrder}
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-                    {t("cart.createorder", locale.value)}
+                    {(payMethod.value === "card" || (payMethod.value === "giftcard_card" && giftRemaining.value > 0))
+                      ? t("cart.continuepayment", locale.value)
+                      : t("cart.createorder", locale.value)}
                   </button>
                 </div>
               </>

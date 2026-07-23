@@ -1751,12 +1751,11 @@ body:has(.nav-drawer-overlay) .site-header {
      white ring + gray edge sitting in the greige margin. */
   .nav-drawer__links {
     background: var(--ce-off-white);
+    /* Same 6px greige side margin the orange MENU strip and the brown header bar
+       have — a plain greige inset (no white ring), so the lighter body lines up
+       with the bars above it. */
     margin: var(--wt-seam) var(--wt-box-my) var(--wt-box-my);
     padding: 0.5rem;
-    box-shadow:
-      0 0 0 1px rgba(0, 0, 0, 0.10),
-      0 0 0 3px var(--ce-white),
-      0 0 0 4px rgba(0, 0, 0, 0.06);
   }
 }
 @media (min-width: 601px) and (max-width: 1024px) {
@@ -5609,6 +5608,128 @@ details[open] > .cart-drawer__checkout-title::after {
 .cart-drawer__summary-total { font-weight: 600; color: var(--ce-gray-900); border-top: 1px solid var(--ce-gray-200); margin-top: 4px; padding-top: 8px; }
 .checkout-modal__form { padding: 0.75rem; background: var(--ce-white); border-radius: 0; margin: 2px; }
 .checkout-modal__form-title { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ce-gray-500); margin-bottom: 0.75rem; }
+
+/* ===== Payment method (checkout) ===== */
+.checkout-modal__pay {
+  padding: 0.75rem;
+  background: var(--ce-off-white);
+  margin: 2px;
+}
+.checkout-modal__pay .checkout-modal__form-title { margin-bottom: 0.6rem; }
+.checkout-modal__pay-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 0.75rem;
+}
+.checkout-modal__pay-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--ce-gray-200);
+  border-radius: var(--radius-sm);
+  background: var(--ce-white);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--ce-gray-800);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+.checkout-modal__pay-opt:hover { border-color: var(--ce-gray-300); }
+.checkout-modal__pay-opt.active {
+  border-color: var(--ce-green-dark);
+  background: #fdf6ec;
+  color: var(--ce-gray-900);
+  font-weight: 600;
+}
+.checkout-modal__pay-radio {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--ce-gray-300);
+  position: relative;
+  transition: border-color var(--transition-fast);
+}
+.checkout-modal__pay-opt.active .checkout-modal__pay-radio { border-color: var(--ce-green-dark); }
+.checkout-modal__pay-opt.active .checkout-modal__pay-radio::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: var(--ce-green-dark);
+}
+/* Gift card block */
+.checkout-modal__gift { margin-top: 0.25rem; }
+.checkout-modal__gift-row { display: flex; align-items: flex-end; gap: 0.5rem; }
+.checkout-modal__gift-row .checkout-modal__field { flex: 1; min-width: 0; }
+.checkout-modal__gift-apply {
+  flex-shrink: 0;
+  height: 40px;
+  padding: 0 16px;
+  border: 1.5px solid var(--ce-green-dark);
+  border-radius: var(--radius-sm);
+  background: var(--ce-green-dark);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.checkout-modal__gift-apply:disabled { opacity: 0.6; cursor: default; }
+.checkout-modal__gift-summary {
+  margin-top: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  background: var(--ce-white);
+  border: 1px solid var(--ce-gray-200);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--ce-gray-700);
+}
+.checkout-modal__gift-summary > div { display: flex; justify-content: space-between; padding: 2px 0; }
+.checkout-modal__gift-remaining {
+  border-top: 1px solid var(--ce-gray-200);
+  margin-top: 4px;
+  padding-top: 6px !important;
+  font-weight: 700;
+  color: var(--ce-gray-900);
+}
+.checkout-modal__gift-msg { margin-top: 0.4rem; font-size: 0.8rem; }
+.checkout-modal__gift-msg--err { color: #b91c1c; }
+
+/* ===== Card payment result pages (/checkout/success, /checkout/cancelled) ===== */
+.checkout-result {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+.checkout-result__card {
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  background: var(--ce-off-white);
+  border: 1px solid var(--ce-gray-200);
+  border-radius: var(--radius-md);
+  padding: 2.5rem 1.75rem;
+}
+.checkout-result__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: #fff;
+}
+.checkout-result__icon--ok { background: #1f9d55; }
+.checkout-result__icon--cancel { background: var(--ce-gray-400); }
+.checkout-result__title { font-size: 1.4rem; font-weight: 800; color: var(--ce-gray-900); margin: 0 0 0.6rem; }
+.checkout-result__text { font-size: 0.95rem; line-height: 1.6; color: var(--ce-gray-600); margin: 0 0 1.5rem; }
 .cart-drawer__footer {
   padding: 0.7rem 1rem;
   background: var(--ce-white);
@@ -7259,10 +7380,14 @@ details[open] > .cart-drawer__checkout-title::after {
      matching the cart. */
   .cart-drawer__back-btn {
     box-sizing: border-box;
+    align-items: center;
     justify-content: flex-start;
     gap: 8px;
     height: 44px;
-    padding: 0 0.75rem;
+    /* 2.2px bottom padding offsets the white seam so the label centres in the
+       orange area (matching the tab bar / breadcrumb / cart strip), not in the
+       full cell where the seam pushed it ~1px low. */
+    padding: 0 0.75rem 2.2px;
     color: #fff;
     font-size: 0.92rem;
     font-weight: 500;
@@ -10936,4 +11061,583 @@ body:has(.product-fullscreen) { overflow: hidden; }
     margin: 0 var(--wt-box-my) var(--wt-box-my);
     background: var(--ce-off-white);
   }
+}
+
+/* ============================================================
+   Cart footer action button — "Checkout" (cart step) and "Place order" /
+   "Continue to payment" (details step). Both are .cart-drawer__order-btn.
+
+   It was inheriting .btn--primary's flat --ce-gold fill, a stray blue glow
+   (left over from the old blue palette) and a GREEN hover — none of which
+   belong to the orange sign theme. Repaint it in the theme's two-shade
+   system: the dark box shade the header lockup/buttons and the active tab
+   use (30% black over the sign orange, ~#a95208) at rest, lifting to the
+   tab strip's lighter orange on hover — the same rest→hover direction the
+   active tab reads in, inverted.
+   ============================================================ */
+.cart-drawer__order-btn.btn.btn--primary {
+  background: linear-gradient(var(--wt-box), var(--wt-box)), var(--wt-orange);
+  color: #fff;
+  /* Softer than the header's square boxes, but still a sign-panel corner. */
+  border-radius: 6px;
+  border: 1px solid rgba(62, 24, 2, 0.45);
+  /* Depth: top bevel highlight, a rust-brown vignette hugging the border
+     (same weathering as the header bar) and a cast shadow underneath. */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.30),
+    inset 0 -1px 0 rgba(62, 24, 2, 0.35),
+    inset 0 0 10px rgba(62, 24, 2, 0.30),
+    0 2px 3px rgba(0, 0, 0, 0.28);
+  text-shadow: 0 1px 1px rgba(62, 24, 2, 0.45);
+}
+.cart-drawer__order-btn.btn.btn--primary:hover {
+  background: var(--wt-orange);
+  color: #fff;
+  border-color: rgba(62, 24, 2, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.40),
+    inset 0 -1px 0 rgba(62, 24, 2, 0.25),
+    inset 0 0 10px rgba(62, 24, 2, 0.18),
+    0 2px 5px rgba(0, 0, 0, 0.30);
+}
+/* Pressed: drop the cast shadow and deepen the inner shading so the panel
+   reads as pushed into the bar. */
+.cart-drawer__order-btn.btn.btn--primary:active {
+  background: linear-gradient(var(--wt-box-strong), var(--wt-box-strong)), var(--wt-orange);
+  box-shadow:
+    inset 0 2px 4px rgba(62, 24, 2, 0.55),
+    inset 0 0 10px rgba(62, 24, 2, 0.35);
+  transform: translateY(1px);
+}
+.cart-drawer__order-btn.btn.btn--primary:focus-visible {
+  outline: 2px solid var(--wt-orange-hi);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Desktop: the "My Cart" header button.
+
+   Two bugs, one root cause — the resting and hover paint were coming from
+   DIFFERENT rules with different specificity:
+
+   * `body:has(.home-catalog) .site-header .cart-btn` (0,3,1) forced
+     `border: none` + `background: transparent`, so on the home/apparel
+     routes the button dissolved into the bar and read as header brown —
+     while on the product route the (0,2,0) desktop rule below it won and
+     painted it sign orange. Same button, two looks.
+   * Its `:hover` partner set only `border-color`, so the border SHORTHAND
+     fell through to the desktop rule's `border: 1px solid` — the button
+     went 0px → 1px on hover, grew 2px wide, and shoved the nav (and with
+     it the search field) 2px left. Exactly the collapse the logout button
+     documents above, running in the opposite direction.
+
+   Fixed by stating both states here, last and at matching specificity, with
+   the border pinned at 1px throughout so only colour animates. Resting fill
+   is the tab strip's lighter orange (the button is the bar's one primary
+   action, so it should sit ON the brown, not in it); hover lifts it with a
+   white wash rather than dropping to the darker/browner shade.
+   ============================================================ */
+@media (min-width: 1025px) {
+  body .site-header .cart-btn,
+  body .site-header .cart-btn.cart-btn--active,
+  body:has(.home-catalog) .site-header .cart-btn,
+  body:has(.home-catalog) .site-header .cart-btn.cart-btn--active {
+    background: var(--wt-orange) !important;
+    border: 1px solid rgba(62, 24, 2, 0.30) !important;
+    color: #fff !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.30),
+      inset 0 -1px 0 rgba(62, 24, 2, 0.28),
+      0 1px 2px rgba(0, 0, 0, 0.25) !important;
+  }
+  body .site-header .cart-btn:hover,
+  body .site-header .cart-btn.cart-btn--active:hover,
+  body:has(.home-catalog) .site-header .cart-btn:hover,
+  body:has(.home-catalog) .site-header .cart-btn.cart-btn--active:hover {
+    /* Same 1px border, only the colour moves — no reflow of the nav row. */
+    border: 1px solid rgba(62, 24, 2, 0.30) !important;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16)),
+      var(--wt-orange) !important;
+    color: #fff !important;
+  }
+  body .site-header .cart-btn svg,
+  body .site-header .cart-btn:hover svg,
+  body:has(.home-catalog) .site-header .cart-btn svg,
+  body:has(.home-catalog) .site-header .cart-btn:hover svg { stroke: #fff !important; }
+  body .site-header .cart-btn .cart-btn__label,
+  body:has(.home-catalog) .site-header .cart-btn .cart-btn__label { color: #fff !important; }
+}
+
+/* ============================================================
+   Card bottom corners.
+
+   Every full-page view ends in the site footer, which carries the card's
+   bottom rounding (0 0 6px 6px) to mirror the header bar's 6px 6px 0 0 top.
+   The cart/checkout card is the exception: it replaces the page (footer and
+   all) with a drawer pinned to the viewport, so it terminated on a square
+   edge while its own top matched the header's curve. Round it to close the
+   card, and carry a proportional radius into the checkout bar that sits in
+   its bottom corners.
+   ============================================================ */
+.drawer.cart-drawer {
+  border-radius: 0 0 6px 6px;
+}
+/* The bar is inset 2px from the card edge, so its own radius is the card's
+   less that inset — otherwise its square corner cuts through the curve. */
+.cart-drawer__footer {
+  border-radius: 0 0 4px 4px;
+}
+@media (max-width: 1024px) {
+  /* Mobile insets the bar by the full --wt-box-my, so it clears the curve on
+     its own and the card's white ring is what reads in the corner. */
+  .cart-drawer__footer { border-radius: 0; }
+}
+
+/* ============================================================
+   Header pin while the cart is open.
+
+   Opening the cart locks the page by setting body { position: fixed;
+   top: -<scrollY>px }. That shifts the whole body up by the scroll offset,
+   and the sticky header — which has no scroll container left to stick
+   inside — rides up with it. Scrolled to the top nothing looked wrong; any
+   distance down the page and the header left the viewport entirely (measured
+   at y:-1676 after a 1680px scroll), leaving the surround showing where it
+   should be.
+
+   Phones (<=900px) already pin it; desktop only got a z-index bump, so the
+   901px-and-up range was unprotected. Pin it everywhere — the same fix, and
+   for the same reason, as the menu drawer's rule further up this file.
+
+   Only `position` is forced: `top` is left to each breakpoint's own sticky
+   offset (4px desktop, 0 on phones), so the header lands exactly where it
+   sits when stuck and there's no jump on open or close.
+   ============================================================ */
+.site-header.site-header--cart-open {
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  /* A stuck sticky header lands its border box ON the `top` inset; a fixed one
+     lands the MARGIN box there, so the 4px margin-top would push it 4px lower
+     than where it sat a frame earlier. Zeroing it makes the two positions
+     identical at every breakpoint. */
+  margin-top: 0 !important;
+}
+
+/* ============================================================
+   Phone product card: swatches bottom-left, size above them, price
+   bottom-right.
+
+   The <=600px block above stacks the name over the price because the 2-up card
+   is too narrow to share a row — but that left the price on a line of its own,
+   left-aligned, with the swatches and size range below it:
+
+     Men's Easy Blend Twill
+     Dress Shirt
+     $53.00
+     [][][][] +1        S - 4XL
+
+   The price lives in .product-card__name-row and the size in
+   .product-card__color-size-row, so re-ordering them means dissolving both
+   wrappers (display: contents) and laying the leaves out on one grid:
+
+     Men's Easy Blend Twill
+     Dress Shirt
+     S - 4XL
+     [][][][] +1          $53.00
+
+   Scoped with :has() to cards that actually carry a colour/size row — the
+   related-items cards on the product page reuse .product-card__info but nest
+   their size inside the price group, so they keep the plain flex stack. No
+   markup change either way; desktop and tablet are untouched.
+   ============================================================ */
+@media (max-width: 600px) {
+  .product-card__info:has(.product-card__color-size-row) {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    /* The wrappers' margin-bottom goes with them, so the row rhythm has to
+       come from the grid. */
+    row-gap: 0.25rem;
+    column-gap: 0.35rem;
+  }
+  .product-card__info:has(.product-card__color-size-row) > .product-card__name-row,
+  .product-card__info:has(.product-card__color-size-row) > .product-card__color-size-row {
+    display: contents;
+  }
+
+  .product-card__info:has(.product-card__color-size-row) .product-card__name {
+    grid-row: 1;
+    grid-column: 1 / -1;
+  }
+  .product-card__info:has(.product-card__color-size-row) .product-card__sizes {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+  .product-card__info:has(.product-card__color-size-row) .product-card__colors {
+    grid-row: 3;
+    grid-column: 1;
+    justify-self: start;
+  }
+  .product-card__info:has(.product-card__color-size-row) .product-card__price-group {
+    grid-row: 3;
+    grid-column: 2;
+    justify-self: end;
+    /* Overrides the flex-start self-alignment the stacked layout needed. */
+    align-self: baseline;
+  }
+  /* The New Hire Kit has no swatches — its contents list stands in for the
+     size text, so it takes both of the lower rows and the price sits beside
+     its last line. */
+  .product-card__info:has(.product-card__color-size-row) .product-card__kit-items {
+    grid-row: 2 / 4;
+  }
+}
+
+/* One line per fit. Single-range products (nearly all of them) are unchanged —
+   one block box reads exactly as the bare text did. A product stocked in both
+   regular and tall gets its two groups on their own lines instead of running
+   them together. */
+.product-card__sizes-line { display: block; }
+
+/* ============================================================
+   Phones: no hairline around the catalog cards.
+
+   Desktop moved the engraved rim onto .product-card::after so it frames the
+   whole card; phones still draw it on .product-card__image::after, where it
+   rings only the photo — a grey box around the top two-thirds of a greige
+   card, with the info block below it unenclosed. At 2-up with 2px gutters
+   there's already a clear edge between cards, so the rim is doing nothing but
+   adding a line. Drop it on the catalog grid (apparel + home).
+
+   Scoped to .apparel-grid on purpose: the product page's related-items cards
+   reuse .product-card and keep their rim.
+   ============================================================ */
+@media (max-width: 600px) {
+  .apparel-grid .product-card__image::after { box-shadow: none; }
+}
+
+/* ============================================================
+   Phones: no wordmark in the footer.
+
+   The header carries the same Wills + APPAREL lockup ~two thumb-scrolls up,
+   and on a 430px viewport the footer's copy of it is the tallest thing in the
+   bar for no informational gain. Drop the whole lockup rather than just the
+   image — pulling only the logo would strand the "Apparel" word beside it —
+   leaving the footer as what it's actually for on a phone: the contact address
+   and the privacy link. .site-footer__inner is a centred column, so the two
+   survivors close up on their own.
+   ============================================================ */
+@media (max-width: 600px) {
+  .site-footer__brand { display: none; }
+}
+
+/* ============================================================
+   Breadcrumb dividers: stop at the bar.
+
+   The skewed rules between the trail's segments were given `top: -3px;
+   bottom: -3px` on the theory that skewing about the centre would otherwise
+   leave them short of the bar's edges. It doesn't — skewX displaces x as a
+   function of y and leaves the vertical extent alone — so all the overhang
+   bought was a 56px rule in a 50px bar, poking 3px out the top and, more
+   visibly, 3px past the bar's bottom edge onto the card below.
+
+   Pinning them to the bar's own box keeps the full-height "gap cut through
+   the bar" reading with nothing escaping it. The bar's white bottom strip
+   (.pdp-breadcrumb::after, z-index 3) still paints over the last 3px, so the
+   junction is unchanged — that strip is white and so is the rule.
+   ============================================================ */
+.pdp-breadcrumb > *:not(:first-child)::after {
+  top: 0;
+  bottom: 0;
+}
+
+/* ============================================================
+   Desktop product page: room above and below the info column.
+
+   The details panel is stretched to the image's height, so its content —
+   title through Add to Cart — sat against a 0.8rem top padding with ~32px of
+   dead space left over at the bottom. It read as top-aligned in a box that
+   was too tall rather than as a panel with margins. Even 1.75rem top and
+   bottom spends exactly that slack: the content keeps its current height, the
+   panel keeps the image's, and the breathing room is symmetric.
+   ============================================================ */
+@media (min-width: 1025px) {
+  .product-detail .product-modal__details {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+}
+
+/* ============================================================
+   One white ring, drawn the same way everywhere.
+
+   The footer's ring is the reference. Two things diverged from it:
+
+   1. The content areas — the catalog body (.home-catalog__inner) and the
+      product page (.apparel-catalog:has(.product-detail)) — carry the same
+      five-layer stack as the footer except the OUTER rim, which they set at
+      0.08 against the footer's 0.14. A rim that faint lets the white bleed
+      into the greige instead of ending on a line, so the strip reads thinner
+      there than beside the footer even though both are the same 3px spread
+      with the same 1px + 2px edge layers over its inner half.
+
+   2. The header's ring is a white panel (.site-header::before) rather than a
+      spread shadow, and it was given `inset 0 1px 3px` + `inset 0 0 6px` of
+      dark. Those shade the strip from within — heaviest at its top and along
+      its edges — so the header's white is graded where the footer's is flat.
+      The 1px outer rim and the drop cast stay; only the shading inside the
+      white comes off.
+   ============================================================ */
+@media (min-width: 1025px) {
+  .home-catalog__inner,
+  .apparel-catalog:has(.product-detail) {
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.12),
+      0 0 0 2px rgba(0, 0, 0, 0.04),
+      0 0 0 var(--wt-ring) var(--ce-white),
+      /* Was 0.08 — matched to the footer's outer rim. */
+      0 0 0 calc(var(--wt-ring) + 1px) rgba(0, 0, 0, 0.14),
+      0 6px 16px var(--wt-ring) rgba(0, 0, 0, 0.22);
+  }
+  .site-header::before {
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.08),
+      0 4px 18px rgba(0, 0, 0, 0.28);
+  }
+}
+
+/* ============================================================
+   Phone footer: sized to the header + tab strip, butted to the grid.
+
+   With the wordmark gone the footer holds two lines — the email and the
+   privacy link — inside 2.5rem of top and bottom padding, which left it the
+   tallest band on the page for the least content. Give it the height of the
+   two bars at the other end of the page (the header's 64px plus the tab
+   strip's 44px, set at global.css:5982 and :2059) and centre the pair in it,
+   so the page opens and closes on the same measure.
+
+   Above it sat ~57px of empty card: 2rem of grid padding-bottom (the
+   :has(:nth-child(5)) rule that keeps a long list off the footer), 1rem on
+   the catalog section, and the footer's own 6px top margin. On a phone that
+   reads as the card having run out rather than as breathing room. Close it to
+   the 2px the product cards use between themselves, so the footer lands as
+   the next panel in the same stack.
+   ============================================================ */
+@media (max-width: 600px) {
+  .site-footer {
+    height: calc(64px + 44px);
+    box-sizing: border-box;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+  }
+  /* The inner is a centred column; with the brand hidden its gap would sit
+     above the only remaining child and pull it off centre. */
+  .site-footer__inner {
+    width: 100%;
+    gap: 0;
+  }
+  .site-footer__contact-block { margin-top: 0; }
+
+  .apparel-grid:has(:nth-child(5)) { padding-bottom: 0; }
+  .home-catalog { padding-bottom: 0; }
+}
+
+/* ============================================================
+   Desktop: ONE ring around the whole sign, a full 3px wide.
+
+   Two faults, same root — every piece drew its own complete ring.
+
+   1. Width. The ring is a 3px white spread with a 1px and a 2px dark spread
+      painted OVER its inner two-thirds (earlier layers paint on top), so only
+      the outermost pixel of white ever showed. The pinned bars made it worse:
+      .site-header__inner, .home-catalog__header and .pdp-breadcrumb each cast
+      a 1px outline OUTWARD, into the header cap's white. Those edge lines all
+      move inside their own boxes here, leaving the 3px white whole.
+
+   2. Seams. The content column and the footer are flush neighbours that each
+      drew a ring on the edge they share, so a white strip plus two dark rims
+      ran straight across the card just above the footer — which is why the
+      "More" carousel and the footer read as two cards rather than the bottom
+      of one. Same at the header/column junction.
+
+      clip-path trims each piece's ring on the edges it shares, so the ring is
+      assembled once from three pieces instead of drawn three times: the
+      header's cap closes the top (it's sticky, so the cap has to travel with
+      it), the column runs the sides, the footer closes the bottom. Negative
+      insets let the ring through on the edges that ARE the card's outline.
+
+   Scoped to desktop: phones already build the ring this way, from a single
+   body-level panel (see the max-width: 600px block above).
+   ============================================================ */
+@media (min-width: 1025px) {
+  .home-catalog__inner,
+  .apparel-catalog:has(.product-detail) {
+    box-shadow:
+      /* The card's own edge, inside its box so it doesn't eat the white. */
+      inset 0 0 0 1px rgba(0, 0, 0, 0.12),
+      0 0 0 var(--wt-ring) var(--ce-white),
+      0 0 0 calc(var(--wt-ring) + 1px) rgba(0, 0, 0, 0.14);
+    /* Sides only — the header and footer close the ends. */
+    clip-path: inset(0 -20px 0 -20px);
+  }
+  .site-footer {
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.12),
+      0 0 0 var(--wt-ring) var(--ce-white),
+      0 0 0 calc(var(--wt-ring) + 1px) rgba(0, 0, 0, 0.14),
+      0 6px 16px var(--wt-ring) rgba(0, 0, 0, 0.22),
+      inset 0 6px 8px -4px rgba(62, 24, 2, 0.5),
+      inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
+      inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
+      inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
+    /* Everything but the top, which is the column's continuation. */
+    clip-path: inset(0 -20px -20px -20px);
+  }
+  .site-header::before {
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.14),
+      0 4px 18px rgba(0, 0, 0, 0.28);
+    /* Everything but the bottom, where the column takes over. */
+    clip-path: inset(-20px -20px 0 -20px);
+  }
+  /* The pinned bars sit ON the card, so their outline belongs inside them —
+     cast outward it landed in the white strip and pinched it to 2px across
+     every row they occupy. */
+  .site-header__inner {
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.14),
+      inset 0 0 14px rgba(62, 24, 2, 0.45) !important;
+  }
+  .home-catalog__header { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.14); }
+  .pdp-breadcrumb { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.14) !important; }
+}
+
+/* ============================================================
+   Phones: nothing drawn inside the white strip.
+
+   The card's ring is a white panel (body::before) inset 2px, with the card's
+   pieces inset 6px — a 4px strip. Two things were eating it:
+
+   1. --wt-ring-edge, a 1px rgba(0,0,0,0.10) line inset into the panel (and
+      repeated down the header cap's sides), which took the outermost quarter
+      of the strip along its whole length. That's the grey x border still
+      showing on the apparel route after the cards' own rims came off — same
+      hairline, one level further out. The 2px greige gutter outside the panel
+      already separates it from the surround, so the line was doing the job
+      twice.
+
+   2. .site-header__inner still cast ±4px of its own sideways shadow. The
+      block above moved every other piece's side cast onto one continuous
+      body::after column precisely so the strip wouldn't be pinched darker at
+      each junction — the header bar was missed, which is why its rows read
+      grubbier than the footer's. Its weathered inset vignette stays; only the
+      outward cast goes.
+
+   What's left in the strip is body::after's cast hugging the card's edge,
+   which is what gives it depth, and nothing else.
+   ============================================================ */
+@media (max-width: 600px) {
+  body::before { box-shadow: none; }
+  .site-header::before { box-shadow: none; }
+  .site-header__inner {
+    box-shadow:
+      inset 0 0 14px rgba(62, 24, 2, 0.45) !important;
+  }
+}
+
+/* ============================================================
+   Phones: the card's edge cast comes off the strip too.
+
+   body::after draws a shadow column down both sides of the card at exactly
+   --wt-box-my — the outer edge of the left product and of the right one. It
+   was meant as the card's depth, cast onto the ring as one continuous column
+   rather than per-piece. But the 2px gutters BETWEEN the cards have no cast
+   at all: they show the ring panel as clean white. So the grid read as white
+   seams everywhere except its two outer edges, which carried a ~1.5px grey
+   gradient — the vertical lines still showing after the cards' own rims and
+   the ring's hairline came off.
+
+   The strip is now uniform white the whole way round, and the card still
+   separates from its surroundings on the 2px greige gutter outside the ring.
+   ============================================================ */
+@media (max-width: 600px) {
+  body::after { box-shadow: none; }
+}
+
+/* ============================================================
+   Phones/tablet: 4px of white above the header bar, matching the sides.
+
+   The strip above the bar was 2px where the sides are 4px. It isn't a
+   thickness you can set — it's the gap between two edges, the ring panel's
+   top (y=2) and the bar's top (y=4) — so widening it means moving one of
+   them. Moving the panel up to y=0 would spend the 2px greige gutter that
+   runs round the rest of the card; moving the bar down to y=6 is the one
+   that keeps the frame uniform, and it makes the header 2px taller.
+
+   That cost is already handled: --wt-header-h is built from the same parts
+   that lay the header out (top padding + bar + seam), and --wt-header-pin
+   derives from it, so raising the padding moves every sticky strip down in
+   step automatically — the whole point of the token block above. Only the
+   handful of places still carrying a literal 64px had to be moved onto the
+   token; they're listed below.
+   ============================================================ */
+@media (max-width: 1024px) {
+  :root { --wt-header-h: calc(6px + var(--wt-box-h) + var(--wt-seam)); }
+  .site-header { padding-top: 6px !important; }
+}
+@media (max-width: 600px) {
+  /* Flow space given back where the header and strips go position: fixed. */
+  .apparel-page { padding-top: var(--wt-header-pin); }
+  /* Viewport-pinned pieces that sit directly under the header. */
+  .modal-overlay,
+  .modal-overlay:has(.cart-drawer) { top: var(--wt-header-pin); }
+  .cart-drawer__back-btn { top: var(--wt-header-pin); }
+  .cart-table thead { top: var(--wt-header-pin); }
+  /* The footer matches the header + tab strip; the header half is a token. */
+  .site-footer { height: calc(var(--wt-header-pin) + 44px); }
+}
+
+/* ============================================================
+   Phones: the ring's bottom edge, below the footer.
+
+   Every other side of the ring works because the panel is inset 2px while the
+   card's pieces are inset --wt-box-my (6px), leaving 4px of white. The bottom
+   doesn't: the footer's 6px bottom margin COLLAPSES out of body, so body's
+   bottom edge lands exactly on the footer's, and the panel's 2px inset then
+   stops 2px INSIDE the footer — the card ended on orange with no white under
+   it at all.
+
+   The collapsed margin still occupies 6px between body's bottom edge and the
+   document's, so the panel just has to reach into it: -4px puts its edge 4px
+   below the footer, leaving the same 2px greige gutter the sides have.
+
+   Phones only — desktop builds its ring from per-element spread shadows, and
+   its top strip is already wider than it wants to be.
+   ============================================================ */
+@media (max-width: 600px) {
+  body::before { bottom: -4px; }
+}
+
+/* ============================================================
+   Phones: put the ring's edge line back — OUTSIDE the white.
+
+   Removing --wt-ring-edge stopped it eating the strip, but it was also the
+   only thing separating the white from the greige beyond it. Down the sides
+   that doesn't matter: the cards' greige sits against the white and the strip
+   reads on that contrast alone. Below the footer there's nothing to read
+   against — white gutter, greige gutter, greige surround — so the bottom edge
+   of the ring vanished even though the 4px is still there.
+
+   Same line, one pixel further out: a spread instead of an inset puts it in
+   the greige gutter rather than in the strip. The white stays a full 4px on
+   every side and the card has a defined edge again.
+   ============================================================ */
+@media (max-width: 600px) {
+  body::before { box-shadow: 0 0 0 1px var(--wt-ring-edge); }
+  .site-header::before { box-shadow: 0 0 0 1px var(--wt-ring-edge); }
 }

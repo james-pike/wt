@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { LocaleContext, t } from "../../../i18n";
 import { allProducts, colorName, categoryLabel } from "../products";
-import { expandSizes, sortColorsWhiteLast } from "../utils";
+import { expandSizes, sizeGroups, sortColorsWhiteLast } from "../utils";
 import { LoginTypeContext } from "../../layout";
 import { ProductImage } from "../../../components/product-image/product-image";
 
@@ -484,7 +484,11 @@ export default component$(() => {
                       <div class="product-card__name">{item.name}</div>
                       <div class="product-card__price-group">
                         {!hidePrice && <div class="product-card__price">${(Number(item.price) || 0).toFixed(2)}</div>}
-                        <span class="product-card__sizes">{item.sizes === "One Size" ? t("modal.onesize", locale.value) : item.sizes}</span>
+                        <span class="product-card__sizes">
+                          {(item.sizes === "One Size" ? [t("modal.onesize", locale.value)] : sizeGroups(item.sizes)).map((g) => (
+                            <span key={g} class="product-card__sizes-line">{g}</span>
+                          ))}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -509,7 +513,11 @@ export default component$(() => {
                             <div class="product-card__name">{item.name}</div>
                             <div class="product-card__price-group">
                               {!hidePrice && <div class="product-card__price">${(Number(item.price) || 0).toFixed(2)}</div>}
-                              <span class="product-card__sizes">{item.sizes === "One Size" ? t("modal.onesize", locale.value) : item.sizes}</span>
+                              <span class="product-card__sizes">
+                          {(item.sizes === "One Size" ? [t("modal.onesize", locale.value)] : sizeGroups(item.sizes)).map((g) => (
+                            <span key={g} class="product-card__sizes-line">{g}</span>
+                          ))}
+                        </span>
                             </div>
                           </div>
                         </div>
