@@ -1665,16 +1665,30 @@ body:has(.nav-drawer-overlay) .site-header {
    pages. Header bottom: 64px phones, 67px tablets. */
 @media (max-width: 1024px) {
   .nav-drawer-overlay {
-    top: 64px;
-    /* Greige surround behind the card (not a dark scrim) — the menu takes over
-       the view rather than floating over it. */
-    background: var(--wt-surround);
+    /* Pin at the header's bottom edge, the same source the tab strip and
+       breadcrumb use — it was a hardcoded 64px, 2px above the 66px the others
+       sit at, so the orange bar jumped 2px when the menu opened. */
+    top: var(--wt-header-pin);
+    /* Opaque greige surround behind the content-sized card — the sign floats in
+       the page's greige, same as the cart and apparel/product routes; its white
+       edge strips read against it, and it hides the page below (which otherwise
+       showed through beneath the short card, since --wt-surround is only defined
+       on desktop and fell through to transparent here). Clicking it closes the
+       menu (layout.tsx). */
+    background: var(--ce-greige);
     animation: fade-in 0.15s ease;
   }
   .nav-drawer {
     position: absolute;
-    inset: 0;
+    /* Size to its content instead of filling the viewport: a short menu ends at
+       the bottom of its links (the sign's bottom edge) rather than stretching a
+       greige panel down the whole screen. The overlay's white backdrop shows
+       below it, and a click there closes the menu (handled in layout.tsx). */
+    top: 0;
     left: 0;
+    right: 0;
+    bottom: auto;
+    height: auto;
     width: 100%;
     /* Greige surround so the side margins around the card read greige, matching
        the cart and the apparel/product routes (not a full-width white sheet). */
@@ -1682,7 +1696,7 @@ body:has(.nav-drawer-overlay) .site-header {
     box-shadow: none;
     /* Just appears — no slide-in. */
     animation: none;
-    padding: 0;
+    padding: 0 0 var(--wt-box-my);
   }
   /* Orange strip header (un-hidden and restyled from the old logo bar): the same
      textured orange sign + white seam the catalog tab bar / breadcrumb / cart
@@ -1703,10 +1717,19 @@ body:has(.nav-drawer-overlay) .site-header {
       var(--wt-iron) left calc(-1 * (var(--wt-box-h) + var(--wt-seam))) / 100% auto no-repeat,
       var(--wt-orange);
     box-shadow:
+      /* Side white strips so the orange MENU bar carries the sign's white edge
+         in its x-margins, like the cart's strips. Left/right only — the bottom
+         has its own white divider, the top meets the header seam. */
+      -4px 0 0 0 var(--ce-white),
+      4px 0 0 0 var(--ce-white),
+      -5px 0 0 0 var(--wt-ring-edge),
+      5px 0 0 0 var(--wt-ring-edge),
       inset 0 -2.2px 0 var(--ce-white),
       inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
       inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
-      inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
+      inset -5px 0 6px -4px rgba(62, 24, 2, 0.55),
+      /* Greige seam stuck below the MENU bar, like the breadcrumb. */
+      0 1px 0 0 var(--ce-greige);
   }
   .nav-drawer__title {
     display: flex;
@@ -1747,15 +1770,24 @@ body:has(.nav-drawer-overlay) .site-header {
     color: rgba(255, 255, 255, 0.85);
   }
   .nav-drawer__close:hover { color: #fff; background: none; }
-  /* Links on the off-white card body, inset like the cart's items, with the same
-     white ring + gray edge sitting in the greige margin. */
+  /* Links on the off-white card body — the same white ring + gray edge the cart
+     cards carry, sitting in the greige margin, with the sign's rounded bottom
+     corners to close the card. Sized to its content (no stretch, no inner
+     scroll) so the card ends at the last link. */
   .nav-drawer__links {
-    background: var(--ce-off-white);
-    /* Same 6px greige side margin the orange MENU strip and the brown header bar
-       have — a plain greige inset (no white ring), so the lighter body lines up
-       with the bars above it. */
-    margin: var(--wt-seam) var(--wt-box-my) var(--wt-box-my);
-    padding: 0.5rem;
+    flex: 0 0 auto;
+    overflow-y: visible;
+    background: var(--ce-greige);
+    /* Sit close under the bar (1px seam) so the bar's bottom border reads the
+       same thin weight as the other pages' orange bars, and keep the link rows
+       tight — less greige showing between the white containers. */
+    margin: 1px var(--wt-box-my) 0;
+    padding: 1px;
+    gap: 1px;
+    border-radius: 0 0 6px 6px;
+    box-shadow:
+      0 0 0 4px var(--ce-white),
+      0 0 0 5px var(--wt-ring-edge);
   }
 }
 @media (min-width: 601px) and (max-width: 1024px) {
@@ -2324,7 +2356,7 @@ body:has(.nav-drawer-overlay) .site-header {
   /* Menu drawer was a bit thick — tighten rows and the frame around them. */
   .nav-drawer__link, .nav-drawer__cat-trigger { padding: 9px 10px; }
   .nav-drawer__cat-content .nav-drawer__cat-item { padding: 7px 6px 7px 14px; }
-  .nav-drawer__links, .nav-drawer__footer { padding: 2px 3px; }
+  .nav-drawer__links, .nav-drawer__footer { padding: 1px; }
   .nav-drawer__header { margin: 0 var(--wt-box-my); }
 }
 .nav-drawer__cat-item {
@@ -4315,7 +4347,8 @@ body:has(.home-catalog) .site-header .cart-btn .cart-btn__label { color: #ffffff
   /* font-size a touch smaller (was 1.05rem) — the same slight reduction applied
      to the catalog tab labels, so the two strips stay in step. */
   .pdp-breadcrumb { top: 48px; font-size: 0.97rem; height: 44px; padding: 0; overflow: hidden; border-radius: 0; margin: 0; }
-  .pdp-breadcrumb__link, .pdp-breadcrumb__sku { padding: 0 10px; }
+  /* A touch more breathing room between the crumb labels — 10px read crammed. */
+  .pdp-breadcrumb__link, .pdp-breadcrumb__sku { padding: 0 15px; }
 }
 
 .product-detail {
@@ -4347,44 +4380,45 @@ body:has(.home-catalog) .site-header .cart-btn .cart-btn__label { color: #ffffff
   grid-template-columns: repeat(4, 1fr);
   gap: 0.75rem;
 }
-.related-carousel {
-  display: none;
-}
-/* "More <category>" listings — flat cards only in the mobile/tablet
-   carousel (.related-carousel). The desktop grid (.related-items__grid)
-   keeps the same slight rounding as the main catalog cards. */
+/* "More <category>" is a scrollable carousel at EVERY width now — the desktop
+   4-up grid is replaced by it so the whole related set (up to 8) can be paged
+   through in that one row rather than capped at four. Flat cards throughout. */
+.related-items__grid { display: none; }
+.related-carousel { display: block; overflow: hidden; }
 .related-carousel .product-card,
 .related-carousel .product-card__image { border-radius: 0; }
 .related-carousel .product-card__image::after { border-radius: 0; }
-@media (max-width: 1024px) {
-  .related-items__grid { display: none; }
-  .related-carousel { display: block; overflow: hidden; }
-  .related-carousel__wrapper { position: relative; }
-  .related-carousel__scroller { display: flex; }
-  .related-carousel__slide .product-card { width: 100%; }
-  .related-carousel__arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 3;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1px solid var(--ce-gray-200);
-    background: rgba(255,255,255,0.9);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: var(--ce-gray-700);
-    padding: 0;
-    transition: all var(--transition-fast);
-  }
-  .related-carousel__arrow:hover { background: var(--ce-white); box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
-  .related-carousel__arrow:disabled { opacity: 0.3; pointer-events: none; }
-  .related-carousel__arrow--prev { left: 4px; }
-  .related-carousel__arrow--next { right: 4px; }
+.related-carousel__wrapper { position: relative; }
+.related-carousel__scroller { display: flex; }
+.related-carousel__slide .product-card { width: 100%; }
+.related-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--ce-gray-200);
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ce-gray-700);
+  padding: 0;
+  transition: all var(--transition-fast);
+}
+.related-carousel__arrow:hover { background: var(--ce-white); box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
+.related-carousel__arrow:disabled { opacity: 0.3; pointer-events: none; }
+.related-carousel__arrow--prev { left: 4px; }
+.related-carousel__arrow--next { right: 4px; }
+/* Desktop shows 4 across (the grid's old column count); the flex-basis of each
+   slide is derived from --slides-per-view, so overriding it re-lays the row.
+   !important to beat the value Qwik UI sets inline on the carousel root. */
+@media (min-width: 1025px) {
+  .related-carousel { --slides-per-view: 4 !important; }
 }
 
 .product-image-row {
@@ -6719,7 +6753,7 @@ details[open] > .cart-drawer__checkout-title::after {
   /* Single row now that the breadcrumb (former row 1) is removed —
      image + details sit at the top with no empty gap above. */
   .product-modal__layout { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; column-gap: 0.1rem; row-gap: 0.1rem; }
-  .product-detail .product-modal__details { padding: 1.25rem 1rem 1rem; background: var(--ce-off-white); border-radius: 0; box-shadow: none; border: none; grid-column: 2; grid-row: 1; margin-right: 0.1rem; }
+  .product-detail .product-modal__details { padding: 1.25rem 1.25rem 1rem; background: var(--ce-greige); border-radius: 0; box-shadow: none; border: none; grid-column: 2; grid-row: 1; margin-right: 0.1rem; }
   .product-detail .product-modal__details::after { display: none; }
   .product-detail .product-modal__details::before { display: none; }
   /* Tablet product page containers: flat. Matches the flat product
@@ -7267,15 +7301,17 @@ details[open] > .cart-drawer__checkout-title::after {
      image and details above sit ~--wt-box-my in from the viewport, so the More
      carousel matched to them reads as part of the same card rather than a
      separate full-width band. */
-  .related-items { margin-top: 1rem; margin-left: var(--wt-box-my); margin-right: var(--wt-box-my); }
+  /* Sit the "More …" carousel right under the info panel on the same 2px seam
+     the rest of the site uses, not a 1rem gap; a small title lead-in below it. */
+  .related-items { margin-top: 3px; margin-left: var(--wt-box-my); margin-right: var(--wt-box-my); }
   .related-items__grid { display: none; }
-  .related-items__title { font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .related-items__title { font-size: 0.9rem; margin-bottom: 0.35rem; padding: 0.4rem 0.35rem 0; }
   .product-modal__category { display: none; }
   .popular-grid { grid-template-columns: 1fr 1fr; }
   /* Mobile: same pattern as the catalog — the wrapper sits edge-to-edge
      so the sticky breadcrumb runs flush with the viewport, the 0.25rem
      side inset moves onto the product image and details below. */
-  .apparel-catalog:has(.product-detail) { padding: 0 0 0.35rem; }
+  .apparel-catalog:has(.product-detail) { padding: 0 0 1px; }
   .product-detail .product-image-row { padding-left: 0; padding-right: 0; }
   .product-detail { padding: 0; margin: -3px 0 0; max-width: 600px; }
   .product-detail .product-modal__image { border-radius: 2px; padding: 0; }
@@ -7290,17 +7326,20 @@ details[open] > .cart-drawer__checkout-title::after {
     pointer-events: none;
     z-index: 5;
   }
-  .product-detail .product-modal__details { position: relative; padding: 1.25rem 0.75rem 1.5rem; margin-left: 0.15rem; margin-right: 0.15rem; background: var(--ce-off-white); border-radius: 2px; }
-  .product-detail .product-modal__details::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 2px;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.06);
-    pointer-events: none;
-    z-index: 5;
-  }
-  .product-modal__layout { grid-template-columns: 1fr; gap: 1px; grid-template-rows: auto; }
+  /* Align the info panel to the same 6px inset the image and breadcrumb above
+     it use — it was pushed in a further 0.15rem each side, so it sat ~2.5px
+     narrower than the image, floated in a too-wide white margin, and read as a
+     separate block rather than the next panel in the sign. At 6px its side
+     margins are the same 4px white strip everything else carries. */
+  .product-detail .product-modal__details { position: relative; padding: 1.25rem 1rem 1.5rem; margin-left: 0; margin-right: 0; background: var(--ce-greige); border-radius: 0 0 2px 2px; }
+  /* The info panel's pressed top-edge shadow is dropped: it read as a border
+     between the image and the info, and the two are one continuous greige
+     surface now. */
+  .product-detail .product-modal__details::after { display: none; }
+  /* No row gap between the image and the info panel: it exposed a 1px line of
+     the white body panel between them, and now that both are greige they should
+     read as one continuous surface. */
+  .product-modal__layout { grid-template-columns: 1fr; gap: 0; grid-template-rows: auto; }
   /* Image previews live in a narrow column on the far right of the image area
      (~1/6 width) for toggling images — not the traditional horizontal row.
      The thumbs replace the carousel dots. The rail is absolutely positioned so
@@ -7312,7 +7351,10 @@ details[open] > .cart-drawer__checkout-title::after {
     flex-direction: row;
     position: relative;
   }
-  .product-image-row:has(.product-thumbs--column) { padding-right: calc(16% + 4px); }
+  /* 2px gap between the image and the preview rail — the same thin seam every
+     other panel gap uses. It was 4px (16% rail + 4px padding), reading as a
+     thick greige band beside the image. */
+  .product-image-row:has(.product-thumbs--column) { padding-right: calc(16% + 2px); }
   .product-thumbs--column {
     display: flex;
     flex-direction: column;
@@ -7397,6 +7439,8 @@ details[open] > .cart-drawer__checkout-title::after {
       var(--wt-iron) left calc(-1 * (var(--wt-box-h) + var(--wt-seam))) / 100% auto no-repeat,
       var(--wt-orange);
     box-shadow:
+      /* Greige seam stuck below, like the breadcrumb. */
+      0 1px 0 0 var(--ce-greige),
       inset 0 -2.2px 0 var(--ce-white),
       inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
       inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
@@ -8785,6 +8829,8 @@ details[open] > .cart-drawer__checkout-title::after {
        the roll-away edge on the BOTTOM only (the bar carries the top) — one
        pressed sign face across both. */
     box-shadow:
+      /* Greige seam stuck below the bar, like the breadcrumb. */
+      0 1px 0 0 var(--ce-greige),
       -4px 0 6px -3px rgba(0,0,0,0.35),
       4px 0 6px -3px rgba(0,0,0,0.35),
       inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
@@ -8947,6 +8993,8 @@ details[open] > .cart-drawer__checkout-title::after {
       var(--wt-iron) left calc(-1 * (var(--wt-box-h) + var(--wt-seam))) / 100% auto no-repeat,
       var(--wt-orange) !important;
     box-shadow:
+      /* Greige seam stuck to the bar's bottom edge, same as desktop/mobile. */
+      0 1px 0 0 var(--ce-greige),
       -4px 0 6px -3px rgba(0,0,0,0.35),
       4px 0 6px -3px rgba(0,0,0,0.35),
       inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
@@ -9030,7 +9078,10 @@ details[open] > .cart-drawer__checkout-title::after {
 }
 .pdp-breadcrumb__view:hover { background: rgba(255,255,255,0.10); }
 @media (max-width: 600px) {
-  .pdp-breadcrumb__view { display: inline-flex; padding: 0 12px; }
+  /* Lift the icon to sit in the orange area like the labels (they carry the
+     2.2px seam offset), and pull it left to line up under the header hamburger
+     — a wider right pad centres it on the same x. */
+  .pdp-breadcrumb__view { display: inline-flex; padding: 0 17px 2.5px 12px; }
   /* Bigger toggle icon to match the scaled-up mobile bars (was 17px). */
   .pdp-breadcrumb__view svg { width: 25px; height: 25px; }
 }
@@ -9235,8 +9286,11 @@ details[open] > .cart-drawer__checkout-title::after {
     grid-row: 3;
     align-self: start;
     position: sticky;
-    /* Header (4 + 64) + category bar (42) + the tight gap, minus the 1px lap. */
-    top: 113px;
+    /* Stick right under the tab bar: the header pin + the 50px tab bar, less the
+       1px lap. It was a hardcoded 113px (a stale 4+64 header + 42px bar), 8px
+       above where the bar now sits — so the filters scrolled ~8px under the bar
+       before catching, which read as not sticking until a few px of scroll. */
+    top: calc(var(--wt-header-pin) + 50px - 1px);
     /* Semi-transparent white over the greige column — halfway between the two
        tones — engraved into the sign like the product panels: hairline, shade
        just inside it, and a light lip along the bottom outer edge. */
@@ -9571,6 +9625,11 @@ details[open] > .cart-drawer__checkout-title::after {
      carousel's overflow:hidden rounds off the pseudo's corner tip. */
   .product-detail .product-carousel {
     border: 1px solid var(--ce-gray-200);
+    /* No TOP keyline: it stacked on the 2px greige seam below the breadcrumb and
+       made the line read ~twice as thick above the image as above the info
+       (which has no top border). The seam itself now separates the image's top
+       edge from the bar, matching the info side. */
+    border-top: none;
   }
   .product-detail .product-carousel::after { display: none; }
 }
@@ -9680,6 +9739,8 @@ details[open] > .cart-drawer__checkout-title::after {
   .home-catalog__tabs,
   .pdp-breadcrumb {
     box-shadow:
+      /* Greige seam stuck to the bar's bottom edge, same as desktop. */
+      0 1px 0 0 var(--ce-greige),
       inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
       inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
       inset -5px 0 6px -4px rgba(62, 24, 2, 0.55) !important;
@@ -9852,6 +9913,7 @@ details[open] > .cart-drawer__checkout-title::after {
      top of it and the strip came out taller than the tab bar by exactly the
      divider's width. */
   box-shadow:
+    0 1px 0 0 var(--ce-greige),
     inset 0 -2.2px 0 var(--ce-white),
     inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
     inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
@@ -9870,6 +9932,7 @@ details[open] > .cart-drawer__checkout-title::after {
       4px 0 0 0 var(--ce-white),
       -5px 0 0 0 var(--wt-ring-edge),
       5px 0 0 0 var(--wt-ring-edge),
+      0 1px 0 0 var(--ce-greige),
       inset 0 -2.2px 0 var(--ce-white),
       inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
       inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
@@ -9908,6 +9971,7 @@ details[open] > .cart-drawer__checkout-title::after {
   }
   .cart-table thead tr {
     box-shadow:
+      0 1px 0 0 var(--ce-greige),
       inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
       inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
       inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
@@ -10827,12 +10891,15 @@ body:has(.product-fullscreen) { overflow: hidden; }
     width: min(var(--site-max), 100%);
     max-width: none;
     /* The same white ring the other cards carry (catalog / product / privacy),
-       so the cart reads as the same sign with white strips down its sides. */
+       so the cart reads as the same sign with white strips down its sides. The
+       card's own 1px edge is INSET so it doesn't paint over the white — the two
+       dark layers used to sit on top of the ring's inner 2px and cut the strip
+       to 1px, the desktop version of the grey x-border removed on mobile. Now
+       the full 3px white shows with the grey rim outside it. */
     box-shadow:
-      0 0 0 1px rgba(0, 0, 0, 0.12),
-      0 0 0 2px rgba(0, 0, 0, 0.04),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.12),
       0 0 0 var(--wt-ring) var(--ce-white),
-      0 0 0 calc(var(--wt-ring) + 1px) rgba(0, 0, 0, 0.08),
+      0 0 0 calc(var(--wt-ring) + 1px) rgba(0, 0, 0, 0.14),
       0 6px 16px var(--wt-ring) rgba(0, 0, 0, 0.22);
   }
   /* The panel floats above the header (z 10001) so it stays interactive, but
@@ -11407,8 +11474,11 @@ body:has(.product-fullscreen) { overflow: hidden; }
    ============================================================ */
 @media (min-width: 1025px) {
   .product-detail .product-modal__details {
-    padding-top: 1.75rem;
-    padding-bottom: 1.75rem;
+    padding-top: 1.1rem;
+    padding-bottom: 1.5rem;
+    /* More horizontal breathing room around the info column. */
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
   }
 }
 
@@ -11555,8 +11625,17 @@ body:has(.product-fullscreen) { overflow: hidden; }
       inset 0 0 0 1px rgba(0, 0, 0, 0.14),
       inset 0 0 14px rgba(62, 24, 2, 0.45) !important;
   }
-  .home-catalog__header { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.14); }
-  .pdp-breadcrumb { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.14) !important; }
+  .home-catalog__header { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.14), 0 1px 0 0 var(--ce-greige); }
+  /* The greige seam is the breadcrumb's own bottom edge (a 2px greige shadow
+     just below the bar) rather than a top margin on the product content — so it
+     stays stuck to the bar while the content scrolls under it, and reads the
+     same 2px as the vertical gutter between the image and info. The bar is
+     sticky/positioned, so its shadow paints over the content beneath. */
+  .pdp-breadcrumb {
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.14),
+      0 1px 0 0 var(--ce-greige) !important;
+  }
 }
 
 /* ============================================================
@@ -11691,3 +11770,89 @@ body:has(.product-fullscreen) { overflow: hidden; }
     clip-path: inset(-20px -20px 0 -20px);
   }
 }
+
+/* ============================================================
+   Cart / checkout card bodies: the darker greige, matching the product info
+   panel — on every device.
+
+   The items, order summary, checkout form, empty state and footer were
+   --ce-off-white, one shade lighter than the greige ground, so they read
+   lighter than the product page's info body. The reading panels now sit at
+   the same darker greige across the cart, checkout and product pages, at every
+   width; their white edge strips still read against it.
+   ============================================================ */
+.cart-drawer__items,
+.cart-drawer__summary,
+.checkout-modal__form,
+.cart-drawer__empty,
+.cart-drawer__footer {
+  background: var(--ce-greige);
+}
+
+/* ============================================================
+   Desktop: a 2px greige seam below the breadcrumb, above the product panels.
+
+   The breadcrumb bar butted straight against the image/info panels, while the
+   two panels are divided from each other by a 2px greige gutter (--wt-gap-hair,
+   the same seam the whole desktop layout runs on). The horizontal junction
+   under the bar should read the same as that vertical one — so open a 2px gap
+   there and let the catalog's greige show through it.
+   ============================================================ */
+@media (min-width: 1025px) {
+  /* The content butts straight against the breadcrumb; the greige seam is the
+     bar's own 2px bottom shadow (above), which stays stuck to the bar. */
+  .apparel-catalog:has(.product-detail) .product-detail { margin-top: 0; }
+}
+
+
+/* ============================================================
+   Desktop: the checkout "Back to cart" bar reads as a secondary sign strip —
+   orange textured sign, white text, seam above + 3px white divider below, card
+   inset — matching the desktop CART title bar, tab bar and breadcrumb. It was a
+   plain grey text button; on mobile it was already orange.
+   ============================================================ */
+@media (min-width: 1025px) {
+  .cart-drawer__back-btn {
+    background:
+      var(--wt-iron) left calc(-1 * (var(--wt-box-h) + var(--wt-seam))) / 100% auto no-repeat,
+      var(--wt-orange);
+    color: #fff;
+    /* Match the other desktop sign bars (tab bar, breadcrumb, cart strip). */
+    height: 50px;
+    padding: 0 0.9rem;
+    /* Full width, flush to the drawer edges — it was only as wide as its label,
+       then inset 6px while the summary/form below sit flush, which read as
+       padding around it. The arrow + text stay left (flex-start). */
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    border-bottom: 3px solid var(--ce-white);
+    box-shadow:
+      /* Greige seam stuck below, like the breadcrumb. */
+      0 1px 0 0 var(--ce-greige),
+      inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
+      inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
+      inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
+  }
+  .cart-drawer__back-btn svg { stroke: #fff; }
+  .cart-drawer__back-btn:hover { color: var(--wt-orange-hi); }
+  .cart-drawer__back-btn:hover svg { stroke: var(--wt-orange-hi); }
+}
+
+/* ============================================================
+   Desktop: the mobile/tablet menu takeover can never show. The hamburger is
+   already display:none ≥1025, so it isn't user-openable — this hides the
+   overlay outright as a hard guarantee, so no stray state (or scripted click)
+   can surface the menu on desktop.
+   ============================================================ */
+@media (min-width: 1025px) {
+  .nav-drawer-overlay { display: none !important; }
+}
+
+/* ============================================================
+   "More …" carousel item gap = the header/footer bottom-border width (3px),
+   matching the seam above and below the carousel. The Qwik UI gap prop couples
+   into the slides' flex-basis (so gap={2} rendered ~8px); driving the scroller
+   gap directly keeps it a clean 3px at every slides-per-view. Prop is gap={0}
+   so flex-basis stays at the full 100%/spv and this is the only gap applied.
+   ============================================================ */

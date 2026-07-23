@@ -210,12 +210,17 @@ export default component$(() => {
 
   const p = product.value;
   const pdf = (p as any).pdf as string | undefined;
-  const catHash = p.category.toLowerCase().replace(/\s+/g, "-");
+  // The breadcrumb category must read as the TAB the product lives under, not
+  // its raw data category: the catalog remaps Safety Boots / Safety Shoes into
+  // the "Footwear" tab (see product-catalog.tsx), so the crumb has to remap the
+  // same way — otherwise a boot showed "Safety Shoes" while its tab said
+  // "Safety Footwear". categoryLabel() then gives the identical label the tab
+  // uses, so the two can't drift (the old per-category overrides did drift).
+  const isFootwear = (c: string) => c === "Safety Boots" || c === "Safety Shoes" || c === "Footwear";
+  const tabCategory = isFootwear(p.category) ? "Footwear" : p.category;
+  const catHash = tabCategory.toLowerCase().replace(/\s+/g, "-");
   const backLabel = loginType.value === "tech" ? t("cat.Work Wear", locale.value) : t("nav.apparel", locale.value);
-  const catLabel = p.category === "Jackets" ? t("cat.JacketsHoodies", locale.value)
-    : p.category === "Hats" ? t("cat.CapsBeanies", locale.value)
-    : p.category === "New Hire Kit" ? t("cat.New Hire Kit", locale.value)
-    : categoryLabel(p.category, locale.value);
+  const catLabel = categoryLabel(tabCategory, locale.value);
 
   return (
     <div class="apparel-catalog" id="products">
@@ -496,7 +501,7 @@ export default component$(() => {
               ))}
             </div>
             {/* Mobile carousel */}
-            <Carousel.Root class="related-carousel" slidesPerView={2} gap={6} align="start" sensitivity={{ touch: 1.5, mouse: 1.5 }} rewind>
+            <Carousel.Root class="related-carousel" slidesPerView={2} gap={0.4} align="start" sensitivity={{ touch: 1.5, mouse: 1.5 }} rewind>
               <div class="related-carousel__wrapper">
                 <Carousel.Previous class="related-carousel__arrow related-carousel__arrow--prev">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
