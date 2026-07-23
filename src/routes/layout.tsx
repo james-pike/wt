@@ -795,7 +795,18 @@ export default component$(() => {
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ cleanup, track }) => {
     track(() => loc.url.pathname);
-    const stickyTop = () => (window.innerWidth < 601 ? 64 : window.innerWidth <= 1024 ? 67 : 66);
+    // Where the strip pins, read from the strip itself rather than a table of
+    // per-breakpoint header heights. Those were 64/67/66 literals, and they
+    // silently desynced the moment the header's height changed: --wt-header-h
+    // is built from the bar + seam + top padding, so widening any of them moves
+    // the pin, and the strip then rests one or two pixels BELOW the number this
+    // compared against. The test never passed, --tabs-stuck never got set, and
+    // the search button (gated on it in global.css) stopped appearing on the
+    // home route. The strip's own resolved `top` is the pin by definition.
+    const stickyTop = (strip: Element) => {
+      const top = parseFloat(getComputedStyle(strip).top);
+      return Number.isFinite(top) ? top : 64;
+    };
     const onScroll = () => {
       headerScrolled.value = window.scrollY > 60;
       document.documentElement.classList.toggle("scrolled", window.scrollY > 60);
@@ -805,7 +816,7 @@ export default component$(() => {
         tabsStuck.value = true;
       } else {
         const strip = document.querySelector(".home-catalog__header");
-        tabsStuck.value = !!strip && strip.getBoundingClientRect().top <= stickyTop() + 1;
+        tabsStuck.value = !!strip && strip.getBoundingClientRect().top <= stickyTop(strip) + 1;
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
