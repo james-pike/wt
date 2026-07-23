@@ -7450,20 +7450,43 @@ details[open] > .cart-drawer__checkout-title::after {
   }
   .cart-drawer__site-header { display: none; }
   /* White ring + gray edge around each content card, sitting in the greige
-     margin — the "white strip with a gray edge before the greige background"
-     the header, apparel and product cards carry. From the card edge outward:
-     1px inner gray hairline, a 2px white strip, then a 1px outer gray edge, and
-     the rest of the 6px margin stays greige. Excludes the orange strips (which
-     connect to the header via the greige seam, like the tab bar/breadcrumb). */
+     margin — the same white strip the apparel and product cards carry.
+
+     It used to lead with a 1px gray hairline: box-shadow paints first-listed on
+     top, so that layer sat OVER the inner pixel of its own white and cut the
+     strip to ~2px of visible white with grey bleeding across it — exactly the
+     grey line removed from the apparel grid. Rebuilt to read like the apparel
+     card: a full 4px of white (the card insets 6px, the white spreads to 2px
+     from the viewport edge — the same 2px the body panel insets there) with the
+     --wt-ring-edge hairline OUTSIDE it, in the greige gutter, not over it. */
   .cart-drawer__items,
   .cart-drawer__summary,
   .checkout-modal__form,
   .cart-drawer__empty,
   .cart-drawer__footer {
     box-shadow:
-      0 0 0 1px rgba(0, 0, 0, 0.10),
-      0 0 0 3px var(--ce-white),
-      0 0 0 4px rgba(0, 0, 0, 0.06);
+      0 0 0 4px var(--ce-white),
+      0 0 0 5px var(--wt-ring-edge);
+  }
+  /* The orange bars (the cart's PRODUCT/TOTAL strip, the checkout's Back bar)
+     sat with bare greige in their side margins while every card beside them
+     carried the white strip — so the sign's white edge broke at each orange
+     row. Give them the SAME strip, left and right ONLY: their top meets the
+     header seam and their bottom already carries a white divider, so a full
+     ring would double those. Offset shadows (no Y, no spread) make side-only
+     strips that stop at the bar's height; the rust vignettes stay inset.
+     (The cart's PRODUCT/TOTAL strip is `.cart-table thead tr`, restated where
+     its authoritative rule lives further down this file.) */
+  .cart-drawer__back-btn {
+    box-shadow:
+      -4px 0 0 0 var(--ce-white),
+      4px 0 0 0 var(--ce-white),
+      -5px 0 0 0 var(--wt-ring-edge),
+      5px 0 0 0 var(--wt-ring-edge),
+      inset 0 -2.2px 0 var(--ce-white),
+      inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
+      inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
+      inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
   }
 }
 
@@ -9834,6 +9857,25 @@ details[open] > .cart-drawer__checkout-title::after {
     inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
     inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
 }
+/* Phones: the cart's PRODUCT/TOTAL strip carries the sign's white edge in its
+   side margins, like the cards beside it. Side-only offset strips (no Y, no
+   spread) — the top meets the header seam, the bottom has its own -2.2px white
+   divider, so a full ring would double those. Restated here, after the base
+   rule above, so it wins on phones; desktop keeps the ring it gets from the
+   min-width:1025 block. */
+@media (max-width: 600px) {
+  .cart-table thead tr {
+    box-shadow:
+      -4px 0 0 0 var(--ce-white),
+      4px 0 0 0 var(--ce-white),
+      -5px 0 0 0 var(--wt-ring-edge),
+      5px 0 0 0 var(--wt-ring-edge),
+      inset 0 -2.2px 0 var(--ce-white),
+      inset 0 -6px 8px -4px rgba(62, 24, 2, 0.5),
+      inset 5px 0 6px -4px rgba(62, 24, 2, 0.55),
+      inset -5px 0 6px -4px rgba(62, 24, 2, 0.55);
+  }
+}
 .cart-table thead th {
   /* White bottom divider, painted via the CELL background (a bottom-anchored
      gradient) rather than a box-shadow on the <tr>: this table uses
@@ -11639,5 +11681,13 @@ body:has(.product-fullscreen) { overflow: hidden; }
    ============================================================ */
 @media (max-width: 600px) {
   body::before { box-shadow: 0 0 0 1px var(--wt-ring-edge); }
-  .site-header::before { box-shadow: 0 0 0 1px var(--wt-ring-edge); }
+  .site-header::before {
+    box-shadow: 0 0 0 1px var(--wt-ring-edge);
+    /* The hairline is the sign's OUTER edge — top and sides only. Spread draws
+       it on all four, and the bottom one landed at the header/tab junction,
+       reading as a grey rule across the white slot between the two strips. Clip
+       it off at the bottom edge (top/sides extended so their line is kept),
+       exactly as the desktop cap does with the same inset(). */
+    clip-path: inset(-20px -20px 0 -20px);
+  }
 }
