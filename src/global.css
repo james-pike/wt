@@ -44,7 +44,7 @@
   --ce-gray-700: #4b463e;
   --ce-gray-900: #1a1814;
 
-  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans: 'Montserrat', 'Montserrat Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 10px;
@@ -9675,8 +9675,11 @@ details[open] > .cart-drawer__checkout-title::after {
     inset: 4px;
     z-index: -1;
     background: var(--ce-white);
-    /* The card's corners are 6px; the ring's sit --wt-box-my outside them. */
-    border-radius: calc(6px + var(--wt-box-my));
+    /* Concentric with the card's 6px corners: the ring is inset 4px vs the
+       card's --wt-box-my, so its outer radius is 6px + that gap (box-my − 4px)
+       = var(--wt-box-my) + 2px. Was 6px + box-my, which over-rounded the ring
+       relative to the header-top / footer-bottom corners it wraps. */
+    border-radius: calc(var(--wt-box-my) + 2px);
     box-shadow: inset 0 0 0 1px var(--wt-ring-edge);
   }
   /* The card's edge shadow, cast onto the ring in ONE continuous column down
@@ -9728,7 +9731,8 @@ details[open] > .cart-drawer__checkout-title::after {
     right: 4px;
     bottom: 0;
     background: var(--ce-white);
-    border-radius: calc(6px + var(--wt-box-my)) calc(6px + var(--wt-box-my)) 0 0;
+    /* Concentric with the header bar's 6px top corners (see body::before). */
+    border-radius: calc(var(--wt-box-my) + 2px) calc(var(--wt-box-my) + 2px) 0 0;
     box-shadow:
       inset 1px 0 0 var(--wt-ring-edge),
       inset -1px 0 0 var(--wt-ring-edge),
@@ -11899,4 +11903,21 @@ body:has(.product-fullscreen) { overflow: hidden; }
    ============================================================ */
 @media (max-width: 600px) {
   :root { --wt-box-my: 8px; }
+}
+
+/* ============================================================
+   Metric-matched fallback for Montserrat (Arial re-scaled to Montserrat's
+   advance widths + vertical metrics). With this in the --font-sans stack
+   before the system fonts, text laid out in the fallback on a cold refresh
+   occupies the same width as Montserrat, so when the web font swaps in there's
+   no reflow/flash — most visible on the header APPAREL wordmark.
+   Values from the standard Montserrat→Arial fallback metrics.
+   ============================================================ */
+@font-face {
+  font-family: 'Montserrat Fallback';
+  src: local('Arial');
+  size-adjust: 112.16%;
+  ascent-override: 84.83%;
+  descent-override: 22%;
+  line-gap-override: 0%;
 }
