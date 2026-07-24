@@ -11930,3 +11930,21 @@ body:has(.product-fullscreen) { overflow: hidden; }
 @media (max-width: 600px) {
   .cart-table__th-qty-inline { display: inline; }
 }
+
+/* ============================================================
+   Desktop checkout: Order Details and Payment side by side in two columns
+   instead of stacked. The back bar and the order-summary collapsible span the
+   full width above them.
+   ============================================================ */
+@media (min-width: 1025px) {
+  .cart-drawer__details-step {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--wt-box-my);
+    align-content: start;
+  }
+  .cart-drawer__details-step > .cart-drawer__back-btn,
+  .cart-drawer__details-step > .cart-drawer__summary { grid-column: 1 / -1; }
+  .cart-drawer__details-step > .checkout-modal__form { grid-column: 1; margin-right: 0; }
+  .cart-drawer__details-step > .checkout-modal__pay { grid-column: 2; margin-left: 0; }
+}

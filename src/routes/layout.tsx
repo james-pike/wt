@@ -15,7 +15,7 @@ import type { Cookie } from "@builder.io/qwik-city";
 import { createClient } from "@libsql/client";
 import { LocaleContext, t } from "../i18n";
 import type { Locale, TranslationKey } from "../i18n";
-import { allProducts } from "./apparel/products";
+import { allProducts, colorName } from "./apparel/products";
 import { getGiftCard, giftContribution, deductGiftCard } from "../lib/giftcards";
 import { sendConfirmationEmail } from "../lib/orders";
 import type { OrderEmailData, PaymentMethod } from "../lib/orders";
@@ -463,34 +463,6 @@ interface CartItem {
   variant?: string;
   code?: string;
 }
-
-const colorKeyMap: Record<string, string> = {
-  "#00703c": "color.green",
-  "#1a1a18": "color.black",
-  "#ffffff": "color.white",
-  "#2c3e50": "color.navy",
-  "#6e6e6e": "color.grey",
-  "#94a3b8": "color.silver",
-  "#E6570C": "color.orange",
-  "#ff6600": "color.safetyorange",
-  "#e4ba3f": "color.yellow",
-  "#c0392b": "color.red",
-  "#6b3fa0": "color.purple",
-  "#C97B0C": "color.royal",
-  "#b8b8b8": "color.greyheather",
-  "#7dd3fc": "color.lightblue",
-  "#6b8bb0": "color.solaceblue",
-  "#4a4a4a": "color.charcoal",
-  "#8d5f18": "color.bronze",
-  "#8a5d3b": "color.carharttbrown",
-  "#00b5e2": "color.skyblue",
-};
-
-const colorName = (hex: string, locale: Locale): string => {
-  const key = colorKeyMap[hex];
-  if (key) return t(key as TranslationKey, locale);
-  return hex;
-};
 
 export default component$(() => {
   const loc = useLocation();
