@@ -12077,3 +12077,29 @@ body:has(.product-fullscreen) { overflow: hidden; }
     color: rgba(255, 255, 255, 0.85);
   }
 }
+
+/* ============================================================
+   Menu drawer: let the links scroll once a category is expanded.
+   The drawer is deliberately sized to its content so a short menu
+   ends at the last link — but with a subcategory open the list can
+   run past the overlay, and body scroll is locked behind it, so the
+   list itself has to scroll instead of overflowing out of reach.
+   ============================================================ */
+@media (max-width: 1024px) {
+  .nav-drawer {
+    /* Never taller than the overlay (header bottom -> viewport bottom).
+       Short menus still size to content, so the sign's bottom edge is
+       unchanged; only an over-long list is capped. */
+    max-height: 100%;
+  }
+  .nav-drawer__links {
+    /* Allow shrinking below content height (min-height:0 — without it a
+       flex item won't shrink past its content) and scroll the overflow. */
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Don't chain the scroll out to the locked body behind the overlay. */
+    overscroll-behavior: contain;
+  }
+}
