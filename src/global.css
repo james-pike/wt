@@ -1787,7 +1787,13 @@ body:has(.nav-drawer-overlay) .site-header {
     border-radius: 0 0 6px 6px;
     box-shadow:
       0 0 0 4px var(--ce-white),
-      0 0 0 5px var(--wt-ring-edge);
+      /* Grey outer edge on the SIDES AND BOTTOM ONLY. As a full ring its top
+         segment landed in the 1px gap under the orange bar and painted a grey
+         line straight through the bar's white bottom divider. The bar above
+         carries the same side-only treatment for the same reason. */
+      -5px 0 0 0 var(--wt-ring-edge),
+      5px 0 0 0 var(--wt-ring-edge),
+      0 5px 0 0 var(--wt-ring-edge);
   }
 }
 @media (min-width: 601px) and (max-width: 1024px) {
@@ -2242,13 +2248,17 @@ body:has(.nav-drawer-overlay) .site-header {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  /* 1px, matching the strip around the rows. NOTE: the menu-takeover rule far
+     above (in @media max-width:1024) already asks for 1px, but a media query
+     adds no specificity — this later, equally-specific rule wins at every
+     width, so the gap has to be right HERE too or the rows drift apart. */
+  gap: 1px;
 }
 .nav-drawer__link {
   display: flex;
   align-items: center;
   gap: 28px;
-  padding: 10px 12px;
+  padding: 10px 14px;
   font-size: 1.2rem;
   font-weight: 400;
   color: var(--ce-gray-700);
@@ -2268,7 +2278,7 @@ body:has(.nav-drawer-overlay) .site-header {
 .nav-drawer__link::before {
   content: '';
   position: absolute;
-  left: 42px;
+  left: 46px;
   top: 6px;
   bottom: 6px;
   width: 1px;
@@ -2288,14 +2298,17 @@ body:has(.nav-drawer-overlay) .site-header {
 }
 
 /* Category accordion in the mobile nav drawer */
-.nav-drawer__accordion { display: flex; flex-direction: column; gap: 0.1rem; }
+/* 1px to match .nav-drawer__links' gap — the thin grey strip between the Home
+   row and its neighbour. At 0.1rem (~1.8px) the category rows sat further apart
+   than the links above them. */
+.nav-drawer__accordion { display: flex; flex-direction: column; gap: 1px; }
 .nav-drawer__cat { display: flex; flex-direction: column; }
 .nav-drawer__cat-trigger {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 10px 12px;
+  padding: 10px 14px;
   font-size: 1.2rem;
   font-weight: 400;
   color: var(--ce-gray-700);
@@ -2312,7 +2325,7 @@ body:has(.nav-drawer-overlay) .site-header {
 .nav-drawer__cat-trigger::before {
   content: '';
   position: absolute;
-  left: 42px;
+  left: 46px;
   top: 6px;
   bottom: 6px;
   width: 1px;
@@ -2344,17 +2357,17 @@ body:has(.nav-drawer-overlay) .site-header {
   display: flex;
   flex-direction: column;
   gap: 1px;
-  /* Bottom padding is smaller than top because the parent
-     .nav-drawer__accordion's `gap` already adds ~1.6px under the
-     content; without trimming pad-bottom the visual gap under the
-     list would be larger than above it. */
-  padding: 2px 0 1px;
+  /* 1px above the first sub-item (the trigger sits flush above it — .nav-drawer__cat
+     has no gap of its own), and none below: the accordion's own 1px gap already
+     separates the last sub-item from the next category row. Every vertical gap in
+     the menu is now the same 1px strip. */
+  padding: 1px 0 0;
   overflow: hidden;
 }
 .nav-drawer__cat-content[hidden] { display: none !important; }
 @media (max-width: 600px) {
   /* Menu drawer was a bit thick — tighten rows and the frame around them. */
-  .nav-drawer__link, .nav-drawer__cat-trigger { padding: 9px 10px; }
+  .nav-drawer__link, .nav-drawer__cat-trigger { padding: 9px 14px; }
   .nav-drawer__cat-content .nav-drawer__cat-item { padding: 7px 6px 7px 14px; }
   .nav-drawer__links, .nav-drawer__footer { padding: 1px; }
   .nav-drawer__header { margin: 0 var(--wt-box-my); }
@@ -2405,24 +2418,9 @@ body:has(.nav-drawer-overlay) .site-header {
   display: flex;
   width: 100%;
 }
-.nav-drawer__locale {
-  width: 100%;
-  padding: 10px 12px;
-  background: var(--ce-white);
-  border: 1px solid rgba(49,117,156,0.28);
-  border-radius: 2px;
-  font-size: 1.05rem;
-  font-weight: 400;
-  color: #1e4a66;
-  cursor: pointer;
-  font-family: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 28px;
-}
-.nav-drawer__locale svg { width: 20px; height: 20px; }
-.nav-drawer__locale svg { stroke: #1e4a66; }
+/* .nav-drawer__locale (and its --to-fr / --to-en variants) removed: the drawer
+   language toggle isn't rendered any more, so these were dead rules carrying
+   the pre-sign blue/red palette. */
 .nav-drawer__logout {
   background: var(--ce-white) !important;
   border-color: rgba(220,38,38,0.25) !important;
@@ -2431,9 +2429,6 @@ body:has(.nav-drawer-overlay) .site-header {
 .nav-drawer__logout svg { stroke: #c44545; }
 .nav-drawer__logout:hover {
   background: rgba(220,38,38,0.10) !important;
-}
-.nav-drawer__locale:hover {
-  background: var(--ce-gray-200);
 }
 
 .btn--green {
@@ -3983,14 +3978,6 @@ body:has(.nav-drawer-overlay) .site-header {
 .hero-card-header__btn--to-en:hover { background: #ae1f2a !important; color: #ffffff !important; }
 .hero-card-header__btn--to-fr svg, .hero-card-header__btn--to-en svg { stroke: #ffffff !important; }
 
-/* Mobile nav-drawer toggle keeps the drawer's light row style with a coloured
-   accent (mirrors the red-accented logout row). */
-.nav-drawer__locale--to-fr { border-color: rgba(70,137,179,0.5); color: #2f6f93; }
-.nav-drawer__locale--to-fr svg { stroke: #2f6f93; }
-.nav-drawer__locale--to-fr:hover { background: rgba(70,137,179,0.10); }
-.nav-drawer__locale--to-en { border-color: rgba(212,57,80,0.5); color: #c0334a; }
-.nav-drawer__locale--to-en svg { stroke: #c0334a; }
-.nav-drawer__locale--to-en:hover { background: rgba(212,57,80,0.10); }
 
 /* The floating home-hero header drops its language toggle on mobile/tablet
    (it lives in the hamburger drawer there). */
@@ -5690,7 +5677,9 @@ details[open] > .cart-drawer__checkout-title::after {
 .cart-drawer__summary { padding: 0.5rem 0.75rem; background: var(--ce-white); border-radius: 0; margin: 2px; }
 .cart-drawer__summary-list { padding: 0.5rem 0; }
 .cart-drawer__summary-item { display: flex; justify-content: space-between; padding: 4px 0; font-size: 0.82rem; color: var(--ce-gray-600); }
-.cart-drawer__summary-total { font-weight: 600; color: var(--ce-gray-900); border-top: 1px solid var(--ce-gray-200); margin-top: 4px; padding-top: 8px; }
+/* No rule above the total — the weight change plus the gap separate it, and the
+   grey line sat close enough to the footer's white edge to read as clutter. */
+.cart-drawer__summary-total { font-weight: 600; color: var(--ce-gray-900); margin-top: 4px; padding-top: 8px; }
 .checkout-modal__form { padding: 0.75rem; background: var(--ce-white); border-radius: 0; margin: 2px; }
 .checkout-modal__form-title { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ce-gray-500); margin-bottom: 0.75rem; }
 
@@ -6804,7 +6793,7 @@ details[open] > .cart-drawer__checkout-title::after {
   /* Single row now that the breadcrumb (former row 1) is removed —
      image + details sit at the top with no empty gap above. */
   .product-modal__layout { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; column-gap: 0.1rem; row-gap: 0.1rem; }
-  .product-detail .product-modal__details { padding: 1.25rem 1.25rem 1rem; background: var(--ce-greige); border-radius: 0; box-shadow: none; border: none; grid-column: 2; grid-row: 1; margin-right: 0.1rem; }
+  .product-detail .product-modal__details { padding: 1.25rem 1.25rem 1rem; background: var(--ce-off-white); border-radius: 0; box-shadow: none; border: none; grid-column: 2; grid-row: 1; margin-right: 0.1rem; }
   .product-detail .product-modal__details::after { display: none; }
   .product-detail .product-modal__details::before { display: none; }
   /* Tablet product page containers: flat. Matches the flat product
@@ -7382,7 +7371,7 @@ details[open] > .cart-drawer__checkout-title::after {
      narrower than the image, floated in a too-wide white margin, and read as a
      separate block rather than the next panel in the sign. At 6px its side
      margins are the same 4px white strip everything else carries. */
-  .product-detail .product-modal__details { position: relative; padding: 1.25rem 1rem 1.5rem; margin-left: 0; margin-right: 0; background: var(--ce-greige); border-radius: 0 0 2px 2px; }
+  .product-detail .product-modal__details { position: relative; padding: 1.25rem 1rem 1.5rem; margin-left: 0; margin-right: 0; background: var(--ce-off-white); border-radius: 0 0 2px 2px; }
   /* The info panel's pressed top-edge shadow is dropped: it read as a border
      between the image and the info, and the two are one continuous greige
      surface now. */
@@ -9171,9 +9160,23 @@ details[open] > .cart-drawer__checkout-title::after {
 .nav-drawer__link,
 .nav-drawer__cat-trigger {
   box-shadow:
-    inset 0 0 0 1px rgba(0,0,0,0.10),
-    inset 0 1px 2px rgba(0,0,0,0.08),
-    inset 0 -1px 0 rgba(255,255,255,0.6);
+    /* Sides only, then a BOTTOM edge — no top. A full ring put a dark line on
+       both sides of the 1px greige gap between two stacked rows, so every
+       junction read ~3px against the 2px down the sides. With bottom-only, a
+       junction is one line + the gap, matching the side strips. */
+    inset 1px 0 0 rgba(0,0,0,0.10),
+    inset -1px 0 0 rgba(0,0,0,0.10),
+    inset 0 -1px 0 rgba(0,0,0,0.10);
+}
+/* The first row DOES get a top edge: there's no row above it to double against
+   — it meets the orange bar's seam — so the strip under the bar keeps the
+   weight it had before the rows went bottom-edged only. */
+.nav-drawer__links > .nav-drawer__link:first-child {
+  box-shadow:
+    inset 1px 0 0 rgba(0,0,0,0.10),
+    inset -1px 0 0 rgba(0,0,0,0.10),
+    inset 0 -1px 0 rgba(0,0,0,0.10),
+    inset 0 1px 0 rgba(0,0,0,0.10);
 }
 /* The icon/label divider becomes an engraved hairline (dark line + light lip)
    like the sign's pressed seams, instead of a flat grey rule. */
@@ -9183,12 +9186,19 @@ details[open] > .cart-drawer__checkout-title::after {
   box-shadow: 1px 0 0 rgba(255,255,255,0.6);
 }
 /* Sub-category rows (accordion items) get the same pressed-panel face so the
-   expanded list stays part of the sign. */
+   expanded list stays part of the sign. The flat grey border they inherit from
+   the old side-drawer is dropped: the rim below already draws the edge, and the
+   two together put a grey line and a dark hairline on every row — the sibling
+   .nav-drawer__link / __cat-trigger rows carry the rim alone. */
 .nav-drawer__cat-content .nav-drawer__cat-item {
+  border: none;
+  /* Square corners, matching the rows above and the rest of the sign. */
+  border-radius: 0;
+  /* Same bottom-only edge as the rows above, for the same reason. */
   box-shadow:
-    inset 0 0 0 1px rgba(0,0,0,0.08),
-    inset 0 1px 2px rgba(0,0,0,0.06),
-    inset 0 -1px 0 rgba(255,255,255,0.55);
+    inset 1px 0 0 rgba(0,0,0,0.08),
+    inset -1px 0 0 rgba(0,0,0,0.08),
+    inset 0 -1px 0 rgba(0,0,0,0.08);
 }
 /* The old orange side-drawer header/close/slot treatment is superseded by the
    full-screen menu styling in the @media (max-width: 1024px) block near the top
@@ -11232,7 +11242,9 @@ body:has(.product-fullscreen) { overflow: hidden; }
   .cart-drawer__footer {
     margin: 0 var(--wt-box-my) var(--wt-box-my);
     background: var(--ce-off-white);
-    border-top: 1px solid var(--ce-gray-200);
+    /* No border-top: the footer already carries the white edge ring, and the
+       items panel above carries its own, so a grey rule here stacked a third
+       line into that junction. The ring + greige gutter do the separating. */
   }
   /* The order-summary step (details view) shares the body's fill + inset too, so
      it sits in the card the same way instead of as a 2px white strip. */
@@ -11778,8 +11790,14 @@ body:has(.product-fullscreen) { overflow: hidden; }
    token; they're listed below.
    ============================================================ */
 @media (max-width: 1024px) {
-  :root { --wt-header-h: calc(6px + var(--wt-box-h) + var(--wt-seam)); }
-  .site-header { padding-top: 6px !important; }
+  /* Top strip = --wt-box-my, the SAME token the header's left/right padding
+     uses, so the white edge is uniform on all three sides instead of a
+     hardcoded 6px against 8px sides on phones. --wt-header-h is built from the
+     same token, so --wt-header-pin and every sticky strip follow automatically.
+     (var() resolves at use, so the phone override of --wt-box-my below still
+     applies here.) */
+  :root { --wt-header-h: calc(var(--wt-box-my) + var(--wt-box-h) + var(--wt-seam)); }
+  .site-header { padding-top: var(--wt-box-my) !important; }
 }
 @media (max-width: 600px) {
   /* Flow space given back where the header and strips go position: fixed. */
@@ -11842,21 +11860,22 @@ body:has(.product-fullscreen) { overflow: hidden; }
 }
 
 /* ============================================================
-   Cart / checkout card bodies: the darker greige, matching the product info
-   panel — on every device.
+   Cart / checkout card bodies: the lighter off-white, matching the product
+   info panel — on every device.
 
-   The items, order summary, checkout form, empty state and footer were
-   --ce-off-white, one shade lighter than the greige ground, so they read
-   lighter than the product page's info body. The reading panels now sit at
-   the same darker greige across the cart, checkout and product pages, at every
-   width; their white edge strips still read against it.
+   These briefly ran at the darker --ce-greige to match the product info body,
+   but that read too heavy; the product panel has gone back to --ce-off-white
+   at every width too. Keeping the rule (rather than dropping back to the
+   per-selector bases, which were a mix of white and off-white) holds all the
+   reading panels on one shade, a step lighter than the greige ground they sit
+   in, so their white edge strips still read against it.
    ============================================================ */
 .cart-drawer__items,
 .cart-drawer__summary,
 .checkout-modal__form,
 .cart-drawer__empty,
 .cart-drawer__footer {
-  background: var(--ce-greige);
+  background: var(--ce-off-white);
 }
 
 /* ============================================================
