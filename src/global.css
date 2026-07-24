@@ -1709,6 +1709,10 @@ body:has(.nav-drawer-overlay) .site-header {
     gap: 0;
     margin: 0 var(--wt-box-my);
     height: 44px;
+    /* Never squeezed. The drawer is a flex column capped at the overlay height,
+       so expanding a category made this bar give up its own height (44 -> 29px)
+       to fit the longer list. The list is the part that shrinks and scrolls. */
+    flex-shrink: 0;
     /* 2.2px bottom padding offsets the white seam so the MENU label and the
        close icon centre in the orange area, not in the full cell (which left
        them sitting ~1px low). */
@@ -10925,6 +10929,10 @@ body:has(.product-fullscreen) { overflow: hidden; }
 @media (max-width: 1024px) {
   .home-catalog__tabs .apparel-titlebar__tab.active::before {
     inset: 0 !important;
+    /* Square. The pill still carried the 2px radius from the phone block; with
+       inset:0 the bottom corners are hidden by the bar's own edge, so only the
+       top two showed — a rounded top on an otherwise square tab. */
+    border-radius: 0 !important;
     box-shadow:
       inset 2px 0 0 var(--ce-white),
       inset -2px 0 0 var(--ce-white);
@@ -11483,6 +11491,23 @@ body:has(.product-fullscreen) { overflow: hidden; }
      its last line. */
   .product-card__info:has(.product-card__color-size-row) .product-card__kit-items {
     grid-row: 2 / 4;
+  }
+  /* No swatches to show: pull the price up onto the size's row so the two read
+     inline — size left, price right — instead of the size sitting alone on its
+     own line above an empty swatch cell. Row 3 then goes unreferenced, so the
+     grid never creates it and no stray row-gap is left behind. The New Hire Kit
+     is excluded: it has no swatches either, but its contents list deliberately
+     spans both lower rows. */
+  .product-card__info:has(.product-card__color-size-row):not(:has(.product-card__colors)):not(:has(.product-card__kit-items)) .product-card__sizes {
+    grid-row: 2;
+    grid-column: 1;
+    justify-self: start;
+  }
+  .product-card__info:has(.product-card__color-size-row):not(:has(.product-card__colors)):not(:has(.product-card__kit-items)) .product-card__price-group {
+    grid-row: 2;
+    grid-column: 2;
+    justify-self: end;
+    align-self: baseline;
   }
 }
 
