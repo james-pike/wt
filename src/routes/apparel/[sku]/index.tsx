@@ -39,6 +39,21 @@ export default component$(() => {
   // Toggled from the breadcrumb bar.
   const imgLayout = useSignal<"rail" | "full">("rail");
 
+  // How many related-carousel slides are shown per view. Qwik UI marks every
+  // slide *outside* the [currentIndex, currentIndex + slidesPerView) window as
+  // `inert` (unclickable). Desktop CSS shows 4 slides but the JS prop was a
+  // fixed 2, so the 3rd/4th visible slides were inert — clicks did nothing.
+  // Track the viewport so the prop matches the CSS: 4 on desktop, 2 elsewhere.
+  const relatedPerView = useSignal(2);
+  // eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(({ cleanup }) => {
+    const mq = window.matchMedia("(min-width: 1025px)");
+    const apply = () => { relatedPerView.value = mq.matches ? 4 : 2; };
+    apply();
+    mq.addEventListener("change", apply);
+    cleanup(() => mq.removeEventListener("change", apply));
+  });
+
   // SKUs that use the waist x inseam size picker instead of a S–4XL run.
   // Carhartt 102291 Rigby Dungaree (MN-1) and the FR pants (MNFR-1) ship
   // in the same waist/inseam matrix.
@@ -517,7 +532,7 @@ export default component$(() => {
               ))}
             </div>
             {/* Mobile carousel */}
-            <Carousel.Root class="related-carousel" slidesPerView={2} gap={0.4} align="start" sensitivity={{ touch: 1.5, mouse: 1.5 }} rewind>
+            <Carousel.Root class="related-carousel" slidesPerView={relatedPerView.value} gap={0.4} align="start" sensitivity={{ touch: 1.5, mouse: 1.5 }} rewind>
               <div class="related-carousel__wrapper">
                 <Carousel.Previous class="related-carousel__arrow related-carousel__arrow--prev">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
