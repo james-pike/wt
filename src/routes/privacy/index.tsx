@@ -5,7 +5,7 @@ import { LocaleContext, t } from "../../i18n";
 
 export default component$(() => {
   const locale = useContext(LocaleContext);
-  const email = "info@willstransferapparel.ca";
+  const email = "info@willsapparel.ca";
   const body = t("privacy.body", locale.value);
   const [beforeResend, afterResend = ""] = body.split("Resend");
   const [middle = "", afterEmail = ""] = afterResend.split(email);

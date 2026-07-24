@@ -1312,7 +1312,7 @@ export default component$(() => {
           <div class="site-footer__contact-block">
             <div class="site-footer__contact site-footer__contact--inline">
               <svg class="site-footer__contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-              <a href="mailto:info@willstransferapparel.ca">info@willstransferapparel.ca</a>
+              <a href="mailto:info@willsapparel.ca">info@willsapparel.ca</a>
             </div>
             <Link class="site-footer__privacy-link" href="/privacy/">{t("footer.privacypolicy", locale.value)}</Link>
           </div>
