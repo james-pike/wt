@@ -9536,6 +9536,13 @@ details[open] > .cart-drawer__checkout-title::after {
       /* Same thin grey outline the product-area card has at its edge. */
       0 0 0 1px rgba(0, 0, 0, 0.14),
       inset 0 0 14px rgba(62, 24, 2, 0.45) !important;
+    /* The band above the bar carried --wt-box-my (6px) of white PLUS the 4px
+       greige strip above the header, so it read wider than the 6px white on
+       the card's other sides. Halve the white to 3px and give those 3px back
+       to the bar's height, so the bar's bottom edge — and every strip pinned
+       under it — stays exactly where it was. */
+    margin-top: 3px !important;
+    height: calc(var(--wt-box-h) + 3px) !important;
   }
   /* Outside the card: greige surround with a thin white ring hugging the
      card's sides (matching the white rounded-corner margin around the sign).
