@@ -503,11 +503,8 @@ export default component$(() => {
         const headingSuffix = inVisible ? catLabel : t("nav.apparel", locale.value);
         return (
           <div class="related-items">
-            {/* Visually hidden: the "More …" section is clear from context (a
-                second grid below the product), so it shouldn't cost vertical
-                space — but the heading stays in the DOM as a screen-reader
-                landmark and for the related-items region's accessible name. */}
-            <h3 class="related-items__title sr-only">{t("product.more", locale.value)} {headingSuffix}</h3>
+            {/* Heading above the related carousel — "More {Category}". */}
+            <h3 class="related-items__title">{t("product.more", locale.value)} {headingSuffix}</h3>
             {/* Desktop grid */}
             <div class="related-items__grid">
               {related.slice(0, 4).map((item) => (

@@ -11999,3 +11999,42 @@ body:has(.product-fullscreen) { overflow: hidden; }
   .cart-drawer__details-step > .checkout-modal__form { grid-column: 1; margin-right: 0; }
   .cart-drawer__details-step > .checkout-modal__pay { grid-column: 2; margin-left: 0; }
 }
+
+/* ============================================================
+   Desktop: white full-height dividers between the header action
+   controls (cart | logout) and before the catalog search bar, the
+   same treatment the orange tab bar uses between its tabs.
+   ============================================================ */
+@media (min-width: 1025px) {
+  /* Search bar at the right end of the tab strip: give it a white divider on
+     its left like the tabs, replacing the grey border that used to split it. */
+  .home-catalog__header .home-catalog__right {
+    border-left: none;
+    position: relative;
+  }
+  .home-catalog__header .home-catalog__right::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 1px;
+    height: 55%;
+    background: var(--ce-white);
+    pointer-events: none;
+  }
+  /* Cart + logout in the orange site header: a divider before the cluster and
+     one between the two buttons, matching the tab separators. */
+  body:has(.home-catalog) .site-header__nav .cart-btn::before,
+  body:has(.home-catalog) .site-header__nav .cart-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 1px;
+    height: 55%;
+    background: var(--ce-white);
+    pointer-events: none;
+  }
+  body:has(.home-catalog) .site-header__nav .cart-btn::before { left: 0; transform: translate(-50%, -50%); }
+  body:has(.home-catalog) .site-header__nav .cart-btn::after { right: 0; transform: translate(50%, -50%); }
+}
