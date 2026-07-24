@@ -11099,7 +11099,8 @@ body:has(.product-fullscreen) { overflow: hidden; }
       "prod qty";
     column-gap: 0.6rem;
     padding: 0.75rem;
-    border-bottom: 1px solid var(--ce-gray-100);
+    /* A touch more separation between items. */
+    border-bottom: 3px solid var(--ce-gray-100);
   }
   .cart-table tbody tr:last-child { border-bottom: none; }
   .cart-table tbody td { border: none !important; padding: 0 !important; display: block; }
@@ -11118,10 +11119,10 @@ body:has(.product-fullscreen) { overflow: hidden; }
   }
   .cart-table__qty-btn { width: 22px; height: 24px; }
   .cart-table__qty-controls span { width: 22px; }
-  /* A smaller thumbnail + tighter gap hands more of the product column to the
-     title itself (the thumbnail was eating a third of it). */
-  .cart-table__img { width: 44px; height: 44px; }
-  .cart-table__product-row { gap: 0.55rem; }
+  /* Larger thumbnail — the title/meta run ~3 lines, so let the image fill that
+     height instead of leaving a small square with air beside it. */
+  .cart-table__img { width: 64px; height: 64px; }
+  .cart-table__product-row { gap: 0.6rem; align-items: center; }
   /* Scale the item titles up — the wide product column has room now, and the
      small type read as an afterthought next to the price. */
   .cart-table__name-link { font-size: 0.95rem; line-height: 1.25; }
@@ -11920,4 +11921,12 @@ body:has(.product-fullscreen) { overflow: hidden; }
   ascent-override: 84.83%;
   descent-override: 22%;
   line-gap-override: 0%;
+}
+
+/* Mobile cart stacks qty + total in the right column, so its header reads
+   "QTY / TOTAL"; desktop keeps a separate QTY column, so the inline prefix is
+   hidden there. */
+.cart-table__th-qty-inline { display: none; }
+@media (max-width: 600px) {
+  .cart-table__th-qty-inline { display: inline; }
 }

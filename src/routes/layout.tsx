@@ -1380,7 +1380,7 @@ export default component$(() => {
                       <tr>
                         <th class="cart-table__th-product">{t("cart.invoice.product", locale.value)}</th>
                         <th class="cart-table__th-qty">{t("cart.invoice.qty", locale.value)}</th>
-                        {loginType.value !== "tech" && <th class="cart-table__th-total">{t("cart.invoice.total", locale.value)}</th>}
+                        {loginType.value !== "tech" && <th class="cart-table__th-total"><span class="cart-table__th-qty-inline">{t("cart.invoice.qty", locale.value)} / </span>{t("cart.invoice.total", locale.value)}</th>}
                       </tr>
                     </thead>
                     <tbody>
