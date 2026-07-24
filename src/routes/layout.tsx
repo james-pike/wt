@@ -5,6 +5,7 @@ import {
   Link,
   routeAction$,
   routeLoader$,
+  server$,
   useLocation,
   useNavigate,
   Form,
@@ -162,18 +163,21 @@ export const useLogout = routeAction$(async (_, { cookie }) => {
 
 // Look up a gift card's balance from the checkout form (before submitting), so
 // the UI can show how much it covers and how much is left for the card.
-export const useCheckGiftCard = routeAction$(
-  async ({ code }, { env, fail }) => {
-    const tursoUrl = env.get("TURSO_URL") || env.get("VITE_TURSO_URL");
-    const tursoToken = env.get("TURSO_AUTH_TOKEN") || env.get("VITE_TURSO_AUTH_TOKEN");
-    if (!tursoUrl || !tursoToken) return fail(500, { message: "Gift cards not configured" });
-    const db = createClient({ url: tursoUrl, authToken: tursoToken });
-    const card = await getGiftCard(db, code);
-    if (!card || !card.active) return { valid: false, balance: 0 };
-    return { valid: true, balance: card.balance };
-  },
-  zod$({ code: z.string().min(1).max(64) }),
-);
+//
+// This is a server$ RPC, NOT a routeAction$: a routeAction submit runs the
+// router lifecycle, which fired the "close the cart on navigation" visible-task
+// and booted the user out of the checkout drawer on every Apply. server$ is a
+// plain server call with no navigation, so the drawer stays put.
+export const checkGiftCardBalance = server$(async function (code: string) {
+  const env = this.env;
+  const tursoUrl = env.get("TURSO_URL") || env.get("VITE_TURSO_URL");
+  const tursoToken = env.get("TURSO_AUTH_TOKEN") || env.get("VITE_TURSO_AUTH_TOKEN");
+  if (!tursoUrl || !tursoToken) return { valid: false, balance: 0, error: "not_configured" as const };
+  const db = createClient({ url: tursoUrl, authToken: tursoToken });
+  const card = await getGiftCard(db, (code || "").slice(0, 64));
+  if (!card || !card.active) return { valid: false, balance: 0 };
+  return { valid: true, balance: card.balance };
+});
 
 export const useSubmitOrder = routeAction$(
   async (data, { fail, env, cookie, url }) => {
@@ -471,7 +475,6 @@ export default component$(() => {
   const loginAction = useLogin();
   const logoutAction = useLogout();
   const orderAction = useSubmitOrder();
-  const giftCheckAction = useCheckGiftCard();
 
   const showLogin = useSignal(false);
   const overlayFading = useSignal(false);
@@ -535,8 +538,7 @@ export default component$(() => {
     if (!giftCode.value.trim()) { giftError.value = t("pay.gift.enter", locale.value); return; }
     giftChecking.value = true;
     try {
-      const res = await giftCheckAction.submit({ code: giftCode.value.trim() });
-      const v = res?.value as any;
+      const v = await checkGiftCardBalance(giftCode.value.trim());
       if (v?.valid) {
         giftBalance.value = Number(v.balance) || 0;
       } else {
@@ -566,6 +568,10 @@ export default component$(() => {
     giftBalance.value == null ? 0 : Math.min(giftBalance.value, orderTotal.value),
   );
   const giftRemaining = useComputed$(() => Math.max(0, +(orderTotal.value - giftCovers.value).toFixed(2)));
+  // What's left ON THE CARD after this order (balance minus what it covers) —
+  // shown when the card fully covers the order, so the customer sees their
+  // remaining allotment instead of a bare $0.00 amount-due.
+  const giftLeftover = useComputed$(() => Math.max(0, +((giftBalance.value ?? 0) - giftCovers.value).toFixed(2)));
   const taxLabel = useComputed$(() => {
     if (taxRate.value === undefined) return t("cart.invoice.tax", locale.value);
     const pct = +(taxRate.value * 100).toFixed(3);
@@ -1618,8 +1624,17 @@ export default component$(() => {
                             <div><span>{t("pay.gift.balance", locale.value)}</span><span>${giftBalance.value.toFixed(2)}</span></div>
                             <div><span>{t("pay.gift.applied", locale.value)}</span><span>-${giftCovers.value.toFixed(2)}</span></div>
                             <div class="checkout-modal__gift-remaining">
-                              <span>{giftRemaining.value > 0 ? t("pay.gift.balance.due", locale.value) : t("pay.gift.covered", locale.value)}</span>
-                              <span>${giftRemaining.value.toFixed(2)}</span>
+                              {giftRemaining.value > 0 ? (
+                                <>
+                                  <span>{t("pay.gift.balance.due", locale.value)}</span>
+                                  <span>${giftRemaining.value.toFixed(2)}</span>
+                                </>
+                              ) : (
+                                <>
+                                  <span>{t("pay.gift.card.remaining", locale.value)}</span>
+                                  <span>${giftLeftover.value.toFixed(2)}</span>
+                                </>
+                              )}
                             </div>
                             {giftRemaining.value > 0 && payMethod.value === "giftcard" && (
                               <div class="checkout-modal__gift-msg checkout-modal__gift-msg--err">{t("pay.gift.short", locale.value)}</div>

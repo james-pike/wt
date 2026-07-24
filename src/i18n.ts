@@ -195,6 +195,7 @@ const translations = {
   "pay.gift.applied": { en: "Applied to this order", fr: "Appliqué à cette commande" },
   "pay.gift.balance.due": { en: "Balance due (card)", fr: "Solde dû (carte)" },
   "pay.gift.covered": { en: "Remaining", fr: "Restant" },
+  "pay.gift.card.remaining": { en: "Remaining on card", fr: "Solde restant sur la carte" },
   "pay.gift.short": { en: "This gift card doesn't cover the full order — choose \"Gift card + credit card\" to pay the balance.", fr: "Cette carte-cadeau ne couvre pas la totalité — choisissez « Carte-cadeau + carte de crédit » pour payer le solde." },
   "cart.checkout": { en: "Checkout", fr: "Passer à la caisse" },
   "cart.backtocart": { en: "Back to Cart", fr: "Retour au panier" },
