@@ -12006,35 +12006,41 @@ body:has(.product-fullscreen) { overflow: hidden; }
    same treatment the orange tab bar uses between its tabs.
    ============================================================ */
 @media (min-width: 1025px) {
-  /* Search bar at the right end of the tab strip: give it a white divider on
-     its left like the tabs, replacing the grey border that used to split it. */
+  /* Search bar at the right end of the tab strip. That bar sets
+     align-items: stretch, so the cluster is already full-bar-height and the
+     band only has to fill its left edge, edge to edge. */
   .home-catalog__header .home-catalog__right {
     border-left: none;
     position: relative;
+    padding-left: 10px;
   }
   .home-catalog__header .home-catalog__right::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 1px;
-    height: 55%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
     background: var(--ce-white);
     pointer-events: none;
   }
-  /* Cart + logout in the orange site header: a divider before the cluster and
-     one between the two buttons, matching the tab separators. */
+  /* Cart + logout: full-bar-height white gaps either side of the cart. Even
+     spacing (4px) on both sides so each band fills its gap exactly rather than
+     hugging one button. The header is overflow:hidden at this breakpoint, so an
+     over-tall band is clipped to the bar — no dependence on its exact height. */
+  body:has(.home-catalog) .site-header__categories { margin-right: 4px; }
+  body:has(.home-catalog) .site-header__nav { gap: 4px; }
+  body:has(.home-catalog) .site-header__nav .logout-form { margin-left: 0; }
   body:has(.home-catalog) .site-header__nav .cart-btn::before,
   body:has(.home-catalog) .site-header__nav .cart-btn::after {
     content: '';
     position: absolute;
     top: 50%;
-    width: 1px;
-    height: 55%;
+    width: 4px;
+    height: 200px;
     background: var(--ce-white);
     pointer-events: none;
   }
-  body:has(.home-catalog) .site-header__nav .cart-btn::before { left: 0; transform: translate(-50%, -50%); }
-  body:has(.home-catalog) .site-header__nav .cart-btn::after { right: 0; transform: translate(50%, -50%); }
+  body:has(.home-catalog) .site-header__nav .cart-btn::before { left: 0; transform: translate(-100%, -50%); }
+  body:has(.home-catalog) .site-header__nav .cart-btn::after { right: 0; transform: translate(100%, -50%); }
 }
