@@ -1010,6 +1010,13 @@ export default component$(() => {
         </div>
       )}
 
+      {/* Tablet widths aren't finished — CSS shows this over everything between
+          601px and 1024px, so only mobile and desktop render the site. */}
+      <div class="tablet-notice" aria-live="polite">
+        <span class="tablet-notice__title">Tablet coming soon</span>
+        <span class="tablet-notice__sub">Please visit on mobile or desktop.</span>
+      </div>
+
       {(auth.value.loggedIn || (loginAction.value && !loginAction.value.failed)) && <>
       <header class={`site-header site-header--white ${tabsStuck.value ? "site-header--tabs-stuck" : ""} ${searchOpen.value ? "site-header--search-open" : ""} ${cartOpen.value ? "site-header--cart-open" : ""} ${SHOW_HERO_HEADER && loc.url.pathname === "/" && !cartOpen.value ? `site-header--hero-hidden ${headerScrolled.value || searchOpen.value ? "site-header--hero-visible" : ""}` : ""}`}>
         <div class="site-header__inner">

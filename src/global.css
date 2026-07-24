@@ -12006,41 +12006,64 @@ body:has(.product-fullscreen) { overflow: hidden; }
    same treatment the orange tab bar uses between its tabs.
    ============================================================ */
 @media (min-width: 1025px) {
-  /* Search bar at the right end of the tab strip. That bar sets
-     align-items: stretch, so the cluster is already full-bar-height and the
-     band only has to fill its left edge, edge to edge. */
-  .home-catalog__header .home-catalog__right {
-    border-left: none;
-    position: relative;
-    padding-left: 10px;
-  }
-  .home-catalog__header .home-catalog__right::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: var(--ce-white);
-    pointer-events: none;
-  }
-  /* Cart + logout: full-bar-height white gaps either side of the cart. Even
-     spacing (4px) on both sides so each band fills its gap exactly rather than
-     hugging one button. The header is overflow:hidden at this breakpoint, so an
-     over-tall band is clipped to the bar — no dependence on its exact height. */
-  body:has(.home-catalog) .site-header__categories { margin-right: 4px; }
-  body:has(.home-catalog) .site-header__nav { gap: 4px; }
-  body:has(.home-catalog) .site-header__nav .logout-form { margin-left: 0; }
-  body:has(.home-catalog) .site-header__nav .cart-btn::before,
-  body:has(.home-catalog) .site-header__nav .cart-btn::after {
+  /* Cart + logout: white gaps running the full height of the HEADER only — the
+     tab strip below keeps its own separators. Width is the theme's white seam
+     (3px) so they read the same weight as the other sign rules, and the gaps
+     either side of the cart are set to match so each band fills its gap exactly
+     instead of hugging one button. Height is pinned to the 64px header (and the
+     header is overflow:hidden here), so a band can never spill onto the tab
+     bar below. */
+  .site-header .site-header__categories { margin-right: var(--wt-seam); }
+  .site-header .site-header__nav { gap: var(--wt-seam); }
+  .site-header .site-header__nav .logout-form { margin-left: 0; }
+  .site-header .site-header__nav .cart-btn::before,
+  .site-header .site-header__nav .cart-btn::after {
     content: '';
     position: absolute;
     top: 50%;
-    width: 4px;
-    height: 200px;
+    width: var(--wt-seam);
+    height: 64px;
     background: var(--ce-white);
     pointer-events: none;
   }
-  body:has(.home-catalog) .site-header__nav .cart-btn::before { left: 0; transform: translate(-100%, -50%); }
-  body:has(.home-catalog) .site-header__nav .cart-btn::after { right: 0; transform: translate(100%, -50%); }
+  .site-header .site-header__nav .cart-btn::before { left: 0; transform: translate(-100%, -50%); }
+  .site-header .site-header__nav .cart-btn::after { right: 0; transform: translate(100%, -50%); }
+}
+
+/* ============================================================
+   Tablet widths are not finished yet — show a holding notice and
+   keep the site to mobile and desktop only.
+   ============================================================ */
+.tablet-notice { display: none; }
+@media (min-width: 601px) and (max-width: 1024px) {
+  html, body { overflow: hidden !important; }
+  .tablet-notice {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 2rem;
+    text-align: center;
+    background:
+      var(--wt-iron) center / cover no-repeat,
+      linear-gradient(var(--wt-box), var(--wt-box)),
+      var(--wt-orange);
+    color: #fff;
+    font-family: var(--font-sans);
+  }
+  .tablet-notice__title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .tablet-notice__sub {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+  }
 }
