@@ -11087,20 +11087,23 @@ body:has(.product-fullscreen) { overflow: hidden; }
   .drawer.cart-drawer .cart-drawer__items { min-height: 0; }
 
   /* Scale the contents up to suit the full-width card (there's a lot of width
-     for relatively little content). */
-  .cart-drawer__items .cart-table { font-size: 1.05rem; }
+     for relatively little content). Type is held ~10% under the original
+     step-up — the full-size run read heavier than the rest of the site, since
+     desktop already serves these rem values off an 18px root. Row padding and
+     the image/swatch/control sizes are unchanged; this is a type-only trim. */
+  .cart-drawer__items .cart-table { font-size: 0.95rem; }
   .cart-drawer__items .cart-table tbody td { padding-top: 1.05rem; padding-bottom: 1.05rem; }
   .cart-drawer__items .cart-table__product-row { gap: 1.1rem; }
   .cart-drawer__items .cart-table__img { width: 76px; height: 76px; }
-  .cart-drawer__items .cart-table__name-link { font-size: 1.15rem; }
-  .cart-drawer__items .cart-table__meta { font-size: 0.95rem; margin-top: 0.35rem; }
+  .cart-drawer__items .cart-table__name-link { font-size: 1.04rem; }
+  .cart-drawer__items .cart-table__meta { font-size: 0.86rem; margin-top: 0.35rem; }
   .cart-drawer__items .cart-table__swatch { width: 14px; height: 14px; }
-  .cart-drawer__items .cart-table__qty-controls span { width: 36px; font-size: 1.1rem; }
-  .cart-drawer__items .cart-table__qty-btn { width: 36px; height: 38px; font-size: 1.25rem; }
+  .cart-drawer__items .cart-table__qty-controls span { width: 36px; font-size: 1rem; }
+  .cart-drawer__items .cart-table__qty-btn { width: 36px; height: 38px; font-size: 1.12rem; }
   .cart-drawer__items .cart-table__total,
-  .cart-drawer__items .cart-table__subtotal-val { font-size: 1.15rem; }
-  .cart-drawer__items .cart-table__subtotal-label { font-size: 1.05rem; }
-  .cart-drawer__footer .cart-drawer__total { font-size: 1.1rem; }
+  .cart-drawer__items .cart-table__subtotal-val { font-size: 1.04rem; }
+  .cart-drawer__items .cart-table__subtotal-label { font-size: 0.95rem; }
+  .cart-drawer__footer .cart-drawer__total { font-size: 1rem; }
 }
 
 /* ============================================================
