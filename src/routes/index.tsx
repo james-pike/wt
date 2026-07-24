@@ -252,17 +252,17 @@ export default component$(() => {
 export const head: DocumentHead = {
   title: "Wills Transfer Apparel",
   meta: [
-    { name: "description", content: "Wills Transfer Employee Apparel. Order branded jackets, polos, hats, and more." },
+    { name: "description", content: "Premium Branded Wills Transfer Apparel" },
     { name: "robots", content: "noindex, nofollow" },
     { name: "theme-color", content: "#ffffff" },
     { property: "og:title", content: "Wills Transfer Apparel" },
-    { property: "og:description", content: "Internal apparel ordering for Wills Transfer staff." },
+    { property: "og:description", content: "Premium Branded Wills Transfer Apparel" },
     { property: "og:type", content: "website" },
     { property: "og:url", content: "https://willstransferapparel.ca/" },
     { property: "og:image", content: "https://willstransferapparel.ca/wills-logo.png" },
     { name: "twitter:card", content: "summary" },
     { name: "twitter:title", content: "Wills Transfer Apparel" },
-    { name: "twitter:description", content: "Internal apparel ordering for Wills Transfer staff." },
+    { name: "twitter:description", content: "Premium Branded Wills Transfer Apparel" },
     { name: "twitter:image", content: "https://willstransferapparel.ca/wills-logo.png" },
   ],
 };
