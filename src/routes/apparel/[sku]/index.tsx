@@ -1,4 +1,4 @@
-import { component$, useSignal, useComputed$, useVisibleTask$, $, useContext } from "@builder.io/qwik";
+import { component$, useSignal, useComputed$, useTask$, useVisibleTask$, $, useContext } from "@builder.io/qwik";
 import { Carousel } from "@qwik-ui/headless";
 import { Link, useLocation, useNavigate } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
@@ -15,8 +15,13 @@ export default component$(() => {
   const loc = useLocation();
   const nav = useNavigate();
 
-  const sku = loc.params.sku;
-  const product = useComputed$(() => allProducts.find((p) => p.sku === sku) || null);
+  // Read loc.params.sku *inside* the computed so it re-tracks on client-side
+  // navigation between two [sku] pages. That's the same route, so Qwik reuses
+  // this component instance and never re-runs setup — a captured `const sku`
+  // would stay stale and the page would keep showing the previous product
+  // (the "stuck" related-carousel bug). The reset task below re-inits per-
+  // product UI state (image index, size/colour) on each sku change.
+  const product = useComputed$(() => allProducts.find((p) => p.sku === loc.params.sku) || null);
 
   const imgIndex = useSignal(0);
   const touchStartX = useSignal(0);
@@ -33,9 +38,6 @@ export default component$(() => {
   // right; "full" = full-width image (previews hidden, dots for paging).
   // Toggled from the breadcrumb bar.
   const imgLayout = useSignal<"rail" | "full">("rail");
-
-  // Set initial color once product is known
-  const colorInitialized = useSignal(false);
 
   // SKUs that use the waist x inseam size picker instead of a S–4XL run.
   // Carhartt 102291 Rigby Dungaree (MN-1) and the FR pants (MNFR-1) ship
@@ -170,9 +172,24 @@ export default component$(() => {
     setTimeout(() => { added.value = false; }, 1300);
   });
 
-  // Initialize color and auto-select default size (prefer L)
-  if (!colorInitialized.value && product.value) {
+  // Re-initialise per-product UI state whenever the SKU changes. Because the
+  // component instance is reused across [sku]→[sku] navigation, image index and
+  // size/colour selections would otherwise carry over from the previous product
+  // — a stale imgIndex past the new product's image count shows a blank main
+  // image ("image doesn't load"). Tracking loc.params.sku re-runs this on every
+  // navigation (and once during SSR for the first paint).
+  useTask$(({ track }) => {
+    track(() => loc.params.sku);
+    imgIndex.value = 0;
+    imgFullscreen.value = false;
+    selectedQty.value = 1;
+    selectedWaist.value = "";
+    selectedLength.value = "";
+    selectedVariant.value = "";
+    selectedSize.value = "";
+    selectedColor.value = "";
     const p0 = product.value;
+    if (!p0) return;
     selectedColor.value = sortColorsWhiteLast(p0.colors)[0];
     if (waistLengthSkus.has(p0.sku)) {
       selectedSize.value = "W/L";
@@ -192,8 +209,7 @@ export default component$(() => {
       const lIdx = sizes.indexOf("L");
       selectedSize.value = lIdx !== -1 ? sizes[lIdx] : sizes[0];
     }
-    colorInitialized.value = true;
-  }
+  });
 
   if (!product.value) {
     return (
