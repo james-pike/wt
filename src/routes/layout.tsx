@@ -686,7 +686,6 @@ export default component$(() => {
       formError.value = (err as Error)?.message || "Network error placing order";
       return;
     }
-    console.log("Order submit result:", result);
     const v = result?.value as any;
     if (v?.failed) {
       // Surface zod field errors, top-level form errors, or generic message

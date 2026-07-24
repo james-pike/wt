@@ -3155,54 +3155,105 @@ body:has(.nav-drawer-overlay) .site-header {
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp { from { opacity: 0; transform: translateY(24px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
+/* The login window reads as the same weathered sign as the rest of the site:
+   an orange iron-textured header bar (the header/tab-bar surface) over a greige
+   card body, wrapped in the white sign-edge ring. */
 .login-modal {
-  background: var(--ce-white);
-  border-radius: var(--radius-xl);
-  padding: 2.75rem;
-  width: 100%; max-width: 400px;
-  box-shadow: var(--shadow-xl);
+  background: var(--ce-greige);
+  border-radius: 14px;
+  padding: 0;
+  overflow: hidden;
+  width: 100%; max-width: 384px;
   position: relative;
   animation: slideUp 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 0 0 4px var(--ce-white),
+    0 0 0 5px var(--wt-ring-edge),
+    0 24px 64px rgba(0, 0, 0, 0.4);
 }
 
 .login-modal__close {
-  position: absolute; top: 1.25rem; right: 1.25rem;
-  width: 32px; height: 32px;
+  position: absolute; top: 0.85rem; right: 0.85rem; z-index: 3;
+  width: 30px; height: 30px;
   display: flex; align-items: center; justify-content: center;
-  border: none; background: var(--ce-gray-100); border-radius: 50%;
-  font-size: 1.2rem; color: var(--ce-gray-500);
-  cursor: pointer; transition: all var(--transition-fast);
+  border: none; background: rgba(255, 255, 255, 0.16); border-radius: 50%;
+  font-size: 1.15rem; color: #fff;
+  cursor: pointer; transition: background var(--transition-fast);
 }
-.login-modal__close:hover { background: var(--ce-gray-200); color: var(--ce-gray-900); }
+.login-modal__close:hover { background: rgba(255, 255, 255, 0.3); color: #fff; }
 
-.login-modal__header { text-align: center; margin-bottom: 1.5rem; }
-.login-modal__logo { height: 40px; width: auto; margin: 0 auto 1.25rem; }
-.login-modal__brand { justify-content: center !important; margin: 0 auto 1.25rem !important; transform: translateX(-0.3rem) !important; }
+/* Orange textured sign bar across the top, with the wordmark + subtitle in
+   white and the pressed-edge shading + white divider the other bars carry. */
+.login-modal__header {
+  text-align: center;
+  margin: 0;
+  padding: 1.6rem 1.5rem 1.7rem;
+  background:
+    var(--wt-iron) left top / 100% auto no-repeat,
+    linear-gradient(var(--wt-box), var(--wt-box)),
+    var(--wt-orange);
+  box-shadow:
+    inset 0 -3px 0 var(--ce-white),
+    inset 0 -9px 10px -6px rgba(62, 24, 2, 0.5),
+    inset 0 0 18px rgba(62, 24, 2, 0.4);
+}
+.login-modal__logo { height: 42px; width: auto; margin: 0 auto; }
 .login-modal__title {
   font-size: 1.25rem; font-weight: 800;
-  color: var(--ce-gray-900); letter-spacing: -0.02em; margin-bottom: 0.3rem;
+  color: #fff; letter-spacing: -0.02em; margin-bottom: 0.3rem;
 }
-.login-modal__subtitle { font-size: 0.85rem; color: var(--ce-gray-500); padding-top: 0.5rem; }
+.login-modal__subtitle {
+  font-size: 0.82rem; color: rgba(255, 255, 255, 0.9);
+  padding-top: 0.7rem; margin: 0; letter-spacing: 0.02em;
+  text-shadow: 0 1px 1px rgba(62, 24, 2, 0.4);
+}
 
-.login-modal__form { display: flex; flex-direction: column; gap: 1.15rem; }
-.login-modal__field { display: flex; flex-direction: column; gap: 5px; }
-.login-modal__field label { font-size: 0.78rem; font-weight: 600; color: var(--ce-gray-700); }
+.login-modal__form { display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem 1.75rem 1.85rem; }
+.login-modal__field { display: flex; flex-direction: column; gap: 6px; }
+.login-modal__field label {
+  font-size: 0.7rem; font-weight: 700; color: var(--ce-gray-700);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
 .login-modal__field input {
-  padding: 11px 14px; border-radius: var(--radius-sm);
+  padding: 12px 14px; border-radius: 8px;
   border: 1.5px solid var(--ce-gray-200); font-size: 16px;
   font-family: var(--font-sans); color: var(--ce-gray-900);
-  transition: all var(--transition-fast); outline: none; background: var(--ce-off-white);
+  transition: all var(--transition-fast); outline: none; background: var(--ce-white);
 }
 .login-modal__field input:focus {
-  border-color: var(--ce-green);
-  box-shadow: 0 0 0 3px rgba(245, 166, 35,0.06);
+  border-color: var(--wt-orange);
+  box-shadow: 0 0 0 3px rgba(245, 131, 34, 0.15);
   background: var(--ce-white);
 }
 .login-modal__field input::placeholder { color: var(--ce-gray-300); }
-.login-modal__submit { width: 100%; justify-content: center; margin-top: 0.5rem; }
+
+/* Submit: the orange textured sign button (same treatment as Place Order). */
+.login-modal__submit.btn {
+  width: 100%; justify-content: center; margin-top: 0.4rem;
+  padding: 13px 20px;
+  background: linear-gradient(var(--wt-box), var(--wt-box)), var(--wt-orange);
+  color: #fff; border: 1px solid rgba(62, 24, 2, 0.45); border-radius: 8px;
+  font-weight: 600; letter-spacing: 0.02em;
+  text-shadow: 0 1px 1px rgba(62, 24, 2, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.30),
+    inset 0 -1px 0 rgba(62, 24, 2, 0.35),
+    inset 0 0 10px rgba(62, 24, 2, 0.30),
+    0 2px 3px rgba(0, 0, 0, 0.28);
+  transition: background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+.login-modal__submit.btn:hover {
+  background: var(--wt-orange); color: #fff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.40),
+    inset 0 0 10px rgba(62, 24, 2, 0.18),
+    0 2px 5px rgba(0, 0, 0, 0.30);
+}
+.login-modal__submit.btn:active { transform: translateY(1px); }
+
 .login-modal__error {
-  background: #eaf3fa; border: 1px solid var(--ce-gold); color: #1e4a66;
-  padding: 10px 14px; border-radius: var(--radius-sm);
+  background: #fff4ec; border: 1px solid var(--wt-orange); color: #8a3b0a;
+  padding: 10px 14px; border-radius: 8px;
   font-size: 0.82rem; font-weight: 500; text-align: center;
 }
 
@@ -8489,7 +8540,7 @@ details[open] > .cart-drawer__checkout-title::after {
   top: -1px; /* slight upward nudge */
 }
 .nav-drawer__brand--img .brand-apparel { font-size: 0.95rem; margin-left: -1.5rem; }
-.login-modal__brand--img .brand-apparel { font-size: 1rem; margin-left: -1.5rem; }
+.login-modal__brand--img .brand-apparel { font-size: 1.15rem; margin-left: -1.85rem; color: #fff; }
 @media (min-width: 768px) and (max-width: 1024px) { .site-header .brand-apparel { font-size: 1.45rem; margin-left: -2.95rem; } }
 @media (max-width: 767px) { .site-header .brand-apparel { font-size: 1rem; letter-spacing: 0.08em; margin-left: -2.1rem; } }
 
@@ -9156,13 +9207,13 @@ details[open] > .cart-drawer__checkout-title::after {
   display: flex !important;
   align-items: center;
   justify-content: center;
-  background: var(--wt-orange) !important;
-  border-radius: var(--radius-md);
-  padding: 0.9rem 1.25rem !important;
-  margin: 0 auto 1.25rem !important;
+  background: transparent !important;
+  border-radius: 0;
+  padding: 0 !important;
+  margin: 0 auto !important;
   transform: none !important;
 }
-.login-modal__logo-white { height: 40px; width: auto; display: block; }
+.login-modal__logo-white { height: 44px; width: auto; display: block; filter: drop-shadow(0 1px 3px rgba(62, 24, 2, 0.5)); }
 
 /* ============================================================
    Hero cover — Wills wordmark logo + APPAREL, side-by-side in the same
