@@ -1057,7 +1057,16 @@ export default component$(() => {
                   // "shift" on open. When already pinned (or scrolled past), the
                   // header search field and sticky tabs are already in place, so
                   // no scroll is needed.
-                  if (!needsReposition && catalog) {
+                  // "Already pinned" is the --tabs-stuck state, so test THAT
+                  // rather than re-deriving the pinned scroll position. The
+                  // derived `top` carries a +2 fudge and uses stickyTop(),
+                  // which drifts from the header's real height — so on a route
+                  // whose strip is always stuck (/apparel/) the comparison read
+                  // "a few px short" even when the catalog sat exactly under the
+                  // bar, and every open nudged the page ~6px. That nudge was the
+                  // shift around the tab strip.
+                  const alreadyPinned = !!header?.classList.contains("site-header--tabs-stuck");
+                  if (!needsReposition && catalog && !alreadyPinned) {
                     const top = catalog.getBoundingClientRect().top + window.scrollY - headerH + 2;
                     if (window.scrollY < top - 1) window.scrollTo({ top, behavior: "instant" });
                   }

@@ -12147,3 +12147,24 @@ body:has(.product-fullscreen) { overflow: hidden; }
     overscroll-behavior: contain;
   }
 }
+
+/* ============================================================
+   Phones: cart item type sits clearly under the strip label.
+   The PRODUCT / QTY / TOTAL strip is 0.92rem, but the item title ran
+   0.95rem and the price 1.05rem — both LARGER than the bar labelling
+   them, which read top-heavy. Scaled below the strip so the hierarchy
+   reads bar > title > meta.
+   ============================================================ */
+@media (max-width: 600px) {
+  .cart-drawer__items .cart-table__name-link,
+  .cart-table__name-link { font-size: 0.82rem; }
+  .cart-drawer__items .cart-table__meta,
+  .cart-table__meta { font-size: 0.7rem; }
+  .cart-drawer__items .cart-table__total,
+  .cart-drawer__items .cart-table__subtotal-val,
+  .cart-table__total, .cart-table__subtotal-val { font-size: 0.88rem; }
+  .cart-drawer__items .cart-table__subtotal-label,
+  .cart-table__subtotal-label { font-size: 0.74rem; }
+  .cart-drawer__items .cart-table__qty-controls span,
+  .cart-table__qty-controls span { font-size: 0.78rem; }
+}
