@@ -379,7 +379,12 @@ export const useSubmitOrder = routeAction$(
         return { redirectUrl: session.url, orderNumber };
       } catch (err) {
         console.error("Stripe checkout session failed:", err);
-        return fail(502, { message: "Could not start the card payment. Please try again." });
+        // Mark the order so a failed handoff isn't left looking like a real,
+        // payable order in the admin.
+        await db.execute({ sql: "UPDATE orders SET status = 'payment_error' WHERE id = ?", args: [orderId as any] });
+        // Surface the actual Stripe reason (e.g. bad key) — the generic message
+        // hid why the card step never started.
+        return fail(502, { message: `Card payment couldn't start: ${(err as Error)?.message || "unknown error"}` });
       }
     }
 
@@ -883,11 +888,19 @@ export default component$(() => {
   // searched items, matching cm. The filter only resets on a tab/category
   // change (see onCategoryChange) or because a cross-route nav remounts the
   // catalog fresh.
+  // Only close on a REAL path change. A routeAction submit (order submit, etc.)
+  // re-runs this task with the SAME pathname; without the guard it slammed the
+  // cart shut mid-checkout and hid the order's error message behind the closed
+  // drawer — which is exactly how a failed card handoff looked like "success".
+  const prevPath = useSignal<string | null>(null);
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ track }) => {
-    track(() => loc.url.pathname);
-    cartOpen.value = false;
-    searchOpen.value = false;
+    const p = track(() => loc.url.pathname);
+    if (prevPath.value !== null && prevPath.value !== p) {
+      cartOpen.value = false;
+      searchOpen.value = false;
+    }
+    prevPath.value = p;
   }, { strategy: 'document-ready' });
 
   // Lock scroll when cart is open
