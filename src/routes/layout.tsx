@@ -262,8 +262,8 @@ export const useSubmitOrder = routeAction$(
     let orderId: bigint | number | null = null;
     try {
       const result = await db.execute({
-        sql: `INSERT INTO orders (vendor, emp_number, emp_name, emp_dept, po_number, items, total, status, payment_method, gift_card_code, gift_amount, card_amount, created_at, updated_at)
-              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'))`,
+        sql: `INSERT INTO orders (vendor, emp_number, emp_name, emp_dept, po_number, items, total, status, payment_method, gift_card_code, gift_amount, card_amount, device, created_at, updated_at)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'))`,
         args: [
           vendor,
           "",
@@ -280,6 +280,7 @@ export const useSubmitOrder = routeAction$(
           giftCode,
           giftAmount,
           cardAmount,
+          data.device || null,
         ],
       });
       orderId = (result.lastInsertRowid as any) ?? null;
@@ -433,6 +434,7 @@ export const useSubmitOrder = routeAction$(
   },
   zod$({
     paymentMethod: z.enum(["po", "giftcard", "giftcard_card", "card"]).default("po"),
+    device: z.enum(["mobile", "tablet", "desktop"]).optional(),
     giftCardCode: z.string().max(64).optional(),
     employee: z.object({
       name: z.string().min(1).max(120),
@@ -685,8 +687,12 @@ export default component$(() => {
     }
     formError.value = "";
 
+    // Which layout the order was placed on — viewport width against the site's
+    // own breakpoints (mobile <=600, tablet 601-1024, desktop >=1025).
+    const device: "mobile" | "tablet" | "desktop" = window.innerWidth <= 600 ? "mobile" : window.innerWidth <= 1024 ? "tablet" : "desktop";
     const orderData = {
       paymentMethod: payMethod.value,
+      device,
       ...(usesGift.value ? { giftCardCode: giftCode.value.trim() } : {}),
       employee: { name: `${empFirstName.value} ${empLastName.value}`, email: empEmail.value, phone: empPhone.value, department: empDept.value, province: empProvince.value, po: empPO.value },
       items: cart.items.map((i: any) => ({
