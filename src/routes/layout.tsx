@@ -298,7 +298,7 @@ export const useSubmitOrder = routeAction$(
     }
 
     const provinceName = PROVINCE_NAMES[province] || province;
-    const fromAddress = env.get("RESEND_FROM") || env.get("VITE_RESEND_FROM") || "Wills Transfer <onboarding@resend.dev>";
+    const fromAddress = env.get("RESEND_FROM") || env.get("VITE_RESEND_FROM") || "Wills <onboarding@resend.dev>";
     const staffAddresses = (env.get("ORDER_NOTIFY_TO") || env.get("VITE_ORDER_NOTIFY_TO") || "cs@safetyhouse.ca")
       .split(",").map((a) => a.trim()).filter(Boolean);
 
@@ -356,7 +356,7 @@ export const useSubmitOrder = routeAction$(
           secretKey: stripeKey!,
           amountCents: Math.round(cardAmount * 100),
           currency: "cad",
-          description: `Wills Transfer apparel order ${orderNumber} — balance after gift card`,
+          description: `Wills apparel order ${orderNumber} — balance after gift card`,
           successUrl: `${siteUrl}/checkout/success/?session_id={CHECKOUT_SESSION_ID}`,
           cancelUrl: `${siteUrl}/checkout/cancelled/`,
           customerEmail: (employee.email || "").trim() || undefined,
@@ -1010,7 +1010,7 @@ export default component$(() => {
             )}
             <div class="login-modal__header">
               <div class="login-modal__brand login-modal__brand--img">
-                <img src="/logo-white.png" alt="Wills Transfer" class="login-modal__logo-white" width="1499" height="375" />
+                <img src="/logo-white.png" alt="Wills" class="login-modal__logo-white" width="1499" height="375" />
                 <span class="brand-apparel">Apparel</span>
               </div>
               <p class="login-modal__subtitle">
@@ -1062,7 +1062,7 @@ export default component$(() => {
       <header class={`site-header site-header--white ${tabsStuck.value ? "site-header--tabs-stuck" : ""} ${searchOpen.value ? "site-header--search-open" : ""} ${cartOpen.value ? "site-header--cart-open" : ""} ${SHOW_HERO_HEADER && loc.url.pathname === "/" && !cartOpen.value ? `site-header--hero-hidden ${headerScrolled.value || searchOpen.value ? "site-header--hero-visible" : ""}` : ""}`}>
         <div class="site-header__inner">
           <Link href="/" class="site-header__logo site-header__logo--img">
-            <img src="/logo-white.png" alt="Wills Transfer" class="site-header__logo-white" width="1499" height="375" loading="eager" decoding="sync" />
+            <img src="/logo-white.png" alt="Wills" class="site-header__logo-white" width="1499" height="375" loading="eager" decoding="sync" />
             <span class="brand-apparel">Apparel</span>
           </Link>
           <nav class="site-header__categories">
@@ -1343,7 +1343,7 @@ export default component$(() => {
       <footer class="site-footer">
         <div class="site-footer__inner">
           <div class="site-footer__brand site-footer__brand--img">
-            <img src="/logo-white.png" alt="Wills Transfer" class="site-footer__logo-white" width="1499" height="375" loading="lazy" decoding="async" />
+            <img src="/logo-white.png" alt="Wills" class="site-footer__logo-white" width="1499" height="375" loading="lazy" decoding="async" />
             <span class="brand-apparel">Apparel</span>
           </div>
           <div class="site-footer__col">
@@ -1382,7 +1382,7 @@ export default component$(() => {
           <div class="drawer cart-drawer" onClick$={(e) => e.stopPropagation()}>
             <div class="cart-drawer__site-header">
               <Link href="/" class="site-header__logo">
-                <img src="/logo.png" alt="Wills Transfer" class="site-header__logo-img" width="200" height="200" loading="eager" decoding="sync" />
+                <img src="/logo.png" alt="Wills" class="site-header__logo-img" width="200" height="200" loading="eager" decoding="sync" />
               </Link>
               <nav class="site-header__nav">
                 <button class="cart-btn" onClick$={() => (cartOpen.value = false)}>

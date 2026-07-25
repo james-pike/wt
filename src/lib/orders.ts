@@ -99,7 +99,7 @@ export function buildOrderEmailHtml(o: OrderEmailData): string {
   return `
     <div style="font-family:sans-serif;max-width:600px;margin:0 auto">
       <div style="background:#C97B0C;padding:20px 24px;border-radius:8px 8px 0 0">
-        <h1 style="color:#fff;margin:0;font-size:20px">Wills Transfer — Apparel Order</h1>
+        <h1 style="color:#fff;margin:0;font-size:20px">Wills — Apparel Order</h1>
         ${o.orderNumber ? `<p style="color:#ffe9c7;margin:6px 0 0;font-size:13px;letter-spacing:0.04em">Order ${esc(o.orderNumber)}</p>` : ""}
       </div>
       <div style="padding:24px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px">

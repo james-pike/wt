@@ -106,13 +106,13 @@ export default component$(() => {
               }}
             >
               <Carousel.Slide class="hero-carousel__slide">
-                <img src="/hero.jpg" alt="Wills Transfer hero" loading="eager" />
+                <img src="/hero.jpg" alt="Wills hero" loading="eager" />
               </Carousel.Slide>
               <Carousel.Slide class="hero-carousel__slide hero-carousel__slide--van">
-                <img src="/hero-edmonton-van.jpg" alt="Wills Transfer service van" class="hero-carousel__van-img" loading="eager" />
+                <img src="/hero-edmonton-van.jpg" alt="Wills service van" class="hero-carousel__van-img" loading="eager" />
               </Carousel.Slide>
               <Carousel.Slide class="hero-carousel__slide">
-                <img src="/hero-wills.jpg" alt="Wills Transfer Limited building sign at dusk" loading="eager" />
+                <img src="/hero-wills.jpg" alt="Wills building sign at dusk" loading="eager" />
               </Carousel.Slide>
             </Carousel.Scroller>
 
@@ -162,7 +162,7 @@ export default component$(() => {
               wordmark + APPAREL overlapping its tail), scaled up for the hero. */}
           <div class="hero__text hero__text--wills">
             <div class="hero__brand-lockup">
-              <img class="hero__brand-logo" src="/logo-white.png" alt="Wills Transfer" width="1499" height="375" fetchPriority="high" decoding="sync" />
+              <img class="hero__brand-logo" src="/logo-white.png" alt="Wills" width="1499" height="375" fetchPriority="high" decoding="sync" />
               <span class="hero__brand-apparel">{t("logo.apparel", locale.value).toUpperCase()}</span>
             </div>
           </div>
@@ -250,19 +250,19 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Wills Transfer Apparel",
+  title: "Wills Apparel",
   meta: [
-    { name: "description", content: "Premium Branded Wills Transfer Apparel" },
+    { name: "description", content: "Premium Branded Wills Apparel" },
     { name: "robots", content: "noindex, nofollow" },
     { name: "theme-color", content: "#ffffff" },
-    { property: "og:title", content: "Wills Transfer Apparel" },
-    { property: "og:description", content: "Premium Branded Wills Transfer Apparel" },
+    { property: "og:title", content: "Wills Apparel" },
+    { property: "og:description", content: "Premium Branded Wills Apparel" },
     { property: "og:type", content: "website" },
     { property: "og:url", content: "https://willsapparel.ca/" },
     { property: "og:image", content: "https://willsapparel.ca/wills-logo.png" },
     { name: "twitter:card", content: "summary" },
-    { name: "twitter:title", content: "Wills Transfer Apparel" },
-    { name: "twitter:description", content: "Premium Branded Wills Transfer Apparel" },
+    { name: "twitter:title", content: "Wills Apparel" },
+    { name: "twitter:description", content: "Premium Branded Wills Apparel" },
     { name: "twitter:image", content: "https://willsapparel.ca/wills-logo.png" },
   ],
 };

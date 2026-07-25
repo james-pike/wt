@@ -1,4 +1,4 @@
-/* ===== Wills Transfer Apparel Brand Theme ===== */
+/* ===== Wills Apparel Brand Theme ===== */
 :root {
   --ce-green: #F5A623;
   --ce-green-dark: #C97B0C;
@@ -8464,7 +8464,7 @@ details[open] > .cart-drawer__checkout-title::after {
 
 /* ============================================================
    Orange brand theme — willstransfer.com header colour (#f58322)
-   with the white "Wills Transfer Limited" wordmark logo.
+   with the white "Wills" wordmark logo.
    Applies to every device header, the mobile menu drawer, and the
    login modal. Appended last so it wins over the stateful rules above.
    ============================================================ */

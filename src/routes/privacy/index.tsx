@@ -40,5 +40,5 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Privacy Policy — Wills Transfer Apparel",
+  title: "Privacy Policy — Wills Apparel",
 };

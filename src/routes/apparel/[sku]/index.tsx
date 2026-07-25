@@ -587,6 +587,6 @@ export default component$(() => {
 export const head: DocumentHead = ({ params }) => {
   const product = allProducts.find((p) => p.sku === params.sku);
   return {
-    title: product ? `${product.name} - Wills Transfer Apparel` : "Product - Wills Transfer Apparel",
+    title: product ? `${product.name} - Wills Apparel` : "Product - Wills Apparel",
   };
 };

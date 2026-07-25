@@ -8,5 +8,5 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Shop Apparel - Wills Transfer Apparel",
+  title: "Shop Apparel - Wills Apparel",
 };
