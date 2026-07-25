@@ -5784,15 +5784,16 @@ details[open] > .cart-drawer__checkout-title::after {
   align-items: center;
   justify-content: center;
   padding: 2rem 1rem;
+  /* Greige body at every width so it's DARKER than the off-white confirmation
+     card (on phones the page was white — lighter than the card — which read as
+     swapped). The card floats lighter on top, matching desktop. */
+  background: var(--ce-greige);
 }
-/* Desktop: a filled white body between the header and footer (like the other
-   pages), capped to the card width with the greige surround in the side
-   margins — so the confirmation card sits in a page instead of floating on the
-   bare surround with the two bars looking detached. On phones the card already
-   fills most of the width, so this isn't needed there. */
+/* Desktop: cap the body to the card width and wrap it in the same white edge
+   ring the header, footer and content cards carry, so the confirmation card
+   sits in one continuous card instead of floating with the two bars detached. */
 @media (min-width: 1025px) {
   .checkout-result {
-    background: var(--ce-greige);
     max-width: var(--site-max);
     margin: 0 auto;
     width: 100%;
