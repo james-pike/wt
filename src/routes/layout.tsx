@@ -333,24 +333,28 @@ export const useSubmitOrder = routeAction$(
         args: [orderId as any],
       });
       if (apiKey) await sendConfirmationEmail({ apiKey, from: fromAddress, staffAddresses }, buildEmailData());
-      // Stripe requires an absolute URL with a protocol. A SITE_URL set to a
-      // bare domain ("willsapparel.ca") made success_url invalid and blocked
-      // the whole card handoff — so normalise it: add https:// if missing,
-      // drop any trailing slash.
-      let siteUrl = (env.get("SITE_URL") || url.origin || "").trim().replace(/\/+$/, "");
-      if (siteUrl && !/^https?:\/\//i.test(siteUrl)) siteUrl = "https://" + siteUrl;
+      // Build the return-URL base from the ORIGIN only. Stripe needs an absolute
+      // https URL, and a SITE_URL that includes a path (".../apparel") would push
+      // success_url to /apparel/checkout/success/ — a non-existent route. Add a
+      // scheme if missing, then strip everything to scheme+host.
+      let siteBase = (env.get("SITE_URL") || url.origin || "").trim();
+      if (siteBase && !/^https?:\/\//i.test(siteBase)) siteBase = "https://" + siteBase;
+      let siteUrl = url.origin;
+      try { siteUrl = new URL(siteBase).origin; } catch { siteUrl = url.origin; }
       console.warn(`[DEV] Simulated card payment for order ${orderNumber} — no Stripe key set.`);
       return { redirectUrl: `${siteUrl}/checkout/success/?test=1`, orderNumber };
     }
 
     // ---- Card required → hand off to Stripe Checkout ----
     if (cardAmount > 0) {
-      // Stripe requires an absolute URL with a protocol. A SITE_URL set to a
-      // bare domain ("willsapparel.ca") made success_url invalid and blocked
-      // the whole card handoff — so normalise it: add https:// if missing,
-      // drop any trailing slash.
-      let siteUrl = (env.get("SITE_URL") || url.origin || "").trim().replace(/\/+$/, "");
-      if (siteUrl && !/^https?:\/\//i.test(siteUrl)) siteUrl = "https://" + siteUrl;
+      // Build the return-URL base from the ORIGIN only. Stripe needs an absolute
+      // https URL, and a SITE_URL that includes a path (".../apparel") would push
+      // success_url to /apparel/checkout/success/ — a non-existent route. Add a
+      // scheme if missing, then strip everything to scheme+host.
+      let siteBase = (env.get("SITE_URL") || url.origin || "").trim();
+      if (siteBase && !/^https?:\/\//i.test(siteBase)) siteBase = "https://" + siteBase;
+      let siteUrl = url.origin;
+      try { siteUrl = new URL(siteBase).origin; } catch { siteUrl = url.origin; }
       try {
         const session = await createCheckoutSession({
           secretKey: stripeKey!,
@@ -494,7 +498,7 @@ export default component$(() => {
   // land un-recognised for that one request — which used to drop them onto the
   // login wall instead of their confirmation. These pages must show regardless
   // of auth, so exempt them from the login gate.
-  const isPaymentReturn = useComputed$(() => loc.url.pathname.startsWith("/checkout/"));
+  const isPaymentReturn = useComputed$(() => loc.url.pathname.includes("/checkout/"));
   const loginAction = useLogin();
   const logoutAction = useLogout();
   const orderAction = useSubmitOrder();
