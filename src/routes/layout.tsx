@@ -332,14 +332,24 @@ export const useSubmitOrder = routeAction$(
         args: [orderId as any],
       });
       if (apiKey) await sendConfirmationEmail({ apiKey, from: fromAddress, staffAddresses }, buildEmailData());
-      const siteUrl = env.get("SITE_URL") || url.origin;
+      // Stripe requires an absolute URL with a protocol. A SITE_URL set to a
+      // bare domain ("willsapparel.ca") made success_url invalid and blocked
+      // the whole card handoff — so normalise it: add https:// if missing,
+      // drop any trailing slash.
+      let siteUrl = (env.get("SITE_URL") || url.origin || "").trim().replace(/\/+$/, "");
+      if (siteUrl && !/^https?:\/\//i.test(siteUrl)) siteUrl = "https://" + siteUrl;
       console.warn(`[DEV] Simulated card payment for order ${orderNumber} — no Stripe key set.`);
       return { redirectUrl: `${siteUrl}/checkout/success/?test=1`, orderNumber };
     }
 
     // ---- Card required → hand off to Stripe Checkout ----
     if (cardAmount > 0) {
-      const siteUrl = env.get("SITE_URL") || url.origin;
+      // Stripe requires an absolute URL with a protocol. A SITE_URL set to a
+      // bare domain ("willsapparel.ca") made success_url invalid and blocked
+      // the whole card handoff — so normalise it: add https:// if missing,
+      // drop any trailing slash.
+      let siteUrl = (env.get("SITE_URL") || url.origin || "").trim().replace(/\/+$/, "");
+      if (siteUrl && !/^https?:\/\//i.test(siteUrl)) siteUrl = "https://" + siteUrl;
       try {
         const session = await createCheckoutSession({
           secretKey: stripeKey!,
