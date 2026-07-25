@@ -599,6 +599,20 @@ export default component$(() => {
   // shown when the card fully covers the order, so the customer sees their
   // remaining allotment instead of a bare $0.00 amount-due.
   const giftLeftover = useComputed$(() => Math.max(0, +((giftBalance.value ?? 0) - giftCovers.value).toFixed(2)));
+  // Whether the order can be placed — every required field filled and the
+  // payment method satisfied (gift card checked / covers the order, PO number
+  // for PO). Drives the greyed-out state of the place-order button. Detailed
+  // email/phone FORMAT checks stay on submit so the button un-greys once the
+  // fields are simply filled in.
+  const canPlaceOrder = useComputed$(() => {
+    if (!empFirstName.value.trim() || !empLastName.value.trim() || !empEmail.value.trim()
+        || !empPhone.value.trim() || !empProvince.value) return false;
+    if (needsLocation(empProvince.value) && !empDept.value) return false;
+    if (payMethod.value === "po" && !empPO.value.trim()) return false;
+    if (usesGift.value && giftBalance.value == null) return false;           // card not applied yet
+    if (payMethod.value === "giftcard" && giftRemaining.value > 0) return false; // gift doesn't cover it
+    return true;
+  });
   const taxLabel = useComputed$(() => {
     if (taxRate.value === undefined) return t("cart.invoice.tax", locale.value);
     const pct = +(taxRate.value * 100).toFixed(3);
@@ -1692,7 +1706,8 @@ export default component$(() => {
                     {cartCount.value} {cartCount.value !== 1 ? t("cart.items", locale.value) : t("cart.item", locale.value)}{loginType.value !== "tech" && (empProvince.value ? ` — $${orderTotal.value.toFixed(2)}` : ` — $${subtotal.value.toFixed(2)} + ${t("cart.invoice.tax", locale.value).toLowerCase()}`)}
                   </span>
                   <button
-                    class="btn btn--primary cart-drawer__order-btn"
+                    class={`btn btn--primary cart-drawer__order-btn ${!canPlaceOrder.value ? "cart-drawer__order-btn--disabled" : ""}`}
+                    disabled={!canPlaceOrder.value}
                     onClick$={submitOrder}
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>

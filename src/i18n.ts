@@ -211,10 +211,10 @@ const translations = {
   "cart.requiredfields": { en: "* required", fr: "* requis" },
 
   // Order confirmation
-  "order.title": { en: "Order Submitted!", fr: "Commande soumise!" },
+  "order.title": { en: "Thank you for your order!", fr: "Merci pour votre commande!" },
   "order.text": {
-    en: "Your order has been recorded and sent for processing.",
-    fr: "Votre commande a été enregistrée et envoyée pour traitement.",
+    en: "It has been confirmed and sent for processing.",
+    fr: "Elle a été confirmée et envoyée pour traitement.",
   },
   "order.continue": { en: "Home", fr: "Accueil" },
 

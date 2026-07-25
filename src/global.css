@@ -12205,3 +12205,13 @@ body:has(.product-fullscreen) { overflow: hidden; }
   .cart-drawer__items .cart-table__qty-controls span,
   .cart-table__qty-controls span { font-size: 0.78rem; }
 }
+
+/* Place-order button greys out until every required field + payment detail is
+   filled in (see canPlaceOrder). Partial transparency + no pointer, but the
+   button stays in the DOM so the layout doesn't shift. */
+.cart-drawer__order-btn--disabled,
+.cart-drawer__order-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.35);
+}
