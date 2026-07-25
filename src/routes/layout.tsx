@@ -487,6 +487,12 @@ export default component$(() => {
   const loc = useLocation();
   const nav = useNavigate();
   const auth = useAuthCheck();
+  // Payment-return pages (Stripe success/cancelled). A customer coming back from
+  // Stripe is a cross-site navigation, and even with a SameSite=Lax cookie it can
+  // land un-recognised for that one request — which used to drop them onto the
+  // login wall instead of their confirmation. These pages must show regardless
+  // of auth, so exempt them from the login gate.
+  const isPaymentReturn = useComputed$(() => loc.url.pathname.startsWith("/checkout/"));
   const loginAction = useLogin();
   const logoutAction = useLogout();
   const orderAction = useSubmitOrder();
@@ -934,7 +940,7 @@ export default component$(() => {
   // Auto-open login modal and lock scroll for unauthenticated users
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {
-    if (!auth.value.loggedIn) {
+    if (!auth.value.loggedIn && !isPaymentReturn.value) {
       showLogin.value = true;
       document.documentElement.style.overflow = "hidden";
       document.body.style.position = "fixed";
@@ -984,7 +990,7 @@ export default component$(() => {
   return (
     <>
       {/* Login Modal */}
-      {showLogin.value && (
+      {showLogin.value && !isPaymentReturn.value && (
         <div class={`login-overlay ${overlayFading.value ? "login-overlay--fading" : ""}`} onClick$={() => { if (auth.value.loggedIn) showLogin.value = false; }}>
           <div class="login-modal" onClick$={(e) => e.stopPropagation()}>
             {auth.value.loggedIn && (
@@ -1046,7 +1052,7 @@ export default component$(() => {
         <span class="tablet-notice__sub">Please visit on mobile or desktop.</span>
       </div>
 
-      {(auth.value.loggedIn || (loginAction.value && !loginAction.value.failed)) && <>
+      {(auth.value.loggedIn || (loginAction.value && !loginAction.value.failed) || isPaymentReturn.value) && <>
       <header class={`site-header site-header--white ${tabsStuck.value ? "site-header--tabs-stuck" : ""} ${searchOpen.value ? "site-header--search-open" : ""} ${cartOpen.value ? "site-header--cart-open" : ""} ${SHOW_HERO_HEADER && loc.url.pathname === "/" && !cartOpen.value ? `site-header--hero-hidden ${headerScrolled.value || searchOpen.value ? "site-header--hero-visible" : ""}` : ""}`}>
         <div class="site-header__inner">
           <Link href="/" class="site-header__logo site-header__logo--img">
