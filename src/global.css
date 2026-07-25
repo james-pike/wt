@@ -1832,6 +1832,13 @@ body:has(.nav-drawer-overlay) .site-header {
   background: var(--ce-off-white);
   border-radius: var(--radius-sm);
   padding: 1.75rem 1.75rem 2.25rem;
+  /* Same white ring + drop shadow the cart / catalog / product cards carry, so
+     the panel floats on the greige surround instead of sitting flat. */
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 0 0 var(--wt-ring) var(--ce-white),
+    0 0 0 calc(var(--wt-ring) + 1px) rgba(0, 0, 0, 0.14),
+    0 6px 16px var(--wt-ring) rgba(0, 0, 0, 0.22);
 }
 .doc-panel .privacy-page__body { max-width: 68ch; }
 .privacy-page__title {
@@ -7627,6 +7634,16 @@ details[open] > .cart-drawer__checkout-title::after {
 .not-found-page__inner {
   text-align: center;
   max-width: 420px;
+  /* Card treatment so the 404 message floats on the surround like the other
+     pages' body cards, with the same white ring + drop shadow as the cart. */
+  background: var(--ce-off-white);
+  border-radius: var(--radius-md);
+  padding: 2.5rem 2rem;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 0 0 var(--wt-ring) var(--ce-white),
+    0 0 0 calc(var(--wt-ring) + 1px) rgba(0, 0, 0, 0.14),
+    0 6px 16px var(--wt-ring) rgba(0, 0, 0, 0.22);
 }
 .not-found-page__code {
   font-size: 5rem;
