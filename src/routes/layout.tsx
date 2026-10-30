@@ -1116,7 +1116,7 @@ export default component$(() => {
     loginCarouselPaused.value = false; // clear any stale pause when the modal opens
     const id = setInterval(() => {
       if (loginCarouselPaused.value) return;
-      loginHeroIndex.value = (loginHeroIndex.value + 1) % 2;
+      // Single login photo (the Wills sign) — nothing to rotate.
     }, 10000);
     cleanup(() => clearInterval(id));
   }, { strategy: "document-ready" });
@@ -1258,29 +1258,11 @@ export default component$(() => {
                 </Form>
               </div>
             </div>
-            <div class="login-modal__carousel"
-              onClick$={() => { loginHeroIndex.value = (loginHeroIndex.value + 1) % 2; }}
-            >
+            {/* One photo on every screen size: the Wills sign. */}
+            <div class="login-modal__carousel">
               <img src="/hero-wills.jpg" alt="" width="1600" height="680"
                    loading="eager" decoding="sync"
                    class={`login-modal__slide login-modal__slide--wide ${loginHeroIndex.value === 0 ? "is-active" : ""}`} />
-              <img src="/hero.jpg" alt="" width="1600" height="960"
-                   loading="eager" decoding="sync"
-                   class={`login-modal__slide login-modal__slide--wide ${loginHeroIndex.value === 1 ? "is-active" : ""}`} />
-                <div class="login-modal__dots" stoppropagation:click>
-                  <button
-                    type="button"
-                    class={`login-modal__dot ${loginHeroIndex.value === 0 ? "is-active" : ""}`}
-                    aria-label="Show slide 1"
-                    onClick$={() => { loginHeroIndex.value = 0; }}
-                  />
-                  <button
-                    type="button"
-                    class={`login-modal__dot ${loginHeroIndex.value === 1 ? "is-active" : ""}`}
-                    aria-label="Show slide 2"
-                    onClick$={() => { loginHeroIndex.value = 1; }}
-                  />
-                </div>
             </div>
             </div>
           </div>
