@@ -1305,7 +1305,7 @@ export default component$(() => {
             }}
           >
             <img
-              src="/logo-black.png"
+              src="/logo-white.png"
               alt="Wills Apparel"
               class="site-header__logo-img site-header__logo-img--wills"
               width="1448"
@@ -1690,7 +1690,7 @@ export default component$(() => {
           <div class="drawer cart-drawer" onClick$={(e) => e.stopPropagation()}>
             <div class="cart-drawer__site-header">
               <Link href="/" class="site-header__logo">
-                <img src="/logo-black.png" alt="Wills" class="site-header__logo-img site-header__logo-img--wills" width="1448" height="313" style="width:auto;height:30px;object-fit:contain" loading="eager" decoding="sync" />
+                <img src="/logo-white.png" alt="Wills" class="site-header__logo-img site-header__logo-img--wills" width="1448" height="313" style="width:auto;height:30px;object-fit:contain" loading="eager" decoding="sync" />
               </Link>
               <nav class="site-header__nav">
                 <button class="cart-btn" onClick$={() => (cartOpen.value = false)}>

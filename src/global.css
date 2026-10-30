@@ -17719,3 +17719,63 @@ html body .login-modal--split .login-modal__carousel::after {
 @media (max-width: 600px) {
   html body .login-card__locale.login-card__locale { background: rgba(20, 18, 16, 0.42) !important; }
 }
+
+/* ---- Header: the original Wills sign — rust/iron texture over a darkened
+   Wills orange (as on the old Wills site), with the white wordmark. ---- */
+html body .site-header.site-header,
+html body .cart-drawer__site-header {
+  background:
+    url("/wills-iron.png") left top / 100% auto no-repeat,
+    linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30)),
+    #f58322 !important;
+  box-shadow: inset 0 0 14px rgba(62, 24, 2, 0.45), 0 2px 4px rgba(0, 0, 0, 0.18) !important;
+  border-bottom-color: transparent !important;
+}
+html body .site-header .site-header__logo-apparel,
+html body .site-header .site-header__nav > a,
+html body .site-header .site-header__nav > button:not(.cart-btn),
+html body .site-header .site-header__nav > button:not(.cart-btn) svg,
+html body .site-header .site-header__search-btn,
+html body .site-header .site-header__search-btn svg,
+html body .site-header .site-header__menu-btn,
+html body .site-header .site-header__menu-btn svg {
+  color: #ffffff !important;
+  stroke: currentColor;
+}
+/* The header's inner strip carries its own grey fill — clear it so the
+   textured orange shows through edge to edge. */
+html body .site-header.site-header .site-header__inner { background: transparent !important; }
+/* Header controls in white on the textured bar; the search field sits in a
+   darker inset box (the old Wills header-button look). */
+html body .site-header .logout-btn,
+html body .site-header .logout-btn svg,
+html body .site-header .site-header__search-label,
+html body .site-header .site-header__search-input,
+html body .site-header .site-header__search-input::placeholder,
+html body .site-header .site-header__search-close,
+html body .site-header .site-header__search-close svg,
+html body .site-header .site-header__search svg { color: #ffffff !important; }
+html body .site-header .site-header__search-input::placeholder { opacity: 0.85; }
+html body .site-header.site-header button,
+html body .site-header.site-header button svg,
+html body .site-header.site-header .logout-btn,
+html body .site-header.site-header .logout-btn * { color: #ffffff !important; }
+/* (Two id-level :not()s so these beat the template's body:not(#cm) rules.) */
+html body:not(#cm):not(#wt) .site-header .site-header__search-btn,
+html body:not(#cm):not(#wt) .site-header .site-header__search-btn svg,
+html body:not(#cm):not(#wt) .site-header .site-header__search-label,
+html body:not(#cm):not(#wt) .site-header .hamburger-btn,
+html body:not(#cm):not(#wt) .site-header .hamburger-btn svg,
+html body:not(#cm):not(#wt) .site-header .logout-btn,
+html body:not(#cm):not(#wt) .site-header .logout-btn svg,
+html body:not(#cm):not(#wt) .site-header .cart-btn:not(.cart-btn--active),
+html body:not(#cm):not(#wt) .site-header .cart-btn:not(.cart-btn--active) svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+html body:not(#cm):not(#wt) .site-header .site-header__search-label { stroke: none !important; }
+/* Search / log-out cells: a darker inset box on the textured bar. */
+html body:not(#cm):not(#wt) .site-header .logout-btn {
+  background: rgba(0, 0, 0, 0.18) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12) !important;
+}

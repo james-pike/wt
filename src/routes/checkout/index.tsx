@@ -319,7 +319,7 @@ export default component$(() => {
       <div class="drawer cart-drawer">
         <div class="cart-drawer__site-header">
           <Link href="/" class="site-header__logo">
-            <img src="/logo-black.png" alt="Wills" class="site-header__logo-img site-header__logo-img--wills" width="1448" height="313" loading="eager" decoding="sync" />
+            <img src="/logo-white.png" alt="Wills" class="site-header__logo-img site-header__logo-img--wills" width="1448" height="313" loading="eager" decoding="sync" />
           </Link>
           <nav class="site-header__nav">
             <button class="cart-btn" onClick$={() => { try { sessionStorage.setItem("reopen-cart", "1"); } catch { /* ignore */ } nav("/"); }}>
