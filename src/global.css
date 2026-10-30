@@ -17797,3 +17797,11 @@ html body:not(#cm):not(#wt) .site-header .logout-btn {
     margin-left: 0 !important;
   }
 }
+/* Desktop login gate: one solid frame shade everywhere — the darker tone of
+   the strip between the logo and login panels (the gradient made the side and
+   middle pieces lighter, so the frame looked disconnected). */
+@media (min-width: 1025px) {
+  html body .login-modal.login-modal--split,
+  html body .login-overlay .login-modal.login-modal--split { background: #1a1815 !important; }
+  html body .login-modal--split .login-modal__form-pane { background: transparent !important; }
+}
