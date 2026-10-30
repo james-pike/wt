@@ -17,7 +17,7 @@ import { sendConfirmationEmail } from "../../../lib/orders";
 import type { OrderEmailData, OrderItem, PaymentMethod } from "../../../lib/orders";
 import { deductGiftCard } from "../../../lib/giftcards";
 
-export const onPost: RequestHandler = async ({ request, env, json }) => {
+export const onPost: RequestHandler = async ({ request, env, json, url }) => {
   const secret = env.get("STRIPE_WEBHOOK_SECRET");
   const payload = await request.text();
   const sig = request.headers.get("stripe-signature");
@@ -93,12 +93,17 @@ export const onPost: RequestHandler = async ({ request, env, json }) => {
   if (apiKey) {
     let items: OrderItem[] = [];
     try { items = JSON.parse(String(row.items || "[]")); } catch { items = []; }
-    const fromAddress = env.get("RESEND_FROM") || env.get("VITE_RESEND_FROM") || "Wills <onboarding@resend.dev>";
+    const fromAddress = env.get("RESEND_FROM") || env.get("VITE_RESEND_FROM") || "Wills Apparel <onboarding@resend.dev>";
     const staffAddresses = (env.get("ORDER_NOTIFY_TO") || env.get("VITE_ORDER_NOTIFY_TO") || "cs@safetyhouse.ca")
       .split(",").map((a) => a.trim()).filter(Boolean);
     const emailData: OrderEmailData = {
       orderNumber: m.order_number || "",
       date: m.date || "",
+      logoUrl: (() => {
+        let b = (env.get("SITE_URL") || url.origin || "").trim();
+        if (b && !/^https?:\/\//i.test(b)) b = "https://" + b;
+        try { return `${new URL(b).origin}/logo-white.png`; } catch { return `${url.origin}/logo-white.png`; }
+      })(),
       employee: {
         name: m.employee_name || "",
         email: m.customer_email || "",
@@ -106,6 +111,9 @@ export const onPost: RequestHandler = async ({ request, env, json }) => {
         department: m.department || "",
         provinceName: m.province_name || "",
         provinceCode: m.province_code || "",
+        address1: m.address1 || "",
+        city: m.city || "",
+        postal: m.postal || "",
         po: m.po || "",
       },
       items,

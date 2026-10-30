@@ -1,0 +1,1190 @@
+{
+  "WT-1": {
+    "imgs": [
+      "/skus/M500S-black.png",
+      "/skus/M500S-frenchblue.png",
+      "/skus/M500S-navy.png",
+      "/skus/M500S-white.png",
+      "/skus/M500S-wine.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#4a6a8a": "French Blue",
+      "#1f2a44": "Navy",
+      "#FFFFFF": "White",
+      "#5e2231": "Wine"
+    }
+  },
+  "WT-2": {
+    "imgs": [
+      "/skus/1376862-black.png",
+      "/skus/1376862-castlerockwhite.png",
+      "/skus/1376862-midnightnavywhite.png",
+      "/skus/1376862-modgreylightheatherwhite.png",
+      "/skus/1376862-redwhite.png",
+      "/skus/1376862-royalwhite.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#5f5b5c": "Castlerock/ White",
+      "#393e5d": "Midnight Navy/ White",
+      "#d9dde0": "Mod Grey Light Heather/ White",
+      "#c90a29": "Red/ White",
+      "#0a3ba4": "Royal/ White"
+    }
+  },
+  "WT-3": {
+    "imgs": [
+      "/skus/1370431-black.png",
+      "/skus/1370431-csgreylightheatherwhite.png",
+      "/skus/1370431-midnightnavywhite.png",
+      "/skus/1370431-purplewhite.png",
+      "/skus/1370431-redwhite.png",
+      "/skus/1370431-royalwhite.png",
+      "/skus/1370431-whitemodgrey.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#53565f": "CS Grey Light Heather/ White",
+      "#393e5d": "Midnight Navy/ White",
+      "#372c56": "Purple/ White",
+      "#c90a29": "Red/ White",
+      "#0a3ba4": "Royal/ White",
+      "#f8f8f8": "White/ Mod Grey"
+    }
+  },
+  "WT-4": {
+    "imgs": [
+      "/skus/L2018-athleticgrey.png",
+      "/skus/L2018-black.png",
+      "/skus/L2018-charcoalheather.png"
+    ],
+    "names": {
+      "#BBBCBC": "Athletic Grey",
+      "#262626": "Black",
+      "#545859": "Charcoal Heather"
+    }
+  },
+  "WT-5": {
+    "imgs": [
+      "/skus/ATC1015-ashgrey.png",
+      "/skus/ATC1015-athleticheather.png",
+      "/skus/ATC1015-black.png",
+      "/skus/ATC1015-caramel.png",
+      "/skus/ATC1015-darkgreen.png",
+      "/skus/ATC1015-darkheathergrey.png",
+      "/skus/ATC1015-darknavy.png",
+      "/skus/ATC1015-maroon.png",
+      "/skus/ATC1015-orange.png",
+      "/skus/ATC1015-purple.png",
+      "/skus/ATC1015-red.png",
+      "/skus/ATC1015-royal.png",
+      "",
+      "/skus/ATC1015-sangria.png",
+      "/skus/ATC1015-teamgold.png",
+      "/skus/ATC1015-white.png"
+    ],
+    "names": {
+      "#C8C9C7": "Ash Grey",
+      "#B1B3B3": "Athletic Heather",
+      "#262626": "Black",
+      "#9E652E": "Caramel",
+      "#18332F": "Dark Green",
+      "#4B4F54": "Dark Heather Grey",
+      "#041C2C": "Dark Navy",
+      "#672E45": "Maroon",
+      "#FA4616": "Orange",
+      "#4C4084": "Purple",
+      "#b02b2c": "Red",
+      "#1C57A5": "Royal",
+      "#C6D219": "^Safety Green",
+      "#E0457B": "Sangria",
+      "#FFB81C": "Team Gold",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-6": {
+    "imgs": [
+      "/skus/UA1376844-black.png",
+      "/skus/UA1376844-castlerockwhite.png",
+      "/skus/UA1376844-midnightnavywhite.png",
+      "/skus/UA1376844-modgreylightheatherwhite.png",
+      "/skus/UA1376844-redwhite.png",
+      "/skus/UA1376844-royalwhite.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#5f5b5c": "Castlerock/ White",
+      "#393e5d": "Midnight Navy/ White",
+      "#d9dde0": "Mod Grey Light Heather/ White",
+      "#c90a29": "Red/ White",
+      "#0a3ba4": "Royal/ White"
+    }
+  },
+  "WT-7": {
+    "imgs": [
+      "/skus/ATC3700L-black.png",
+      "/skus/ATC3700L-coalgrey.png",
+      "/skus/ATC3700L-forestgreen.png",
+      "/skus/ATC3700L-maroon.png",
+      "/skus/ATC3700L-orange.png",
+      "/skus/ATC3700L-purple.png",
+      "/skus/ATC3700L-truenavy.png",
+      "/skus/ATC3700L-truered.png",
+      "/skus/ATC3700L-trueroyal.png",
+      "/skus/ATC3700L-white.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#63666A": "Coal Grey",
+      "#395542": "Forest Green",
+      "#672E45": "Maroon",
+      "#FA4616": "Orange",
+      "#4C4084": "Purple",
+      "#00263A": "True Navy",
+      "#BA0C2F": "True Red",
+      "#1D4F91": "True Royal",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-8": {
+    "imgs": [
+      "/skus/ATC3700-black.png",
+      "/skus/ATC3700-coalgrey.png",
+      "/skus/ATC3700-forestgreen.png",
+      "/skus/ATC3700-maroon.png",
+      "/skus/ATC3700-orange.png",
+      "/skus/ATC3700-purple.png",
+      "/skus/ATC3700-truenavy.png",
+      "/skus/ATC3700-truered.png",
+      "/skus/ATC3700-trueroyal.png",
+      "/skus/ATC3700-white.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#63666A": "Coal Grey",
+      "#395542": "Forest Green",
+      "#672E45": "Maroon",
+      "#FA4616": "Orange",
+      "#4C4084": "Purple",
+      "#00263A": "True Navy",
+      "#BA0C2F": "True Red",
+      "#1D4F91": "True Royal",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-9": {
+    "imgs": [
+      "",
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black"
+    }
+  },
+  "WT-10": {
+    "imgs": [
+      "",
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black"
+    }
+  },
+  "WT-11": {
+    "imgs": [
+      "/skus/L00570-athleticgrey.jpg",
+      "/skus/L00570-black.jpg",
+      "/skus/L00570-charcoal.jpg",
+      "/skus/L00570-forest.jpg",
+      "/skus/L00570-navy.jpg",
+      "/skus/L00570-red.jpg",
+      "/skus/L00570-royal.jpg",
+      "/skus/L00570-sand.jpg"
+    ],
+    "names": {
+      "#BBBCBC": "Athletic Grey",
+      "#262626": "Black",
+      "#53565A": "Charcoal",
+      "#22403a": "Forest",
+      "#1f2a44": "Navy",
+      "#b02b2c": "Red",
+      "#1C57A5": "Royal",
+      "#cdb99a": "Sand"
+    }
+  },
+  "WT-12": {
+    "imgs": [
+      "/skus/L7603-black.png",
+      "/skus/L7603-blackheather.png",
+      "/skus/L7603-graphite.png",
+      "/skus/L7603-imperialblue.png",
+      "/skus/L7603-midnightblue.png",
+      "/skus/L7603-navyheather.png",
+      "/skus/L7603-pearlgreyheather.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#101820": "Black Heather",
+      "#333F48": "Graphite",
+      "#006298": "Imperial Blue",
+      "#00263E": "Midnight Blue",
+      "#3B4559": "Navy Heather",
+      "#63666A": "Pearl Grey Heather"
+    }
+  },
+  "WT-13": {
+    "imgs": [
+      "/skus/j7603-black.png",
+      "/skus/j7603-blackheather.png",
+      "/skus/j7603-graphite.png",
+      "/skus/j7603-imperialblue.png",
+      "/skus/j7603-midnightblue.png",
+      "/skus/j7603-navyheather.png",
+      "/skus/j7603-pearlgreyheather.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#101820": "Black Heather",
+      "#333F48": "Graphite",
+      "#006298": "Imperial Blue",
+      "#00263E": "Midnight Blue",
+      "#3B4559": "Navy Heather",
+      "#63666A": "Pearl Grey Heather"
+    }
+  },
+  "WT-14": {
+    "imgs": [
+      "/skus/18140-black.png",
+      "/skus/18140-heathercharcoal.png",
+      "/skus/18140-vintagenavy.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#6c6f70": "Heather Charcoal",
+      "#001c54": "Vintage Navy"
+    }
+  },
+  "WT-15": {
+    "imgs": [
+      "/skus/98140-black.png",
+      "/skus/98140-heathercharcoal.png",
+      "/skus/98140-vintagenavy.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#6c6f70": "Heather Charcoal",
+      "#001c54": "Vintage Navy"
+    }
+  },
+  "WT-16": {
+    "imgs": [
+      "",
+      "/skus/NKD6718-black.png",
+      "",
+      "",
+      ""
+    ],
+    "names": {
+      "#333333": "Charcoal",
+      "#1a1a18": "Black",
+      "#5a5a5a": "Grey",
+      "#1b2a41": "Navy",
+      "#ffffff": "White"
+    }
+  },
+  "WT-17": {
+    "imgs": [
+      "/skus/NKD6720-black.png",
+      "",
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black",
+      "#5a5a5a": "Grey",
+      "#1b2a41": "Navy"
+    }
+  },
+  "WT-18": {
+    "imgs": [
+      "/skus/1370399-black.png",
+      "/skus/1370399-csgreylightheatherwhite.png",
+      "/skus/1370399-midnightnavywhite.png",
+      "/skus/1370399-purplewhite.png",
+      "/skus/1370399-redwhite.png",
+      "/skus/1370399-royalwhite.png",
+      "/skus/1370399-whitemodgrey.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#53565f": "CS Grey Light Heather/ White",
+      "#393e5d": "Midnight Navy/ White",
+      "#372c56": "Purple/ White",
+      "#c90a29": "Red/ White",
+      "#0a3ba4": "Royal/ White",
+      "#f8f8f8": "White/ Mod Grey"
+    }
+  },
+  "WT-19": {
+    "imgs": [
+      "/skus/2088551-black.png",
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black"
+    }
+  },
+  "WT-20": {
+    "imgs": [
+      "/skus/NE730W-blackgrey.png",
+      "/skus/NE730W-classicnavywhite.png",
+      "/skus/NE730W-greywhite.png"
+    ],
+    "names": {
+      "#43403d": "Black/Grey",
+      "#676d76": "Classic Navy/White",
+      "#a7a7a7": "Grey/White"
+    }
+  },
+  "WT-21": {
+    "imgs": [
+      "/skus/NE730-blackgrey.png",
+      "/skus/NE730-classicnavywhite.png",
+      "/skus/NE730-greywhite.png"
+    ],
+    "names": {
+      "#43403d": "Black/Grey",
+      "#676d76": "Classic Navy/White",
+      "#a7a7a7": "Grey/White"
+    }
+  },
+  "WT-22": {
+    "imgs": [
+      "/skus/DG445W-black.png",
+      "/skus/DG445W-graphite.png",
+      "/skus/DG445W-navy.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#333F48": "Graphite",
+      "#1f2a44": "Navy"
+    }
+  },
+  "WT-23": {
+    "imgs": [
+      "/skus/DG445-black.png",
+      "/skus/DG445-graphite.png",
+      "/skus/DG445-navy.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#333F48": "Graphite",
+      "#1f2a44": "Navy"
+    }
+  },
+  "WT-24": {
+    "imgs": [
+      "/skus/SF500-black.png",
+      "/skus/SF500-cardinal.png",
+      "/skus/SF500-carolinablue.png",
+      "/skus/SF500-charcoal.png",
+      "/skus/SF500-cobalt.png",
+      "/skus/SF500-darkheather.png",
+      "/skus/SF500-forestgreen.png",
+      "/skus/SF500-militarygreen.png",
+      "/skus/SF500-navy.png",
+      "/skus/SF500-red.png",
+      "/skus/SF500-royal.png",
+      "/skus/SF500-sage.png",
+      "/skus/SF500-sand.png",
+      "/skus/SF500-sportgrey.png",
+      "/skus/SF500-stoneblue.png",
+      "/skus/SF500-white.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#8c2633": "Cardinal",
+      "#5F8FB4": "Carolina Blue",
+      "#53565A": "Charcoal",
+      "#0047ab": "Cobalt",
+      "#3f4247": "Dark Heather",
+      "#395542": "Forest Green",
+      "#4b5320": "Military Green",
+      "#1f2a44": "Navy",
+      "#b02b2c": "Red",
+      "#1C57A5": "Royal",
+      "#9caf88": "Sage",
+      "#cdb99a": "Sand",
+      "#9fa1a4": "Sport Grey",
+      "#5a7a8a": "Stone Blue",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-25": {
+    "imgs": [
+      "/skus/18610-black.png",
+      "/skus/18610-blacksmokeheather.png",
+      "/skus/18610-lightheathergrey.png",
+      "/skus/18610-lodenheather.png",
+      "/skus/18610-maroonheather.png",
+      "/skus/18610-metroblueheather.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#373534": "Black Smoke Heather",
+      "#a4a9ad": "Light Heather Grey",
+      "#57582c": "Loden Heather",
+      "#601d2e": "Maroon Heather",
+      "#1c457b": "Metro Blue Heather"
+    }
+  },
+  "WT-26": {
+    "imgs": [
+      "/skus/88193-black.jpg",
+      "/skus/88193-carbon.jpg",
+      "/skus/88193-classicnavy.jpg",
+      "/skus/88193-white.jpg"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#53565a": "Carbon",
+      "#22304a": "Classic Navy",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-27": {
+    "imgs": [
+      "/skus/ATC1000-aquaticblue.png",
+      "/skus/ATC1000-ashgrey.png",
+      "/skus/ATC1000-athleticheather.png",
+      "/skus/ATC1000-black.png",
+      "/skus/ATC1000-brightaqua.png",
+      "/skus/ATC1000-darkgreen.png",
+      "/skus/ATC1000-darknavy.png",
+      "/skus/ATC1000-gold.png",
+      "/skus/ATC1000-heatherpurple.png",
+      "/skus/ATC1000-heatherroyal.png",
+      "/skus/ATC1000-maroon.png",
+      "/skus/ATC1000-neonorangeheather.png",
+      "/skus/ATC1000-red.png",
+      "",
+      "/skus/ATC1000-sangria.png",
+      "/skus/ATC1000-white.png"
+    ],
+    "names": {
+      "#4C9FC8": "Aquatic Blue",
+      "#C8C9C7": "Ash Grey",
+      "#B1B3B3": "Athletic Heather",
+      "#262626": "Black",
+      "#008C95": "Bright Aqua",
+      "#18332F": "Dark Green",
+      "#041C2C": "Dark Navy",
+      "#FFB500": "Gold",
+      "#4C4084": "Heather Purple",
+      "#5576D1": "Heather Royal",
+      "#672E45": "Maroon",
+      "#FF8F6C": "Neon Orange Heather",
+      "#b02b2c": "Red",
+      "#C6D219": "^Safety Green",
+      "#E0457B": "Sangria",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-28": {
+    "imgs": [
+      "/skus/ATC1000L-aquaticblue.png",
+      "/skus/ATC1000L-ashgrey.png",
+      "/skus/ATC1000L-athleticheather.png",
+      "/skus/ATC1000L-black.png",
+      "/skus/ATC1000L-candypink.png",
+      "/skus/ATC1000L-charcoal.png",
+      "/skus/ATC1000L-gold.png",
+      "/skus/ATC1000L-heathernavy.png",
+      "/skus/ATC1000L-heatherroyal.png",
+      "/skus/ATC1000L-kelly.png",
+      "/skus/ATC1000L-maroon.png",
+      "/skus/ATC1000L-orange.png",
+      "/skus/ATC1000L-purple.png",
+      "/skus/ATC1000L-red.png",
+      "/skus/ATC1000L-sangria.png",
+      "/skus/ATC1000L-white.png"
+    ],
+    "names": {
+      "#4C9FC8": "Aquatic Blue",
+      "#C8C9C7": "Ash Grey",
+      "#B1B3B3": "Athletic Heather",
+      "#262626": "Black",
+      "#F8A3BC": "Candy Pink",
+      "#53565A": "Charcoal",
+      "#FFB500": "Gold",
+      "#3B4559": "Heather Navy",
+      "#5576D1": "Heather Royal",
+      "#00965E": "Kelly",
+      "#672E45": "Maroon",
+      "#FA4616": "Orange",
+      "#4C4084": "Purple",
+      "#b02b2c": "Red",
+      "#E0457B": "Sangria",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-29": {
+    "imgs": [
+      "/skus/DG20W-black.png",
+      "/skus/DG20W-burgundy.png",
+      "/skus/DG20W-forest.png",
+      "/skus/DG20W-frenchblue.png",
+      "/skus/DG20W-graphite.png",
+      "/skus/DG20W-navy.png",
+      "/skus/DG20W-red.png",
+      "/skus/DG20W-trueroyal.png",
+      "/skus/DG20W-white.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#5e2331": "Burgundy",
+      "#22403a": "Forest",
+      "#4a6a8a": "French Blue",
+      "#333F48": "Graphite",
+      "#1f2a44": "Navy",
+      "#b02b2c": "Red",
+      "#1D4F91": "True Royal",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-30": {
+    "imgs": [
+      "/skus/17745-black.png",
+      "/skus/17745-blue.png",
+      "/skus/17745-darkplum.png",
+      "/skus/17745-desertkhaki.png",
+      "/skus/17745-forestgreen.png",
+      "/skus/17745-frostblue.png",
+      "/skus/17745-grey.png",
+      "/skus/17745-greystorm.png",
+      "/skus/17745-maroon.png",
+      "/skus/17745-navy.png",
+      "/skus/17745-teamred.png",
+      "/skus/17745-white.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#446093": "Blue",
+      "#382246": "Dark Plum",
+      "#baa48c": "Desert Khaki",
+      "#395542": "Forest Green",
+      "#b5d5f0": "Frost Blue",
+      "#a1a8b0": "Grey",
+      "#5e5c60": "Grey Storm",
+      "#672E45": "Maroon",
+      "#1f2a44": "Navy",
+      "#bc2c3a": "Team Red",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-31": {
+    "imgs": [
+      "/skus/97744-black.png",
+      "/skus/97744-blue.png",
+      "/skus/97744-darkplum.png",
+      "/skus/97744-desertkhaki.png",
+      "/skus/97744-forestgreen.png",
+      "/skus/97744-frostblue.png",
+      "/skus/97744-grey.png",
+      "/skus/97744-greystorm.png",
+      "/skus/97744-maroon.png",
+      "/skus/97744-navy.png",
+      "/skus/97744-teamred.png",
+      "/skus/97744-white.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#446093": "Blue",
+      "#382246": "Dark Plum",
+      "#baa48c": "Desert Khaki",
+      "#395542": "Forest Green",
+      "#b5d5f0": "Frost Blue",
+      "#a1a8b0": "Grey",
+      "#5e5c60": "Grey Storm",
+      "#672E45": "Maroon",
+      "#1f2a44": "Navy",
+      "#bc2c3a": "Team Red",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-32": {
+    "imgs": [
+      "/skus/97745-black.png",
+      "/skus/97745-blue.png",
+      "/skus/97745-darkplum.png",
+      "/skus/97745-desertkhaki.png",
+      "/skus/97745-forestgreen.png",
+      "/skus/97745-frostblue.png",
+      "/skus/97745-grey.png",
+      "/skus/97745-greystorm.png",
+      "/skus/97745-maroon.png",
+      "/skus/97745-navy.png",
+      "/skus/97745-teamred.png",
+      "/skus/97745-white.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#446093": "Blue",
+      "#382246": "Dark Plum",
+      "#baa48c": "Desert Khaki",
+      "#395542": "Forest Green",
+      "#b5d5f0": "Frost Blue",
+      "#a1a8b0": "Grey",
+      "#5e5c60": "Grey Storm",
+      "#672E45": "Maroon",
+      "#1f2a44": "Navy",
+      "#bc2c3a": "Team Red",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-33": {
+    "imgs": [
+      "/skus/17744-black.png",
+      "/skus/17744-blue.png",
+      "/skus/17744-darkplum.png",
+      "/skus/17744-desertkhaki.png",
+      "/skus/17744-forestgreen.png",
+      "/skus/17744-frostblue.png",
+      "/skus/17744-grey.png",
+      "/skus/17744-greystorm.png",
+      "/skus/17744-maroon.png",
+      "/skus/17744-navy.png",
+      "/skus/17744-teamred.png",
+      "/skus/17744-white.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#446093": "Blue",
+      "#382246": "Dark Plum",
+      "#baa48c": "Desert Khaki",
+      "#395542": "Forest Green",
+      "#b5d5f0": "Frost Blue",
+      "#a1a8b0": "Grey",
+      "#5e5c60": "Grey Storm",
+      "#672E45": "Maroon",
+      "#1f2a44": "Navy",
+      "#bc2c3a": "Team Red",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-34": {
+    "imgs": [
+      "",
+      ""
+    ],
+    "names": {
+      "#8a8a8a": "Grey",
+      "#ffffff": "White"
+    }
+  },
+  "WT-35": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-36": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-37": {
+    "imgs": [
+      "",
+      ""
+    ],
+    "names": {
+      "#4a4a4a": "Charcoal"
+    }
+  },
+  "WT-38": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-39": {
+    "imgs": [
+      "/skus/18157-black.png",
+      "/skus/18157-heatherdarkcharcoal.png",
+      "/skus/18157-heathergrey.png",
+      "/skus/18157-vintagenavy.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#55585b": "Heather Dark Charcoal",
+      "#9a9b9d": "Heather Grey",
+      "#001c54": "Vintage Navy"
+    }
+  },
+  "WT-40": {
+    "imgs": [
+      "/skus/DG20-black.png",
+      "/skus/DG20-burgundy.png",
+      "/skus/DG20-forest.png",
+      "/skus/DG20-frenchblue.png",
+      "/skus/DG20-graphite.png",
+      "/skus/DG20-navy.png",
+      "/skus/DG20-red.png",
+      "/skus/DG20-trueroyal.png",
+      "/skus/DG20-white.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#5e2331": "Burgundy",
+      "#22403a": "Forest",
+      "#4a6a8a": "French Blue",
+      "#333F48": "Graphite",
+      "#1f2a44": "Navy",
+      "#b02b2c": "Red",
+      "#1D4F91": "True Royal",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-41": {
+    "imgs": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black",
+      "#2c3e50": "Navy",
+      "#c0392b": "Red",
+      "#1e40af": "Blue",
+      "#ffffff": "White"
+    }
+  },
+  "WT-42": {
+    "imgs": [
+      "/skus/88194-black.jpg",
+      "/skus/88194-carbon.jpg",
+      "/skus/88194-classicnavy.jpg",
+      "/skus/88194-white.jpg"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#53565a": "Carbon",
+      "#22304a": "Classic Navy",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-43": {
+    "imgs": [
+      "/skus/98157-black.png",
+      "/skus/98157-heatherdarkcharcoal.png",
+      "/skus/98157-heathergrey.png",
+      "/skus/98157-vintagenavy.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#55585b": "Heather Dark Charcoal",
+      "#9a9b9d": "Heather Grey",
+      "#001c54": "Vintage Navy"
+    }
+  },
+  "WT-44": {
+    "imgs": [
+      "",
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black",
+      "#383838": "Charcoal"
+    }
+  },
+  "WT-45": {
+    "imgs": [
+      "/skus/98158-black.png",
+      "/skus/98158-heatherdarkcharcoal.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#55585b": "Heather Dark Charcoal"
+    }
+  },
+  "WT-46": {
+    "imgs": [
+      "",
+      "",
+      ""
+    ],
+    "names": {
+      "#2b2b2b": "Charcoal",
+      "#3f3f3f": "Charcoal"
+    }
+  },
+  "WT-47": {
+    "imgs": [
+      "/skus/98610-black.png",
+      "/skus/98610-blacksmokeheather.png",
+      "/skus/98610-lightheathergrey.png",
+      "/skus/98610-lodenheather.png",
+      "/skus/98610-maroonheather.png",
+      "/skus/98610-metroblueheather.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#373534": "Black Smoke Heather",
+      "#a4a9ad": "Light Heather Grey",
+      "#57582c": "Loden Heather",
+      "#601d2e": "Maroon Heather",
+      "#1c457b": "Metro Blue Heather"
+    }
+  },
+  "WT-48": {
+    "imgs": [
+      "",
+      "",
+      ""
+    ],
+    "names": {
+      "#2b2b2b": "Charcoal",
+      "#3f3f3f": "Charcoal"
+    }
+  },
+  "WT-49": {
+    "imgs": [
+      "",
+      "",
+      ""
+    ],
+    "names": {
+      "#333333": "Charcoal",
+      "#1a1a18": "Black",
+      "#585858": "Grey"
+    }
+  },
+  "WT-50": {
+    "imgs": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black",
+      "#4b5320": "Military Green",
+      "#2c3e50": "Navy",
+      "#6b3fa0": "Purple",
+      "#9b9b9b": "Grey",
+      "#b8ad97": "Khaki",
+      "#e8863b": "Orange"
+    }
+  },
+  "WT-51": {
+    "imgs": [
+      "/skus/99542-black.png",
+      "/skus/99542-navy.png",
+      "/skus/99542-newroyal.png",
+      "/skus/99542-steelgrey.png",
+      "/skus/99542-teamred.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#1f2a44": "Navy",
+      "#153a81": "New Royal",
+      "#7f8684": "Steel Grey",
+      "#bc2c3a": "Team Red"
+    }
+  },
+  "WT-52": {
+    "imgs": [
+      "/skus/19542-black.png",
+      "/skus/19542-navy.png",
+      "/skus/19542-newroyal.png",
+      "/skus/19542-steelgrey.png",
+      "/skus/19542-teamred.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#1f2a44": "Navy",
+      "#153a81": "New Royal",
+      "#7f8684": "Steel Grey",
+      "#bc2c3a": "Team Red"
+    }
+  },
+  "WT-53": {
+    "imgs": [
+      "/skus/L00545-athleticgrey.png",
+      "/skus/L00545-black.png",
+      "/skus/L00545-charcoal.png",
+      "/skus/L00545-forestgreen.png",
+      "/skus/L00545-navy.png",
+      "/skus/L00545-red.png",
+      "/skus/L00545-royalblue.png"
+    ],
+    "names": {
+      "#BBBCBC": "Athletic Grey",
+      "#262626": "Black",
+      "#53565A": "Charcoal",
+      "#395542": "Forest Green",
+      "#1f2a44": "Navy",
+      "#b02b2c": "Red",
+      "#0e347b": "Royal Blue"
+    }
+  },
+  "WT-54": {
+    "imgs": [
+      "/skus/F2042-athleticgrey.jpg",
+      "/skus/F2042-blackheather.jpg",
+      "/skus/F2042-charcoalheather.jpg",
+      "/skus/F2042-navyheather.jpg"
+    ],
+    "names": {
+      "#BBBCBC": "Athletic Grey",
+      "#101820": "Black Heather",
+      "#545859": "Charcoal Heather",
+      "#3B4559": "Navy Heather"
+    }
+  },
+  "WT-55": {
+    "imgs": [
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black"
+    }
+  },
+  "WT-56": {
+    "imgs": [
+      "/skus/i8502-black.png"
+    ],
+    "names": {
+      "#1a1a18": "Black"
+    }
+  },
+  "WT-57": {
+    "imgs": [
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black"
+    }
+  },
+  "WT-58": {
+    "imgs": [
+      "/skus/k288-black.png",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black",
+      "#b6e021": "^Safety Green",
+      "#a0a0a0": "Grey",
+      "#2c3e50": "Navy",
+      "#5a2733": "Maroon"
+    }
+  },
+  "WT-59": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-60": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-61": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-62": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-63": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-64": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-65": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-66": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-67": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-68": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-69": {
+    "imgs": [
+      "",
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black",
+      "#ff6a13": "Orange"
+    }
+  },
+  "WT-70": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-71": {
+    "imgs": [
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black"
+    }
+  },
+  "WT-72": {
+    "imgs": [
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black"
+    }
+  },
+  "WT-73": {
+    "imgs": [
+      "/skus/2400-black.png",
+      "/skus/2400-carolinablue.png",
+      "/skus/2400-charcoal.png",
+      "/skus/2400-darkheather.png",
+      "/skus/2400-forestgreen.png",
+      "/skus/2400-gold.png",
+      "/skus/2400-kelly.png",
+      "/skus/2400-lightblue.png",
+      "/skus/2400-maroon.png",
+      "/skus/2400-navy.png",
+      "/skus/2400-purple.png",
+      "/skus/2400-red.png",
+      "/skus/2400-royal.png",
+      "/skus/2400-sand.png",
+      "/skus/2400-sportgrey.png",
+      "/skus/2400-white.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#5F8FB4": "Carolina Blue",
+      "#53565A": "Charcoal",
+      "#3f4247": "Dark Heather",
+      "#395542": "Forest Green",
+      "#FFB500": "Gold",
+      "#00965E": "Kelly",
+      "#b3cde8": "Light Blue",
+      "#672E45": "Maroon",
+      "#1f2a44": "Navy",
+      "#4C4084": "Purple",
+      "#b02b2c": "Red",
+      "#1C57A5": "Royal",
+      "#cdb99a": "Sand",
+      "#9fa1a4": "Sport Grey",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-74": {
+    "imgs": [
+      "/skus/2300-black.png",
+      "/skus/2300-carolinablue.png",
+      "/skus/2300-charcoal.png",
+      "/skus/2300-darkheather.png",
+      "/skus/2300-forestgreen.png",
+      "/skus/2300-gold.png",
+      "/skus/2300-kelly.png",
+      "/skus/2300-lightblue.png",
+      "/skus/2300-maroon.png",
+      "/skus/2300-navy.png",
+      "/skus/2300-purple.png",
+      "/skus/2300-red.png",
+      "/skus/2300-royal.png",
+      "/skus/2300-sand.png",
+      "/skus/2300-sportgrey.png",
+      "/skus/2300-white.png"
+    ],
+    "names": {
+      "#262626": "Black",
+      "#5F8FB4": "Carolina Blue",
+      "#53565A": "Charcoal",
+      "#3f4247": "Dark Heather",
+      "#395542": "Forest Green",
+      "#FFB500": "Gold",
+      "#00965E": "Kelly",
+      "#b3cde8": "Light Blue",
+      "#672E45": "Maroon",
+      "#1f2a44": "Navy",
+      "#4C4084": "Purple",
+      "#b02b2c": "Red",
+      "#1C57A5": "Royal",
+      "#cdb99a": "Sand",
+      "#9fa1a4": "Sport Grey",
+      "#FFFFFF": "White"
+    }
+  },
+  "WT-75": {
+    "imgs": [
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black"
+    }
+  },
+  "WT-76": {
+    "imgs": [
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black"
+    }
+  },
+  "WT-77": {
+    "imgs": [
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black"
+    }
+  },
+  "WT-78": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-79": {
+    "imgs": [],
+    "names": {}
+  },
+  "WT-80": {
+    "imgs": [
+      ""
+    ],
+    "names": {
+      "#1a1a18": "Black"
+    }
+  },
+  "WT-81": {
+    "imgs": [
+      ""
+    ],
+    "names": {}
+  },
+  "WT-82": {
+    "imgs": [
+      ""
+    ],
+    "names": {}
+  }
+}

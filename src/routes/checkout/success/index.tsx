@@ -33,7 +33,7 @@ export default component$(() => {
     try {
       for (let i = localStorage.length - 1; i >= 0; i--) {
         const k = localStorage.key(i);
-        if (k && k.startsWith("ce_cart_mn_")) localStorage.removeItem(k);
+        if (k && k.startsWith("ce_cart_wt_")) localStorage.removeItem(k);
       }
       document.cookie = "ce_cart_count=0;path=/;max-age=31536000";
       window.dispatchEvent(new CustomEvent("cart-updated"));

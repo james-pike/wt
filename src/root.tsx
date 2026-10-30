@@ -27,14 +27,14 @@ export default component$(() => {
         <meta name="theme-color" content="#ffffff" />
         <meta name="google" content="notranslate" />
         {/* Wills mark. Explicit tags — without them the browser silently falls
-            back to /favicon.ico, which used to be the inherited pinwheel. */}
+            back to /favicon.ico, which used to be an older inherited icon. */}
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        {/* Self-hosted Montserrat (variable, latin subset). Preloaded so it's
+            ready at first paint — the @font-face lives in global.css. */}
+        <link rel="preload" href="/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
 
         {!isDev && (
           <link

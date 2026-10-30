@@ -10,26 +10,23 @@ export const allProducts = [
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#6b8bb0",
-      "#2c3e50",
-      "#ffffff",
-      "#5e2233"
+      "#262626",
+      "#4a6a8a",
+      "#1f2a44",
+      "#FFFFFF",
+      "#5e2231"
     ],
     "price": 53,
-    "img": "/wt/122366_omf_fl-1.jpg",
+    "img": "/skus/M500S-black.png",
     "imgs": [
-      "/wt/122366_omf_fl-1.jpg",
-      "/wt/122366_b_fm.jpg",
-      "/wt/122366_omf_fl-1.jpg",
-      "/wt/122369_f_fm.jpg",
-      "/wt/122366_f_fm.jpg",
-      "/wt/122365_f_fm.jpg",
-      "/wt/122364_f_fm.jpg",
-      "/wt/122368_f_fm.jpg"
+      "/skus/M500S-black.png",
+      "/skus/M500S-frenchblue.png",
+      "/skus/M500S-navy.png",
+      "/skus/M500S-white.png",
+      "/skus/M500S-wine.png"
     ],
     "material": "",
-    "details": "55% cotton / 45% polyester twill (4.5 oz), wrinkle-resistant and stain-release finish, button-down collar, left chest pocket, flat-felled seams, signature horn buttons, carbon-neutral (Green Story verified), #S&S M500S"
+    "details": "55% cotton / 45% polyester twill (4.5 oz), wrinkle-resistant and stain-release finish, button-down collar, left chest pocket, flat-felled seams, signature horn buttons, carbon-neutral (Green Story verified), S&S, #M500S"
   },
   {
     "sku": "WT-2",
@@ -38,27 +35,25 @@ export const allProducts = [
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#b8b8b8",
-      "#2c3e50",
-      "#6b3fa0",
-      "#c0392b",
-      "#1e40af",
-      "#ffffff"
+      "#262626",
+      "#5f5b5c",
+      "#393e5d",
+      "#d9dde0",
+      "#c90a29",
+      "#0a3ba4"
     ],
     "price": 69,
-    "img": "/wt/126961_f_fm.jpg",
+    "img": "/skus/1376862-black.png",
     "imgs": [
-      "/wt/126961_f_fm.jpg",
-      "/wt/Screenshot-2026-02-09-185214.png",
-      "/wt/126966_f_fm.jpg",
-      "/wt/126965_f_fm.jpg",
-      "/wt/126964_f_fm.jpg",
-      "/wt/126963_f_fm.jpg",
-      "/wt/126962_f_fm.jpg"
+      "/skus/1376862-black.png",
+      "/skus/1376862-castlerockwhite.png",
+      "/skus/1376862-midnightnavywhite.png",
+      "/skus/1376862-modgreylightheatherwhite.png",
+      "/skus/1376862-redwhite.png",
+      "/skus/1376862-royalwhite.png"
     ],
     "material": "",
-    "details": "100% recycled polyester (4.7 oz), moisture-wicking, anti-odor, generous half-zip front for easy layering, #UA 1376862"
+    "details": "100% recycled polyester (4.7 oz), moisture-wicking, anti-odor, generous half-zip front for easy layering, #1376862"
   },
   {
     "sku": "WT-3",
@@ -67,29 +62,27 @@ export const allProducts = [
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#b8b8b8",
-      "#2c3e50",
-      "#6b3fa0",
-      "#c0392b",
-      "#1e40af",
-      "#ffffff"
+      "#262626",
+      "#53565f",
+      "#393e5d",
+      "#372c56",
+      "#c90a29",
+      "#0a3ba4",
+      "#f8f8f8"
     ],
     "price": 69,
-    "img": "/wt/126729_f_fm.jpg",
+    "img": "/skus/1370431-black.png",
     "imgs": [
-      "/wt/126729_f_fm.jpg",
-      "/wt/126737_f_fm.jpg",
-      "/wt/126728_f_fm.jpg",
-      "/wt/126729_f_fm.jpg",
-      "/wt/126732_f_fm.jpg",
-      "/wt/126733_f_fm.jpg",
-      "/wt/126734_f_fm.jpg",
-      "/wt/126735_f_fm.jpg",
-      "/wt/Screenshot-2026-02-09-184946.png"
+      "/skus/1370431-black.png",
+      "/skus/1370431-csgreylightheatherwhite.png",
+      "/skus/1370431-midnightnavywhite.png",
+      "/skus/1370431-purplewhite.png",
+      "/skus/1370431-redwhite.png",
+      "/skus/1370431-royalwhite.png",
+      "/skus/1370431-whitemodgrey.png"
     ],
     "material": "",
-    "details": "100% polyester (5.3 oz), moisture-wicking, anti-odor, soft light breathable textured fabric, self-fabric collar, four-button placket, #UA11370431"
+    "details": "100% polyester (5.3 oz), moisture-wicking, anti-odor, soft light breathable textured fabric, self-fabric collar, four-button placket, #1370431"
   },
   {
     "sku": "WT-4",
@@ -98,21 +91,19 @@ export const allProducts = [
     "sizes": "Ladies XS - 3XL",
     "badge": "",
     "colors": [
-      "#a6a6a6",
-      "#1a1a18",
-      "#3f3f3f"
+      "#BBBCBC",
+      "#262626",
+      "#545859"
     ],
     "price": 58,
-    "img": "/wt/l2018_form_angle_charcoal-heather_032019.webp",
+    "img": "/skus/L2018-athleticgrey.png",
     "imgs": [
-      "/wt/l2018_form_angle_charcoal-heather_032019.webp",
-      "/wt/l2018_form_angle_charcoal-heather_032019.webp",
-      "/wt/l2018_form_angle_black_042019.webp",
-      "/wt/l2018_form_angle_athletic-grey_032019-Copy.webp",
-      "/wt/l2018_form_back_athletic-grey_032019.webp"
+      "/skus/L2018-athleticgrey.png",
+      "/skus/L2018-black.png",
+      "/skus/L2018-charcoalheather.png"
     ],
     "material": "",
-    "details": "75/25 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined scuba hood with contrast drawstring, thumbhole cuffs, YKK zipper, tear-away label, classic fit, #ATC F2018-1"
+    "details": "75/25 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined scuba hood with contrast drawstring, thumbhole cuffs, YKK zipper, tear-away label, classic fit, #L2018"
   },
   {
     "sku": "WT-5",
@@ -121,28 +112,42 @@ export const allProducts = [
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#a9682f",
-      "#5a5a5a",
-      "#3d4a63",
-      "#6b1f2a",
-      "#2c3e50",
-      "#6b3fa0",
-      "#6d2b3f"
+      "#C8C9C7",
+      "#B1B3B3",
+      "#262626",
+      "#9E652E",
+      "#18332F",
+      "#4B4F54",
+      "#041C2C",
+      "#672E45",
+      "#FA4616",
+      "#4C4084",
+      "#b02b2c",
+      "#1C57A5",
+      "#C6D219",
+      "#E0457B",
+      "#FFB81C",
+      "#FFFFFF"
     ],
     "price": 20,
-    "img": "/wt/atc1015_form_front_maroon_012017.jpg",
+    "img": "/skus/ATC1015-ashgrey.png",
     "imgs": [
-      "/wt/atc1015_form_front_maroon_012017.jpg",
-      "/wt/atc1015_form_front_maroon_012017-1.jpg",
-      "/wt/atc1015_form_front_navy_012017.jpg",
-      "/wt/atc1015_form_front_sangria_012017.jpg",
-      "/wt/atc1015_form-front_heather-navy_2025_cil.jpg",
-      "/wt/atc1015_form_front_purple_012017.jpg",
-      "/wt/atc1015_form-front_caramel_2024_cil.jpg",
-      "/wt/atc1015_form_angle_black_012017.webp",
-      "/wt/atc1015_form_angle_darkheathergrey_012017.webp",
-      "/wt/Screenshot-2026-01-15-195154.png"
+      "/skus/ATC1015-ashgrey.png",
+      "/skus/ATC1015-athleticheather.png",
+      "/skus/ATC1015-black.png",
+      "/skus/ATC1015-caramel.png",
+      "/skus/ATC1015-darkgreen.png",
+      "/skus/ATC1015-darkheathergrey.png",
+      "/skus/ATC1015-darknavy.png",
+      "/skus/ATC1015-maroon.png",
+      "/skus/ATC1015-orange.png",
+      "/skus/ATC1015-purple.png",
+      "/skus/ATC1015-red.png",
+      "/skus/ATC1015-royal.png",
+      "/skus/no-photo.png",
+      "/skus/ATC1015-sangria.png",
+      "/skus/ATC1015-teamgold.png",
+      "/skus/ATC1015-white.png"
     ],
     "material": "",
     "details": "100% cotton (9.1 oz), compacted yarns to reduce shrinkage, taped neck and shoulders, 1x1 rib collar and cuffs, double-needle hems, tear-away label, OEKO-TEX Standard 100, classic fit, #ATC1015"
@@ -154,19 +159,22 @@ export const allProducts = [
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#6a6d70",
-      "#7a7a7a",
-      "#1e40af"
+      "#262626",
+      "#5f5b5c",
+      "#393e5d",
+      "#d9dde0",
+      "#c90a29",
+      "#0a3ba4"
     ],
     "price": 73,
-    "img": "/wt/126887_omf_fm.jpg",
+    "img": "/skus/UA1376844-black.png",
     "imgs": [
-      "/wt/126887_omf_fm.jpg",
-      "/wt/126889_f_fm.jpg",
-      "/wt/126887_omf_fm-1.jpg",
-      "/wt/126885_f_fm.jpg",
-      "/wt/126884_f_fm.jpg"
+      "/skus/UA1376844-black.png",
+      "/skus/UA1376844-castlerockwhite.png",
+      "/skus/UA1376844-midnightnavywhite.png",
+      "/skus/UA1376844-modgreylightheatherwhite.png",
+      "/skus/UA1376844-redwhite.png",
+      "/skus/UA1376844-royalwhite.png"
     ],
     "material": "",
     "details": "100% recycled polyester (4.7 oz), moisture-wicking, anti-odor, quarter-zip front for easy layering, #UA1376844"
@@ -178,30 +186,30 @@ export const allProducts = [
     "sizes": "XS - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#3a3a3a",
-      "#1e4d2b",
-      "#6b1f2a",
-      "#ff6600",
-      "#6b3fa0",
-      "#2c3e50",
-      "#c0392b",
-      "#1e40af"
+      "#262626",
+      "#63666A",
+      "#395542",
+      "#672E45",
+      "#FA4616",
+      "#4C4084",
+      "#00263A",
+      "#BA0C2F",
+      "#1D4F91",
+      "#FFFFFF"
     ],
     "price": 15,
-    "img": "/wt/atc3700l_form-angle_purple_2025_cil.webp",
+    "img": "/skus/ATC3700L-black.png",
     "imgs": [
-      "/wt/atc3700l_form-angle_purple_2025_cil.webp",
-      "/wt/atc3700l_form-angle_true-royal_2025_cil.webp",
-      "/wt/atc3700l_form-angle_true-red_2025_cil.webp",
-      "/wt/atc3700l_form-angle_true-navy_2025_cil.webp",
-      "/wt/atc3700l_form-angle_purple_2025_cil-1.webp",
-      "/wt/atc3700l_form-angle_orange_2025_cil.webp",
-      "/wt/atc3700l_form-angle_maroon_2025_cil.webp",
-      "/wt/atc3700l_form-angle_forest-green_2025_cil.webp",
-      "/wt/atc3700l_form-angle_coal-grey_2025_cil.webp",
-      "/wt/atc3700l_form-angle_black_2025_cil.webp",
-      "/wt/Screenshot-2026-01-15-193104.png"
+      "/skus/ATC3700L-black.png",
+      "/skus/ATC3700L-coalgrey.png",
+      "/skus/ATC3700L-forestgreen.png",
+      "/skus/ATC3700L-maroon.png",
+      "/skus/ATC3700L-orange.png",
+      "/skus/ATC3700L-purple.png",
+      "/skus/ATC3700L-truenavy.png",
+      "/skus/ATC3700L-truered.png",
+      "/skus/ATC3700L-trueroyal.png",
+      "/skus/ATC3700L-white.png"
     ],
     "material": "",
     "details": "100% performance polyester interlock (6.4 oz) with wicking, No-Bleed Fabric for easy printing, taped neck, side-seamed, double-needle hems, breathable and snag-resistant, contoured fit, #ATC3700L"
@@ -213,30 +221,30 @@ export const allProducts = [
     "sizes": "XS - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#3a3a3a",
-      "#1e4d2b",
-      "#6b1f2a",
-      "#ff6600",
-      "#6b3fa0",
-      "#2c3e50",
-      "#c0392b",
-      "#1e40af"
+      "#262626",
+      "#63666A",
+      "#395542",
+      "#672E45",
+      "#FA4616",
+      "#4C4084",
+      "#00263A",
+      "#BA0C2F",
+      "#1D4F91",
+      "#FFFFFF"
     ],
     "price": 15,
-    "img": "/wt/atc3700_form-front_true-royal_2025_cil.jpg",
+    "img": "/skus/ATC3700-black.png",
     "imgs": [
-      "/wt/atc3700_form-front_true-royal_2025_cil.jpg",
-      "/wt/atc3700_form-front_true-royal_2025_cil-1.jpg",
-      "/wt/atc3700_form-front_true-red_2025_cil.jpg",
-      "/wt/atc3700_form-front_true-navy_2025_cil.jpg",
-      "/wt/atc3700_form-front_purple_2025_cil.jpg",
-      "/wt/atc3700_form-front_orange_2025_cil.jpg",
-      "/wt/atc3700_form-front_maroon_2025_cil.jpg",
-      "/wt/atc3700_form-front_forest-green_2025_cil.jpg",
-      "/wt/atc3700_form-front_coal-grey_2025_cil.jpg",
-      "/wt/atc3700_form-front_black_2025_cil.jpg",
-      "/wt/Screenshot-2026-01-15-192234.png"
+      "/skus/ATC3700-black.png",
+      "/skus/ATC3700-coalgrey.png",
+      "/skus/ATC3700-forestgreen.png",
+      "/skus/ATC3700-maroon.png",
+      "/skus/ATC3700-orange.png",
+      "/skus/ATC3700-purple.png",
+      "/skus/ATC3700-truenavy.png",
+      "/skus/ATC3700-truered.png",
+      "/skus/ATC3700-trueroyal.png",
+      "/skus/ATC3700-white.png"
     ],
     "material": "",
     "details": "100% performance polyester interlock (6.4 oz) with wicking, No-Bleed Fabric for easy printing, taped neck, side-seamed, double-needle hems, breathable and snag-resistant, classic fit, #ATC3700"
@@ -252,12 +260,10 @@ export const allProducts = [
       "#7c7a5e"
     ],
     "price": 350,
-    "img": "/wt/nf0a7v4f_form-front_taupe-green_2025_cil.webp",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/nf0a7v4f_form-front_taupe-green_2025_cil.webp",
-      "/wt/Screenshot-2026-01-15-190002.png",
-      "/wt/nf0a7v4f_form-front_black_2025_cil.webp",
-      "/wt/nf0a7v4f_form-front_taupe-green_2025_cil-1.webp"
+      "/skus/no-photo.png",
+      "/skus/no-photo.png"
     ],
     "material": "",
     "details": "Shell: 50D WindWall recycled polyester with non-PFC DWR finish; 550-fill goose down body with 200g Heatseeker Eco insulation at collar and yokes, stand collar, centre-front zip with inner storm flap and chin guard, zippered chest and hand pockets, The North Face logo, modern fit, #NF0A7V4F"
@@ -273,12 +279,10 @@ export const allProducts = [
       "#f2efe6"
     ],
     "price": 350,
-    "img": "/wt/nf0a7v4g_form-front_vintage-white_2025_cil.webp",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/nf0a7v4g_form-front_vintage-white_2025_cil.webp",
-      "/wt/nf0a7v4g_form-front_black_2025_cil.webp",
-      "/wt/nf0a7v4g_form-front_vintage-white_2025_cil-1.webp",
-      "/wt/Screenshot-2026-01-15-185449.png"
+      "/skus/no-photo.png",
+      "/skus/no-photo.png"
     ],
     "material": "",
     "details": "Shell: 50D WindWall recycled polyester with non-PFC DWR finish; 550-fill goose down body with 200g Heatseeker Eco insulation at collar and yokes, stand collar, centre-front zip with inner storm flap and chin guard, zippered hand pockets, elastic cuff gussets, The North Face logo, modern fit, #NF0A7V4G"
@@ -290,27 +294,29 @@ export const allProducts = [
     "sizes": "XS - 3XL",
     "badge": "",
     "colors": [
-      "#c9ccc9",
-      "#1a1a18",
-      "#3f3f3f",
-      "#1e4d2b",
-      "#2c3e50",
-      "#c9b79c"
+      "#BBBCBC",
+      "#262626",
+      "#53565A",
+      "#22403a",
+      "#1f2a44",
+      "#b02b2c",
+      "#1C57A5",
+      "#cdb99a"
     ],
     "price": 43,
-    "img": "/wt/L00570-Charcoal-front_73a6557e-499a-48b4-b082-5759c32844dc_720x.webp",
+    "img": "/skus/L00570-athleticgrey.jpg",
     "imgs": [
-      "/wt/L00570-Charcoal-front_73a6557e-499a-48b4-b082-5759c32844dc_720x.webp",
-      "/wt/Screenshot-2026-01-15-184735.png",
-      "/wt/L00570-Forestgrey-front_f86a5f2d-3f49-4d3a-824e-0edca3744216_720x.webp",
-      "/wt/L00570-Sand-front_44f919d9-b3c1-45d4-875d-e5c2a5b047c1_720x.webp",
-      "/wt/L00570-Ashgrey-front_9439cfbb-b6aa-44d4-bd0d-28e7817d0810_720x.jpg",
-      "/wt/L00570-Charcoal-front_73a6557e-499a-48b4-b082-5759c32844dc_720x-1.webp",
-      "/wt/L00570-Navy-front_3c90a2bd-6f6c-4965-9bba-27b035426c3c_720x.webp",
-      "/wt/L00570-Black-front_1d244d46-7de6-4a42-a8c6-9cd410d56e51_2000x.webp"
+      "/skus/L00570-athleticgrey.jpg",
+      "/skus/L00570-black.jpg",
+      "/skus/L00570-charcoal.jpg",
+      "/skus/L00570-forest.jpg",
+      "/skus/L00570-navy.jpg",
+      "/skus/L00570-red.jpg",
+      "/skus/L00570-royal.jpg",
+      "/skus/L00570-sand.jpg"
     ],
     "material": "",
-    "details": "70/30 combed ring-spun cotton/polyester 3-ply fleece (280 gsm), 100% cotton print face, rib-knit cuffs and hem with spandex, side-seam pockets, metal YKK zip, tear-away label, #CSW L00570"
+    "details": "70/30 combed ring-spun cotton/polyester 3-ply fleece (280 gsm), 100% cotton print face, rib-knit cuffs and hem with spandex, side-seam pockets, metal YKK zip, tear-away label, #L00570"
   },
   {
     "sku": "WT-12",
@@ -319,21 +325,27 @@ export const allProducts = [
     "sizes": "XS - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#383838",
-      "#1b2a41"
+      "#262626",
+      "#101820",
+      "#333F48",
+      "#006298",
+      "#00263E",
+      "#3B4559",
+      "#63666A"
     ],
     "price": 67,
-    "img": "/wt/l7603_blackheather_modl_studio3-scaled.webp",
+    "img": "/skus/L7603-black.png",
     "imgs": [
-      "/wt/l7603_blackheather_modl_studio3-scaled.webp",
-      "/wt/l7603_form_angle_black_2013_1.webp",
-      "/wt/l7603_form_angle_graphite_2013.webp",
-      "/wt/l7603_form_angle_midnightblue_032014.webp",
-      "/wt/Screenshot-2026-01-15-184424.png"
+      "/skus/L7603-black.png",
+      "/skus/L7603-blackheather.png",
+      "/skus/L7603-graphite.png",
+      "/skus/L7603-imperialblue.png",
+      "/skus/L7603-midnightblue.png",
+      "/skus/L7603-navyheather.png",
+      "/skus/L7603-pearlgreyheather.png"
     ],
     "material": "",
-    "details": "100% polyester mechanical-stretch bonded to micro-fleece (13.5 oz), 1000mm waterproof/breathable, water-repellent and wind-resistant, inner storm flap with chin guard, anti-pill, YKK zippers, classic fit, #CH J7603-1"
+    "details": "100% polyester mechanical-stretch bonded to micro-fleece (13.5 oz), 1000mm waterproof/breathable, water-repellent and wind-resistant, inner storm flap with chin guard, anti-pill, YKK zippers, classic fit, #L7603"
   },
   {
     "sku": "WT-13",
@@ -342,21 +354,27 @@ export const allProducts = [
     "sizes": "S - 5XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#383838",
-      "#1b2a41"
+      "#262626",
+      "#101820",
+      "#333F48",
+      "#006298",
+      "#00263E",
+      "#3B4559",
+      "#63666A"
     ],
     "price": 67,
-    "img": "/wt/j7603_blackheather_modl_studio3-scaled.webp",
+    "img": "/skus/j7603-black.png",
     "imgs": [
-      "/wt/j7603_blackheather_modl_studio3-scaled.webp",
-      "/wt/j7603_form_angle_midnightblue_032014_1.webp",
-      "/wt/j7603_form_front_graphite_2013.webp",
-      "/wt/j7603_form_angle_blackheather.webp",
-      "/wt/Screenshot-2026-01-15-184020.png"
+      "/skus/j7603-black.png",
+      "/skus/j7603-blackheather.png",
+      "/skus/j7603-graphite.png",
+      "/skus/j7603-imperialblue.png",
+      "/skus/j7603-midnightblue.png",
+      "/skus/j7603-navyheather.png",
+      "/skus/j7603-pearlgreyheather.png"
     ],
     "material": "",
-    "details": "100% polyester mechanical-stretch bonded to micro-fleece (13.5 oz), 1000mm waterproof/breathable, water-repellent and wind-resistant, inner storm flap with chin guard, anti-pill, YKK zippers, classic fit, #CH J7603"
+    "details": "100% polyester mechanical-stretch bonded to micro-fleece (13.5 oz), 1000mm waterproof/breathable, water-repellent and wind-resistant, inner storm flap with chin guard, anti-pill, YKK zippers, classic fit, #J7603"
   },
   {
     "sku": "WT-14",
@@ -365,21 +383,19 @@ export const allProducts = [
     "sizes": "S - 3XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#3f3f3f",
-      "#33425b"
+      "#262626",
+      "#6c6f70",
+      "#001c54"
     ],
     "price": 83,
-    "img": "/wt/Screenshot-2026-01-15-182434.png",
+    "img": "/skus/18140-black.png",
     "imgs": [
-      "/wt/Screenshot-2026-01-15-182434.png",
-      "/wt/Screenshot-2026-01-15-182511.png",
-      "/wt/Screenshot-2026-01-15-182456.png",
-      "/wt/Screenshot-2026-01-15-182434-1.png",
-      "/wt/Screenshot-2026-01-15-182657.png"
+      "/skus/18140-black.png",
+      "/skus/18140-heathercharcoal.png",
+      "/skus/18140-vintagenavy.png"
     ],
     "material": "",
-    "details": "50/50 recycled polyester/polyester french terry knit (209 gsm / 6.2 oz), #T18140"
+    "details": "50/50 recycled polyester/polyester french terry knit (209 gsm / 6.2 oz), #18140"
   },
   {
     "sku": "WT-15",
@@ -388,21 +404,19 @@ export const allProducts = [
     "sizes": "XS - 2XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#3f3f3f",
-      "#33425b"
+      "#262626",
+      "#6c6f70",
+      "#001c54"
     ],
     "price": 83,
-    "img": "/wt/Screenshot-2026-01-15-182100.png",
+    "img": "/skus/98140-black.png",
     "imgs": [
-      "/wt/Screenshot-2026-01-15-182100.png",
-      "/wt/Screenshot-2026-01-15-182136.png",
-      "/wt/Screenshot-2026-01-15-182117.png",
-      "/wt/Screenshot-2026-01-15-182100-1.png",
-      "/wt/Screenshot-2026-01-15-182237.png"
+      "/skus/98140-black.png",
+      "/skus/98140-heathercharcoal.png",
+      "/skus/98140-vintagenavy.png"
     ],
     "material": "",
-    "details": "50/50 recycled polyester/polyester french terry knit (209 gsm / 6.2 oz), #T98140"
+    "details": "50/50 recycled polyester/polyester french terry knit (209 gsm / 6.2 oz), #98140"
   },
   {
     "sku": "WT-16",
@@ -418,15 +432,13 @@ export const allProducts = [
       "#ffffff"
     ],
     "price": 97,
-    "img": "/wt/nkdx6718_modl_anthracite_studio_2025_cil-scaled.webp",
+    "img": "/skus/NKD6718-black.png",
     "imgs": [
-      "/wt/nkdx6718_modl_anthracite_studio_2025_cil-scaled.webp",
-      "/wt/nkdx6718_flat-front_dark-grey-heather_2025_cil.webp",
-      "/wt/nkdx6718_flat-front_midnight-navy_2025_cil.webp",
-      "/wt/nkdx6718_flat-front_white_2025_cil.webp",
-      "/wt/nkdx6718_flat-front_anthracite_2025_cil.webp",
-      "/wt/nkdx6718_flat-front_black_2025_cil.webp",
-      "/wt/Screenshot-2026-01-15-180958.png"
+      "/skus/no-photo.png",
+      "/skus/NKD6718-black.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png"
     ],
     "material": "",
     "details": "80/20 cotton/polyester (13.8 oz), zip-through collar with dyed-to-match zipper, taped neck, set-in sleeves, side pockets, rib-knit cuffs and waistband, embroidered Swoosh on left sleeve, classic fit, #NKD6718"
@@ -443,13 +455,11 @@ export const allProducts = [
       "#1b2a41"
     ],
     "price": 97,
-    "img": "/wt/nkdx6720_modl_black_studio_2025_cil-scaled.jpg",
+    "img": "/skus/NKD6720-black.png",
     "imgs": [
-      "/wt/nkdx6720_modl_black_studio_2025_cil-scaled.jpg",
-      "/wt/nkdx6720_flat-front_black_2025_cil.jpg",
-      "/wt/nkdx6720_flat-front_dark-grey-heather_2025_cil.jpg",
-      "/wt/nkdx6720_flat-front_midnight-navy_2025_cil.jpg",
-      "/wt/Screenshot-2026-01-15-180013.png"
+      "/skus/NKD6720-black.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png"
     ],
     "material": "",
     "details": "80/20 cotton/polyester (13.8 oz), zip-through collar with dyed-to-match zipper, taped neck, set-in sleeves, front pouch pocket, rib-knit cuffs and waistband, embroidered Swoosh on left sleeve, classic fit, #NKD6720"
@@ -461,29 +471,27 @@ export const allProducts = [
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#b8b8b8",
-      "#2c3e50",
-      "#6b3fa0",
-      "#c0392b",
-      "#1e40af",
-      "#ffffff"
+      "#262626",
+      "#53565f",
+      "#393e5d",
+      "#372c56",
+      "#c90a29",
+      "#0a3ba4",
+      "#f8f8f8"
     ],
     "price": 69,
-    "img": "/wt/126504_omf_fl.jpg",
+    "img": "/skus/1370399-black.png",
     "imgs": [
-      "/wt/126504_omf_fl.jpg",
-      "/wt/126511_f_fm.jpg",
-      "/wt/126510_f_fm.jpg",
-      "/wt/126509_f_fm.jpg",
-      "/wt/126508_f_fm.jpg",
-      "/wt/126505_f_fm.jpg",
-      "/wt/126513_f_fm.jpg",
-      "/wt/126504_f_fl.jpg",
-      "/wt/Screenshot-2026-01-15-175631.png"
+      "/skus/1370399-black.png",
+      "/skus/1370399-csgreylightheatherwhite.png",
+      "/skus/1370399-midnightnavywhite.png",
+      "/skus/1370399-purplewhite.png",
+      "/skus/1370399-redwhite.png",
+      "/skus/1370399-royalwhite.png",
+      "/skus/1370399-whitemodgrey.png"
     ],
     "material": "",
-    "details": "Moisture-management properties, anti-odor technology, textured fabric that's soft, light and breathable, self-fabric collar, three-button placket, #UA1370399"
+    "details": "Moisture-management properties, anti-odor technology, textured fabric that's soft, light and breathable, self-fabric collar, three-button placket, #1370399"
   },
   {
     "sku": "WT-19",
@@ -496,58 +504,52 @@ export const allProducts = [
       "#7a8fa6"
     ],
     "price": 220,
-    "img": "/wt/131315_omf_fl.jpg",
+    "img": "/skus/2088551-black.png",
     "imgs": [
-      "/wt/131315_omf_fl.jpg",
-      "/wt/131316_f_fm.jpg",
-      "/wt/131315_f_fl.jpg",
-      "/wt/Screenshot-2026-01-15-174836.png"
+      "/skus/2088551-black.png",
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "60/40 cotton/polyester shell, 250g MTR fleece lining, 100g Microtemp XF II recycled insulation, Omni-Shield water- and stain-repellent, chest pocket, interior security pocket, zippered hand pockets, adjustable cuffs, regular fit, #C208855"
+    "details": "60/40 cotton/polyester shell, 250g MTR fleece lining, 100g Microtemp XF II recycled insulation, Omni-Shield water- and stain-repellent, chest pocket, interior security pocket, zippered hand pockets, adjustable cuffs, regular fit, #2088551"
   },
   {
     "sku": "WT-20",
-    "name": "Women’s Jasper Full Zip Fleece Jacket",
+    "name": "Women’s North End Jasper Full Zip Fleece Jacket",
     "category": "Jackets",
     "sizes": "XS - 3XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#8a8a8a",
-      "#2c3e50"
+      "#43403d",
+      "#676d76",
+      "#a7a7a7"
     ],
     "price": 87,
-    "img": "/wt/134972_omf_fl.jpg",
+    "img": "/skus/NE730W-blackgrey.png",
     "imgs": [
-      "/wt/134972_omf_fl.jpg",
-      "/wt/134973_f_fm.jpg",
-      "/wt/134972_f_fm.jpg",
-      "/wt/134971_f_fm.jpg",
-      "/wt/Screenshot-2026-01-15-173946.png"
+      "/skus/NE730W-blackgrey.png",
+      "/skus/NE730W-classicnavywhite.png",
+      "/skus/NE730W-greywhite.png"
     ],
     "material": "",
     "details": "100% recycled polyester two-tone jacquard fleece (310 gsm / 9 oz), contrast coverstitching and binding at collar, cuffs and hem, reverse-coil centre-front and pocket zips, zippered sleeve pocket, active fit, #NE730W"
   },
   {
     "sku": "WT-21",
-    "name": "Men’s Jasper Full Zip Fleece Jacket",
+    "name": "Men’s North End Jasper Full Zip Fleece Jacket",
     "category": "Jackets",
     "sizes": "S - 5XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#8a8a8a",
-      "#2c3e50"
+      "#43403d",
+      "#676d76",
+      "#a7a7a7"
     ],
     "price": 87,
-    "img": "/wt/134957_omf_fl.jpg",
+    "img": "/skus/NE730-blackgrey.png",
     "imgs": [
-      "/wt/134957_omf_fl.jpg",
-      "/wt/134959_f_fm.jpg",
-      "/wt/134958_f_fm.jpg",
-      "/wt/134957_f_fl.jpg",
-      "/wt/Screenshot-2026-01-15-173442.png"
+      "/skus/NE730-blackgrey.png",
+      "/skus/NE730-classicnavywhite.png",
+      "/skus/NE730-greywhite.png"
     ],
     "material": "",
     "details": "100% recycled polyester two-tone jacquard fleece (310 gsm / 9 oz), contrast coverstitching and binding at collar and cuffs, reverse-coil centre-front and pocket zips, zippered sleeve pocket, active fit, #NE730"
@@ -559,21 +561,19 @@ export const allProducts = [
     "sizes": "XS - 3XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#383838",
-      "#2c3e50"
+      "#262626",
+      "#333F48",
+      "#1f2a44"
     ],
     "price": 49,
-    "img": "/wt/134974_omf_fl.jpg",
+    "img": "/skus/DG445W-black.png",
     "imgs": [
-      "/wt/134974_omf_fl.jpg",
-      "/wt/134976_f_fm.jpg",
-      "/wt/134975_f_fl.jpg",
-      "/wt/134974_f_fl.jpg",
-      "/wt/Screenshot-2026-01-15-172018.png"
+      "/skus/DG445W-black.png",
+      "/skus/DG445W-graphite.png",
+      "/skus/DG445W-navy.png"
     ],
     "material": "",
-    "details": "60/40 BCI cotton/recycled polyester, 12-gauge knit (245 gsm / 7 oz), 1x1 rib at collar, cuffs and hem, Better Cotton Initiative sourced, active fit, #DJ DG445W"
+    "details": "60/40 BCI cotton/recycled polyester, 12-gauge knit (245 gsm / 7 oz), 1x1 rib at collar, cuffs and hem, Better Cotton Initiative sourced, active fit, #DG445W"
   },
   {
     "sku": "WT-23",
@@ -582,21 +582,19 @@ export const allProducts = [
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#383838",
-      "#2c3e50"
+      "#262626",
+      "#333F48",
+      "#1f2a44"
     ],
     "price": 49,
-    "img": "/wt/134964_omf_fl.jpg",
+    "img": "/skus/DG445-black.png",
     "imgs": [
-      "/wt/134964_omf_fl.jpg",
-      "/wt/134966_f_fl.jpg",
-      "/wt/134965_f_fl.jpg",
-      "/wt/134964_f_fl.jpg",
-      "/wt/Screenshot-2026-01-15-170218.png"
+      "/skus/DG445-black.png",
+      "/skus/DG445-graphite.png",
+      "/skus/DG445-navy.png"
     ],
     "material": "",
-    "details": "60/40 BCI cotton/recycled polyester, 12-gauge knit (245 gsm / 7 oz), 1x1 rib at collar, cuffs and hem, Better Cotton Initiative sourced, active fit, #DJ DG445"
+    "details": "60/40 BCI cotton/recycled polyester, 12-gauge knit (245 gsm / 7 oz), 1x1 rib at collar, cuffs and hem, Better Cotton Initiative sourced, active fit, #DG445"
   },
   {
     "sku": "WT-24",
@@ -605,35 +603,42 @@ export const allProducts = [
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#8c1d2c",
-      "#7ba4d0",
+      "#262626",
+      "#8c2633",
+      "#5F8FB4",
+      "#53565A",
       "#0047ab",
-      "#5a5a5a",
-      "#b98b8b",
+      "#3f4247",
+      "#395542",
       "#4b5320",
-      "#2c3e50",
-      "#5b6d7e",
-      "#9b9b9b",
-      "#bf5700",
-      "#ffffff"
+      "#1f2a44",
+      "#b02b2c",
+      "#1C57A5",
+      "#9caf88",
+      "#cdb99a",
+      "#9fa1a4",
+      "#5a7a8a",
+      "#FFFFFF"
     ],
     "price": 39,
-    "img": "/wt/91576_f_fm.jpg",
+    "img": "/skus/SF500-black.png",
     "imgs": [
-      "/wt/91576_f_fm.jpg",
-      "/wt/114461_f_fm.jpg",
-      "/wt/91582_f_fm.jpg",
-      "/wt/91579_f_fm.jpg",
-      "/wt/114463_f_fm.jpg",
-      "/wt/114464_f_fm.jpg",
-      "/wt/114468_f_fm.jpg",
-      "/wt/91577_f_fm.jpg",
-      "/wt/91583_f_fm.jpg",
-      "/wt/91576_f_fm.jpg",
-      "/wt/114475_f_fm.jpg",
-      "/wt/91584_f_fm.jpg",
-      "/wt/91578_f_fm.jpg"
+      "/skus/SF500-black.png",
+      "/skus/SF500-cardinal.png",
+      "/skus/SF500-carolinablue.png",
+      "/skus/SF500-charcoal.png",
+      "/skus/SF500-cobalt.png",
+      "/skus/SF500-darkheather.png",
+      "/skus/SF500-forestgreen.png",
+      "/skus/SF500-militarygreen.png",
+      "/skus/SF500-navy.png",
+      "/skus/SF500-red.png",
+      "/skus/SF500-royal.png",
+      "/skus/SF500-sage.png",
+      "/skus/SF500-sand.png",
+      "/skus/SF500-sportgrey.png",
+      "/skus/SF500-stoneblue.png",
+      "/skus/SF500-white.png"
     ],
     "material": "",
     "details": "80/20 ring-spun cotton/polyester 2-end face fleece (8.4 oz), jersey-lined hood with flat drawcords, 1x1 spandex rib cuffs and band, dropped shoulder, double-needle topstitching, tear-away label, classic fit, #SF500"
@@ -645,23 +650,25 @@ export const allProducts = [
     "sizes": "S - 3XL",
     "badge": "",
     "colors": [
-      "#2b2b2b",
-      "#c2c2c2",
-      "#5a6248",
-      "#7a3540",
-      "#5b7fa6"
+      "#262626",
+      "#373534",
+      "#a4a9ad",
+      "#57582c",
+      "#601d2e",
+      "#1c457b"
     ],
     "price": 85,
-    "img": "/wt/Screenshot-2025-01-16-194539.png",
+    "img": "/skus/18610-black.png",
     "imgs": [
-      "/wt/Screenshot-2025-01-16-194539.png",
-      "/wt/Screenshot-2025-01-16-194702.png",
-      "/wt/Screenshot-2025-01-16-194644.png",
-      "/wt/Screenshot-2025-01-16-194627.png",
-      "/wt/Screenshot-2025-01-16-194610.png"
+      "/skus/18610-black.png",
+      "/skus/18610-blacksmokeheather.png",
+      "/skus/18610-lightheathergrey.png",
+      "/skus/18610-lodenheather.png",
+      "/skus/18610-maroonheather.png",
+      "/skus/18610-metroblueheather.png"
     ],
     "material": "",
-    "details": "100% polyester sweater knit with brushed back (305 gsm / 9 oz), brushed tricot lining, thumb exits, two lower pockets, chest pocket, earbud-cord port, #TR-98610-1"
+    "details": "100% polyester sweater knit with brushed back (305 gsm / 9 oz), brushed tricot lining, thumb exits, two lower pockets, chest pocket, earbud-cord port, #18610"
   },
   {
     "sku": "WT-26",
@@ -670,23 +677,21 @@ export const allProducts = [
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#4a4a4a",
-      "#2c3e50",
-      "#ffffff"
+      "#262626",
+      "#53565a",
+      "#22304a",
+      "#FFFFFF"
     ],
     "price": 60,
-    "img": "/wt/88193_4m_p.jpg",
+    "img": "/skus/88193-black.jpg",
     "imgs": [
-      "/wt/88193_4m_p.jpg",
-      "/wt/88193_ff_9i_p-1.jpg",
-      "/wt/88193_ff_9k_p-1.jpg",
-      "/wt/88193_ff_ez_p-1.jpg",
-      "/wt/88193_ff_4m_p-1.jpg",
-      "/wt/Screenshot-2025-01-17-100807.png"
+      "/skus/88193-black.jpg",
+      "/skus/88193-carbon.jpg",
+      "/skus/88193-classicnavy.jpg",
+      "/skus/88193-white.jpg"
     ],
     "material": "",
-    "details": "55/45 cotton/polyester twill (4.4 oz / 150 gsm), UV protection, button-down collar, flat-felled seams, adjustable cuffs, left chest pocket, back yoke with box pleat, #AB-88193"
+    "details": "55/45 cotton/polyester twill (4.4 oz / 150 gsm), UV protection, button-down collar, flat-felled seams, adjustable cuffs, left chest pocket, back yoke with box pleat, #88193"
   },
   {
     "sku": "WT-27",
@@ -695,45 +700,42 @@ export const allProducts = [
     "sizes": "S - 5XL",
     "badge": "",
     "colors": [
-      "#3a8fb7",
-      "#b0b0b0",
-      "#585858",
-      "#3d4a63",
-      "#c65b52",
-      "#3a5bbf",
-      "#4f6b45",
-      "#6b1f2a",
-      "#2c3e50",
-      "#ff6600",
-      "#e3c9c9",
-      "#6b3fa0",
-      "#c0392b",
-      "#6d2b3f",
-      "#0f52ba",
-      "#1f6f6f",
-      "#ffffff"
+      "#4C9FC8",
+      "#C8C9C7",
+      "#B1B3B3",
+      "#262626",
+      "#008C95",
+      "#18332F",
+      "#041C2C",
+      "#FFB500",
+      "#4C4084",
+      "#5576D1",
+      "#672E45",
+      "#FF8F6C",
+      "#b02b2c",
+      "#C6D219",
+      "#E0457B",
+      "#FFFFFF"
     ],
     "price": 15,
-    "img": "/wt/atc1000_form_angle_heathernavy.webp",
+    "img": "/skus/ATC1000-aquaticblue.png",
     "imgs": [
-      "/wt/atc1000_form_angle_heathernavy.webp",
-      "/wt/atc1000_form-angle_aquatic-blue_2024_cil.webp",
-      "/wt/atc1000_form-front_laurel-green_2024_cil.webp",
-      "/wt/atc1000_form-angle_pale-blush_2024_cil.webp",
-      "/wt/atc1000_form-angle_teal_2024_cil.webp",
-      "/wt/atc1000_form_angle_purple_v2_012017.webp",
-      "/wt/atc1000_form_angle_sangria_v2_012017.webp",
-      "/wt/atc1000_form_angle_maroon_012017.webp",
-      "/wt/atc1000_form_angle_heatherred.webp",
-      "/wt/atc1000_form_angle_red_v2_012017.webp",
-      "/wt/atc1000_form_angle_orange_v2_012017.webp",
-      "/wt/atc1000_form_angle_sapphire_v2_012017.webp",
-      "/wt/atc1000_form_angle_heatherroyal.webp",
-      "/wt/atc1000_form_angle_heathernavy-1.webp",
-      "/wt/atc1000_form_angle_navy_v2_012017.webp",
-      "/wt/atc1000_form_angle_darkheathergrey_012017.webp",
-      "/wt/atc1000_form_angle_athleticheather_012017.webp",
-      "/wt/atc1000_form_angle_white_012017.webp"
+      "/skus/ATC1000-aquaticblue.png",
+      "/skus/ATC1000-ashgrey.png",
+      "/skus/ATC1000-athleticheather.png",
+      "/skus/ATC1000-black.png",
+      "/skus/ATC1000-brightaqua.png",
+      "/skus/ATC1000-darkgreen.png",
+      "/skus/ATC1000-darknavy.png",
+      "/skus/ATC1000-gold.png",
+      "/skus/ATC1000-heatherpurple.png",
+      "/skus/ATC1000-heatherroyal.png",
+      "/skus/ATC1000-maroon.png",
+      "/skus/ATC1000-neonorangeheather.png",
+      "/skus/ATC1000-red.png",
+      "/skus/no-photo.png",
+      "/skus/ATC1000-sangria.png",
+      "/skus/ATC1000-white.png"
     ],
     "material": "",
     "details": "100% cotton (9.1 oz), compacted yarns to reduce shrinkage, taped neck and shoulders, tear-away label, classic fit, #ATC1000"
@@ -745,46 +747,42 @@ export const allProducts = [
     "sizes": "XS - 3XL",
     "badge": "",
     "colors": [
-      "#3a8fb7",
-      "#b0b0b0",
-      "#585858",
-      "#3d4a63",
-      "#c65b52",
-      "#3a5bbf",
-      "#4f6b45",
-      "#6b1f2a",
-      "#2c3e50",
-      "#ff6600",
-      "#e3c9c9",
-      "#6b3fa0",
-      "#c0392b",
-      "#6d2b3f",
-      "#0f52ba",
-      "#1f6f6f",
-      "#ffffff"
+      "#4C9FC8",
+      "#C8C9C7",
+      "#B1B3B3",
+      "#262626",
+      "#F8A3BC",
+      "#53565A",
+      "#FFB500",
+      "#3B4559",
+      "#5576D1",
+      "#00965E",
+      "#672E45",
+      "#FA4616",
+      "#4C4084",
+      "#b02b2c",
+      "#E0457B",
+      "#FFFFFF"
     ],
     "price": 15,
-    "img": "/wt/atc1000l_form_angle_darkheathergrey.webp",
+    "img": "/skus/ATC1000L-aquaticblue.png",
     "imgs": [
-      "/wt/atc1000l_form_angle_darkheathergrey.webp",
-      "/wt/atc1000l_form-angle_aquatic-blue_2024_cil.webp",
-      "/wt/atc1000l_form-angle_laurel-green_2024_cil.webp",
-      "/wt/atc1000l_form-angle_teal_2024_cil.webp",
-      "/wt/atc1000l_form-angle_pale-blush_2024_cil.webp",
-      "/wt/atc1000l_form_angle_sangria_012017.webp",
-      "/wt/atc1000l_form_angle_purple_012017.webp",
-      "/wt/atc1000l_form_angle_maroon_012017.webp",
-      "/wt/atc1000l_form_angle_heatherred.webp",
-      "/wt/atc1000l_form_angle_red_012017.webp",
-      "/wt/atc1000l_form_angle_orange_012017.webp",
-      "/wt/atc1000l_form_angle_sapphire_012017.webp",
-      "/wt/atc1000l_form_angle_heatherroyal.webp",
-      "/wt/atc1000l_form_angle_heathernavy.webp",
-      "/wt/atc1000l_form_angle_navy_012017.webp",
-      "/wt/atc1000l_form_angle_darkheathergrey-1.webp",
-      "/wt/atc1000l_form_angle_athleticheather_temp.webp",
-      "/wt/atc1000l_form_angle_white_012017.webp",
-      "/wt/Screenshot-2025-01-16-183610.png"
+      "/skus/ATC1000L-aquaticblue.png",
+      "/skus/ATC1000L-ashgrey.png",
+      "/skus/ATC1000L-athleticheather.png",
+      "/skus/ATC1000L-black.png",
+      "/skus/ATC1000L-candypink.png",
+      "/skus/ATC1000L-charcoal.png",
+      "/skus/ATC1000L-gold.png",
+      "/skus/ATC1000L-heathernavy.png",
+      "/skus/ATC1000L-heatherroyal.png",
+      "/skus/ATC1000L-kelly.png",
+      "/skus/ATC1000L-maroon.png",
+      "/skus/ATC1000L-orange.png",
+      "/skus/ATC1000L-purple.png",
+      "/skus/ATC1000L-red.png",
+      "/skus/ATC1000L-sangria.png",
+      "/skus/ATC1000L-white.png"
     ],
     "material": "",
     "details": "100% cotton (9.1 oz), compacted yarns to reduce shrinkage, taped neck and shoulders, side-seamed, tear-away label, contoured fit, #ATC1000L"
@@ -796,26 +794,28 @@ export const allProducts = [
     "sizes": "XS - 3XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#5c1a2b",
-      "#1e4d2b",
-      "#6b8bb0",
-      "#383838",
-      "#2c3e50",
-      "#c0392b",
-      "#ffffff"
+      "#262626",
+      "#5e2331",
+      "#22403a",
+      "#4a6a8a",
+      "#333F48",
+      "#1f2a44",
+      "#b02b2c",
+      "#1D4F91",
+      "#FFFFFF"
     ],
     "price": 38,
-    "img": "/wt/dg20w_ff_9k_p.jpg",
+    "img": "/skus/DG20W-black.png",
     "imgs": [
-      "/wt/dg20w_ff_9k_p.jpg",
-      "/wt/dg20w_ff_rd_p.jpg",
-      "/wt/dg20w_ff_q9_p.jpg",
-      "/wt/dg20w_ff_pm_p.jpg",
-      "/wt/dg20w_ff_2a_p.jpg",
-      "/wt/dg20w_ff_nj_p.jpg",
-      "/wt/dg20w_ff_ng_p.jpg",
-      "/wt/dg20w_ff_md_p.jpg"
+      "/skus/DG20W-black.png",
+      "/skus/DG20W-burgundy.png",
+      "/skus/DG20W-forest.png",
+      "/skus/DG20W-frenchblue.png",
+      "/skus/DG20W-graphite.png",
+      "/skus/DG20W-navy.png",
+      "/skus/DG20W-red.png",
+      "/skus/DG20W-trueroyal.png",
+      "/skus/DG20W-white.png"
     ],
     "material": "",
     "details": "5 oz / 172 gsm dual-sided mesh pique, 100% polyester face plaited to 60/40 poly/cotton back, moisture-wicking with UPF 15-39, flat-knit collar, open placket, curved back yoke with centre pleat, #DG20W"
@@ -827,37 +827,37 @@ export const allProducts = [
     "sizes": "S - 5XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#2c5aa0",
-      "#4a2545",
-      "#c3a984",
-      "#1e4d2b",
-      "#a8c4d8",
-      "#8a8a8a",
-      "#6b1f2a",
-      "#2c3e50",
-      "#c0392b",
-      "#6e7377",
-      "#ffffff"
+      "#262626",
+      "#446093",
+      "#382246",
+      "#baa48c",
+      "#395542",
+      "#b5d5f0",
+      "#a1a8b0",
+      "#5e5c60",
+      "#672E45",
+      "#1f2a44",
+      "#bc2c3a",
+      "#FFFFFF"
     ],
     "price": 50,
-    "img": "/wt/102878_source_1704999749.jpg",
+    "img": "/skus/17745-black.png",
     "imgs": [
-      "/wt/102878_source_1704999749.jpg",
-      "/wt/102830_source_1704999711.jpg",
-      "/wt/102854_source_1704999731.jpg",
-      "/wt/102846_source_1704999725.jpg",
-      "/wt/102798_source_1704999685.jpg",
-      "/wt/102822_source_1704999705.jpg",
-      "/wt/102862_source_1704999737.jpg",
-      "/wt/102870_source_1704999743.jpg",
-      "/wt/102814_source_1704999698.jpg",
-      "/wt/102838_source_1704999718.jpg",
-      "/wt/102806_source_1704999692.jpg",
-      "/wt/102790_source_1704999680.jpg"
+      "/skus/17745-black.png",
+      "/skus/17745-blue.png",
+      "/skus/17745-darkplum.png",
+      "/skus/17745-desertkhaki.png",
+      "/skus/17745-forestgreen.png",
+      "/skus/17745-frostblue.png",
+      "/skus/17745-grey.png",
+      "/skus/17745-greystorm.png",
+      "/skus/17745-maroon.png",
+      "/skus/17745-navy.png",
+      "/skus/17745-teamred.png",
+      "/skus/17745-white.png"
     ],
     "material": "",
-    "details": "Woven twill, button-down collar, upper patch pocket (left chest), center-back box pleat, back yoke, flat-felled seams, contrast inner yoke, EZ-Care fabric, designed for heavy wear, #Tri 17745"
+    "details": "Woven twill, button-down collar, upper patch pocket (left chest), center-back box pleat, back yoke, flat-felled seams, contrast inner yoke, EZ-Care fabric, designed for heavy wear, #17745"
   },
   {
     "sku": "WT-31",
@@ -866,37 +866,37 @@ export const allProducts = [
     "sizes": "S - 3XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#2c5aa0",
-      "#4a2545",
-      "#c3a984",
-      "#1e4d2b",
-      "#a8c4d8",
-      "#8a8a8a",
-      "#6b1f2a",
-      "#2c3e50",
-      "#c0392b",
-      "#6e7377",
-      "#ffffff"
+      "#262626",
+      "#446093",
+      "#382246",
+      "#baa48c",
+      "#395542",
+      "#b5d5f0",
+      "#a1a8b0",
+      "#5e5c60",
+      "#672E45",
+      "#1f2a44",
+      "#bc2c3a",
+      "#FFFFFF"
     ],
     "price": 50,
-    "img": "/wt/102760_source_1704999656.jpg",
+    "img": "/skus/97744-black.png",
     "imgs": [
-      "/wt/102760_source_1704999656.jpg",
-      "/wt/102683_source_1704999583.jpg",
-      "/wt/102697_source_1704999594.jpg",
-      "/wt/102725_source_1704999619.jpg",
-      "/wt/102704_source_1704999600.jpg",
-      "/wt/102753_source_1704999650.webp",
-      "/wt/102746_source_1704999642.jpg",
-      "/wt/102711_source_1704999606.jpg",
-      "/wt/102739_source_1704999633.jpg",
-      "/wt/102690_source_1704999588.jpg",
-      "/wt/102732_source_1704999626.jpg",
-      "/wt/102718_source_1704999612.jpg"
+      "/skus/97744-black.png",
+      "/skus/97744-blue.png",
+      "/skus/97744-darkplum.png",
+      "/skus/97744-desertkhaki.png",
+      "/skus/97744-forestgreen.png",
+      "/skus/97744-frostblue.png",
+      "/skus/97744-grey.png",
+      "/skus/97744-greystorm.png",
+      "/skus/97744-maroon.png",
+      "/skus/97744-navy.png",
+      "/skus/97744-teamred.png",
+      "/skus/97744-white.png"
     ],
     "material": "",
-    "details": "Woven twill, button-down collar, upper patch pocket, adjustable one-button cuffs with single pleats, centre-back box pleat, back yoke, flat-felled seams, contrast inner yoke, dyed-to-match buttons, #Tri 97744"
+    "details": "Woven twill, button-down collar, upper patch pocket, adjustable one-button cuffs with single pleats, centre-back box pleat, back yoke, flat-felled seams, contrast inner yoke, dyed-to-match buttons, #97744"
   },
   {
     "sku": "WT-32",
@@ -905,37 +905,37 @@ export const allProducts = [
     "sizes": "S - 3XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#2c5aa0",
-      "#4a2545",
-      "#c3a984",
-      "#1e4d2b",
-      "#a8c4d8",
-      "#8a8a8a",
-      "#6b1f2a",
-      "#2c3e50",
-      "#c0392b",
-      "#6e7377",
-      "#ffffff"
+      "#262626",
+      "#446093",
+      "#382246",
+      "#baa48c",
+      "#395542",
+      "#b5d5f0",
+      "#a1a8b0",
+      "#5e5c60",
+      "#672E45",
+      "#1f2a44",
+      "#bc2c3a",
+      "#FFFFFF"
     ],
     "price": 50,
-    "img": "/wt/102964_source_1704999818.jpg",
+    "img": "/skus/97745-black.png",
     "imgs": [
-      "/wt/102964_source_1704999818.jpg",
-      "/wt/102887_source_1704999756.jpg",
-      "/wt/102901_source_1704999767.jpg",
-      "/wt/102929_source_1704999790.jpg",
-      "/wt/102908_source_1704999772.jpg",
-      "/wt/102957_source_1704999812.jpg",
-      "/wt/102950_source_1704999806.jpg",
-      "/wt/102915_source_1704999778.jpg",
-      "/wt/102943_source_1704999801.jpg",
-      "/wt/102894_source_1704999762.jpg",
-      "/wt/102936_source_1704999795.jpg",
-      "/wt/102922_source_1704999784.jpg"
+      "/skus/97745-black.png",
+      "/skus/97745-blue.png",
+      "/skus/97745-darkplum.png",
+      "/skus/97745-desertkhaki.png",
+      "/skus/97745-forestgreen.png",
+      "/skus/97745-frostblue.png",
+      "/skus/97745-grey.png",
+      "/skus/97745-greystorm.png",
+      "/skus/97745-maroon.png",
+      "/skus/97745-navy.png",
+      "/skus/97745-teamred.png",
+      "/skus/97745-white.png"
     ],
     "material": "",
-    "details": "Woven twill, shirt collar, centre-front button placket, dyed-to-match buttons, contrast inner yoke, flat-felled seams, shaped seams and tapered waist, back yoke, #Tri 97745"
+    "details": "Woven twill, shirt collar, centre-front button placket, dyed-to-match buttons, contrast inner yoke, flat-felled seams, shaped seams and tapered waist, back yoke, #97745"
   },
   {
     "sku": "WT-33",
@@ -944,37 +944,37 @@ export const allProducts = [
     "sizes": "S - 5XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#2c5aa0",
-      "#4a2545",
-      "#c3a984",
-      "#1e4d2b",
-      "#a8c4d8",
-      "#8a8a8a",
-      "#6b1f2a",
-      "#2c3e50",
-      "#c0392b",
-      "#6e7377",
-      "#ffffff"
+      "#262626",
+      "#446093",
+      "#382246",
+      "#baa48c",
+      "#395542",
+      "#b5d5f0",
+      "#a1a8b0",
+      "#5e5c60",
+      "#672E45",
+      "#1f2a44",
+      "#bc2c3a",
+      "#FFFFFF"
     ],
     "price": 50,
-    "img": "/wt/Screenshot-2025-01-16-171302.png",
+    "img": "/skus/17744-black.png",
     "imgs": [
-      "/wt/Screenshot-2025-01-16-171302.png",
-      "/wt/Screenshot-2025-01-16-171616.png",
-      "/wt/Screenshot-2025-01-16-171601.png",
-      "/wt/Screenshot-2025-01-16-171546.png",
-      "/wt/Screenshot-2025-01-16-171525.png",
-      "/wt/Screenshot-2025-01-16-171510.png",
-      "/wt/Screenshot-2025-01-16-171446.png",
-      "/wt/Screenshot-2025-01-16-171427.png",
-      "/wt/Screenshot-2025-01-16-171412.png",
-      "/wt/Screenshot-2025-01-16-171356.png",
-      "/wt/Screenshot-2025-01-16-171343.png",
-      "/wt/Screenshot-2025-01-16-171319.png"
+      "/skus/17744-black.png",
+      "/skus/17744-blue.png",
+      "/skus/17744-darkplum.png",
+      "/skus/17744-desertkhaki.png",
+      "/skus/17744-forestgreen.png",
+      "/skus/17744-frostblue.png",
+      "/skus/17744-grey.png",
+      "/skus/17744-greystorm.png",
+      "/skus/17744-maroon.png",
+      "/skus/17744-navy.png",
+      "/skus/17744-teamred.png",
+      "/skus/17744-white.png"
     ],
     "material": "",
-    "details": "Woven twill, button-down collar, left chest pocket, adjustable one-button cuffs with single pleats, center-back box pleat, back yoke, flat-felled seams, contrast inner yoke, EZ-Care fabric, #Tri 17744"
+    "details": "Woven twill, button-down collar, left chest pocket, adjustable one-button cuffs with single pleats, center-back box pleat, back yoke, flat-felled seams, contrast inner yoke, EZ-Care fabric, #17744"
   },
   {
     "sku": "WT-34",
@@ -987,14 +987,13 @@ export const allProducts = [
       "#ffffff"
     ],
     "price": 16.95,
-    "img": "/wt/A-New-Design-Made-with-PosterMyWall-1.jpg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/A-New-Design-Made-with-PosterMyWall-1.jpg",
-      "/wt/3_3311_8083_i5000_800x800_BACK.jpg",
-      "/wt/2_5016_5586_i5000_800x800_white.jpg"
+      "/skus/no-photo.png",
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "Low-profile six-panel structured cap, lightweight brushed cotton twill, two-piece hook-and-loop fabric strap, one size, #DML i5000"
+    "details": "Low-profile six-panel structured cap, lightweight brushed cotton twill, two-piece hook-and-loop fabric strap, one size, #i5000"
   },
   {
     "sku": "WT-35",
@@ -1004,12 +1003,10 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 15,
-    "img": "/wt/beanie-wills-black-e1736466271623.jpeg",
-    "imgs": [
-      "/wt/beanie-wills-black-e1736466271623.jpeg"
-    ],
+    "img": "/skus/no-photo.png",
+    "imgs": [],
     "material": "",
-    "details": "100% acrylic knit toque, one size, #S C105"
+    "details": "100% acrylic knit toque, one size, #C105"
   },
   {
     "sku": "WT-36",
@@ -1019,13 +1016,10 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 74.99,
-    "img": "/wt/WP10-PANTS-BLACK-FRONT_resized-01.webp",
-    "imgs": [
-      "/wt/WP10-PANTS-BLACK-FRONT_resized-01.webp",
-      "/wt/WP10-PANTS-BLACK-BACK_resized-01.webp"
-    ],
+    "img": "/skus/no-photo.png",
+    "imgs": [],
     "material": "",
-    "details": "98/2 cotton/spandex flex twill with stain-repellent finish, 360° stretch waist, fly front, 5-pocket upper, two cargo pockets with bellows, pencil pocket, reinforced pockets and trim, gusset crotch, riveted stress points, triple-stitched, #R-WP10"
+    "details": "98/2 cotton/spandex flex twill with stain-repellent finish, 360° stretch waist, fly front, 5-pocket upper, two cargo pockets with bellows, pencil pocket, reinforced pockets and trim, gusset crotch, riveted stress points, triple-stitched, #WP10"
   },
   {
     "sku": "WT-37",
@@ -1038,10 +1032,10 @@ export const allProducts = [
       "#4a4a4a"
     ],
     "price": 15,
-    "img": "/wt/c100-hat-grey-e1735940467934.jpeg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/c100-hat-grey-e1735940467934.jpeg",
-      "/wt/Product-e1735936996431.jpeg"
+      "/skus/no-photo.png",
+      "/skus/no-photo.png"
     ],
     "material": "",
     "details": "100% knit cuff toque, one size, #C100"
@@ -1054,15 +1048,10 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 74.99,
-    "img": "/wt/6010-PANT-FRONT-BLACK_resized-01.webp",
-    "imgs": [
-      "/wt/6010-PANT-FRONT-BLACK_resized-01.webp",
-      "/wt/6010-PANT-FEATURE-NAVY_resized-01.webp",
-      "/wt/6010-PANT-BACK-BLACK_resized-01.webp",
-      "/wt/6010-PANT-FRONT-BLACK_resized-01.webp"
-    ],
+    "img": "/skus/no-photo.png",
+    "imgs": [],
     "material": "",
-    "details": "98/2 cotton/spandex flex twill with stain-repellent finish (9.5 oz), fly front, 5-pocket upper, two cargo pockets with bellows, pencil pocket, reinforced pockets and trim, seven belt loops, gusset crotch, rivets and bartacks at stress points, triple-stitched, #T-6010"
+    "details": "98/2 cotton/spandex flex twill with stain-repellent finish (9.5 oz), fly front, 5-pocket upper, two cargo pockets with bellows, pencil pocket, reinforced pockets and trim, seven belt loops, gusset crotch, rivets and bartacks at stress points, triple-stitched, #6010"
   },
   {
     "sku": "WT-39",
@@ -1071,19 +1060,21 @@ export const allProducts = [
     "sizes": "S - 3XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#3a3a3a"
+      "#262626",
+      "#55585b",
+      "#9a9b9d",
+      "#001c54"
     ],
     "price": 75,
-    "img": "/wt/A-New-Design-Made-with-PosterMyWall.jpg",
+    "img": "/skus/18157-black.png",
     "imgs": [
-      "/wt/A-New-Design-Made-with-PosterMyWall.jpg",
-      "/wt/OIP-1.jpeg",
-      "/wt/OIP.jpeg",
-      "/wt/Screenshot-2024-12-31-143512.png"
+      "/skus/18157-black.png",
+      "/skus/18157-heatherdarkcharcoal.png",
+      "/skus/18157-heathergrey.png",
+      "/skus/18157-vintagenavy.png"
     ],
     "material": "",
-    "details": "53/47 cotton/recycled-polyester textured doubleknit (225 gsm / 7.5 oz), GRS-certified and bluesign-approved, breathable, moisture-wicking, UPF 40+, anti-pill, self-fabric waistband and cuffs, full-zip, #TR-18157-BLK-1"
+    "details": "53/47 cotton/recycled-polyester textured doubleknit (225 gsm / 7.5 oz), GRS-certified and bluesign-approved, breathable, moisture-wicking, UPF 40+, anti-pill, self-fabric waistband and cuffs, full-zip, #18157"
   },
   {
     "sku": "WT-40",
@@ -1092,32 +1083,31 @@ export const allProducts = [
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#5c1a2b",
-      "#1e4d2b",
-      "#6b8bb0",
-      "#383838",
-      "#2c3e50",
-      "#c0392b",
-      "#ffffff"
+      "#262626",
+      "#5e2331",
+      "#22403a",
+      "#4a6a8a",
+      "#333F48",
+      "#1f2a44",
+      "#b02b2c",
+      "#1D4F91",
+      "#FFFFFF"
     ],
     "price": 38,
-    "img": "/wt/3286ABBE-A9C1-4AA0-BAA5-6D4E7667CA46.jpg",
+    "img": "/skus/DG20-black.png",
     "imgs": [
-      "/wt/3286ABBE-A9C1-4AA0-BAA5-6D4E7667CA46.jpg",
-      "/wt/dg20-devon-and-jones-polo-blankclothing.ca-black-back__55220.jpg",
-      "/wt/dg20_ff_9k_p.jpg",
-      "/wt/dg20_ff_2a_p.jpg",
-      "/wt/dg20_ff_md_p.jpg",
-      "/wt/dg20_ff_ng_p.jpg",
-      "/wt/dg20_ff_rd_p.jpg",
-      "/wt/dg20_ff_q9_p.jpg",
-      "/wt/dg20_ff_nj_p.jpg",
-      "/wt/dg20_ff_pm_p.jpg",
-      "/wt/Screenshot-2024-12-31-142313.png"
+      "/skus/DG20-black.png",
+      "/skus/DG20-burgundy.png",
+      "/skus/DG20-forest.png",
+      "/skus/DG20-frenchblue.png",
+      "/skus/DG20-graphite.png",
+      "/skus/DG20-navy.png",
+      "/skus/DG20-red.png",
+      "/skus/DG20-trueroyal.png",
+      "/skus/DG20-white.png"
     ],
     "material": "",
-    "details": "5 oz / 172 gsm dual-sided mesh pique, 100% polyester face plaited to 60/40 poly/cotton back, moisture-wicking with UPF 15-39, flat-knit collar, three-button placket with dyed-to-match buttons, #AB-DG20-BLK"
+    "details": "5 oz / 172 gsm dual-sided mesh pique, 100% polyester face plaited to 60/40 poly/cotton back, moisture-wicking with UPF 15-39, flat-knit collar, three-button placket with dyed-to-match buttons, #DG20"
   },
   {
     "sku": "WT-41",
@@ -1133,18 +1123,16 @@ export const allProducts = [
       "#ffffff"
     ],
     "price": 72,
-    "img": "/wt/F08F685A-942A-4F5D-A615-87A2F83B5BCB.jpg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/F08F685A-942A-4F5D-A615-87A2F83B5BCB.jpg",
-      "/wt/203690_flat_white_front_2024_cil.webp",
-      "/wt/203690_flat_varsity-royal_front_2024_cil.webp",
-      "/wt/203690_flat_pro-red_front_2024_cil.webp",
-      "/wt/203690_flat_midnight-navy_front_2024_cil.webp",
-      "/wt/203690_flat_black_front_2024_cil.webp",
-      "/wt/Screenshot-2025-01-03-133059.png"
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "100% Dri-FIT polyester (8.8 oz) with moisture management, rib-knit collar, three-button placket, tagless, breathable, #SM-203690"
+    "details": "100% Dri-FIT polyester (8.8 oz) with moisture management, rib-knit collar, three-button placket, tagless, breathable, #203690"
   },
   {
     "sku": "WT-42",
@@ -1153,22 +1141,21 @@ export const allProducts = [
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#4a4a4a",
-      "#2c3e50",
-      "#ffffff"
+      "#262626",
+      "#53565a",
+      "#22304a",
+      "#FFFFFF"
     ],
     "price": 55,
-    "img": "/wt/7CF16E9C-1E8F-4FE1-AB2D-07317A03060B.jpg",
+    "img": "/skus/88194-black.jpg",
     "imgs": [
-      "/wt/7CF16E9C-1E8F-4FE1-AB2D-07317A03060B.jpg",
-      "/wt/88194_ff_9i_p.jpg",
-      "/wt/88194_ff_4m_p-1.jpg",
-      "/wt/88194_ff_4m_p.jpg",
-      "/wt/Screenshot-2025-01-03-134254.png"
+      "/skus/88194-black.jpg",
+      "/skus/88194-carbon.jpg",
+      "/skus/88194-classicnavy.jpg",
+      "/skus/88194-white.jpg"
     ],
     "material": "",
-    "details": "55/45 cotton/polyester twill (4.4 oz / 150 gsm), UV protection, button-down collar, flat-felled seams, left chest pocket, back yoke with box pleat, #AB-88194"
+    "details": "55/45 cotton/polyester twill (4.4 oz / 150 gsm), UV protection, button-down collar, flat-felled seams, left chest pocket, back yoke with box pleat, #88194"
   },
   {
     "sku": "WT-43",
@@ -1177,20 +1164,21 @@ export const allProducts = [
     "sizes": "XS - 2XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#3a3a3a",
-      "#a0a0a0"
+      "#262626",
+      "#55585b",
+      "#9a9b9d",
+      "#001c54"
     ],
     "price": 75,
-    "img": "/wt/80FFABDB-1D9A-48A8-995C-4BF754624F84.jpg",
+    "img": "/skus/98157-black.png",
     "imgs": [
-      "/wt/80FFABDB-1D9A-48A8-995C-4BF754624F84.jpg",
-      "/wt/Screenshot-2025-01-03-141917.png",
-      "/wt/Screenshot-2025-01-03-141725.png",
-      "/wt/Screenshot-2025-01-03-141809.png"
+      "/skus/98157-black.png",
+      "/skus/98157-heatherdarkcharcoal.png",
+      "/skus/98157-heathergrey.png",
+      "/skus/98157-vintagenavy.png"
     ],
     "material": "",
-    "details": "53/47 cotton/recycled-polyester textured doubleknit (225 gsm / 6.6 oz), GRS-certified and bluesign-approved, breathable, moisture-wicking, UPF 40+, anti-pill, self-fabric cuffs, pleated back, stand collar, shaped seams, full-zip, #TR-98157-BLK"
+    "details": "53/47 cotton/recycled-polyester textured doubleknit (225 gsm / 6.6 oz), GRS-certified and bluesign-approved, breathable, moisture-wicking, UPF 40+, anti-pill, self-fabric cuffs, pleated back, stand collar, shaped seams, full-zip, #98157"
   },
   {
     "sku": "WT-44",
@@ -1203,16 +1191,13 @@ export const allProducts = [
       "#383838"
     ],
     "price": 70,
-    "img": "/wt/C27EE914-6CFE-41A2-837E-5E41C2C0AA33.jpg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/C27EE914-6CFE-41A2-837E-5E41C2C0AA33.jpg",
-      "/wt/dg481w_ff_tr_p.jpg",
-      "/wt/dg481w_fb_tq_p.jpg",
-      "/wt/dg481w_ff_tq_p.jpg",
-      "/wt/Screenshot-2025-01-03-142505.png"
+      "/skus/no-photo.png",
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "60/40 cotton/polyester interlock (240 gsm / 7 oz), open cardigan with modified shawl collar, side inset pockets, #AB-DG481W-BLK"
+    "details": "60/40 cotton/polyester interlock (240 gsm / 7 oz), open cardigan with modified shawl collar, side inset pockets, #DG481W"
   },
   {
     "sku": "WT-45",
@@ -1221,18 +1206,17 @@ export const allProducts = [
     "sizes": "XS - 2XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#3a3a3a"
+      "#262626",
+      "#55585b"
     ],
     "price": 75,
-    "img": "/wt/D60837A2-241F-4A17-BE8B-44696E1B677A.jpg",
+    "img": "/skus/98158-black.png",
     "imgs": [
-      "/wt/D60837A2-241F-4A17-BE8B-44696E1B677A.jpg",
-      "/wt/Screenshot-2025-01-03-142155.png",
-      "/wt/Screenshot-2025-01-03-142215.png"
+      "/skus/98158-black.png",
+      "/skus/98158-heatherdarkcharcoal.png"
     ],
     "material": "",
-    "details": "53/47 cotton/recycled-polyester textured doubleknit (225 gsm / 6.6 oz), GRS-certified and bluesign-approved, moisture-wicking, anti-pill, self-fabric collar and cuffs, lower patch pockets, pleated back, shirttail hem with side slits, dyed-to-match buttons, #TR-98150-BLK"
+    "details": "53/47 cotton/recycled-polyester textured doubleknit (225 gsm / 6.6 oz), GRS-certified and bluesign-approved, moisture-wicking, anti-pill, self-fabric collar and cuffs, lower patch pockets, pleated back, shirttail hem with side slits, dyed-to-match buttons, #98158"
   },
   {
     "sku": "WT-46",
@@ -1246,18 +1230,14 @@ export const allProducts = [
       "#3d4a63"
     ],
     "price": 58,
-    "img": "/wt/l2045_form_angle_blackheather_042018_v2.webp",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/l2045_form_angle_blackheather_042018_v2.webp",
-      "/wt/l2045_form_angle_blackheather_042018_v2.webp",
-      "/wt/l2045_form_angle_navyheather_042018.webp",
-      "/wt/l2045_form_back_blackheather_042018_v2.webp",
-      "/wt/l2045_form_back_navyheather_042018.webp",
-      "/wt/l2045_form_back_charcoalheather_042018.webp",
-      "/wt/l2045_form_angle_charcoalheather_042018.webp"
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined scuba hood with contrast drawstring, thumbhole cuffs, tear-away label, classic fit, #SM-F2045"
+    "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined scuba hood with contrast drawstring, thumbhole cuffs, tear-away label, classic fit, #F2045"
   },
   {
     "sku": "WT-47",
@@ -1266,23 +1246,25 @@ export const allProducts = [
     "sizes": "XS - 3XL",
     "badge": "",
     "colors": [
-      "#2b2b2b",
-      "#c2c2c2",
-      "#5a6248",
-      "#7a3540",
-      "#5b7fa6"
+      "#262626",
+      "#373534",
+      "#a4a9ad",
+      "#57582c",
+      "#601d2e",
+      "#1c457b"
     ],
     "price": 85,
-    "img": "/wt/2C5A71F2-AC01-4673-A169-561779A50C50.jpg",
+    "img": "/skus/98610-black.png",
     "imgs": [
-      "/wt/2C5A71F2-AC01-4673-A169-561779A50C50.jpg",
-      "/wt/Screenshot-2025-01-16-194135.png",
-      "/wt/Screenshot-2025-01-16-194122.png",
-      "/wt/Screenshot-2025-01-16-194108.png",
-      "/wt/Screenshot-2025-01-16-194037.png"
+      "/skus/98610-black.png",
+      "/skus/98610-blacksmokeheather.png",
+      "/skus/98610-lightheathergrey.png",
+      "/skus/98610-lodenheather.png",
+      "/skus/98610-maroonheather.png",
+      "/skus/98610-metroblueheather.png"
     ],
     "material": "",
-    "details": "100% polyester sweater knit with brushed back (305 gsm / 9 oz), brushed tricot lining, thumb exits, two lower pockets, chest pocket, earbud-cord port, #TR-98610"
+    "details": "100% polyester sweater knit with brushed back (305 gsm / 9 oz), brushed tricot lining, thumb exits, two lower pockets, chest pocket, earbud-cord port, #98610"
   },
   {
     "sku": "WT-48",
@@ -1296,17 +1278,14 @@ export const allProducts = [
       "#3d4a63"
     ],
     "price": 58,
-    "img": "/wt/7423FA91-260F-488F-B119-98D6018B6DA7.jpg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/7423FA91-260F-488F-B119-98D6018B6DA7.jpg",
-      "/wt/f2045_form_back_navyheather_042018.webp",
-      "/wt/f2045_form_back_blackheather_042018_v2.webp",
-      "/wt/f2045_form_back_charcoalheather_042018.webp",
-      "/wt/f2045_form_front_charcoalheather_042018.webp",
-      "/wt/f2045_form_front_navyheather_042018.webp"
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined hood with contrast drawstring, tear-away label, classic fit, #SM-F2045-BLKHeather"
+    "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined hood with contrast drawstring, tear-away label, classic fit, #F2045"
   },
   {
     "sku": "WT-49",
@@ -1320,12 +1299,14 @@ export const allProducts = [
       "#585858"
     ],
     "price": 82,
-    "img": "/wt/E5955A04-99BC-4DE9-B8C6-53B1F01D20AA.jpg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/E5955A04-99BC-4DE9-B8C6-53B1F01D20AA.jpg"
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "#SM-DR1499-BLK"
+    "details": "#DR1499"
   },
   {
     "sku": "WT-50",
@@ -1345,25 +1326,20 @@ export const allProducts = [
       "#e8863b"
     ],
     "price": 33,
-    "img": "/wt/8698F1BD-47FC-403F-A4A7-4BBD91BF285C.jpg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/8698F1BD-47FC-403F-A4A7-4BBD91BF285C.jpg",
-      "/wt/sf000_50_p.jpg",
-      "/wt/sf000_bk_51_p.jpg",
-      "/wt/sf000_12_p.jpg",
-      "/wt/sf000_62_p.jpg",
-      "/wt/sf000_c7_p.jpg",
-      "/wt/sf000_54_p.jpg",
-      "/wt/sf000_75_p.jpg",
-      "/wt/sf000_66_p.jpg",
-      "/wt/sf000_47_p.jpg",
-      "/wt/sf000_bk_50_p.jpg",
-      "/wt/Screenshot-2025-01-03-150420.png",
-      "/wt/98915_f_fm.jpg",
-      "/wt/91569_f_fm.jpg"
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "80/20 ring-spun cotton/polyester 2-end face fleece (8.4 oz), 1x1 spandex rib cuffs and band, dropped shoulder, double-needle topstitching, tear-away label, classic fit, #AB-SF000"
+    "details": "80/20 ring-spun cotton/polyester 2-end face fleece (8.4 oz), 1x1 spandex rib cuffs and band, dropped shoulder, double-needle topstitching, tear-away label, classic fit, #SF000"
   },
   {
     "sku": "WT-51",
@@ -1372,16 +1348,23 @@ export const allProducts = [
     "sizes": "XS - 3XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#6b6f74"
+      "#262626",
+      "#1f2a44",
+      "#153a81",
+      "#7f8684",
+      "#bc2c3a"
     ],
     "price": 97,
-    "img": "/wt/BA8FA451-36BB-4828-9966-9CEE72E822BD.jpg",
+    "img": "/skus/99542-black.png",
     "imgs": [
-      "/wt/BA8FA451-36BB-4828-9966-9CEE72E822BD.jpg"
+      "/skus/99542-black.png",
+      "/skus/99542-navy.png",
+      "/skus/99542-newroyal.png",
+      "/skus/99542-steelgrey.png",
+      "/skus/99542-teamred.png"
     ],
     "material": "",
-    "details": "#TR-99542-BLK"
+    "details": "#99542"
   },
   {
     "sku": "WT-52",
@@ -1390,18 +1373,23 @@ export const allProducts = [
     "sizes": "S - 3XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#6b6f74"
+      "#262626",
+      "#1f2a44",
+      "#153a81",
+      "#7f8684",
+      "#bc2c3a"
     ],
     "price": 97,
-    "img": "/wt/BEFDB010-C4DB-40BF-B627-F8E13AAB6F94.jpg",
+    "img": "/skus/19542-black.png",
     "imgs": [
-      "/wt/BEFDB010-C4DB-40BF-B627-F8E13AAB6F94.jpg",
-      "/wt/Screenshot-2025-01-03-145907.png",
-      "/wt/Screenshot-2025-01-03-150023.png"
+      "/skus/19542-black.png",
+      "/skus/19542-navy.png",
+      "/skus/19542-newroyal.png",
+      "/skus/19542-steelgrey.png",
+      "/skus/19542-teamred.png"
     ],
     "material": "",
-    "details": "100% polyester 290T woven shell (60 gsm / 1.8 oz) with water-resistant coating and DWR finish, 100% polyester lining, faux-down fill, interior storm flap with chin guard, contrast-bound hem and armholes, hi-vis back-shoulder panel, #TR-19542-BLK"
+    "details": "100% polyester 290T woven shell (60 gsm / 1.8 oz) with water-resistant coating and DWR finish, 100% polyester lining, faux-down fill, interior storm flap with chin guard, contrast-bound hem and armholes, hi-vis back-shoulder panel, #19542"
   },
   {
     "sku": "WT-53",
@@ -1410,26 +1398,27 @@ export const allProducts = [
     "sizes": "XS - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18",
-      "#3f3f3f",
-      "#1e4d2b",
-      "#6b1f2a",
-      "#2c3e50",
-      "#9b9b9b"
+      "#BBBCBC",
+      "#262626",
+      "#53565A",
+      "#395542",
+      "#1f2a44",
+      "#b02b2c",
+      "#0e347b"
     ],
     "price": 37,
-    "img": "/wt/077F74FB-0F0A-4824-A1C5-6205DBA55656.jpg",
+    "img": "/skus/L00545-athleticgrey.png",
     "imgs": [
-      "/wt/077F74FB-0F0A-4824-A1C5-6205DBA55656.jpg",
-      "/wt/L00545-CHA-F_2000x.webp",
-      "/wt/L00545-BLA-B_2000x.webp",
-      "/wt/L00545-Maroon-front_ac672b1a-a03d-4daf-81f4-69fe5d650f2c_720x.webp",
-      "/wt/L00545-Forest-front_79647773-5e92-4a09-86fb-8a510bdb19d7_720x.webp",
-      "/wt/L00545-AthGre-F_720x.webp",
-      "/wt/L00545-navy-f_720x.webp"
+      "/skus/L00545-athleticgrey.png",
+      "/skus/L00545-black.png",
+      "/skus/L00545-charcoal.png",
+      "/skus/L00545-forestgreen.png",
+      "/skus/L00545-navy.png",
+      "/skus/L00545-red.png",
+      "/skus/L00545-royalblue.png"
     ],
     "material": "",
-    "details": "70/30 combed ring-spun cotton/polyester fleece (280 gsm), 100% cotton print face, rib-knit cuffs and hem, metal YKK zip, tear-away label, quarter-zip, #CSW-L00545"
+    "details": "70/30 combed ring-spun cotton/polyester fleece (280 gsm), 100% cotton print face, rib-knit cuffs and hem, metal YKK zip, tear-away label, quarter-zip, #L00545"
   },
   {
     "sku": "WT-54",
@@ -1438,24 +1427,21 @@ export const allProducts = [
     "sizes": "XS - 4XL",
     "badge": "",
     "colors": [
-      "#a6a6a6",
-      "#2b2b2b",
-      "#3f3f3f",
-      "#3d4a63"
+      "#BBBCBC",
+      "#101820",
+      "#545859",
+      "#3B4559"
     ],
     "price": 60,
-    "img": "/wt/ABDF44FA-D999-47B0-AD4C-6B91E3B214A8.jpg",
+    "img": "/skus/F2042-athleticgrey.jpg",
     "imgs": [
-      "/wt/ABDF44FA-D999-47B0-AD4C-6B91E3B214A8.jpg",
-      "/wt/f2042_form_back_navyheather_042018.jpg",
-      "/wt/f2042_form_front_navyheather_042018.jpg",
-      "/wt/f2042_form_back_blackheather_042018_7.jpg",
-      "/wt/f2042_form_front_blackheather_042018_7.jpg",
-      "/wt/f2042_form_back_athletic-grey_032019_7.jpg",
-      "/wt/f2042_form_front_athletic-grey_112019_7.jpg"
+      "/skus/F2042-athleticgrey.jpg",
+      "/skus/F2042-blackheather.jpg",
+      "/skus/F2042-charcoalheather.jpg",
+      "/skus/F2042-navyheather.jpg"
     ],
     "material": "",
-    "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), tear-away label, quarter-zip, #SM-F2042"
+    "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), tear-away label, quarter-zip, #F2042"
   },
   {
     "sku": "WT-55",
@@ -1467,14 +1453,12 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 79.99,
-    "img": "/wt/890192B3-20B7-458B-AC6D-0E8EA98F1A08.jpg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/890192B3-20B7-458B-AC6D-0E8EA98F1A08.jpg",
-      "/wt/image.webp",
-      "/wt/Screenshot-2025-01-03-174300.png"
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "98/2 cotton/spandex canvas (8.5 oz) with Rugged Flex stretch, relaxed hip and thigh, boot-cut, reinforced front slash pocket, cell-phone pocket, sewn-on belt loops, #C-102291-BLK"
+    "details": "98/2 cotton/spandex canvas (8.5 oz) with Rugged Flex stretch, relaxed hip and thigh, boot-cut, reinforced front slash pocket, cell-phone pocket, sewn-on belt loops, #102291"
   },
   {
     "sku": "WT-56",
@@ -1486,11 +1470,9 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 23.5,
-    "img": "/wt/will18502.png",
+    "img": "/skus/i8502-black.png",
     "imgs": [
-      "/wt/will18502.png",
-      "/wt/i8502-blank-black-back.png",
-      "/wt/i8502-i8502-blank-black-right-side.png"
+      "/skus/i8502-black.png"
     ],
     "material": "",
     "details": "Mid-profile structured trucker cap, shapeable pre-curved visor, UV protection, moisture wicking, 110 Technology® sweatband, adjustable plastic snapback, grey under visor, #i8502 Blk/Blk"
@@ -1505,9 +1487,9 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 18.5,
-    "img": "/wt/Product-2-e1735847330575.jpeg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/Product-2-e1735847330575.jpeg"
+      "/skus/no-photo.png"
     ],
     "material": "",
     "details": "100% acrylic pompon cuff toque, stretchy with strong shape retention, #1202"
@@ -1530,17 +1512,17 @@ export const allProducts = [
       "#5a2733"
     ],
     "price": 90,
-    "img": "/wt/image-K288PRT-550-550-1.jpg",
+    "img": "/skus/k288-black.png",
     "imgs": [
-      "/wt/image-K288PRT-550-550-1.jpg",
-      "/wt/OIP-1-1.jpeg",
-      "/wt/K288-carbon-heather.jpg",
-      "/wt/Carhartt-Hoodie-Midweight-Sleeve-Logo-Navy.jpg",
-      "/wt/carhartt-hoodies-sweatshirts-k288-w03-64_600.webp",
-      "/wt/image-K288BLM-550-550.jpg",
-      "/wt/sweat-midweight-sleeve-logo-hooded-k288-heather-grey-carhartt.webp",
-      "/wt/image-K288BRN-550-550.jpg",
-      "/wt/download-1.png"
+      "/skus/k288-black.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png",
+      "/skus/no-photo.png"
     ],
     "material": "",
     "details": "50/50 cotton/polyester (10.5 oz), loose fit, three-piece drawcord hood, front hand-warmer pocket, spandex-reinforced rib cuffs and waistband, triple-stitched seams, Carhartt sleeve logo and pocket patch, #K288"
@@ -1553,11 +1535,8 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 98,
-    "img": "/wt/shepa-fleece.png",
-    "imgs": [
-      "/wt/shepa-fleece.png",
-      "/wt/1295-Black-Back-LowRes_528db392-eb8c-49fe-82a6-b18ef6aab145_720x.webp"
-    ],
+    "img": "/skus/no-photo.png",
+    "imgs": [],
     "material": "",
     "details": "100% cotton canvas (330 gsm / 9.7 oz) with water-repellent finish, polyester sherpa lining, rib-knit collar and side inserts, kangaroo and interior chest pockets, YKK zipper, 4\" hi-vis band with 2\" reflective tape front and back, meets CSA, #L01295-BLA-S"
   },
@@ -1569,42 +1548,44 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 75,
-    "img": "/wt/A-New-Design-Made-with-PosterMyWall-2-1-e1736538203714.jpg",
-    "imgs": [
-      "/wt/A-New-Design-Made-with-PosterMyWall-2-1-e1736538203714.jpg"
-    ],
+    "img": "/skus/no-photo.png",
+    "imgs": [],
     "material": "",
-    "details": "150D Open Road rainwear jacket, adjustable cuffs, detachable snap-off hood, front and back venting, dual reflective chest straps, mesh upper-back lining, two sealed pockets, #V-6323JB"
+    "details": "150D Open Road rainwear jacket, adjustable cuffs, detachable snap-off hood, front and back venting, dual reflective chest straps, mesh upper-back lining, two sealed pockets, #6323JB"
   },
   {
     "sku": "WT-61",
-    "name": "Hi-Vis Quilted Freezer Jacket – Black",
+    "name": "Hi-Vis Quilted Freezer Jacket",
     "category": "Work Wear",
     "sizes": "S - 5XL",
     "badge": "",
-    "colors": [],
+    "colors": [
+      "#1a1a18"
+    ],
     "price": 75,
     "img": "/wt/A-New-Design-Made-with-PosterMyWall-3-e1736538316369.jpg",
     "imgs": [
       "/wt/A-New-Design-Made-with-PosterMyWall-3-e1736538316369.jpg"
     ],
     "material": "",
-    "details": "Diamond-quilted polyester with 3.5 oz (120 gsm) insulation, double-stitched StarTech reflective tape, rib-knit gusseted action back, micro-fleece collar, #P-5017"
+    "details": "Diamond-quilted polyester with 3.5 oz (120 gsm) insulation, double-stitched StarTech reflective tape, rib-knit gusseted action back, micro-fleece collar, #P5017"
   },
   {
     "sku": "WT-62",
-    "name": "Hi-Vis Bird’s-Eye Safety T-Shirt – Black",
+    "name": "Hi-Vis Bird’s-Eye Safety T-Shirt",
     "category": "Work Wear",
     "sizes": "XS / S / M / L / XL / 2XL / 4XL / 5XL",
     "badge": "",
-    "colors": [],
+    "colors": [
+      "#1a1a18"
+    ],
     "price": 35,
     "img": "/wt/A-New-Design-Made-with-PosterMyWall-1-2-e1736538424819.jpg",
     "imgs": [
       "/wt/A-New-Design-Made-with-PosterMyWall-1-2-e1736538424819.jpg"
     ],
     "material": "",
-    "details": "Bird's-Eye moisture-wicking knit, breathable, StarTech reflective tape, front chest pocket with hook-and-loop, radiophone clip strap, #P-6992"
+    "details": "Bird's-Eye moisture-wicking knit, breathable, StarTech reflective tape, front chest pocket with hook-and-loop, radiophone clip strap, #6992"
   },
   {
     "sku": "WT-63",
@@ -1614,12 +1595,10 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 55,
-    "img": "/wt/A-New-Design-Made-with-PosterMyWall-2-2-e1736538526535.jpg",
-    "imgs": [
-      "/wt/A-New-Design-Made-with-PosterMyWall-2-2-e1736538526535.jpg"
-    ],
+    "img": "/skus/no-photo.png",
+    "imgs": [],
     "material": "",
-    "details": "50/50 cotton/recycled-polyester carbon-peached jersey (4.7 oz), soft hand, self-fabric collar with contrast inner collar, side-seam splits, #C-S05750"
+    "details": "50/50 cotton/recycled-polyester carbon-peached jersey (4.7 oz), soft hand, self-fabric collar with contrast inner collar, side-seam splits, #S05750"
   },
   {
     "sku": "WT-64",
@@ -1629,13 +1608,10 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 105,
-    "img": "/wt/A-New-Design-Made-with-PosterMyWall-3-1-e1736538610233.jpg",
-    "imgs": [
-      "/wt/A-New-Design-Made-with-PosterMyWall-3-1-e1736538610233.jpg",
-      "/wt/6942-back-hoodie-pioneer.jpg"
-    ],
+    "img": "/skus/no-photo.png",
+    "imgs": [],
     "material": "",
-    "details": "420 gsm two-layer polyester/cotton jersey fleece, cotton-lined, tear-away three-piece hood with drawstring and barrel-locks, dual reflective chest straps, full-zip, two front pockets, rib-knit cuffs and waistband, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #V-6421BK"
+    "details": "420 gsm two-layer polyester/cotton jersey fleece, cotton-lined, tear-away three-piece hood with drawstring and barrel-locks, dual reflective chest straps, full-zip, two front pockets, rib-knit cuffs and waistband, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #6421BK"
   },
   {
     "sku": "WT-65",
@@ -1645,13 +1621,10 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 65,
-    "img": "/wt/A-New-Design-Made-with-PosterMyWall-5-e1736538855326.jpg",
-    "imgs": [
-      "/wt/A-New-Design-Made-with-PosterMyWall-5-e1736538855326.jpg",
-      "/wt/6942-back-hoodie-pioneer.jpg"
-    ],
+    "img": "/skus/no-photo.png",
+    "imgs": [],
     "material": "",
-    "details": "260 gsm anti-pill polyester fleece, full hood with drawstring, dual reflective chest straps, taffeta-lined sleeves, two front pockets, left-chest phone pocket, elastic cuffs and waistband, tear-away hood, UPF 50+, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #V-6420BK"
+    "details": "260 gsm anti-pill polyester fleece, full hood with drawstring, dual reflective chest straps, taffeta-lined sleeves, two front pockets, left-chest phone pocket, elastic cuffs and waistband, tear-away hood, UPF 50+, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #6420BK"
   },
   {
     "sku": "WT-66",
@@ -1661,13 +1634,10 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 80,
-    "img": "/wt/6942-pionner-front-hoodie.jpg",
-    "imgs": [
-      "/wt/6942-pionner-front-hoodie.jpg",
-      "/wt/6942-back-hoodie-pioneer.jpg"
-    ],
+    "img": "/skus/no-photo.png",
+    "imgs": [],
     "material": "",
-    "details": "7 oz (240 gsm) micro-fleece, 4-way stretch, CSA Z96-22 Class 1 Level 2 / ANSI 107 Class 1, StarTech reflective tape, full-zip, detachable drawstring hood, elastic cuffs and hem, two slash pockets, two radiophone clip straps, #P-6942"
+    "details": "7 oz (240 gsm) micro-fleece, 4-way stretch, CSA Z96-22 Class 1 Level 2 / ANSI 107 Class 1, StarTech reflective tape, full-zip, detachable drawstring hood, elastic cuffs and hem, two slash pockets, two radiophone clip straps, #6942"
   },
   {
     "sku": "WT-67",
@@ -1677,12 +1647,10 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 40,
-    "img": "/wt/6165BK.png",
-    "imgs": [
-      "/wt/6165BK.png"
-    ],
+    "img": "/skus/no-photo.png",
+    "imgs": [],
     "material": "",
-    "details": "150D polyester twill surveyor vest, double-hemstitched pockets and seams, brass snaps and grommets, mesh side vents, dual reflective chest straps, cell/radio pocket, D-ring slot, 14\" zippered back pack, 8 pockets (5 outer, 3 inner), ruler slot, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #V-6165BK"
+    "details": "150D polyester twill surveyor vest, double-hemstitched pockets and seams, brass snaps and grommets, mesh side vents, dual reflective chest straps, cell/radio pocket, D-ring slot, 14\" zippered back pack, 8 pockets (5 outer, 3 inner), ruler slot, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #6165BK"
   },
   {
     "sku": "WT-68",
@@ -1692,12 +1660,10 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 35,
-    "img": "/wt/139BK.png",
-    "imgs": [
-      "/wt/139BK.png"
-    ],
+    "img": "/skus/no-photo.png",
+    "imgs": [],
     "material": "",
-    "details": "Tricot polyester, tapered waist and flared bottom tailored for women, StarTech reflective tape, 9 pockets incl. ID and phone, full-zip front, radiophone clip strap, #P-139BK"
+    "details": "Tricot polyester, tapered waist and flared bottom tailored for women, StarTech reflective tape, 9 pockets incl. ID and phone, full-zip front, radiophone clip strap, #139BK"
   },
   {
     "sku": "WT-69",
@@ -1710,14 +1676,13 @@ export const allProducts = [
       "#ff6a13"
     ],
     "price": 35,
-    "img": "/wt/Screenshot_20230320_015134__93047.webp",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/Screenshot_20230320_015134__93047.webp",
-      "/wt/Screenshot_20230320_020304__72584.webp",
-      "/wt/Screenshot_20230320_015134__93047.webp"
+      "/skus/no-photo.png",
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "Oxford front with full mesh back for breathability, StarTech reflective tape, bottom map pouch, 12 pockets, full-zip, ID pocket with window, D-ring harness access, #P-6937"
+    "details": "Oxford front with full mesh back for breathability, StarTech reflective tape, bottom map pouch, 12 pockets, full-zip, ID pocket with window, D-ring harness access, #6937"
   },
   {
     "sku": "WT-70",
@@ -1727,12 +1692,10 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 170,
-    "img": "/wt/6328JB_89f6896e-60f9-4eeb-bf27-16261e400ac5.png",
-    "imgs": [
-      "/wt/6328JB_89f6896e-60f9-4eeb-bf27-16261e400ac5.png"
-    ],
+    "img": "/skus/no-photo.png",
+    "imgs": [],
     "material": "",
-    "details": "7-in-1 convertible jacket (outer, inner, reversible hi-vis, sleeveless vest, zip-off vest combinations), detachable drawcord hood, chest and storage pockets plus inner cell pocket, side zip vents, dual reflective chest straps, heavy-duty zipper with storm flap, embroidery zipper included, #V-6328JB"
+    "details": "7-in-1 convertible jacket (outer, inner, reversible hi-vis, sleeveless vest, zip-off vest combinations), detachable drawcord hood, chest and storage pockets plus inner cell pocket, side zip vents, dual reflective chest straps, heavy-duty zipper with storm flap, embroidery zipper included, #6328JB"
   },
   {
     "sku": "WT-71",
@@ -1744,13 +1707,12 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 90,
-    "img": "/wt/S494-HOODIES-BLACK-FRONT_resized-01.webp",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/S494-HOODIES-BLACK-FRONT_resized-01.webp",
-      "/wt/S494-HOODIES-BLACK-BACK_resized-01.webp"
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "100% polyester anti-pill fleece (280 gsm) with DWR finish, 3M Scotchlite 2\" reflective on 4\" contrast backing, full-zip, quick-release hood with snaps and drawcord, lower pouch pockets, rib-knit cuffs and waist, #R-S494"
+    "details": "100% polyester anti-pill fleece (280 gsm) with DWR finish, 3M Scotchlite 2\" reflective on 4\" contrast backing, full-zip, quick-release hood with snaps and drawcord, lower pouch pockets, rib-knit cuffs and waist, #S494"
   },
   {
     "sku": "WT-72",
@@ -1762,12 +1724,12 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 65,
-    "img": "/wt/4F9C298C-F14E-49DA-B7BE-9EDF9DDC7069.jpg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/4F9C298C-F14E-49DA-B7BE-9EDF9DDC7069.jpg"
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "#R-SV05BK"
+    "details": "#SV05BK"
   },
   {
     "sku": "WT-73",
@@ -1776,15 +1738,45 @@ export const allProducts = [
     "sizes": "XS - 4XL",
     "badge": "",
     "colors": [
-      "#1a1a18"
+      "#262626",
+      "#5F8FB4",
+      "#53565A",
+      "#3f4247",
+      "#395542",
+      "#FFB500",
+      "#00965E",
+      "#b3cde8",
+      "#672E45",
+      "#1f2a44",
+      "#4C4084",
+      "#b02b2c",
+      "#1C57A5",
+      "#cdb99a",
+      "#9fa1a4",
+      "#FFFFFF"
     ],
     "price": 45,
-    "img": "/wt/2400.png",
+    "img": "/skus/2400-black.png",
     "imgs": [
-      "/wt/2400.png"
+      "/skus/2400-black.png",
+      "/skus/2400-carolinablue.png",
+      "/skus/2400-charcoal.png",
+      "/skus/2400-darkheather.png",
+      "/skus/2400-forestgreen.png",
+      "/skus/2400-gold.png",
+      "/skus/2400-kelly.png",
+      "/skus/2400-lightblue.png",
+      "/skus/2400-maroon.png",
+      "/skus/2400-navy.png",
+      "/skus/2400-purple.png",
+      "/skus/2400-red.png",
+      "/skus/2400-royal.png",
+      "/skus/2400-sand.png",
+      "/skus/2400-sportgrey.png",
+      "/skus/2400-white.png"
     ],
     "material": "",
-    "details": "100% pre-shrunk cotton long-sleeve pocket tee, 2\" silver heat-transfer tape on arms and front with diagonal X on back, reinforced neck and shoulder seams, seamless ribbed neck, #G-2400"
+    "details": "100% pre-shrunk cotton long-sleeve pocket tee, 2\" silver heat-transfer tape on arms and front with diagonal X on back, reinforced neck and shoulder seams, seamless ribbed neck, #2400"
   },
   {
     "sku": "WT-74",
@@ -1793,15 +1785,45 @@ export const allProducts = [
     "sizes": "S - 5XL",
     "badge": "",
     "colors": [
-      "#1a1a18"
+      "#262626",
+      "#5F8FB4",
+      "#53565A",
+      "#3f4247",
+      "#395542",
+      "#FFB500",
+      "#00965E",
+      "#b3cde8",
+      "#672E45",
+      "#1f2a44",
+      "#4C4084",
+      "#b02b2c",
+      "#1C57A5",
+      "#cdb99a",
+      "#9fa1a4",
+      "#FFFFFF"
     ],
     "price": 45,
-    "img": "/wt/2300.png",
+    "img": "/skus/2300-black.png",
     "imgs": [
-      "/wt/2300.png"
+      "/skus/2300-black.png",
+      "/skus/2300-carolinablue.png",
+      "/skus/2300-charcoal.png",
+      "/skus/2300-darkheather.png",
+      "/skus/2300-forestgreen.png",
+      "/skus/2300-gold.png",
+      "/skus/2300-kelly.png",
+      "/skus/2300-lightblue.png",
+      "/skus/2300-maroon.png",
+      "/skus/2300-navy.png",
+      "/skus/2300-purple.png",
+      "/skus/2300-red.png",
+      "/skus/2300-royal.png",
+      "/skus/2300-sand.png",
+      "/skus/2300-sportgrey.png",
+      "/skus/2300-white.png"
     ],
     "material": "",
-    "details": "100% pre-shrunk cotton pocket tee, 2\" silver heat-transfer tape on arms and front with diagonal X on back, reinforced neck and shoulder seams, seamless ribbed neck, #G-2300"
+    "details": "100% pre-shrunk cotton pocket tee, 2\" silver heat-transfer tape on arms and front with diagonal X on back, reinforced neck and shoulder seams, seamless ribbed neck, #2300"
   },
   {
     "sku": "WT-75",
@@ -1813,12 +1835,9 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 150,
-    "img": "/wt/womens-pair-side.jpg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/womens-pair-side.jpg",
-      "/wt/thumbnail_image.png",
-      "/wt/womens-top.jpg",
-      "/wt/womens-side.jpg"
+      "/skus/no-photo.png"
     ],
     "material": "",
     "details": "New Balance Cremorne low, composite safety toe, Fresh Foam cushioning, slip- and heat-resistant outsole, electrical-hazard rated, wicking mesh lining, women's, #NBWUFCCEHBG"
@@ -1833,15 +1852,12 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 150,
-    "img": "/wt/menss-hoe-pair-.jpg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/menss-hoe-pair-.jpg",
-      "/wt/mens-shoe-side.jpg",
-      "/wt/mens-shoe-3.jpg",
-      "/wt/thumbnail_shoe-sheet.png"
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "New Balance Fresh Foam Cremorne low, composite toe, CSA-approved, Fresh Foam midsole, slip- and heat-resistant outsole, ESR protection, reinforced heel counter, ETPU comfort insert, lightweight anti-perforation midsole, men's, #NB-MCFCEHPBG SHOE"
+    "details": "New Balance Fresh Foam Cremorne low, composite toe, CSA-approved, Fresh Foam midsole, slip- and heat-resistant outsole, ESR protection, reinforced heel counter, ETPU comfort insert, lightweight anti-perforation midsole, men's, #MCFCEHPBG"
   },
   {
     "sku": "WT-77",
@@ -1853,15 +1869,12 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 155,
-    "img": "/wt/hiker-pair.jpg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/hiker-pair.jpg",
-      "/wt/hiker-info-sheet.png",
-      "/wt/hiker-side.jpg",
-      "/wt/hiker-side-turn.jpg"
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "New Balance Fresh Foam Cremorne mid, composite toe, CSA-approved, Fresh Foam midsole, mid-cut ankle support, slip- and heat-resistant outsole, ESR protection, padded collar, ETPU comfort insert, anti-perforation midsole, men's, #NB MCFCMEHP-B"
+    "details": "New Balance Fresh Foam Cremorne mid, composite toe, CSA-approved, Fresh Foam midsole, mid-cut ankle support, slip- and heat-resistant outsole, ESR protection, padded collar, ETPU comfort insert, anti-perforation midsole, men's, #MCFCMEHPB"
   },
   {
     "sku": "WT-78",
@@ -1871,13 +1884,8 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 130,
-    "img": "/wt/timberland-pro-men-s-intercept-steel-toe-steel-plate-athletic-safety-shoes-324783c7-e9a8-44f6-9219-e59d68f8353d-jpgrendition.jpg",
-    "imgs": [
-      "/wt/timberland-pro-men-s-intercept-steel-toe-steel-plate-athletic-safety-shoes-324783c7-e9a8-44f6-9219-e59d68f8353d-jpgrendition.jpg",
-      "/wt/Screenshot_15-1-2025_194659_www.timberland.ca_.jpeg",
-      "/wt/Screenshot-2025-01-15-194553.png",
-      "/wt/Screenshot-2025-01-15-194530.png"
-    ],
+    "img": "/skus/no-photo.png",
+    "imgs": [],
     "material": "",
     "details": "Timberland PRO Intercept, asymmetrical steel toe, EH-resistant sole, PRO Flex grooved sole, steel puncture plate, injection-molded EVA midsole, breathable abrasion-resistant mesh upper, Microban treatment, cement construction, #TB0A5ZX3001"
   },
@@ -1889,17 +1897,8 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 130,
-    "img": "/wt/timberland-pro-women-s-intercept-steel-toe-steel-plate-athletic-safety-shoes-b68fe478-aff8-4c3d-8c41-6a1e1f2c14d7-jpgrendition.jpg",
-    "imgs": [
-      "/wt/timberland-pro-women-s-intercept-steel-toe-steel-plate-athletic-safety-shoes-b68fe478-aff8-4c3d-8c41-6a1e1f2c14d7-jpgrendition.jpg",
-      "/wt/wmns-timberland-pro-intercept-stsp-athletic-6f356dfe-e1da-4f9b-a1d4-6e3de91508bd-jpgrendition.jpg",
-      "/wt/wmns-timberland-pro-intercept-stsp-athletic-14d46fa3-2437-4a96-b2b3-439ba3310a61-jpgrendition.jpg",
-      "/wt/timberland-pro-women-s-intercept-steel-toe-steel-plate-athletic-safety-shoes-b230d6f1-a9d8-4a8f-9baa-fa076fd87d21-jpgrendition.jpg",
-      "/wt/timberland-pro-women-s-intercept-steel-toe-steel-plate-athletic-safety-shoes-b68fe478-aff8-4c3d-8c41-6a1e1f2c14d7-jpgrendition.jpg",
-      "/wt/timberland-pro-women-s-intercept-steel-toe-steel-plate-athletic-safety-shoes-70085dd2-4000-472e-843f-bc13171c6099-jpgrendition.jpg",
-      "/wt/timberland-pro-women-s-intercept-steel-toe-steel-plate-athletic-safety-shoes-3b772ca8-4e83-433e-9665-9c8948c7ff04-jpgrendition.jpg",
-      "/wt/timberland-pro-women-s-intercept-steel-toe-steel-plate-athletic-safety-shoes-d0c2b7d4-aa39-48ba-a6ea-3d04ab0baf50-jpgrendition.jpg"
-    ],
+    "img": "/skus/no-photo.png",
+    "imgs": [],
     "material": "",
     "details": "Timberland PRO Intercept on a women's last, asymmetrical steel toe, EH-resistant sole, PRO Flex grooved sole, steel puncture plate, injection-molded EVA midsole, breathable abrasion-resistant mesh upper, Microban treatment, cement construction, #TB0A632U001"
   },
@@ -1913,15 +1912,12 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 239.99,
-    "img": "/wt/51rWBTTt0aL._AC_SY575_.jpg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/51rWBTTt0aL._AC_SY575_.jpg",
-      "/wt/51o1mNIsLjL._AC_SY575_.jpg",
-      "/wt/image.png",
-      "/wt/size-guide-combo-adult-youth_1_.webp"
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "Blundstone 163, weatherproof leather upper fused to non-slip PU sole, CSA Green Patch steel toe, Kevlar shank, TPU outsole, removable cushioned footbed, slip-on, UK sizing, #Blundstone 163"
+    "details": "Blundstone 163, weatherproof leather upper fused to non-slip PU sole, CSA Green Patch steel toe, Kevlar shank, TPU outsole, removable cushioned footbed, slip-on, UK sizing, #163"
   },
   {
     "sku": "WT-81",
@@ -1933,16 +1929,12 @@ export const allProducts = [
       "#6b3f2a"
     ],
     "price": 239.99,
-    "img": "/wt/180_XX4-1.jpg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/180_XX4-1.jpg",
-      "/wt/180_XX2-1.jpg",
-      "/wt/180_XX4.jpg",
-      "/wt/image.png",
-      "/wt/size-guide-combo-adult-youth_1_.webp"
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "Blundstone 180, 6\" height, CSA Grade 1 toe cap, 2.5mm weatherproof breathable leather, dual-density PU midsole with TPU outsole, Lenzi puncture-resistant midsole, XRD footbed, heat/slip/oil/acid/EH-resistant sole, injection-molded, unisex, #Blundstone 180"
+    "details": "Blundstone 180, 6\" height, CSA Grade 1 toe cap, 2.5mm weatherproof breathable leather, dual-density PU midsole with TPU outsole, Lenzi puncture-resistant midsole, XRD footbed, heat/slip/oil/acid/EH-resistant sole, injection-molded, unisex, #180"
   },
   {
     "sku": "WT-82",
@@ -1954,15 +1946,12 @@ export const allProducts = [
       "#6b3f2a"
     ],
     "price": 259.95,
-    "img": "/wt/511bCsfA5JL._AC_SY575_.jpg",
+    "img": "/skus/no-photo.png",
     "imgs": [
-      "/wt/511bCsfA5JL._AC_SY575_.jpg",
-      "/wt/51sQ9p4MDtL._AC_SY575_.jpg",
-      "/wt/image.png",
-      "/wt/size-guide-combo-adult-youth_1_.webp"
+      "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "Blundstone XFR 962, CSA-approved, waxy rustic brown, steel toe with rubber toe guard, thick grippy rubber lug sole, arched impact-absorbing insole, Chelsea height, #Blundstone 962 XFR"
+    "details": "Blundstone XFR 962, CSA-approved, waxy rustic brown, steel toe with rubber toe guard, thick grippy rubber lug sole, arched impact-absorbing insole, Chelsea height, #962"
   }
 ];
 
@@ -1975,21 +1964,141 @@ export function badgeClass(badge: string) {
   return badge === "New" ? "product-card__badge product-card__badge--new" : "product-card__badge product-card__badge--popular";
 }
 
+// Colour names from the sm SKU manager (Wills' palette); the list below wins
+// where both name a colour.
+const smColorNames: Record<string, Record<string, string>> = {
+  "#262626": { en: "Black", fr: "Black" },
+  "#4a6a8a": { en: "French Blue", fr: "French Blue" },
+  "#1f2a44": { en: "Navy", fr: "Navy" },
+  "#FFFFFF": { en: "White", fr: "White" },
+  "#5e2231": { en: "Wine", fr: "Wine" },
+  "#5f5b5c": { en: "Castlerock/ White", fr: "Castlerock/ White" },
+  "#393e5d": { en: "Midnight Navy/ White", fr: "Midnight Navy/ White" },
+  "#d9dde0": { en: "Mod Grey Light Heather/ White", fr: "Mod Grey Light Heather/ White" },
+  "#c90a29": { en: "Red/ White", fr: "Red/ White" },
+  "#0a3ba4": { en: "Royal/ White", fr: "Royal/ White" },
+  "#53565f": { en: "CS Grey Light Heather/ White", fr: "CS Grey Light Heather/ White" },
+  "#372c56": { en: "Purple/ White", fr: "Purple/ White" },
+  "#f8f8f8": { en: "White/ Mod Grey", fr: "White/ Mod Grey" },
+  "#BBBCBC": { en: "Athletic Grey", fr: "Athletic Grey" },
+  "#545859": { en: "Charcoal Heather", fr: "Charcoal Heather" },
+  "#C8C9C7": { en: "Ash Grey", fr: "Ash Grey" },
+  "#B1B3B3": { en: "Athletic Heather", fr: "Athletic Heather" },
+  "#9E652E": { en: "Caramel", fr: "Caramel" },
+  "#18332F": { en: "Dark Green", fr: "Dark Green" },
+  "#4B4F54": { en: "Dark Heather Grey", fr: "Dark Heather Grey" },
+  "#041C2C": { en: "Dark Navy", fr: "Dark Navy" },
+  "#672E45": { en: "Maroon", fr: "Maroon" },
+  "#FA4616": { en: "Orange", fr: "Orange" },
+  "#4C4084": { en: "Purple", fr: "Purple" },
+  "#b02b2c": { en: "Red", fr: "Red" },
+  "#1C57A5": { en: "Royal", fr: "Royal" },
+  "#C6D219": { en: "^Safety Green", fr: "^Safety Green" },
+  "#E0457B": { en: "Sangria", fr: "Sangria" },
+  "#FFB81C": { en: "Team Gold", fr: "Team Gold" },
+  "#63666A": { en: "Coal Grey", fr: "Coal Grey" },
+  "#395542": { en: "Forest Green", fr: "Forest Green" },
+  "#00263A": { en: "True Navy", fr: "True Navy" },
+  "#BA0C2F": { en: "True Red", fr: "True Red" },
+  "#1D4F91": { en: "True Royal", fr: "True Royal" },
+  "#1a1a18": { en: "Black", fr: "Black" },
+  "#53565A": { en: "Charcoal", fr: "Charcoal" },
+  "#22403a": { en: "Forest", fr: "Forest" },
+  "#cdb99a": { en: "Sand", fr: "Sand" },
+  "#101820": { en: "Black Heather", fr: "Black Heather" },
+  "#333F48": { en: "Graphite", fr: "Graphite" },
+  "#006298": { en: "Imperial Blue", fr: "Imperial Blue" },
+  "#00263E": { en: "Midnight Blue", fr: "Midnight Blue" },
+  "#3B4559": { en: "Navy Heather", fr: "Navy Heather" },
+  "#6c6f70": { en: "Heather Charcoal", fr: "Heather Charcoal" },
+  "#001c54": { en: "Vintage Navy", fr: "Vintage Navy" },
+  "#333333": { en: "Charcoal", fr: "Charcoal" },
+  "#5a5a5a": { en: "Grey", fr: "Grey" },
+  "#1b2a41": { en: "Navy", fr: "Navy" },
+  "#ffffff": { en: "White", fr: "White" },
+  "#43403d": { en: "Black/Grey", fr: "Black/Grey" },
+  "#676d76": { en: "Classic Navy/White", fr: "Classic Navy/White" },
+  "#a7a7a7": { en: "Grey/White", fr: "Grey/White" },
+  "#8c2633": { en: "Cardinal", fr: "Cardinal" },
+  "#5F8FB4": { en: "Carolina Blue", fr: "Carolina Blue" },
+  "#0047ab": { en: "Cobalt", fr: "Cobalt" },
+  "#3f4247": { en: "Dark Heather", fr: "Dark Heather" },
+  "#4b5320": { en: "Military Green", fr: "Military Green" },
+  "#9caf88": { en: "Sage", fr: "Sage" },
+  "#9fa1a4": { en: "Sport Grey", fr: "Sport Grey" },
+  "#5a7a8a": { en: "Stone Blue", fr: "Stone Blue" },
+  "#373534": { en: "Black Smoke Heather", fr: "Black Smoke Heather" },
+  "#a4a9ad": { en: "Light Heather Grey", fr: "Light Heather Grey" },
+  "#57582c": { en: "Loden Heather", fr: "Loden Heather" },
+  "#601d2e": { en: "Maroon Heather", fr: "Maroon Heather" },
+  "#1c457b": { en: "Metro Blue Heather", fr: "Metro Blue Heather" },
+  "#53565a": { en: "Carbon", fr: "Carbon" },
+  "#22304a": { en: "Classic Navy", fr: "Classic Navy" },
+  "#4C9FC8": { en: "Aquatic Blue", fr: "Aquatic Blue" },
+  "#008C95": { en: "Bright Aqua", fr: "Bright Aqua" },
+  "#FFB500": { en: "Gold", fr: "Gold" },
+  "#5576D1": { en: "Heather Royal", fr: "Heather Royal" },
+  "#FF8F6C": { en: "Neon Orange Heather", fr: "Neon Orange Heather" },
+  "#F8A3BC": { en: "Candy Pink", fr: "Candy Pink" },
+  "#00965E": { en: "Kelly", fr: "Kelly" },
+  "#5e2331": { en: "Burgundy", fr: "Burgundy" },
+  "#446093": { en: "Blue", fr: "Blue" },
+  "#382246": { en: "Dark Plum", fr: "Dark Plum" },
+  "#baa48c": { en: "Desert Khaki", fr: "Desert Khaki" },
+  "#b5d5f0": { en: "Frost Blue", fr: "Frost Blue" },
+  "#a1a8b0": { en: "Grey", fr: "Grey" },
+  "#5e5c60": { en: "Grey Storm", fr: "Grey Storm" },
+  "#bc2c3a": { en: "Team Red", fr: "Team Red" },
+  "#8a8a8a": { en: "Grey", fr: "Grey" },
+  "#4a4a4a": { en: "Charcoal", fr: "Charcoal" },
+  "#55585b": { en: "Heather Dark Charcoal", fr: "Heather Dark Charcoal" },
+  "#9a9b9d": { en: "Heather Grey", fr: "Heather Grey" },
+  "#2c3e50": { en: "Navy", fr: "Navy" },
+  "#c0392b": { en: "Red", fr: "Red" },
+  "#1e40af": { en: "Blue", fr: "Blue" },
+  "#383838": { en: "Charcoal", fr: "Charcoal" },
+  "#2b2b2b": { en: "Charcoal", fr: "Charcoal" },
+  "#3f3f3f": { en: "Charcoal", fr: "Charcoal" },
+  "#585858": { en: "Grey", fr: "Grey" },
+  "#6b3fa0": { en: "Purple", fr: "Purple" },
+  "#9b9b9b": { en: "Grey", fr: "Grey" },
+  "#b8ad97": { en: "Khaki", fr: "Khaki" },
+  "#e8863b": { en: "Orange", fr: "Orange" },
+  "#153a81": { en: "New Royal", fr: "New Royal" },
+  "#7f8684": { en: "Steel Grey", fr: "Steel Grey" },
+  "#0e347b": { en: "Royal Blue", fr: "Royal Blue" },
+  "#b6e021": { en: "^Safety Green", fr: "^Safety Green" },
+  "#a0a0a0": { en: "Grey", fr: "Grey" },
+  "#5a2733": { en: "Maroon", fr: "Maroon" },
+  "#ff6a13": { en: "Orange", fr: "Orange" },
+  "#b3cde8": { en: "Light Blue", fr: "Light Blue" },
+};
 const colorNames: Record<string, Record<string, string>> = {
+  ...smColorNames,
   "#00703c": { en: "Green", fr: "Vert" },
   "#1a1a18": { en: "Black", fr: "Noir" },
   "#ffffff": { en: "White", fr: "Blanc" },
   "#2c3e50": { en: "Navy", fr: "Marine" },
   "#6e6e6e": { en: "Grey", fr: "Gris" },
+  "#a1a8b0": { en: "Grey", fr: "Gris" }, // towel grey (matches the SM blank swatch)
   "#ff6600": { en: "Safety Orange", fr: "Orange sécurité" },
   "#94a3b8": { en: "Silver", fr: "Argent" },
   "#4a4a4a": { en: "Charcoal", fr: "Charbon" },
   "#6b8bb0": { en: "Solace Blue", fr: "Bleu Solace" },
+  "#517fa4": { en: "Copen Blue", fr: "Bleu Copen" },
+  "#c9c7c8": { en: "Heather Microchip", fr: "Microchip chiné" },
+  "#47536b": { en: "Indigo", fr: "Indigo" },
+  "#ca7988": { en: "Red", fr: "Rouge" },
+  "#758073": { en: "Balsam Green", fr: "Vert Balsam" },
+  "#2a3a49": { en: "Total Eclipse", fr: "Éclipse totale" },
+  "#baa591": { en: "Roasted Cashew", fr: "Cajou torréfié" },
+  "#9caf88": { en: "Green Bay", fr: "Green Bay" },
+  "#3b4657": { en: "Heather Navy", fr: "Marine chiné" },
   "#7dd3fc": { en: "Light Blue", fr: "Bleu clair" },
   "#b8b8b8": { en: "Grey Heather", fr: "Gris chiné" },
   "#6b3fa0": { en: "Purple", fr: "Violet" },
   "#c0392b": { en: "Red", fr: "Rouge" },
-  "#1e40af": { en: "Royal", fr: "Bleu royal" },
+  "#1e40af": { en: "Blue", fr: "Bleu" }, // UA polos royal -> shown as Blue (image files still "royal")
   "#8a5d3b": { en: "Carhartt Brown", fr: "Brun Carhartt" },
   "#00b5e2": { en: "Sky Blue", fr: "Bleu ciel" },
   "#0047ab": { en: "Cobalt", fr: "Cobalt" },
@@ -2005,6 +2114,7 @@ const colorNames: Record<string, Record<string, string>> = {
   "#3a3a3a": { en: "Charcoal", fr: "Charbon" },
   "#3a5bbf": { en: "Royal Blue", fr: "Bleu royal" },
   "#3a8fb7": { en: "Blue", fr: "Bleu" },
+  "#3758a9": { en: "Blue", fr: "Bleu" },
   "#3d4a63": { en: "Slate Blue", fr: "Bleu ardoise" },
   "#3f3f3f": { en: "Charcoal", fr: "Charbon" },
   "#4a2545": { en: "Plum", fr: "Prune" },
@@ -2041,6 +2151,7 @@ const colorNames: Record<string, Record<string, string>> = {
   "#b0b0b0": { en: "Grey", fr: "Gris" },
   "#b6e021": { en: "Safety Green", fr: "Vert sécurité" },
   "#b8ad97": { en: "Khaki", fr: "Kaki" },
+  "#ab8f66": { en: "Dark Khaki", fr: "Kaki foncé" },
   "#b98b8b": { en: "Rose", fr: "Rose" },
   "#bf5700": { en: "Burnt Orange", fr: "Orange brûlé" },
   "#c2a878": { en: "Tan", fr: "Beige" },
@@ -2053,6 +2164,7 @@ const colorNames: Record<string, Record<string, string>> = {
   "#e8863b": { en: "Orange", fr: "Orange" },
   "#f2efe6": { en: "Natural", fr: "Naturel" },
   "#ff6a13": { en: "Orange", fr: "Orange" },
+
 };
 export function colorName(hex: string, locale: Locale): string {
   return colorNames[hex]?.[locale] || hex;
