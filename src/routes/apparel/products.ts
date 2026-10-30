@@ -26,7 +26,8 @@ export const allProducts = [
       "/skus/M500S-wine.png"
     ],
     "material": "",
-    "details": "55% cotton / 45% polyester twill (4.5 oz), wrinkle-resistant and stain-release finish, button-down collar, left chest pocket, flat-felled seams, signature horn buttons, carbon-neutral (Green Story verified), S&S, #M500S"
+    "details": "55% cotton / 45% polyester twill (4.5 oz), wrinkle-resistant and stain-release finish, button-down collar, left chest pocket, flat-felled seams, signature horn buttons, carbon-neutral (Green Story verified), S&S, #M500S",
+    "garmentBrand": "Harriton"
   },
   {
     "sku": "WT-2",
@@ -53,7 +54,8 @@ export const allProducts = [
       "/skus/1376862-royalwhite.png"
     ],
     "material": "",
-    "details": "100% recycled polyester (4.7 oz), moisture-wicking, anti-odor, generous half-zip front for easy layering, #1376862"
+    "details": "100% recycled polyester (4.7 oz), moisture-wicking, anti-odor, generous half-zip front for easy layering, #1376862",
+    "garmentBrand": "Under Armour"
   },
   {
     "sku": "WT-3",
@@ -82,7 +84,8 @@ export const allProducts = [
       "/skus/1370431-whitemodgrey.png"
     ],
     "material": "",
-    "details": "100% polyester (5.3 oz), moisture-wicking, anti-odor, soft light breathable textured fabric, self-fabric collar, four-button placket, #1370431"
+    "details": "100% polyester (5.3 oz), moisture-wicking, anti-odor, soft light breathable textured fabric, self-fabric collar, four-button placket, #1370431",
+    "garmentBrand": "Under Armour"
   },
   {
     "sku": "WT-4",
@@ -103,7 +106,8 @@ export const allProducts = [
       "/skus/L2018-charcoalheather.png"
     ],
     "material": "",
-    "details": "75/25 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined scuba hood with contrast drawstring, thumbhole cuffs, YKK zipper, tear-away label, classic fit, #L2018"
+    "details": "75/25 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined scuba hood with contrast drawstring, thumbhole cuffs, YKK zipper, tear-away label, classic fit, #L2018",
+    "garmentBrand": "ATC"
   },
   {
     "sku": "WT-5",
@@ -150,7 +154,8 @@ export const allProducts = [
       "/skus/ATC1015-white.png"
     ],
     "material": "",
-    "details": "100% cotton (9.1 oz), compacted yarns to reduce shrinkage, taped neck and shoulders, 1x1 rib collar and cuffs, double-needle hems, tear-away label, OEKO-TEX Standard 100, classic fit, #ATC1015"
+    "details": "100% cotton (9.1 oz), compacted yarns to reduce shrinkage, taped neck and shoulders, 1x1 rib collar and cuffs, double-needle hems, tear-away label, OEKO-TEX Standard 100, classic fit, #ATC1015",
+    "garmentBrand": "ATC"
   },
   {
     "sku": "WT-6",
@@ -177,7 +182,8 @@ export const allProducts = [
       "/skus/UA1376844-royalwhite.png"
     ],
     "material": "",
-    "details": "100% recycled polyester (4.7 oz), moisture-wicking, anti-odor, quarter-zip front for easy layering, #UA1376844"
+    "details": "100% recycled polyester (4.7 oz), moisture-wicking, anti-odor, quarter-zip front for easy layering, #UA1376844",
+    "garmentBrand": "Under Armour"
   },
   {
     "sku": "WT-7",
@@ -212,7 +218,8 @@ export const allProducts = [
       "/skus/ATC3700L-white.png"
     ],
     "material": "",
-    "details": "100% performance polyester interlock (6.4 oz) with wicking, No-Bleed Fabric for easy printing, taped neck, side-seamed, double-needle hems, breathable and snag-resistant, contoured fit, #ATC3700L"
+    "details": "100% performance polyester interlock (6.4 oz) with wicking, No-Bleed Fabric for easy printing, taped neck, side-seamed, double-needle hems, breathable and snag-resistant, contoured fit, #ATC3700L",
+    "garmentBrand": "ATC"
   },
   {
     "sku": "WT-8",
@@ -247,7 +254,8 @@ export const allProducts = [
       "/skus/ATC3700-white.png"
     ],
     "material": "",
-    "details": "100% performance polyester interlock (6.4 oz) with wicking, No-Bleed Fabric for easy printing, taped neck, side-seamed, double-needle hems, breathable and snag-resistant, classic fit, #ATC3700"
+    "details": "100% performance polyester interlock (6.4 oz) with wicking, No-Bleed Fabric for easy printing, taped neck, side-seamed, double-needle hems, breathable and snag-resistant, classic fit, #ATC3700",
+    "garmentBrand": "ATC"
   },
   {
     "sku": "WT-9",
@@ -266,7 +274,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "Shell: 50D WindWall recycled polyester with non-PFC DWR finish; 550-fill goose down body with 200g Heatseeker Eco insulation at collar and yokes, stand collar, centre-front zip with inner storm flap and chin guard, zippered chest and hand pockets, The North Face logo, modern fit, #NF0A7V4F"
+    "details": "Shell: 50D WindWall recycled polyester with non-PFC DWR finish; 550-fill goose down body with 200g Heatseeker Eco insulation at collar and yokes, stand collar, centre-front zip with inner storm flap and chin guard, zippered chest and hand pockets, The North Face logo, modern fit, #NF0A7V4F",
+    "garmentBrand": "The North Face"
   },
   {
     "sku": "WT-10",
@@ -285,7 +294,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "Shell: 50D WindWall recycled polyester with non-PFC DWR finish; 550-fill goose down body with 200g Heatseeker Eco insulation at collar and yokes, stand collar, centre-front zip with inner storm flap and chin guard, zippered hand pockets, elastic cuff gussets, The North Face logo, modern fit, #NF0A7V4G"
+    "details": "Shell: 50D WindWall recycled polyester with non-PFC DWR finish; 550-fill goose down body with 200g Heatseeker Eco insulation at collar and yokes, stand collar, centre-front zip with inner storm flap and chin guard, zippered hand pockets, elastic cuff gussets, The North Face logo, modern fit, #NF0A7V4G",
+    "garmentBrand": "The North Face"
   },
   {
     "sku": "WT-11",
@@ -316,7 +326,8 @@ export const allProducts = [
       "/skus/L00570-sand.jpg"
     ],
     "material": "",
-    "details": "70/30 combed ring-spun cotton/polyester 3-ply fleece (280 gsm), 100% cotton print face, rib-knit cuffs and hem with spandex, side-seam pockets, metal YKK zip, tear-away label, #L00570"
+    "details": "70/30 combed ring-spun cotton/polyester 3-ply fleece (280 gsm), 100% cotton print face, rib-knit cuffs and hem with spandex, side-seam pockets, metal YKK zip, tear-away label, #L00570",
+    "garmentBrand": "Canada Sportswear"
   },
   {
     "sku": "WT-12",
@@ -345,7 +356,8 @@ export const allProducts = [
       "/skus/L7603-pearlgreyheather.png"
     ],
     "material": "",
-    "details": "100% polyester mechanical-stretch bonded to micro-fleece (13.5 oz), 1000mm waterproof/breathable, water-repellent and wind-resistant, inner storm flap with chin guard, anti-pill, YKK zippers, classic fit, #L7603"
+    "details": "100% polyester mechanical-stretch bonded to micro-fleece (13.5 oz), 1000mm waterproof/breathable, water-repellent and wind-resistant, inner storm flap with chin guard, anti-pill, YKK zippers, classic fit, #L7603",
+    "garmentBrand": "Coal Harbour"
   },
   {
     "sku": "WT-13",
@@ -374,7 +386,8 @@ export const allProducts = [
       "/skus/j7603-pearlgreyheather.png"
     ],
     "material": "",
-    "details": "100% polyester mechanical-stretch bonded to micro-fleece (13.5 oz), 1000mm waterproof/breathable, water-repellent and wind-resistant, inner storm flap with chin guard, anti-pill, YKK zippers, classic fit, #J7603"
+    "details": "100% polyester mechanical-stretch bonded to micro-fleece (13.5 oz), 1000mm waterproof/breathable, water-repellent and wind-resistant, inner storm flap with chin guard, anti-pill, YKK zippers, classic fit, #J7603",
+    "garmentBrand": "Coal Harbour"
   },
   {
     "sku": "WT-14",
@@ -395,7 +408,8 @@ export const allProducts = [
       "/skus/18140-vintagenavy.png"
     ],
     "material": "",
-    "details": "50/50 recycled polyester/polyester french terry knit (209 gsm / 6.2 oz), #18140"
+    "details": "50/50 recycled polyester/polyester french terry knit (209 gsm / 6.2 oz), #18140",
+    "garmentBrand": "Trimark"
   },
   {
     "sku": "WT-15",
@@ -416,7 +430,8 @@ export const allProducts = [
       "/skus/98140-vintagenavy.png"
     ],
     "material": "",
-    "details": "50/50 recycled polyester/polyester french terry knit (209 gsm / 6.2 oz), #98140"
+    "details": "50/50 recycled polyester/polyester french terry knit (209 gsm / 6.2 oz), #98140",
+    "garmentBrand": "Trimark"
   },
   {
     "sku": "WT-16",
@@ -441,7 +456,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "80/20 cotton/polyester (13.8 oz), zip-through collar with dyed-to-match zipper, taped neck, set-in sleeves, side pockets, rib-knit cuffs and waistband, embroidered Swoosh on left sleeve, classic fit, #NKD6718"
+    "details": "80/20 cotton/polyester (13.8 oz), zip-through collar with dyed-to-match zipper, taped neck, set-in sleeves, side pockets, rib-knit cuffs and waistband, embroidered Swoosh on left sleeve, classic fit, #NKD6718",
+    "garmentBrand": "Nike"
   },
   {
     "sku": "WT-17",
@@ -462,7 +478,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "80/20 cotton/polyester (13.8 oz), zip-through collar with dyed-to-match zipper, taped neck, set-in sleeves, front pouch pocket, rib-knit cuffs and waistband, embroidered Swoosh on left sleeve, classic fit, #NKD6720"
+    "details": "80/20 cotton/polyester (13.8 oz), zip-through collar with dyed-to-match zipper, taped neck, set-in sleeves, front pouch pocket, rib-knit cuffs and waistband, embroidered Swoosh on left sleeve, classic fit, #NKD6720",
+    "garmentBrand": "Nike"
   },
   {
     "sku": "WT-18",
@@ -491,7 +508,8 @@ export const allProducts = [
       "/skus/1370399-whitemodgrey.png"
     ],
     "material": "",
-    "details": "Moisture-management properties, anti-odor technology, textured fabric that's soft, light and breathable, self-fabric collar, three-button placket, #1370399"
+    "details": "Moisture-management properties, anti-odor technology, textured fabric that's soft, light and breathable, self-fabric collar, three-button placket, #1370399",
+    "garmentBrand": "Under Armour"
   },
   {
     "sku": "WT-19",
@@ -510,7 +528,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "60/40 cotton/polyester shell, 250g MTR fleece lining, 100g Microtemp XF II recycled insulation, Omni-Shield water- and stain-repellent, chest pocket, interior security pocket, zippered hand pockets, adjustable cuffs, regular fit, #2088551"
+    "details": "60/40 cotton/polyester shell, 250g MTR fleece lining, 100g Microtemp XF II recycled insulation, Omni-Shield water- and stain-repellent, chest pocket, interior security pocket, zippered hand pockets, adjustable cuffs, regular fit, #2088551",
+    "garmentBrand": "Columbia"
   },
   {
     "sku": "WT-20",
@@ -531,7 +550,8 @@ export const allProducts = [
       "/skus/NE730W-greywhite.png"
     ],
     "material": "",
-    "details": "100% recycled polyester two-tone jacquard fleece (310 gsm / 9 oz), contrast coverstitching and binding at collar, cuffs and hem, reverse-coil centre-front and pocket zips, zippered sleeve pocket, active fit, #NE730W"
+    "details": "100% recycled polyester two-tone jacquard fleece (310 gsm / 9 oz), contrast coverstitching and binding at collar, cuffs and hem, reverse-coil centre-front and pocket zips, zippered sleeve pocket, active fit, #NE730W",
+    "garmentBrand": "North End"
   },
   {
     "sku": "WT-21",
@@ -552,7 +572,8 @@ export const allProducts = [
       "/skus/NE730-greywhite.png"
     ],
     "material": "",
-    "details": "100% recycled polyester two-tone jacquard fleece (310 gsm / 9 oz), contrast coverstitching and binding at collar and cuffs, reverse-coil centre-front and pocket zips, zippered sleeve pocket, active fit, #NE730"
+    "details": "100% recycled polyester two-tone jacquard fleece (310 gsm / 9 oz), contrast coverstitching and binding at collar and cuffs, reverse-coil centre-front and pocket zips, zippered sleeve pocket, active fit, #NE730",
+    "garmentBrand": "North End"
   },
   {
     "sku": "WT-22",
@@ -573,7 +594,8 @@ export const allProducts = [
       "/skus/DG445W-navy.png"
     ],
     "material": "",
-    "details": "60/40 BCI cotton/recycled polyester, 12-gauge knit (245 gsm / 7 oz), 1x1 rib at collar, cuffs and hem, Better Cotton Initiative sourced, active fit, #DG445W"
+    "details": "60/40 BCI cotton/recycled polyester, 12-gauge knit (245 gsm / 7 oz), 1x1 rib at collar, cuffs and hem, Better Cotton Initiative sourced, active fit, #DG445W",
+    "garmentBrand": "Devon & Jones"
   },
   {
     "sku": "WT-23",
@@ -594,7 +616,8 @@ export const allProducts = [
       "/skus/DG445-navy.png"
     ],
     "material": "",
-    "details": "60/40 BCI cotton/recycled polyester, 12-gauge knit (245 gsm / 7 oz), 1x1 rib at collar, cuffs and hem, Better Cotton Initiative sourced, active fit, #DG445"
+    "details": "60/40 BCI cotton/recycled polyester, 12-gauge knit (245 gsm / 7 oz), 1x1 rib at collar, cuffs and hem, Better Cotton Initiative sourced, active fit, #DG445",
+    "garmentBrand": "Devon & Jones"
   },
   {
     "sku": "WT-24",
@@ -641,7 +664,8 @@ export const allProducts = [
       "/skus/SF500-white.png"
     ],
     "material": "",
-    "details": "80/20 ring-spun cotton/polyester 2-end face fleece (8.4 oz), jersey-lined hood with flat drawcords, 1x1 spandex rib cuffs and band, dropped shoulder, double-needle topstitching, tear-away label, classic fit, #SF500"
+    "details": "80/20 ring-spun cotton/polyester 2-end face fleece (8.4 oz), jersey-lined hood with flat drawcords, 1x1 spandex rib cuffs and band, dropped shoulder, double-needle topstitching, tear-away label, classic fit, #SF500",
+    "garmentBrand": "Gildan"
   },
   {
     "sku": "WT-25",
@@ -668,7 +692,8 @@ export const allProducts = [
       "/skus/18610-metroblueheather.png"
     ],
     "material": "",
-    "details": "100% polyester sweater knit with brushed back (305 gsm / 9 oz), brushed tricot lining, thumb exits, two lower pockets, chest pocket, earbud-cord port, #18610"
+    "details": "100% polyester sweater knit with brushed back (305 gsm / 9 oz), brushed tricot lining, thumb exits, two lower pockets, chest pocket, earbud-cord port, #18610",
+    "garmentBrand": "Trimark"
   },
   {
     "sku": "WT-26",
@@ -691,7 +716,8 @@ export const allProducts = [
       "/skus/88193-white.jpg"
     ],
     "material": "",
-    "details": "55/45 cotton/polyester twill (4.4 oz / 150 gsm), UV protection, button-down collar, flat-felled seams, adjustable cuffs, left chest pocket, back yoke with box pleat, #88193"
+    "details": "55/45 cotton/polyester twill (4.4 oz / 150 gsm), UV protection, button-down collar, flat-felled seams, adjustable cuffs, left chest pocket, back yoke with box pleat, #88193",
+    "garmentBrand": "Core 365"
   },
   {
     "sku": "WT-27",
@@ -738,7 +764,8 @@ export const allProducts = [
       "/skus/ATC1000-white.png"
     ],
     "material": "",
-    "details": "100% cotton (9.1 oz), compacted yarns to reduce shrinkage, taped neck and shoulders, tear-away label, classic fit, #ATC1000"
+    "details": "100% cotton (9.1 oz), compacted yarns to reduce shrinkage, taped neck and shoulders, tear-away label, classic fit, #ATC1000",
+    "garmentBrand": "ATC"
   },
   {
     "sku": "WT-28",
@@ -785,7 +812,8 @@ export const allProducts = [
       "/skus/ATC1000L-white.png"
     ],
     "material": "",
-    "details": "100% cotton (9.1 oz), compacted yarns to reduce shrinkage, taped neck and shoulders, side-seamed, tear-away label, contoured fit, #ATC1000L"
+    "details": "100% cotton (9.1 oz), compacted yarns to reduce shrinkage, taped neck and shoulders, side-seamed, tear-away label, contoured fit, #ATC1000L",
+    "garmentBrand": "ATC"
   },
   {
     "sku": "WT-29",
@@ -818,7 +846,8 @@ export const allProducts = [
       "/skus/DG20W-white.png"
     ],
     "material": "",
-    "details": "5 oz / 172 gsm dual-sided mesh pique, 100% polyester face plaited to 60/40 poly/cotton back, moisture-wicking with UPF 15-39, flat-knit collar, open placket, curved back yoke with centre pleat, #DG20W"
+    "details": "5 oz / 172 gsm dual-sided mesh pique, 100% polyester face plaited to 60/40 poly/cotton back, moisture-wicking with UPF 15-39, flat-knit collar, open placket, curved back yoke with centre pleat, #DG20W",
+    "garmentBrand": "Devon & Jones"
   },
   {
     "sku": "WT-30",
@@ -857,7 +886,8 @@ export const allProducts = [
       "/skus/17745-white.png"
     ],
     "material": "",
-    "details": "Woven twill, button-down collar, upper patch pocket (left chest), center-back box pleat, back yoke, flat-felled seams, contrast inner yoke, EZ-Care fabric, designed for heavy wear, #17745"
+    "details": "Woven twill, button-down collar, upper patch pocket (left chest), center-back box pleat, back yoke, flat-felled seams, contrast inner yoke, EZ-Care fabric, designed for heavy wear, #17745",
+    "garmentBrand": "Trimark"
   },
   {
     "sku": "WT-31",
@@ -896,7 +926,8 @@ export const allProducts = [
       "/skus/97744-white.png"
     ],
     "material": "",
-    "details": "Woven twill, button-down collar, upper patch pocket, adjustable one-button cuffs with single pleats, centre-back box pleat, back yoke, flat-felled seams, contrast inner yoke, dyed-to-match buttons, #97744"
+    "details": "Woven twill, button-down collar, upper patch pocket, adjustable one-button cuffs with single pleats, centre-back box pleat, back yoke, flat-felled seams, contrast inner yoke, dyed-to-match buttons, #97744",
+    "garmentBrand": "Trimark"
   },
   {
     "sku": "WT-32",
@@ -935,7 +966,8 @@ export const allProducts = [
       "/skus/97745-white.png"
     ],
     "material": "",
-    "details": "Woven twill, shirt collar, centre-front button placket, dyed-to-match buttons, contrast inner yoke, flat-felled seams, shaped seams and tapered waist, back yoke, #97745"
+    "details": "Woven twill, shirt collar, centre-front button placket, dyed-to-match buttons, contrast inner yoke, flat-felled seams, shaped seams and tapered waist, back yoke, #97745",
+    "garmentBrand": "Trimark"
   },
   {
     "sku": "WT-33",
@@ -974,7 +1006,8 @@ export const allProducts = [
       "/skus/17744-white.png"
     ],
     "material": "",
-    "details": "Woven twill, button-down collar, left chest pocket, adjustable one-button cuffs with single pleats, center-back box pleat, back yoke, flat-felled seams, contrast inner yoke, EZ-Care fabric, #17744"
+    "details": "Woven twill, button-down collar, left chest pocket, adjustable one-button cuffs with single pleats, center-back box pleat, back yoke, flat-felled seams, contrast inner yoke, EZ-Care fabric, #17744",
+    "garmentBrand": "Trimark"
   },
   {
     "sku": "WT-34",
@@ -993,7 +1026,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "Low-profile six-panel structured cap, lightweight brushed cotton twill, two-piece hook-and-loop fabric strap, one size, #i5000"
+    "details": "Low-profile six-panel structured cap, lightweight brushed cotton twill, two-piece hook-and-loop fabric strap, one size, #i5000",
+    "garmentBrand": "Other"
   },
   {
     "sku": "WT-35",
@@ -1004,9 +1038,12 @@ export const allProducts = [
     "colors": [],
     "price": 15,
     "img": "/skus/no-photo.png",
-    "imgs": [],
+    "imgs": [
+      "/skus/no-photo.png"
+    ],
     "material": "",
-    "details": "100% acrylic knit toque, one size, #C105"
+    "details": "100% acrylic knit toque, one size, #C105",
+    "garmentBrand": "Other"
   },
   {
     "sku": "WT-36",
@@ -1017,9 +1054,12 @@ export const allProducts = [
     "colors": [],
     "price": 74.99,
     "img": "/skus/no-photo.png",
-    "imgs": [],
+    "imgs": [
+      "/skus/no-photo.png"
+    ],
     "material": "",
-    "details": "98/2 cotton/spandex flex twill with stain-repellent finish, 360° stretch waist, fly front, 5-pocket upper, two cargo pockets with bellows, pencil pocket, reinforced pockets and trim, gusset crotch, riveted stress points, triple-stitched, #WP10"
+    "details": "98/2 cotton/spandex flex twill with stain-repellent finish, 360° stretch waist, fly front, 5-pocket upper, two cargo pockets with bellows, pencil pocket, reinforced pockets and trim, gusset crotch, riveted stress points, triple-stitched, #WP10",
+    "garmentBrand": "Tough Duck"
   },
   {
     "sku": "WT-37",
@@ -1038,7 +1078,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "100% knit cuff toque, one size, #C100"
+    "details": "100% knit cuff toque, one size, #C100",
+    "garmentBrand": "Other"
   },
   {
     "sku": "WT-38",
@@ -1049,9 +1090,12 @@ export const allProducts = [
     "colors": [],
     "price": 74.99,
     "img": "/skus/no-photo.png",
-    "imgs": [],
+    "imgs": [
+      "/skus/no-photo.png"
+    ],
     "material": "",
-    "details": "98/2 cotton/spandex flex twill with stain-repellent finish (9.5 oz), fly front, 5-pocket upper, two cargo pockets with bellows, pencil pocket, reinforced pockets and trim, seven belt loops, gusset crotch, rivets and bartacks at stress points, triple-stitched, #6010"
+    "details": "98/2 cotton/spandex flex twill with stain-repellent finish (9.5 oz), fly front, 5-pocket upper, two cargo pockets with bellows, pencil pocket, reinforced pockets and trim, seven belt loops, gusset crotch, rivets and bartacks at stress points, triple-stitched, #6010",
+    "garmentBrand": "Tough Duck"
   },
   {
     "sku": "WT-39",
@@ -1074,7 +1118,8 @@ export const allProducts = [
       "/skus/18157-vintagenavy.png"
     ],
     "material": "",
-    "details": "53/47 cotton/recycled-polyester textured doubleknit (225 gsm / 7.5 oz), GRS-certified and bluesign-approved, breathable, moisture-wicking, UPF 40+, anti-pill, self-fabric waistband and cuffs, full-zip, #18157"
+    "details": "53/47 cotton/recycled-polyester textured doubleknit (225 gsm / 7.5 oz), GRS-certified and bluesign-approved, breathable, moisture-wicking, UPF 40+, anti-pill, self-fabric waistband and cuffs, full-zip, #18157",
+    "garmentBrand": "Trimark"
   },
   {
     "sku": "WT-40",
@@ -1107,7 +1152,8 @@ export const allProducts = [
       "/skus/DG20-white.png"
     ],
     "material": "",
-    "details": "5 oz / 172 gsm dual-sided mesh pique, 100% polyester face plaited to 60/40 poly/cotton back, moisture-wicking with UPF 15-39, flat-knit collar, three-button placket with dyed-to-match buttons, #DG20"
+    "details": "5 oz / 172 gsm dual-sided mesh pique, 100% polyester face plaited to 60/40 poly/cotton back, moisture-wicking with UPF 15-39, flat-knit collar, three-button placket with dyed-to-match buttons, #DG20",
+    "garmentBrand": "Devon & Jones"
   },
   {
     "sku": "WT-41",
@@ -1132,7 +1178,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "100% Dri-FIT polyester (8.8 oz) with moisture management, rib-knit collar, three-button placket, tagless, breathable, #203690"
+    "details": "100% Dri-FIT polyester (8.8 oz) with moisture management, rib-knit collar, three-button placket, tagless, breathable, #203690",
+    "garmentBrand": "Nike"
   },
   {
     "sku": "WT-42",
@@ -1155,7 +1202,8 @@ export const allProducts = [
       "/skus/88194-white.jpg"
     ],
     "material": "",
-    "details": "55/45 cotton/polyester twill (4.4 oz / 150 gsm), UV protection, button-down collar, flat-felled seams, left chest pocket, back yoke with box pleat, #88194"
+    "details": "55/45 cotton/polyester twill (4.4 oz / 150 gsm), UV protection, button-down collar, flat-felled seams, left chest pocket, back yoke with box pleat, #88194",
+    "garmentBrand": "Core 365"
   },
   {
     "sku": "WT-43",
@@ -1178,7 +1226,8 @@ export const allProducts = [
       "/skus/98157-vintagenavy.png"
     ],
     "material": "",
-    "details": "53/47 cotton/recycled-polyester textured doubleknit (225 gsm / 6.6 oz), GRS-certified and bluesign-approved, breathable, moisture-wicking, UPF 40+, anti-pill, self-fabric cuffs, pleated back, stand collar, shaped seams, full-zip, #98157"
+    "details": "53/47 cotton/recycled-polyester textured doubleknit (225 gsm / 6.6 oz), GRS-certified and bluesign-approved, breathable, moisture-wicking, UPF 40+, anti-pill, self-fabric cuffs, pleated back, stand collar, shaped seams, full-zip, #98157",
+    "garmentBrand": "Trimark"
   },
   {
     "sku": "WT-44",
@@ -1197,7 +1246,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "60/40 cotton/polyester interlock (240 gsm / 7 oz), open cardigan with modified shawl collar, side inset pockets, #DG481W"
+    "details": "60/40 cotton/polyester interlock (240 gsm / 7 oz), open cardigan with modified shawl collar, side inset pockets, #DG481W",
+    "garmentBrand": "Devon & Jones"
   },
   {
     "sku": "WT-45",
@@ -1216,7 +1266,8 @@ export const allProducts = [
       "/skus/98158-heatherdarkcharcoal.png"
     ],
     "material": "",
-    "details": "53/47 cotton/recycled-polyester textured doubleknit (225 gsm / 6.6 oz), GRS-certified and bluesign-approved, moisture-wicking, anti-pill, self-fabric collar and cuffs, lower patch pockets, pleated back, shirttail hem with side slits, dyed-to-match buttons, #98158"
+    "details": "53/47 cotton/recycled-polyester textured doubleknit (225 gsm / 6.6 oz), GRS-certified and bluesign-approved, moisture-wicking, anti-pill, self-fabric collar and cuffs, lower patch pockets, pleated back, shirttail hem with side slits, dyed-to-match buttons, #98158",
+    "garmentBrand": "Trimark"
   },
   {
     "sku": "WT-46",
@@ -1237,7 +1288,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined scuba hood with contrast drawstring, thumbhole cuffs, tear-away label, classic fit, #F2045"
+    "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined scuba hood with contrast drawstring, thumbhole cuffs, tear-away label, classic fit, #F2045",
+    "garmentBrand": "ATC"
   },
   {
     "sku": "WT-47",
@@ -1264,7 +1316,8 @@ export const allProducts = [
       "/skus/98610-metroblueheather.png"
     ],
     "material": "",
-    "details": "100% polyester sweater knit with brushed back (305 gsm / 9 oz), brushed tricot lining, thumb exits, two lower pockets, chest pocket, earbud-cord port, #98610"
+    "details": "100% polyester sweater knit with brushed back (305 gsm / 9 oz), brushed tricot lining, thumb exits, two lower pockets, chest pocket, earbud-cord port, #98610",
+    "garmentBrand": "Trimark"
   },
   {
     "sku": "WT-48",
@@ -1285,7 +1338,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined hood with contrast drawstring, tear-away label, classic fit, #F2045"
+    "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined hood with contrast drawstring, tear-away label, classic fit, #F2045",
+    "garmentBrand": "ATC"
   },
   {
     "sku": "WT-49",
@@ -1306,7 +1360,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "#DR1499"
+    "details": "#DR1499",
+    "garmentBrand": "Nike"
   },
   {
     "sku": "WT-50",
@@ -1339,7 +1394,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "80/20 ring-spun cotton/polyester 2-end face fleece (8.4 oz), 1x1 spandex rib cuffs and band, dropped shoulder, double-needle topstitching, tear-away label, classic fit, #SF000"
+    "details": "80/20 ring-spun cotton/polyester 2-end face fleece (8.4 oz), 1x1 spandex rib cuffs and band, dropped shoulder, double-needle topstitching, tear-away label, classic fit, #SF000",
+    "garmentBrand": "Gildan"
   },
   {
     "sku": "WT-51",
@@ -1364,7 +1420,8 @@ export const allProducts = [
       "/skus/99542-teamred.png"
     ],
     "material": "",
-    "details": "#99542"
+    "details": "#99542",
+    "garmentBrand": "Trimark"
   },
   {
     "sku": "WT-52",
@@ -1389,7 +1446,8 @@ export const allProducts = [
       "/skus/19542-teamred.png"
     ],
     "material": "",
-    "details": "100% polyester 290T woven shell (60 gsm / 1.8 oz) with water-resistant coating and DWR finish, 100% polyester lining, faux-down fill, interior storm flap with chin guard, contrast-bound hem and armholes, hi-vis back-shoulder panel, #19542"
+    "details": "100% polyester 290T woven shell (60 gsm / 1.8 oz) with water-resistant coating and DWR finish, 100% polyester lining, faux-down fill, interior storm flap with chin guard, contrast-bound hem and armholes, hi-vis back-shoulder panel, #19542",
+    "garmentBrand": "Trimark"
   },
   {
     "sku": "WT-53",
@@ -1418,7 +1476,8 @@ export const allProducts = [
       "/skus/L00545-royalblue.png"
     ],
     "material": "",
-    "details": "70/30 combed ring-spun cotton/polyester fleece (280 gsm), 100% cotton print face, rib-knit cuffs and hem, metal YKK zip, tear-away label, quarter-zip, #L00545"
+    "details": "70/30 combed ring-spun cotton/polyester fleece (280 gsm), 100% cotton print face, rib-knit cuffs and hem, metal YKK zip, tear-away label, quarter-zip, #L00545",
+    "garmentBrand": "Canada Sportswear"
   },
   {
     "sku": "WT-54",
@@ -1441,7 +1500,8 @@ export const allProducts = [
       "/skus/F2042-navyheather.jpg"
     ],
     "material": "",
-    "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), tear-away label, quarter-zip, #F2042"
+    "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), tear-away label, quarter-zip, #F2042",
+    "garmentBrand": "ATC"
   },
   {
     "sku": "WT-55",
@@ -1458,7 +1518,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "98/2 cotton/spandex canvas (8.5 oz) with Rugged Flex stretch, relaxed hip and thigh, boot-cut, reinforced front slash pocket, cell-phone pocket, sewn-on belt loops, #102291"
+    "details": "98/2 cotton/spandex canvas (8.5 oz) with Rugged Flex stretch, relaxed hip and thigh, boot-cut, reinforced front slash pocket, cell-phone pocket, sewn-on belt loops, #102291",
+    "garmentBrand": "Carhartt"
   },
   {
     "sku": "WT-56",
@@ -1475,7 +1536,8 @@ export const allProducts = [
       "/skus/i8502-black.png"
     ],
     "material": "",
-    "details": "Mid-profile structured trucker cap, shapeable pre-curved visor, UV protection, moisture wicking, 110 Technology® sweatband, adjustable plastic snapback, grey under visor, #i8502 Blk/Blk"
+    "details": "Mid-profile structured trucker cap, shapeable pre-curved visor, UV protection, moisture wicking, 110 Technology® sweatband, adjustable plastic snapback, grey under visor, #i8502 Blk/Blk",
+    "garmentBrand": "Cap America"
   },
   {
     "sku": "WT-57",
@@ -1492,7 +1554,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "100% acrylic pompon cuff toque, stretchy with strong shape retention, #1202"
+    "details": "100% acrylic pompon cuff toque, stretchy with strong shape retention, #1202",
+    "garmentBrand": "Other"
   },
   {
     "sku": "WT-58",
@@ -1525,7 +1588,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "50/50 cotton/polyester (10.5 oz), loose fit, three-piece drawcord hood, front hand-warmer pocket, spandex-reinforced rib cuffs and waistband, triple-stitched seams, Carhartt sleeve logo and pocket patch, #K288"
+    "details": "50/50 cotton/polyester (10.5 oz), loose fit, three-piece drawcord hood, front hand-warmer pocket, spandex-reinforced rib cuffs and waistband, triple-stitched seams, Carhartt sleeve logo and pocket patch, #K288",
+    "garmentBrand": "Carhartt"
   },
   {
     "sku": "WT-59",
@@ -1536,9 +1600,12 @@ export const allProducts = [
     "colors": [],
     "price": 98,
     "img": "/skus/no-photo.png",
-    "imgs": [],
+    "imgs": [
+      "/skus/no-photo.png"
+    ],
     "material": "",
-    "details": "100% cotton canvas (330 gsm / 9.7 oz) with water-repellent finish, polyester sherpa lining, rib-knit collar and side inserts, kangaroo and interior chest pockets, YKK zipper, 4\" hi-vis band with 2\" reflective tape front and back, meets CSA, #L01295-BLA-S"
+    "details": "100% cotton canvas (330 gsm / 9.7 oz) with water-repellent finish, polyester sherpa lining, rib-knit collar and side inserts, kangaroo and interior chest pockets, YKK zipper, 4\" hi-vis band with 2\" reflective tape front and back, meets CSA, #L01295-BLA-S",
+    "garmentBrand": "Canada Sportswear"
   },
   {
     "sku": "WT-60",
@@ -1549,9 +1616,12 @@ export const allProducts = [
     "colors": [],
     "price": 75,
     "img": "/skus/no-photo.png",
-    "imgs": [],
+    "imgs": [
+      "/skus/no-photo.png"
+    ],
     "material": "",
-    "details": "150D Open Road rainwear jacket, adjustable cuffs, detachable snap-off hood, front and back venting, dual reflective chest straps, mesh upper-back lining, two sealed pockets, #6323JB"
+    "details": "150D Open Road rainwear jacket, adjustable cuffs, detachable snap-off hood, front and back venting, dual reflective chest straps, mesh upper-back lining, two sealed pockets, #6323JB",
+    "garmentBrand": "Viking"
   },
   {
     "sku": "WT-61",
@@ -1563,12 +1633,13 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 75,
-    "img": "/wt/A-New-Design-Made-with-PosterMyWall-3-e1736538316369.jpg",
+    "img": "/skus/P5017-black.png",
     "imgs": [
-      "/wt/A-New-Design-Made-with-PosterMyWall-3-e1736538316369.jpg"
+      "/skus/P5017-black.png"
     ],
     "material": "",
-    "details": "Diamond-quilted polyester with 3.5 oz (120 gsm) insulation, double-stitched StarTech reflective tape, rib-knit gusseted action back, micro-fleece collar, #P5017"
+    "details": "Diamond-quilted polyester with 3.5 oz (120 gsm) insulation, double-stitched StarTech reflective tape, rib-knit gusseted action back, micro-fleece collar, #P5017",
+    "garmentBrand": "Pioneer"
   },
   {
     "sku": "WT-62",
@@ -1585,7 +1656,8 @@ export const allProducts = [
       "/wt/A-New-Design-Made-with-PosterMyWall-1-2-e1736538424819.jpg"
     ],
     "material": "",
-    "details": "Bird's-Eye moisture-wicking knit, breathable, StarTech reflective tape, front chest pocket with hook-and-loop, radiophone clip strap, #6992"
+    "details": "Bird's-Eye moisture-wicking knit, breathable, StarTech reflective tape, front chest pocket with hook-and-loop, radiophone clip strap, #6992",
+    "garmentBrand": "Pioneer"
   },
   {
     "sku": "WT-63",
@@ -1596,9 +1668,12 @@ export const allProducts = [
     "colors": [],
     "price": 55,
     "img": "/skus/no-photo.png",
-    "imgs": [],
+    "imgs": [
+      "/skus/no-photo.png"
+    ],
     "material": "",
-    "details": "50/50 cotton/recycled-polyester carbon-peached jersey (4.7 oz), soft hand, self-fabric collar with contrast inner collar, side-seam splits, #S05750"
+    "details": "50/50 cotton/recycled-polyester carbon-peached jersey (4.7 oz), soft hand, self-fabric collar with contrast inner collar, side-seam splits, #S05750",
+    "garmentBrand": "Other"
   },
   {
     "sku": "WT-64",
@@ -1609,9 +1684,12 @@ export const allProducts = [
     "colors": [],
     "price": 105,
     "img": "/skus/no-photo.png",
-    "imgs": [],
+    "imgs": [
+      "/skus/no-photo.png"
+    ],
     "material": "",
-    "details": "420 gsm two-layer polyester/cotton jersey fleece, cotton-lined, tear-away three-piece hood with drawstring and barrel-locks, dual reflective chest straps, full-zip, two front pockets, rib-knit cuffs and waistband, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #6421BK"
+    "details": "420 gsm two-layer polyester/cotton jersey fleece, cotton-lined, tear-away three-piece hood with drawstring and barrel-locks, dual reflective chest straps, full-zip, two front pockets, rib-knit cuffs and waistband, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #6421BK",
+    "garmentBrand": "Viking"
   },
   {
     "sku": "WT-65",
@@ -1622,9 +1700,12 @@ export const allProducts = [
     "colors": [],
     "price": 65,
     "img": "/skus/no-photo.png",
-    "imgs": [],
+    "imgs": [
+      "/skus/no-photo.png"
+    ],
     "material": "",
-    "details": "260 gsm anti-pill polyester fleece, full hood with drawstring, dual reflective chest straps, taffeta-lined sleeves, two front pockets, left-chest phone pocket, elastic cuffs and waistband, tear-away hood, UPF 50+, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #6420BK"
+    "details": "260 gsm anti-pill polyester fleece, full hood with drawstring, dual reflective chest straps, taffeta-lined sleeves, two front pockets, left-chest phone pocket, elastic cuffs and waistband, tear-away hood, UPF 50+, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #6420BK",
+    "garmentBrand": "Viking"
   },
   {
     "sku": "WT-66",
@@ -1635,9 +1716,12 @@ export const allProducts = [
     "colors": [],
     "price": 80,
     "img": "/skus/no-photo.png",
-    "imgs": [],
+    "imgs": [
+      "/skus/no-photo.png"
+    ],
     "material": "",
-    "details": "7 oz (240 gsm) micro-fleece, 4-way stretch, CSA Z96-22 Class 1 Level 2 / ANSI 107 Class 1, StarTech reflective tape, full-zip, detachable drawstring hood, elastic cuffs and hem, two slash pockets, two radiophone clip straps, #6942"
+    "details": "7 oz (240 gsm) micro-fleece, 4-way stretch, CSA Z96-22 Class 1 Level 2 / ANSI 107 Class 1, StarTech reflective tape, full-zip, detachable drawstring hood, elastic cuffs and hem, two slash pockets, two radiophone clip straps, #6942",
+    "garmentBrand": "Pioneer"
   },
   {
     "sku": "WT-67",
@@ -1648,9 +1732,12 @@ export const allProducts = [
     "colors": [],
     "price": 40,
     "img": "/skus/no-photo.png",
-    "imgs": [],
+    "imgs": [
+      "/skus/no-photo.png"
+    ],
     "material": "",
-    "details": "150D polyester twill surveyor vest, double-hemstitched pockets and seams, brass snaps and grommets, mesh side vents, dual reflective chest straps, cell/radio pocket, D-ring slot, 14\" zippered back pack, 8 pockets (5 outer, 3 inner), ruler slot, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #6165BK"
+    "details": "150D polyester twill surveyor vest, double-hemstitched pockets and seams, brass snaps and grommets, mesh side vents, dual reflective chest straps, cell/radio pocket, D-ring slot, 14\" zippered back pack, 8 pockets (5 outer, 3 inner), ruler slot, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #6165BK",
+    "garmentBrand": "Viking"
   },
   {
     "sku": "WT-68",
@@ -1661,9 +1748,12 @@ export const allProducts = [
     "colors": [],
     "price": 35,
     "img": "/skus/no-photo.png",
-    "imgs": [],
+    "imgs": [
+      "/skus/no-photo.png"
+    ],
     "material": "",
-    "details": "Tricot polyester, tapered waist and flared bottom tailored for women, StarTech reflective tape, 9 pockets incl. ID and phone, full-zip front, radiophone clip strap, #139BK"
+    "details": "Tricot polyester, tapered waist and flared bottom tailored for women, StarTech reflective tape, 9 pockets incl. ID and phone, full-zip front, radiophone clip strap, #139BK",
+    "garmentBrand": "Pioneer"
   },
   {
     "sku": "WT-69",
@@ -1682,7 +1772,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "Oxford front with full mesh back for breathability, StarTech reflective tape, bottom map pouch, 12 pockets, full-zip, ID pocket with window, D-ring harness access, #6937"
+    "details": "Oxford front with full mesh back for breathability, StarTech reflective tape, bottom map pouch, 12 pockets, full-zip, ID pocket with window, D-ring harness access, #6937",
+    "garmentBrand": "Pioneer"
   },
   {
     "sku": "WT-70",
@@ -1693,9 +1784,12 @@ export const allProducts = [
     "colors": [],
     "price": 170,
     "img": "/skus/no-photo.png",
-    "imgs": [],
+    "imgs": [
+      "/skus/no-photo.png"
+    ],
     "material": "",
-    "details": "7-in-1 convertible jacket (outer, inner, reversible hi-vis, sleeveless vest, zip-off vest combinations), detachable drawcord hood, chest and storage pockets plus inner cell pocket, side zip vents, dual reflective chest straps, heavy-duty zipper with storm flap, embroidery zipper included, #6328JB"
+    "details": "7-in-1 convertible jacket (outer, inner, reversible hi-vis, sleeveless vest, zip-off vest combinations), detachable drawcord hood, chest and storage pockets plus inner cell pocket, side zip vents, dual reflective chest straps, heavy-duty zipper with storm flap, embroidery zipper included, #6328JB",
+    "garmentBrand": "Viking"
   },
   {
     "sku": "WT-71",
@@ -1712,7 +1806,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "100% polyester anti-pill fleece (280 gsm) with DWR finish, 3M Scotchlite 2\" reflective on 4\" contrast backing, full-zip, quick-release hood with snaps and drawcord, lower pouch pockets, rib-knit cuffs and waist, #S494"
+    "details": "100% polyester anti-pill fleece (280 gsm) with DWR finish, 3M Scotchlite 2\" reflective on 4\" contrast backing, full-zip, quick-release hood with snaps and drawcord, lower pouch pockets, rib-knit cuffs and waist, #S494",
+    "garmentBrand": "Other"
   },
   {
     "sku": "WT-72",
@@ -1729,7 +1824,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "#SV05BK"
+    "details": "#SV05BK",
+    "garmentBrand": "Other"
   },
   {
     "sku": "WT-73",
@@ -1776,7 +1872,8 @@ export const allProducts = [
       "/skus/2400-white.png"
     ],
     "material": "",
-    "details": "100% pre-shrunk cotton long-sleeve pocket tee, 2\" silver heat-transfer tape on arms and front with diagonal X on back, reinforced neck and shoulder seams, seamless ribbed neck, #2400"
+    "details": "100% pre-shrunk cotton long-sleeve pocket tee, 2\" silver heat-transfer tape on arms and front with diagonal X on back, reinforced neck and shoulder seams, seamless ribbed neck, #2400",
+    "garmentBrand": "Gildan"
   },
   {
     "sku": "WT-74",
@@ -1823,7 +1920,8 @@ export const allProducts = [
       "/skus/2300-white.png"
     ],
     "material": "",
-    "details": "100% pre-shrunk cotton pocket tee, 2\" silver heat-transfer tape on arms and front with diagonal X on back, reinforced neck and shoulder seams, seamless ribbed neck, #2300"
+    "details": "100% pre-shrunk cotton pocket tee, 2\" silver heat-transfer tape on arms and front with diagonal X on back, reinforced neck and shoulder seams, seamless ribbed neck, #2300",
+    "garmentBrand": "Gildan"
   },
   {
     "sku": "WT-75",
@@ -1840,7 +1938,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "New Balance Cremorne low, composite safety toe, Fresh Foam cushioning, slip- and heat-resistant outsole, electrical-hazard rated, wicking mesh lining, women's, #NBWUFCCEHBG"
+    "details": "New Balance Cremorne low, composite safety toe, Fresh Foam cushioning, slip- and heat-resistant outsole, electrical-hazard rated, wicking mesh lining, women's, #NBWUFCCEHBG",
+    "garmentBrand": "New Balance"
   },
   {
     "sku": "WT-76",
@@ -1857,7 +1956,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "New Balance Fresh Foam Cremorne low, composite toe, CSA-approved, Fresh Foam midsole, slip- and heat-resistant outsole, ESR protection, reinforced heel counter, ETPU comfort insert, lightweight anti-perforation midsole, men's, #MCFCEHPBG"
+    "details": "New Balance Fresh Foam Cremorne low, composite toe, CSA-approved, Fresh Foam midsole, slip- and heat-resistant outsole, ESR protection, reinforced heel counter, ETPU comfort insert, lightweight anti-perforation midsole, men's, #MCFCEHPBG",
+    "garmentBrand": "New Balance"
   },
   {
     "sku": "WT-77",
@@ -1874,7 +1974,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "New Balance Fresh Foam Cremorne mid, composite toe, CSA-approved, Fresh Foam midsole, mid-cut ankle support, slip- and heat-resistant outsole, ESR protection, padded collar, ETPU comfort insert, anti-perforation midsole, men's, #MCFCMEHPB"
+    "details": "New Balance Fresh Foam Cremorne mid, composite toe, CSA-approved, Fresh Foam midsole, mid-cut ankle support, slip- and heat-resistant outsole, ESR protection, padded collar, ETPU comfort insert, anti-perforation midsole, men's, #MCFCMEHPB",
+    "garmentBrand": "New Balance"
   },
   {
     "sku": "WT-78",
@@ -1885,9 +1986,12 @@ export const allProducts = [
     "colors": [],
     "price": 130,
     "img": "/skus/no-photo.png",
-    "imgs": [],
+    "imgs": [
+      "/skus/no-photo.png"
+    ],
     "material": "",
-    "details": "Timberland PRO Intercept, asymmetrical steel toe, EH-resistant sole, PRO Flex grooved sole, steel puncture plate, injection-molded EVA midsole, breathable abrasion-resistant mesh upper, Microban treatment, cement construction, #TB0A5ZX3001"
+    "details": "Timberland PRO Intercept, asymmetrical steel toe, EH-resistant sole, PRO Flex grooved sole, steel puncture plate, injection-molded EVA midsole, breathable abrasion-resistant mesh upper, Microban treatment, cement construction, #TB0A5ZX3001",
+    "garmentBrand": "Timberland"
   },
   {
     "sku": "WT-79",
@@ -1898,9 +2002,12 @@ export const allProducts = [
     "colors": [],
     "price": 130,
     "img": "/skus/no-photo.png",
-    "imgs": [],
+    "imgs": [
+      "/skus/no-photo.png"
+    ],
     "material": "",
-    "details": "Timberland PRO Intercept on a women's last, asymmetrical steel toe, EH-resistant sole, PRO Flex grooved sole, steel puncture plate, injection-molded EVA midsole, breathable abrasion-resistant mesh upper, Microban treatment, cement construction, #TB0A632U001"
+    "details": "Timberland PRO Intercept on a women's last, asymmetrical steel toe, EH-resistant sole, PRO Flex grooved sole, steel puncture plate, injection-molded EVA midsole, breathable abrasion-resistant mesh upper, Microban treatment, cement construction, #TB0A632U001",
+    "garmentBrand": "Timberland"
   },
   {
     "sku": "WT-80",
@@ -1917,7 +2024,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "Blundstone 163, weatherproof leather upper fused to non-slip PU sole, CSA Green Patch steel toe, Kevlar shank, TPU outsole, removable cushioned footbed, slip-on, UK sizing, #163"
+    "details": "Blundstone 163, weatherproof leather upper fused to non-slip PU sole, CSA Green Patch steel toe, Kevlar shank, TPU outsole, removable cushioned footbed, slip-on, UK sizing, #163",
+    "garmentBrand": "Blundstone"
   },
   {
     "sku": "WT-81",
@@ -1934,7 +2042,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "Blundstone 180, 6\" height, CSA Grade 1 toe cap, 2.5mm weatherproof breathable leather, dual-density PU midsole with TPU outsole, Lenzi puncture-resistant midsole, XRD footbed, heat/slip/oil/acid/EH-resistant sole, injection-molded, unisex, #180"
+    "details": "Blundstone 180, 6\" height, CSA Grade 1 toe cap, 2.5mm weatherproof breathable leather, dual-density PU midsole with TPU outsole, Lenzi puncture-resistant midsole, XRD footbed, heat/slip/oil/acid/EH-resistant sole, injection-molded, unisex, #180",
+    "garmentBrand": "Blundstone"
   },
   {
     "sku": "WT-82",
@@ -1951,7 +2060,8 @@ export const allProducts = [
       "/skus/no-photo.png"
     ],
     "material": "",
-    "details": "Blundstone XFR 962, CSA-approved, waxy rustic brown, steel toe with rubber toe guard, thick grippy rubber lug sole, arched impact-absorbing insole, Chelsea height, #962"
+    "details": "Blundstone XFR 962, CSA-approved, waxy rustic brown, steel toe with rubber toe guard, thick grippy rubber lug sole, arched impact-absorbing insole, Chelsea height, #962",
+    "garmentBrand": "Blundstone"
   }
 ];
 

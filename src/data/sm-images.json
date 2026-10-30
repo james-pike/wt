@@ -13,7 +13,8 @@
       "#1f2a44": "Navy",
       "#FFFFFF": "White",
       "#5e2231": "Wine"
-    }
+    },
+    "brand": "Harriton"
   },
   "WT-2": {
     "imgs": [
@@ -31,7 +32,8 @@
       "#d9dde0": "Mod Grey Light Heather/ White",
       "#c90a29": "Red/ White",
       "#0a3ba4": "Royal/ White"
-    }
+    },
+    "brand": "Under Armour"
   },
   "WT-3": {
     "imgs": [
@@ -51,7 +53,8 @@
       "#c90a29": "Red/ White",
       "#0a3ba4": "Royal/ White",
       "#f8f8f8": "White/ Mod Grey"
-    }
+    },
+    "brand": "Under Armour"
   },
   "WT-4": {
     "imgs": [
@@ -63,7 +66,8 @@
       "#BBBCBC": "Athletic Grey",
       "#262626": "Black",
       "#545859": "Charcoal Heather"
-    }
+    },
+    "brand": "ATC"
   },
   "WT-5": {
     "imgs": [
@@ -101,7 +105,8 @@
       "#E0457B": "Sangria",
       "#FFB81C": "Team Gold",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "ATC"
   },
   "WT-6": {
     "imgs": [
@@ -119,7 +124,8 @@
       "#d9dde0": "Mod Grey Light Heather/ White",
       "#c90a29": "Red/ White",
       "#0a3ba4": "Royal/ White"
-    }
+    },
+    "brand": "Under Armour"
   },
   "WT-7": {
     "imgs": [
@@ -145,7 +151,8 @@
       "#BA0C2F": "True Red",
       "#1D4F91": "True Royal",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "ATC"
   },
   "WT-8": {
     "imgs": [
@@ -171,7 +178,8 @@
       "#BA0C2F": "True Red",
       "#1D4F91": "True Royal",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "ATC"
   },
   "WT-9": {
     "imgs": [
@@ -180,7 +188,8 @@
     ],
     "names": {
       "#1a1a18": "Black"
-    }
+    },
+    "brand": "The North Face"
   },
   "WT-10": {
     "imgs": [
@@ -189,7 +198,8 @@
     ],
     "names": {
       "#1a1a18": "Black"
-    }
+    },
+    "brand": "The North Face"
   },
   "WT-11": {
     "imgs": [
@@ -211,7 +221,8 @@
       "#b02b2c": "Red",
       "#1C57A5": "Royal",
       "#cdb99a": "Sand"
-    }
+    },
+    "brand": "Canada Sportswear"
   },
   "WT-12": {
     "imgs": [
@@ -231,7 +242,8 @@
       "#00263E": "Midnight Blue",
       "#3B4559": "Navy Heather",
       "#63666A": "Pearl Grey Heather"
-    }
+    },
+    "brand": "Coal Harbour"
   },
   "WT-13": {
     "imgs": [
@@ -251,7 +263,8 @@
       "#00263E": "Midnight Blue",
       "#3B4559": "Navy Heather",
       "#63666A": "Pearl Grey Heather"
-    }
+    },
+    "brand": "Coal Harbour"
   },
   "WT-14": {
     "imgs": [
@@ -263,7 +276,8 @@
       "#262626": "Black",
       "#6c6f70": "Heather Charcoal",
       "#001c54": "Vintage Navy"
-    }
+    },
+    "brand": "Trimark"
   },
   "WT-15": {
     "imgs": [
@@ -275,7 +289,8 @@
       "#262626": "Black",
       "#6c6f70": "Heather Charcoal",
       "#001c54": "Vintage Navy"
-    }
+    },
+    "brand": "Trimark"
   },
   "WT-16": {
     "imgs": [
@@ -291,7 +306,8 @@
       "#5a5a5a": "Grey",
       "#1b2a41": "Navy",
       "#ffffff": "White"
-    }
+    },
+    "brand": "Nike"
   },
   "WT-17": {
     "imgs": [
@@ -303,7 +319,8 @@
       "#1a1a18": "Black",
       "#5a5a5a": "Grey",
       "#1b2a41": "Navy"
-    }
+    },
+    "brand": "Nike"
   },
   "WT-18": {
     "imgs": [
@@ -323,7 +340,8 @@
       "#c90a29": "Red/ White",
       "#0a3ba4": "Royal/ White",
       "#f8f8f8": "White/ Mod Grey"
-    }
+    },
+    "brand": "Under Armour"
   },
   "WT-19": {
     "imgs": [
@@ -332,7 +350,8 @@
     ],
     "names": {
       "#1a1a18": "Black"
-    }
+    },
+    "brand": "Columbia"
   },
   "WT-20": {
     "imgs": [
@@ -344,7 +363,8 @@
       "#43403d": "Black/Grey",
       "#676d76": "Classic Navy/White",
       "#a7a7a7": "Grey/White"
-    }
+    },
+    "brand": "North End"
   },
   "WT-21": {
     "imgs": [
@@ -356,7 +376,8 @@
       "#43403d": "Black/Grey",
       "#676d76": "Classic Navy/White",
       "#a7a7a7": "Grey/White"
-    }
+    },
+    "brand": "North End"
   },
   "WT-22": {
     "imgs": [
@@ -368,7 +389,8 @@
       "#262626": "Black",
       "#333F48": "Graphite",
       "#1f2a44": "Navy"
-    }
+    },
+    "brand": "Devon & Jones"
   },
   "WT-23": {
     "imgs": [
@@ -380,7 +402,8 @@
       "#262626": "Black",
       "#333F48": "Graphite",
       "#1f2a44": "Navy"
-    }
+    },
+    "brand": "Devon & Jones"
   },
   "WT-24": {
     "imgs": [
@@ -418,7 +441,8 @@
       "#9fa1a4": "Sport Grey",
       "#5a7a8a": "Stone Blue",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "Gildan"
   },
   "WT-25": {
     "imgs": [
@@ -436,7 +460,8 @@
       "#57582c": "Loden Heather",
       "#601d2e": "Maroon Heather",
       "#1c457b": "Metro Blue Heather"
-    }
+    },
+    "brand": "Trimark"
   },
   "WT-26": {
     "imgs": [
@@ -450,7 +475,8 @@
       "#53565a": "Carbon",
       "#22304a": "Classic Navy",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "Core 365"
   },
   "WT-27": {
     "imgs": [
@@ -488,7 +514,8 @@
       "#C6D219": "^Safety Green",
       "#E0457B": "Sangria",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "ATC"
   },
   "WT-28": {
     "imgs": [
@@ -526,7 +553,8 @@
       "#b02b2c": "Red",
       "#E0457B": "Sangria",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "ATC"
   },
   "WT-29": {
     "imgs": [
@@ -550,7 +578,8 @@
       "#b02b2c": "Red",
       "#1D4F91": "True Royal",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "Devon & Jones"
   },
   "WT-30": {
     "imgs": [
@@ -580,7 +609,8 @@
       "#1f2a44": "Navy",
       "#bc2c3a": "Team Red",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "Trimark"
   },
   "WT-31": {
     "imgs": [
@@ -610,7 +640,8 @@
       "#1f2a44": "Navy",
       "#bc2c3a": "Team Red",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "Trimark"
   },
   "WT-32": {
     "imgs": [
@@ -640,7 +671,8 @@
       "#1f2a44": "Navy",
       "#bc2c3a": "Team Red",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "Trimark"
   },
   "WT-33": {
     "imgs": [
@@ -670,7 +702,8 @@
       "#1f2a44": "Navy",
       "#bc2c3a": "Team Red",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "Trimark"
   },
   "WT-34": {
     "imgs": [
@@ -680,15 +713,18 @@
     "names": {
       "#8a8a8a": "Grey",
       "#ffffff": "White"
-    }
+    },
+    "brand": "Other"
   },
   "WT-35": {
     "imgs": [],
-    "names": {}
+    "names": {},
+    "brand": "Other"
   },
   "WT-36": {
     "imgs": [],
-    "names": {}
+    "names": {},
+    "brand": "Tough Duck"
   },
   "WT-37": {
     "imgs": [
@@ -697,11 +733,13 @@
     ],
     "names": {
       "#4a4a4a": "Charcoal"
-    }
+    },
+    "brand": "Other"
   },
   "WT-38": {
     "imgs": [],
-    "names": {}
+    "names": {},
+    "brand": "Tough Duck"
   },
   "WT-39": {
     "imgs": [
@@ -715,7 +753,8 @@
       "#55585b": "Heather Dark Charcoal",
       "#9a9b9d": "Heather Grey",
       "#001c54": "Vintage Navy"
-    }
+    },
+    "brand": "Trimark"
   },
   "WT-40": {
     "imgs": [
@@ -739,7 +778,8 @@
       "#b02b2c": "Red",
       "#1D4F91": "True Royal",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "Devon & Jones"
   },
   "WT-41": {
     "imgs": [
@@ -755,7 +795,8 @@
       "#c0392b": "Red",
       "#1e40af": "Blue",
       "#ffffff": "White"
-    }
+    },
+    "brand": "Nike"
   },
   "WT-42": {
     "imgs": [
@@ -769,7 +810,8 @@
       "#53565a": "Carbon",
       "#22304a": "Classic Navy",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "Core 365"
   },
   "WT-43": {
     "imgs": [
@@ -783,7 +825,8 @@
       "#55585b": "Heather Dark Charcoal",
       "#9a9b9d": "Heather Grey",
       "#001c54": "Vintage Navy"
-    }
+    },
+    "brand": "Trimark"
   },
   "WT-44": {
     "imgs": [
@@ -793,7 +836,8 @@
     "names": {
       "#1a1a18": "Black",
       "#383838": "Charcoal"
-    }
+    },
+    "brand": "Devon & Jones"
   },
   "WT-45": {
     "imgs": [
@@ -803,7 +847,8 @@
     "names": {
       "#262626": "Black",
       "#55585b": "Heather Dark Charcoal"
-    }
+    },
+    "brand": "Trimark"
   },
   "WT-46": {
     "imgs": [
@@ -814,7 +859,8 @@
     "names": {
       "#2b2b2b": "Charcoal",
       "#3f3f3f": "Charcoal"
-    }
+    },
+    "brand": "ATC"
   },
   "WT-47": {
     "imgs": [
@@ -832,7 +878,8 @@
       "#57582c": "Loden Heather",
       "#601d2e": "Maroon Heather",
       "#1c457b": "Metro Blue Heather"
-    }
+    },
+    "brand": "Trimark"
   },
   "WT-48": {
     "imgs": [
@@ -843,7 +890,8 @@
     "names": {
       "#2b2b2b": "Charcoal",
       "#3f3f3f": "Charcoal"
-    }
+    },
+    "brand": "ATC"
   },
   "WT-49": {
     "imgs": [
@@ -855,7 +903,8 @@
       "#333333": "Charcoal",
       "#1a1a18": "Black",
       "#585858": "Grey"
-    }
+    },
+    "brand": "Nike"
   },
   "WT-50": {
     "imgs": [
@@ -877,7 +926,8 @@
       "#9b9b9b": "Grey",
       "#b8ad97": "Khaki",
       "#e8863b": "Orange"
-    }
+    },
+    "brand": "Gildan"
   },
   "WT-51": {
     "imgs": [
@@ -893,7 +943,8 @@
       "#153a81": "New Royal",
       "#7f8684": "Steel Grey",
       "#bc2c3a": "Team Red"
-    }
+    },
+    "brand": "Trimark"
   },
   "WT-52": {
     "imgs": [
@@ -909,7 +960,8 @@
       "#153a81": "New Royal",
       "#7f8684": "Steel Grey",
       "#bc2c3a": "Team Red"
-    }
+    },
+    "brand": "Trimark"
   },
   "WT-53": {
     "imgs": [
@@ -929,7 +981,8 @@
       "#1f2a44": "Navy",
       "#b02b2c": "Red",
       "#0e347b": "Royal Blue"
-    }
+    },
+    "brand": "Canada Sportswear"
   },
   "WT-54": {
     "imgs": [
@@ -943,7 +996,8 @@
       "#101820": "Black Heather",
       "#545859": "Charcoal Heather",
       "#3B4559": "Navy Heather"
-    }
+    },
+    "brand": "ATC"
   },
   "WT-55": {
     "imgs": [
@@ -951,7 +1005,8 @@
     ],
     "names": {
       "#1a1a18": "Black"
-    }
+    },
+    "brand": "Carhartt"
   },
   "WT-56": {
     "imgs": [
@@ -959,7 +1014,8 @@
     ],
     "names": {
       "#1a1a18": "Black"
-    }
+    },
+    "brand": "Cap America"
   },
   "WT-57": {
     "imgs": [
@@ -967,7 +1023,8 @@
     ],
     "names": {
       "#1a1a18": "Black"
-    }
+    },
+    "brand": "Other"
   },
   "WT-58": {
     "imgs": [
@@ -987,47 +1044,60 @@
       "#a0a0a0": "Grey",
       "#2c3e50": "Navy",
       "#5a2733": "Maroon"
-    }
+    },
+    "brand": "Carhartt"
   },
   "WT-59": {
     "imgs": [],
-    "names": {}
+    "names": {},
+    "brand": "Canada Sportswear"
   },
   "WT-60": {
     "imgs": [],
-    "names": {}
+    "names": {},
+    "brand": "Viking"
   },
   "WT-61": {
-    "imgs": [],
-    "names": {}
+    "imgs": [
+      "/skus/P5017-black.png"
+    ],
+    "names": {},
+    "brand": "Pioneer"
   },
   "WT-62": {
     "imgs": [],
-    "names": {}
+    "names": {},
+    "brand": "Pioneer"
   },
   "WT-63": {
     "imgs": [],
-    "names": {}
+    "names": {},
+    "brand": "Other"
   },
   "WT-64": {
     "imgs": [],
-    "names": {}
+    "names": {},
+    "brand": "Viking"
   },
   "WT-65": {
     "imgs": [],
-    "names": {}
+    "names": {},
+    "brand": "Viking"
   },
   "WT-66": {
     "imgs": [],
-    "names": {}
+    "names": {},
+    "brand": "Pioneer"
   },
   "WT-67": {
     "imgs": [],
-    "names": {}
+    "names": {},
+    "brand": "Viking"
   },
   "WT-68": {
     "imgs": [],
-    "names": {}
+    "names": {},
+    "brand": "Pioneer"
   },
   "WT-69": {
     "imgs": [
@@ -1037,11 +1107,13 @@
     "names": {
       "#1a1a18": "Black",
       "#ff6a13": "Orange"
-    }
+    },
+    "brand": "Pioneer"
   },
   "WT-70": {
     "imgs": [],
-    "names": {}
+    "names": {},
+    "brand": "Viking"
   },
   "WT-71": {
     "imgs": [
@@ -1049,7 +1121,8 @@
     ],
     "names": {
       "#1a1a18": "Black"
-    }
+    },
+    "brand": "Other"
   },
   "WT-72": {
     "imgs": [
@@ -1057,7 +1130,8 @@
     ],
     "names": {
       "#1a1a18": "Black"
-    }
+    },
+    "brand": "Other"
   },
   "WT-73": {
     "imgs": [
@@ -1095,7 +1169,8 @@
       "#cdb99a": "Sand",
       "#9fa1a4": "Sport Grey",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "Gildan"
   },
   "WT-74": {
     "imgs": [
@@ -1133,7 +1208,8 @@
       "#cdb99a": "Sand",
       "#9fa1a4": "Sport Grey",
       "#FFFFFF": "White"
-    }
+    },
+    "brand": "Gildan"
   },
   "WT-75": {
     "imgs": [
@@ -1141,7 +1217,8 @@
     ],
     "names": {
       "#1a1a18": "Black"
-    }
+    },
+    "brand": "New Balance"
   },
   "WT-76": {
     "imgs": [
@@ -1149,7 +1226,8 @@
     ],
     "names": {
       "#1a1a18": "Black"
-    }
+    },
+    "brand": "New Balance"
   },
   "WT-77": {
     "imgs": [
@@ -1157,15 +1235,18 @@
     ],
     "names": {
       "#1a1a18": "Black"
-    }
+    },
+    "brand": "New Balance"
   },
   "WT-78": {
     "imgs": [],
-    "names": {}
+    "names": {},
+    "brand": "Timberland"
   },
   "WT-79": {
     "imgs": [],
-    "names": {}
+    "names": {},
+    "brand": "Timberland"
   },
   "WT-80": {
     "imgs": [
@@ -1173,18 +1254,21 @@
     ],
     "names": {
       "#1a1a18": "Black"
-    }
+    },
+    "brand": "Blundstone"
   },
   "WT-81": {
     "imgs": [
       ""
     ],
-    "names": {}
+    "names": {},
+    "brand": "Blundstone"
   },
   "WT-82": {
     "imgs": [
       ""
     ],
-    "names": {}
+    "names": {},
+    "brand": "Blundstone"
   }
 }

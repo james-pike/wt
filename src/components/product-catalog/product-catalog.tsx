@@ -207,6 +207,9 @@ const CARD_TITLE_OVERRIDE: Record<string, string> = {
   "CAR-10": "Viking Professional Journeyman Bib",  // drop "Insulated" on the card
 };
 function brandOf(p: Product): string | null {
+  // Wills: the garment brand from the sm SKU manager (set in fetch-products).
+  const gb = (p as { garmentBrand?: string }).garmentBrand;
+  if (gb) return gb;
   if (BRAND_BY_SKU[p.sku]) return BRAND_BY_SKU[p.sku];
   const n = p.name.toLowerCase();
   for (const b of BRAND_LIST) if (n.includes(b.toLowerCase())) return b;

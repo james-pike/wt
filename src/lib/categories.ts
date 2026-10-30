@@ -7,7 +7,7 @@
 // in) is derived in ProductCatalog from these and published to
 // SecondaryBarContext; the menu reads that published list.
 
-export const CLOTHING_CATEGORIES = ["All", "T-Shirts", "Jackets", "Polos", "Hats", "Work Wear", "Swag"];
+export const CLOTHING_CATEGORIES = ["All", "Work Wear", "Jackets", "Sweaters", "Shirts", "Hats", "Footwear"];
 
 export const CATEGORY_ICONS: Record<string, string> = {
   "All": '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>',

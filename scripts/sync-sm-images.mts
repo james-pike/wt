@@ -27,6 +27,11 @@ const skusSrc = readFileSync(`${SM}/src/data/skus.generated.ts`, "utf8")
 const SKUS: { code: string; colors: { slug: string; label: string; swatch: string; image?: string }[] }[] = eval(skusSrc);
 const META: Record<string, { label: string; swatch: string }> = JSON.parse(readFileSync(`${SM}/src/data/color-meta.json`, "utf8"));
 const smByCode = new Map(SKUS.map((s) => [s.code.toLowerCase(), s]));
+// Garment brand per Wills SKU (sm's brand records).
+const brandSrc = readFileSync(`${SM}/src/data/brand-skus.generated.ts`, "utf8");
+const willsBlock = brandSrc.slice(brandSrc.indexOf('"wills": ['));
+const garmentBrand = new Map<string, string>();
+for (const m of willsBlock.slice(0, willsBlock.indexOf("\n  ],")).matchAll(/"sku": "([^"]+)"[\s\S]*?"garmentBrand": "([^"]*)"/g)) garmentBrand.set(m[1], m[2]);
 const bankFiles = readdirSync(BANK);
 const bankByStem = new Map(bankFiles.map((f) => [f.replace(/\.(png|jpe?g|webp)$/i, "").toLowerCase(), f]));
 
@@ -37,7 +42,7 @@ const db = createClient({
 const rows = (await db.execute("SELECT sku, code, colors, imgs FROM products WHERE vendor = 'wills' ORDER BY sort_order")).rows as any[];
 
 const norm = (h: string) => (h || "").toLowerCase();
-const out: Record<string, { imgs: string[]; names: Record<string, string> }> = {};
+const out: Record<string, { imgs: string[]; names: Record<string, string>; brand?: string }> = {};
 let total = 0, found = 0;
 const missing: string[] = [];
 mkdirSync(OUT_DIR, { recursive: true });
@@ -80,7 +85,15 @@ for (const r of rows) {
       missing.push(`${r.sku} ${code} ${hex}${cands[0] ? ` (${cands[0]})` : ""}`);
     }
   });
-  out[r.sku] = { imgs, names };
+  // No colours on the product: use whatever sm has for the code (if anything).
+  if (!colors.length) {
+    for (const f of bankFiles.filter((f) => f.toLowerCase().startsWith(code.toLowerCase() + "-")).sort()) {
+      if (!existsSync(`${OUT_DIR}/${f}`)) copyFileSync(`${BANK}/${f}`, `${OUT_DIR}/${f}`);
+      imgs.push(`/skus/${f}`);
+    }
+    if (!imgs.length) missing.push(`${r.sku} ${code} (no colours, no sm photo)`);
+  }
+  out[r.sku] = { imgs, names, ...(garmentBrand.get(r.sku) ? { brand: garmentBrand.get(r.sku) } : {}) };
 }
 
 writeFileSync("src/data/sm-images.json", JSON.stringify(out, null, 2) + "\n");
