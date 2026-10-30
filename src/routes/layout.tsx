@@ -80,8 +80,8 @@ export const useLocaleLoader = routeLoader$(({ cookie }) => {
 });
 
 // Wills logins: the main clothing catalog ("clothing"), Tech ("tech", Work
-// Wear, no prices) and Safety ("safety", the safety line). Each is a username +
-// password pair from the environment.
+// Wear, no prices) and Safety ("safety", the safety line). Password only — the
+// password typed decides the account (APP_ / TECH_ / SAFETY_PASSWORD).
 export type LoginType = "clothing" | "tech" | "safety" | null;
 
 export function getLoginType(cookie: Cookie): LoginType {
@@ -112,18 +112,18 @@ function timingSafeEq(a: string, b: string): boolean {
 }
 
 export const useLogin = routeAction$(
-  ({ username, password }, { cookie, fail, env }) => {
-    const accounts: { type: Exclude<LoginType, null>; user: string; pass: string | undefined }[] = [
-      { type: "tech", user: env.get("TECH_USERNAME") || env.get("VITE_TECH_USERNAME") || "tech", pass: env.get("TECH_PASSWORD") || env.get("VITE_TECH_PASSWORD") },
-      { type: "safety", user: env.get("SAFETY_USERNAME") || env.get("VITE_SAFETY_USERNAME") || "Safety", pass: env.get("SAFETY_PASSWORD") || env.get("VITE_SAFETY_PASSWORD") },
-      { type: "clothing", user: env.get("APP_USERNAME") || env.get("VITE_APP_USERNAME") || "admin", pass: env.get("APP_PASSWORD") || env.get("VITE_APP_PASSWORD") },
+  ({ password }, { cookie, fail, env }) => {
+    const accounts: { type: Exclude<LoginType, null>; pass: string | undefined }[] = [
+      { type: "tech", pass: env.get("TECH_PASSWORD") || env.get("VITE_TECH_PASSWORD") },
+      { type: "safety", pass: env.get("SAFETY_PASSWORD") || env.get("VITE_SAFETY_PASSWORD") },
+      { type: "clothing", pass: env.get("APP_PASSWORD") || env.get("VITE_APP_PASSWORD") },
     ];
     if (!accounts.some((a) => a.pass)) {
       return fail(500, { message: "Login not configured" });
     }
-    const match = accounts.find((a) => a.pass && timingSafeEq(username, a.user) && timingSafeEq(password, a.pass));
+    const match = accounts.find((a) => a.pass && timingSafeEq(password, a.pass));
     if (!match) {
-      return fail(401, { message: "Invalid username or password" });
+      return fail(401, { message: "Invalid password" });
     }
     cookie.set(AUTH_COOKIE, match.type, {
       path: "/",
@@ -135,7 +135,6 @@ export const useLogin = routeAction$(
     return { success: true };
   },
   zod$({
-    username: z.string().min(1).max(64),
     password: z.string().min(1).max(128),
   }),
 );
@@ -1227,20 +1226,8 @@ export default component$(() => {
                   {loginAction.value?.failed && (
                     <div class={`login-modal__error ${(loginAction.value as { comingSoon?: boolean }).comingSoon ? "login-modal__error--info" : ""}`}>{loginAction.value.message}</div>
                   )}
-                  {/* Username + password — the account matched decides the
-                      catalog (main clothing, Tech or Safety). */}
-                  <div class="login-modal__field">
-                    <label for="username">{t("login.username", locale.value)}</label>
-                    <input
-                      id="username"
-                      name="username"
-                      type="text"
-                      autoComplete="username"
-                      autoCapitalize="none"
-                      required
-                      placeholder={t("login.username.placeholder", locale.value)}
-                    />
-                  </div>
+                  {/* Password only — the password typed decides the catalog
+                      (main clothing, Tech or Safety). */}
                   <div class="login-modal__field">
                     <label for="password">{t("login.password", locale.value)}</label>
                     <input
