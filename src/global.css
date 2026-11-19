@@ -18290,3 +18290,21 @@ html body .login-overlay .login-modal--split .login-modal__stack::after { displa
 html body .login-overlay .login-modal--split .login-modal__stack::before,
 html body .login-overlay .login-modal--split .login-modal__form-pane::before,
 html body .login-overlay .login-modal--split .login-modal__carousel::before { display: none !important; }
+
+/* Header: the Wills wordmark + APPAREL sit in a black rectangle at the left
+   end of the orange bar (full bar height), with the normal orange-leaf logo. */
+html body:not(#cm):not(#wt) .site-header .site-header__inner { padding-left: 0 !important; }
+html body:not(#cm):not(#wt) .site-header .site-header__logo {
+  align-self: stretch !important;
+  height: auto !important;
+  margin: 0 auto 0 0 !important;
+  padding: 0 22px 0 20px !important;
+  background: #14110e !important;
+  display: flex !important;
+  align-items: center !important;
+}
+html body .site-header img.site-header__logo-img--wills,
+html body .cart-drawer__site-header img.site-header__logo-img--wills { content: url("/logo-white.webp"); }
+@media (max-width: 600px) {
+  html body:not(#cm):not(#wt) .site-header .site-header__logo { padding: 0 14px 0 12px !important; }
+}
