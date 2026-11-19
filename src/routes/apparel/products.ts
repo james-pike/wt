@@ -268,10 +268,9 @@ export const allProducts = [
       "#7c7a5e"
     ],
     "price": 350,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-9.png",
     "imgs": [
-      "/skus/no-photo.png",
-      "/skus/no-photo.png"
+      "/skus/WT-9.png"
     ],
     "material": "",
     "details": "Shell: 50D WindWall recycled polyester with non-PFC DWR finish; 550-fill goose down body with 200g Heatseeker Eco insulation at collar and yokes, stand collar, centre-front zip with inner storm flap and chin guard, zippered chest and hand pockets, The North Face logo, modern fit, #NF0A7V4F",
@@ -288,10 +287,9 @@ export const allProducts = [
       "#f2efe6"
     ],
     "price": 350,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-10.png",
     "imgs": [
-      "/skus/no-photo.png",
-      "/skus/no-photo.png"
+      "/skus/WT-10.png"
     ],
     "material": "",
     "details": "Shell: 50D WindWall recycled polyester with non-PFC DWR finish; 550-fill goose down body with 200g Heatseeker Eco insulation at collar and yokes, stand collar, centre-front zip with inner storm flap and chin guard, zippered hand pockets, elastic cuff gussets, The North Face logo, modern fit, #NF0A7V4G",
@@ -1020,10 +1018,9 @@ export const allProducts = [
       "#ffffff"
     ],
     "price": 16.95,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-34.png",
     "imgs": [
-      "/skus/no-photo.png",
-      "/skus/no-photo.png"
+      "/skus/WT-34.png"
     ],
     "material": "",
     "details": "Low-profile six-panel structured cap, lightweight brushed cotton twill, two-piece hook-and-loop fabric strap, one size, #i5000",
@@ -1037,9 +1034,9 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 15,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-35.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-35.png"
     ],
     "material": "",
     "details": "100% acrylic knit toque, one size, #C105",
@@ -1053,9 +1050,9 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 74.99,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-36.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-36.png"
     ],
     "material": "",
     "details": "98/2 cotton/spandex flex twill with stain-repellent finish, 360° stretch waist, fly front, 5-pocket upper, two cargo pockets with bellows, pencil pocket, reinforced pockets and trim, gusset crotch, riveted stress points, triple-stitched, #WP10",
@@ -1072,10 +1069,9 @@ export const allProducts = [
       "#4a4a4a"
     ],
     "price": 15,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-37.png",
     "imgs": [
-      "/skus/no-photo.png",
-      "/skus/no-photo.png"
+      "/skus/WT-37.png"
     ],
     "material": "",
     "details": "100% knit cuff toque, one size, #C100",
@@ -1089,9 +1085,9 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 74.99,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-38.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-38.png"
     ],
     "material": "",
     "details": "98/2 cotton/spandex flex twill with stain-repellent finish (9.5 oz), fly front, 5-pocket upper, two cargo pockets with bellows, pencil pocket, reinforced pockets and trim, seven belt loops, gusset crotch, rivets and bartacks at stress points, triple-stitched, #6010",
@@ -1169,13 +1165,9 @@ export const allProducts = [
       "#ffffff"
     ],
     "price": 72,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-41.png",
     "imgs": [
-      "/skus/no-photo.png",
-      "/skus/no-photo.png",
-      "/skus/no-photo.png",
-      "/skus/no-photo.png",
-      "/skus/no-photo.png"
+      "/skus/WT-41.png"
     ],
     "material": "",
     "details": "100% Dri-FIT polyester (8.8 oz) with moisture management, rib-knit collar, three-button placket, tagless, breathable, #203690",
@@ -1240,10 +1232,9 @@ export const allProducts = [
       "#383838"
     ],
     "price": 70,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-44.png",
     "imgs": [
-      "/skus/no-photo.png",
-      "/skus/no-photo.png"
+      "/skus/WT-44.png"
     ],
     "material": "",
     "details": "60/40 cotton/polyester interlock (240 gsm / 7 oz), open cardigan with modified shawl collar, side inset pockets, #DG481W",
@@ -1281,11 +1272,9 @@ export const allProducts = [
       "#3d4a63"
     ],
     "price": 58,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-46.png",
     "imgs": [
-      "/skus/no-photo.png",
-      "/skus/no-photo.png",
-      "/skus/no-photo.png"
+      "/skus/WT-46.png"
     ],
     "material": "",
     "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined scuba hood with contrast drawstring, thumbhole cuffs, tear-away label, classic fit, #F2045",
@@ -1331,11 +1320,9 @@ export const allProducts = [
       "#3d4a63"
     ],
     "price": 58,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-48.png",
     "imgs": [
-      "/skus/no-photo.png",
-      "/skus/no-photo.png",
-      "/skus/no-photo.png"
+      "/skus/WT-48.png"
     ],
     "material": "",
     "details": "60/40 combed ring-spun cotton/polyester fleece (15.7 oz), jersey-lined hood with contrast drawstring, tear-away label, classic fit, #F2045",
@@ -1353,11 +1340,9 @@ export const allProducts = [
       "#585858"
     ],
     "price": 82,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-49.png",
     "imgs": [
-      "/skus/no-photo.png",
-      "/skus/no-photo.png",
-      "/skus/no-photo.png"
+      "/skus/WT-49.png"
     ],
     "material": "",
     "details": "#DR1499",
@@ -1381,17 +1366,9 @@ export const allProducts = [
       "#e8863b"
     ],
     "price": 33,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-50.png",
     "imgs": [
-      "/skus/no-photo.png",
-      "/skus/no-photo.png",
-      "/skus/no-photo.png",
-      "/skus/no-photo.png",
-      "/skus/no-photo.png",
-      "/skus/no-photo.png",
-      "/skus/no-photo.png",
-      "/skus/no-photo.png",
-      "/skus/no-photo.png"
+      "/skus/WT-50.png"
     ],
     "material": "",
     "details": "80/20 ring-spun cotton/polyester 2-end face fleece (8.4 oz), 1x1 spandex rib cuffs and band, dropped shoulder, double-needle topstitching, tear-away label, classic fit, #SF000",
@@ -1513,9 +1490,9 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 79.99,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-55.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-55.png"
     ],
     "material": "",
     "details": "98/2 cotton/spandex canvas (8.5 oz) with Rugged Flex stretch, relaxed hip and thigh, boot-cut, reinforced front slash pocket, cell-phone pocket, sewn-on belt loops, #102291",
@@ -1549,9 +1526,9 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 18.5,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-57.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-57.png"
     ],
     "material": "",
     "details": "100% acrylic pompon cuff toque, stretchy with strong shape retention, #1202",
@@ -1585,7 +1562,7 @@ export const allProducts = [
       "/skus/no-photo.png",
       "/skus/no-photo.png",
       "/skus/no-photo.png",
-      "/skus/no-photo.png"
+      "/skus/WT-58.png"
     ],
     "material": "",
     "details": "50/50 cotton/polyester (10.5 oz), loose fit, three-piece drawcord hood, front hand-warmer pocket, spandex-reinforced rib cuffs and waistband, triple-stitched seams, Carhartt sleeve logo and pocket patch, #K288",
@@ -1599,9 +1576,9 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 98,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-59.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-59.png"
     ],
     "material": "",
     "details": "100% cotton canvas (330 gsm / 9.7 oz) with water-repellent finish, polyester sherpa lining, rib-knit collar and side inserts, kangaroo and interior chest pockets, YKK zipper, 4\" hi-vis band with 2\" reflective tape front and back, meets CSA, #L01295-BLA-S",
@@ -1615,9 +1592,9 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 75,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-60.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-60.png"
     ],
     "material": "",
     "details": "150D Open Road rainwear jacket, adjustable cuffs, detachable snap-off hood, front and back venting, dual reflective chest straps, mesh upper-back lining, two sealed pockets, #6323JB",
@@ -1667,9 +1644,9 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 55,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-63.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-63.png"
     ],
     "material": "",
     "details": "50/50 cotton/recycled-polyester carbon-peached jersey (4.7 oz), soft hand, self-fabric collar with contrast inner collar, side-seam splits, #S05750",
@@ -1683,9 +1660,9 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 105,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-64.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-64.png"
     ],
     "material": "",
     "details": "420 gsm two-layer polyester/cotton jersey fleece, cotton-lined, tear-away three-piece hood with drawstring and barrel-locks, dual reflective chest straps, full-zip, two front pockets, rib-knit cuffs and waistband, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #6421BK",
@@ -1699,9 +1676,9 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 65,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-65.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-65.png"
     ],
     "material": "",
     "details": "260 gsm anti-pill polyester fleece, full hood with drawstring, dual reflective chest straps, taffeta-lined sleeves, two front pockets, left-chest phone pocket, elastic cuffs and waistband, tear-away hood, UPF 50+, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #6420BK",
@@ -1715,9 +1692,9 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 80,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-66.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-66.png"
     ],
     "material": "",
     "details": "7 oz (240 gsm) micro-fleece, 4-way stretch, CSA Z96-22 Class 1 Level 2 / ANSI 107 Class 1, StarTech reflective tape, full-zip, detachable drawstring hood, elastic cuffs and hem, two slash pockets, two radiophone clip straps, #6942",
@@ -1731,9 +1708,9 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 40,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-67.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-67.png"
     ],
     "material": "",
     "details": "150D polyester twill surveyor vest, double-hemstitched pockets and seams, brass snaps and grommets, mesh side vents, dual reflective chest straps, cell/radio pocket, D-ring slot, 14\" zippered back pack, 8 pockets (5 outer, 3 inner), ruler slot, 2\" Vi-brance reflective on 4\" contrast tape (WCB/Worksafe/DOT), #6165BK",
@@ -1747,9 +1724,9 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 35,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-68.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-68.png"
     ],
     "material": "",
     "details": "Tricot polyester, tapered waist and flared bottom tailored for women, StarTech reflective tape, 9 pockets incl. ID and phone, full-zip front, radiophone clip strap, #139BK",
@@ -1766,10 +1743,9 @@ export const allProducts = [
       "#ff6a13"
     ],
     "price": 35,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-69.png",
     "imgs": [
-      "/skus/no-photo.png",
-      "/skus/no-photo.png"
+      "/skus/WT-69.png"
     ],
     "material": "",
     "details": "Oxford front with full mesh back for breathability, StarTech reflective tape, bottom map pouch, 12 pockets, full-zip, ID pocket with window, D-ring harness access, #6937",
@@ -1783,9 +1759,9 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 170,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-70.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-70.png"
     ],
     "material": "",
     "details": "7-in-1 convertible jacket (outer, inner, reversible hi-vis, sleeveless vest, zip-off vest combinations), detachable drawcord hood, chest and storage pockets plus inner cell pocket, side zip vents, dual reflective chest straps, heavy-duty zipper with storm flap, embroidery zipper included, #6328JB",
@@ -1801,9 +1777,9 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 90,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-71.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-71.png"
     ],
     "material": "",
     "details": "100% polyester anti-pill fleece (280 gsm) with DWR finish, 3M Scotchlite 2\" reflective on 4\" contrast backing, full-zip, quick-release hood with snaps and drawcord, lower pouch pockets, rib-knit cuffs and waist, #S494",
@@ -1819,9 +1795,9 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 65,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-72.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-72.png"
     ],
     "material": "",
     "details": "#SV05BK",
@@ -1933,9 +1909,9 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 150,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-75.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-75.png"
     ],
     "material": "",
     "details": "New Balance Cremorne low, composite safety toe, Fresh Foam cushioning, slip- and heat-resistant outsole, electrical-hazard rated, wicking mesh lining, women's, #NBWUFCCEHBG",
@@ -1951,9 +1927,9 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 150,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-76.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-76.png"
     ],
     "material": "",
     "details": "New Balance Fresh Foam Cremorne low, composite toe, CSA-approved, Fresh Foam midsole, slip- and heat-resistant outsole, ESR protection, reinforced heel counter, ETPU comfort insert, lightweight anti-perforation midsole, men's, #MCFCEHPBG",
@@ -1969,9 +1945,9 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 155,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-77.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-77.png"
     ],
     "material": "",
     "details": "New Balance Fresh Foam Cremorne mid, composite toe, CSA-approved, Fresh Foam midsole, mid-cut ankle support, slip- and heat-resistant outsole, ESR protection, padded collar, ETPU comfort insert, anti-perforation midsole, men's, #MCFCMEHPB",
@@ -1985,9 +1961,9 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 130,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-78.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-78.png"
     ],
     "material": "",
     "details": "Timberland PRO Intercept, asymmetrical steel toe, EH-resistant sole, PRO Flex grooved sole, steel puncture plate, injection-molded EVA midsole, breathable abrasion-resistant mesh upper, Microban treatment, cement construction, #TB0A5ZX3001",
@@ -2001,9 +1977,9 @@ export const allProducts = [
     "badge": "",
     "colors": [],
     "price": 130,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-79.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-79.png"
     ],
     "material": "",
     "details": "Timberland PRO Intercept on a women's last, asymmetrical steel toe, EH-resistant sole, PRO Flex grooved sole, steel puncture plate, injection-molded EVA midsole, breathable abrasion-resistant mesh upper, Microban treatment, cement construction, #TB0A632U001",
@@ -2019,9 +1995,9 @@ export const allProducts = [
       "#1a1a18"
     ],
     "price": 239.99,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-80.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-80.png"
     ],
     "material": "",
     "details": "Blundstone 163, weatherproof leather upper fused to non-slip PU sole, CSA Green Patch steel toe, Kevlar shank, TPU outsole, removable cushioned footbed, slip-on, UK sizing, #163",
@@ -2037,9 +2013,9 @@ export const allProducts = [
       "#6b3f2a"
     ],
     "price": 239.99,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-81.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-81.png"
     ],
     "material": "",
     "details": "Blundstone 180, 6\" height, CSA Grade 1 toe cap, 2.5mm weatherproof breathable leather, dual-density PU midsole with TPU outsole, Lenzi puncture-resistant midsole, XRD footbed, heat/slip/oil/acid/EH-resistant sole, injection-molded, unisex, #180",
@@ -2055,9 +2031,9 @@ export const allProducts = [
       "#6b3f2a"
     ],
     "price": 259.95,
-    "img": "/skus/no-photo.png",
+    "img": "/skus/WT-82.png",
     "imgs": [
-      "/skus/no-photo.png"
+      "/skus/WT-82.png"
     ],
     "material": "",
     "details": "Blundstone XFR 962, CSA-approved, waxy rustic brown, steel toe with rubber toe guard, thick grippy rubber lug sole, arched impact-absorbing insole, Chelsea height, #962",
@@ -2111,7 +2087,6 @@ const smColorNames: Record<string, Record<string, string>> = {
   "#00263A": { en: "True Navy", fr: "True Navy" },
   "#BA0C2F": { en: "True Red", fr: "True Red" },
   "#1D4F91": { en: "True Royal", fr: "True Royal" },
-  "#1a1a18": { en: "Black", fr: "Black" },
   "#53565A": { en: "Charcoal", fr: "Charcoal" },
   "#22403a": { en: "Forest", fr: "Forest" },
   "#cdb99a": { en: "Sand", fr: "Sand" },
@@ -2123,6 +2098,7 @@ const smColorNames: Record<string, Record<string, string>> = {
   "#6c6f70": { en: "Heather Charcoal", fr: "Heather Charcoal" },
   "#001c54": { en: "Vintage Navy", fr: "Vintage Navy" },
   "#333333": { en: "Charcoal", fr: "Charcoal" },
+  "#1a1a18": { en: "Black", fr: "Black" },
   "#5a5a5a": { en: "Grey", fr: "Grey" },
   "#1b2a41": { en: "Navy", fr: "Navy" },
   "#ffffff": { en: "White", fr: "White" },
@@ -2159,28 +2135,15 @@ const smColorNames: Record<string, Record<string, string>> = {
   "#a1a8b0": { en: "Grey", fr: "Grey" },
   "#5e5c60": { en: "Grey Storm", fr: "Grey Storm" },
   "#bc2c3a": { en: "Team Red", fr: "Team Red" },
-  "#8a8a8a": { en: "Grey", fr: "Grey" },
-  "#4a4a4a": { en: "Charcoal", fr: "Charcoal" },
   "#55585b": { en: "Heather Dark Charcoal", fr: "Heather Dark Charcoal" },
   "#9a9b9d": { en: "Heather Grey", fr: "Heather Grey" },
-  "#2c3e50": { en: "Navy", fr: "Navy" },
-  "#c0392b": { en: "Red", fr: "Red" },
-  "#1e40af": { en: "Blue", fr: "Blue" },
-  "#383838": { en: "Charcoal", fr: "Charcoal" },
-  "#2b2b2b": { en: "Charcoal", fr: "Charcoal" },
-  "#3f3f3f": { en: "Charcoal", fr: "Charcoal" },
-  "#585858": { en: "Grey", fr: "Grey" },
-  "#6b3fa0": { en: "Purple", fr: "Purple" },
-  "#9b9b9b": { en: "Grey", fr: "Grey" },
-  "#b8ad97": { en: "Khaki", fr: "Khaki" },
-  "#e8863b": { en: "Orange", fr: "Orange" },
   "#153a81": { en: "New Royal", fr: "New Royal" },
   "#7f8684": { en: "Steel Grey", fr: "Steel Grey" },
   "#0e347b": { en: "Royal Blue", fr: "Royal Blue" },
   "#b6e021": { en: "^Safety Green", fr: "^Safety Green" },
   "#a0a0a0": { en: "Grey", fr: "Grey" },
+  "#2c3e50": { en: "Navy", fr: "Navy" },
   "#5a2733": { en: "Maroon", fr: "Maroon" },
-  "#ff6a13": { en: "Orange", fr: "Orange" },
   "#b3cde8": { en: "Light Blue", fr: "Light Blue" },
 };
 const colorNames: Record<string, Record<string, string>> = {

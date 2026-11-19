@@ -86,13 +86,16 @@ async function fetchAndWrite() {
     // scripts/sync-sm-images.mts). One photo per offered colour; a colour sm has
     // no photo for keeps its swatch and shows the blank /skus/no-photo.png.
     const NO_PHOTO = "/skus/no-photo.png";
-    const smImages: Record<string, { imgs: string[]; names: Record<string, string>; brand?: string }> =
+    const smImages: Record<string, { imgs: string[]; names: Record<string, string>; productPhoto?: string; brand?: string }> =
       existsSync("src/data/sm-images.json") ? JSON.parse(readFileSync("src/data/sm-images.json", "utf8")) : {};
     const smNames: Record<string, string> = {};
     foldedProducts = foldedProducts.map((p) => {
       const sm = smImages[p.sku];
       if (!sm) return p;
       const withBrand = sm.brand ? { ...p, garmentBrand: sm.brand } : p;
+      // sm has no colour photos for this product, only its product shot (one
+      // photo for every colour) — see sync-sm-images.mts.
+      if (sm.productPhoto) return { ...withBrand, imgs: [sm.productPhoto], img: sm.productPhoto };
       if (!p.colors.length) {
         // No colour swatches: sm's photos for the code, else the blank tile.
         const imgs = sm.imgs.filter(Boolean);

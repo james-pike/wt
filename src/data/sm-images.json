@@ -189,6 +189,7 @@
     "names": {
       "#1a1a18": "Black"
     },
+    "productPhoto": "/skus/WT-9.png",
     "brand": "The North Face"
   },
   "WT-10": {
@@ -199,6 +200,7 @@
     "names": {
       "#1a1a18": "Black"
     },
+    "productPhoto": "/skus/WT-10.png",
     "brand": "The North Face"
   },
   "WT-11": {
@@ -714,16 +716,19 @@
       "#8a8a8a": "Grey",
       "#ffffff": "White"
     },
+    "productPhoto": "/skus/WT-34.png",
     "brand": "Other"
   },
   "WT-35": {
     "imgs": [],
     "names": {},
+    "productPhoto": "/skus/WT-35.png",
     "brand": "Other"
   },
   "WT-36": {
     "imgs": [],
     "names": {},
+    "productPhoto": "/skus/WT-36.png",
     "brand": "Tough Duck"
   },
   "WT-37": {
@@ -734,11 +739,13 @@
     "names": {
       "#4a4a4a": "Charcoal"
     },
+    "productPhoto": "/skus/WT-37.png",
     "brand": "Other"
   },
   "WT-38": {
     "imgs": [],
     "names": {},
+    "productPhoto": "/skus/WT-38.png",
     "brand": "Tough Duck"
   },
   "WT-39": {
@@ -796,6 +803,7 @@
       "#1e40af": "Blue",
       "#ffffff": "White"
     },
+    "productPhoto": "/skus/WT-41.png",
     "brand": "Nike"
   },
   "WT-42": {
@@ -837,6 +845,7 @@
       "#1a1a18": "Black",
       "#383838": "Charcoal"
     },
+    "productPhoto": "/skus/WT-44.png",
     "brand": "Devon & Jones"
   },
   "WT-45": {
@@ -860,6 +869,7 @@
       "#2b2b2b": "Charcoal",
       "#3f3f3f": "Charcoal"
     },
+    "productPhoto": "/skus/WT-46.png",
     "brand": "ATC"
   },
   "WT-47": {
@@ -891,6 +901,7 @@
       "#2b2b2b": "Charcoal",
       "#3f3f3f": "Charcoal"
     },
+    "productPhoto": "/skus/WT-48.png",
     "brand": "ATC"
   },
   "WT-49": {
@@ -904,6 +915,7 @@
       "#1a1a18": "Black",
       "#585858": "Grey"
     },
+    "productPhoto": "/skus/WT-49.png",
     "brand": "Nike"
   },
   "WT-50": {
@@ -927,6 +939,7 @@
       "#b8ad97": "Khaki",
       "#e8863b": "Orange"
     },
+    "productPhoto": "/skus/WT-50.png",
     "brand": "Gildan"
   },
   "WT-51": {
@@ -1006,6 +1019,7 @@
     "names": {
       "#1a1a18": "Black"
     },
+    "productPhoto": "/skus/WT-55.png",
     "brand": "Carhartt"
   },
   "WT-56": {
@@ -1024,6 +1038,7 @@
     "names": {
       "#1a1a18": "Black"
     },
+    "productPhoto": "/skus/WT-57.png",
     "brand": "Other"
   },
   "WT-58": {
@@ -1036,7 +1051,7 @@
       "",
       "",
       "",
-      ""
+      "/skus/WT-58.png"
     ],
     "names": {
       "#1a1a18": "Black",
@@ -1050,11 +1065,13 @@
   "WT-59": {
     "imgs": [],
     "names": {},
+    "productPhoto": "/skus/WT-59.png",
     "brand": "Canada Sportswear"
   },
   "WT-60": {
     "imgs": [],
     "names": {},
+    "productPhoto": "/skus/WT-60.png",
     "brand": "Viking"
   },
   "WT-61": {
@@ -1072,31 +1089,37 @@
   "WT-63": {
     "imgs": [],
     "names": {},
+    "productPhoto": "/skus/WT-63.png",
     "brand": "Other"
   },
   "WT-64": {
     "imgs": [],
     "names": {},
+    "productPhoto": "/skus/WT-64.png",
     "brand": "Viking"
   },
   "WT-65": {
     "imgs": [],
     "names": {},
+    "productPhoto": "/skus/WT-65.png",
     "brand": "Viking"
   },
   "WT-66": {
     "imgs": [],
     "names": {},
+    "productPhoto": "/skus/WT-66.png",
     "brand": "Pioneer"
   },
   "WT-67": {
     "imgs": [],
     "names": {},
+    "productPhoto": "/skus/WT-67.png",
     "brand": "Viking"
   },
   "WT-68": {
     "imgs": [],
     "names": {},
+    "productPhoto": "/skus/WT-68.png",
     "brand": "Pioneer"
   },
   "WT-69": {
@@ -1108,11 +1131,13 @@
       "#1a1a18": "Black",
       "#ff6a13": "Orange"
     },
+    "productPhoto": "/skus/WT-69.png",
     "brand": "Pioneer"
   },
   "WT-70": {
     "imgs": [],
     "names": {},
+    "productPhoto": "/skus/WT-70.png",
     "brand": "Viking"
   },
   "WT-71": {
@@ -1122,6 +1147,7 @@
     "names": {
       "#1a1a18": "Black"
     },
+    "productPhoto": "/skus/WT-71.png",
     "brand": "Other"
   },
   "WT-72": {
@@ -1131,6 +1157,7 @@
     "names": {
       "#1a1a18": "Black"
     },
+    "productPhoto": "/skus/WT-72.png",
     "brand": "Other"
   },
   "WT-73": {
@@ -1218,6 +1245,7 @@
     "names": {
       "#1a1a18": "Black"
     },
+    "productPhoto": "/skus/WT-75.png",
     "brand": "New Balance"
   },
   "WT-76": {
@@ -1227,6 +1255,7 @@
     "names": {
       "#1a1a18": "Black"
     },
+    "productPhoto": "/skus/WT-76.png",
     "brand": "New Balance"
   },
   "WT-77": {
@@ -1236,16 +1265,19 @@
     "names": {
       "#1a1a18": "Black"
     },
+    "productPhoto": "/skus/WT-77.png",
     "brand": "New Balance"
   },
   "WT-78": {
     "imgs": [],
     "names": {},
+    "productPhoto": "/skus/WT-78.png",
     "brand": "Timberland"
   },
   "WT-79": {
     "imgs": [],
     "names": {},
+    "productPhoto": "/skus/WT-79.png",
     "brand": "Timberland"
   },
   "WT-80": {
@@ -1255,6 +1287,7 @@
     "names": {
       "#1a1a18": "Black"
     },
+    "productPhoto": "/skus/WT-80.png",
     "brand": "Blundstone"
   },
   "WT-81": {
@@ -1262,6 +1295,7 @@
       ""
     ],
     "names": {},
+    "productPhoto": "/skus/WT-81.png",
     "brand": "Blundstone"
   },
   "WT-82": {
@@ -1269,6 +1303,7 @@
       ""
     ],
     "names": {},
+    "productPhoto": "/skus/WT-82.png",
     "brand": "Blundstone"
   }
 }

@@ -42,7 +42,9 @@ const db = createClient({
 const rows = (await db.execute("SELECT sku, code, colors, imgs FROM products WHERE vendor = 'wills' ORDER BY sort_order")).rows as any[];
 
 const norm = (h: string) => (h || "").toLowerCase();
-const out: Record<string, { imgs: string[]; names: Record<string, string>; brand?: string }> = {};
+// Product shots that show ONE of several colours: the colour slot they fill.
+const BRAND_PHOTO_SLOT: Record<string, string> = { "WT-58": "#5a2733" }; // K288 — maroon
+const out: Record<string, { imgs: string[]; names: Record<string, string>; productPhoto?: string; brand?: string }> = {};
 let total = 0, found = 0;
 const missing: string[] = [];
 mkdirSync(OUT_DIR, { recursive: true });
@@ -93,7 +95,23 @@ for (const r of rows) {
     }
     if (!imgs.length) missing.push(`${r.sku} ${code} (no colours, no sm photo)`);
   }
-  out[r.sku] = { imgs, names, ...(garmentBrand.get(r.sku) ? { brand: garmentBrand.get(r.sku) } : {}) };
+  // sm's product shot for the SKU (sm/public/skus/_brand/WT-N.*), baked with the
+  // Wills logo into public/skus/WT-N.png by ~/sm/scripts/bake-wills.py. Used when
+  // sm has no colour photo for the product at all (one photo for the product), or
+  // to fill the one colour slot the shot shows (BRAND_PHOTO_SLOT).
+  const brandPhoto = existsSync(`${OUT_DIR}/${r.sku}.png`) ? `/skus/${r.sku}.png` : undefined;
+  let productPhoto: string | undefined;
+  if (brandPhoto) {
+    const slotHex = BRAND_PHOTO_SLOT[r.sku];
+    const slot = slotHex ? colors.findIndex((h) => norm(h) === slotHex) : -1;
+    if (slot >= 0 && !imgs[slot]) imgs[slot] = brandPhoto;
+    else if (!imgs.some(Boolean)) productPhoto = brandPhoto;
+  }
+  out[r.sku] = {
+    imgs, names,
+    ...(productPhoto ? { productPhoto } : {}),
+    ...(garmentBrand.get(r.sku) ? { brand: garmentBrand.get(r.sku) } : {}),
+  };
 }
 
 writeFileSync("src/data/sm-images.json", JSON.stringify(out, null, 2) + "\n");
