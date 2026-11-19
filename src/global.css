@@ -18354,3 +18354,24 @@ html body:not(#cm):not(#wt) .site-header .site-header__search-btn {
 }
 html body:not(#cm):not(#wt) .site-header .cart-btn,
 html body:not(#cm):not(#wt) .site-header .cart-btn.cart-btn--active { background: var(--ce-green) !important; }
+/* Gate: APPAREL starts under the "W" (~27% across the wordmark), not under the
+   lead-in line on the left. */
+html body .login-overlay .login-modal--split .login-card__tagline { padding-left: calc(300px * 0.27) !important; }
+@media (max-width: 600px) {
+  html body .login-overlay .login-modal--split .login-card__tagline { padding-left: calc(240px * 0.27) !important; }
+}
+/* Bigger gate wordmark (indent of APPAREL scales with it). */
+html body .login-overlay .login-modal--split .login-card__brand.brand-cluster::before { width: 350px !important; height: calc(350px * 313 / 1448) !important; }
+html body .login-overlay .login-modal--split .login-card__tagline { padding-left: calc(350px * 0.27) !important; }
+@media (max-width: 600px) {
+  html body .login-overlay .login-modal--split .login-card__brand.brand-cluster::before { width: 268px !important; height: calc(268px * 313 / 1448) !important; }
+  html body .login-overlay .login-modal--split .login-card__tagline { padding-left: calc(268px * 0.27) !important; }
+}
+/* Taller floating box: more breathing room top/bottom and between sections. */
+html body .login-overlay .login-modal--split .login-modal__form-pane { padding: 52px 44px 54px !important; }
+html body .login-overlay .login-modal--split .login-card__cover { padding-bottom: 30px !important; }
+html body .login-overlay .login-modal--split .login-modal__form { gap: 18px !important; }
+@media (max-width: 600px) {
+  html body .login-overlay .login-modal--split .login-modal__form-pane { padding: 38px 24px 40px !important; }
+  html body .login-overlay .login-modal--split .login-card__cover { padding-bottom: 24px !important; }
+}
