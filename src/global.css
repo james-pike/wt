@@ -18308,3 +18308,37 @@ html body .cart-drawer__site-header img.site-header__logo-img--wills { content: 
 @media (max-width: 600px) {
   html body:not(#cm):not(#wt) .site-header .site-header__logo { padding: 0 14px 0 12px !important; }
 }
+
+/* Header APPAREL in a script face (Yellowtail, self-hosted; OFL) to echo the
+   brush "Wills" wordmark. */
+@font-face {
+  font-family: 'Wills Script';
+  src: url('/fonts/yellowtail-latin.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+html body:not(#cm):not(#wt) .site-header .site-header__logo-apparel {
+  font-family: 'Wills Script', 'Brush Script MT', cursive !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  letter-spacing: 0.01em !important;
+  font-size: 24px !important;
+  line-height: 1 !important;
+  color: #ffffff !important;
+}
+/* Desktop: tuck "Apparel" under the right end of the Wills underline. */
+@media (min-width: 1025px) {
+  html body:not(#cm):not(#wt) .site-header .site-header__logo { position: relative !important; padding-right: 26px !important; }
+  html body .site-header .site-header__logo-img.site-header__logo-img--wills { height: 40px !important; margin-top: -10px !important; }
+  html body:not(#cm):not(#wt) .site-header .site-header__logo-brand {
+    position: absolute !important;
+    right: 22px !important;
+    bottom: 5px !important;
+    margin: 0 !important;
+  }
+  html body:not(#cm):not(#wt) .site-header .site-header__logo-apparel { font-size: 22px !important; }
+}
+@media (max-width: 600px) {
+  html body:not(#cm):not(#wt) .site-header .site-header__logo-apparel { font-size: 20px !important; }
+}
