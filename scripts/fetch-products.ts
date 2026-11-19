@@ -26,6 +26,12 @@ async function fetchAndWrite() {
     // here, not in the DB — the DB is shared with the old Wills site.)
     "WT-2": { category: "Sweaters" },
     "WT-6": { category: "Sweaters" },
+    // Polos get their own collection.
+    "WT-3": { category: "Polos" },   // Women's Under Armour Tech Polo
+    "WT-18": { category: "Polos" },  // Men's Under Armour Tech Polo
+    "WT-29": { category: "Polos" },  // Women's CrownLux Plaited Polo
+    "WT-40": { category: "Polos" },  // Men's CrownLux Plaited Polo
+    "WT-41": { category: "Polos" },  // Men's Nike TechBasic Dri Fit Polo
   };
 
   try {

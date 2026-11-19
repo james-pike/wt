@@ -60,7 +60,7 @@ export const allProducts = [
   {
     "sku": "WT-3",
     "name": "Women’s Under Armour Tech Polo",
-    "category": "Shirts",
+    "category": "Polos",
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
@@ -482,7 +482,7 @@ export const allProducts = [
   {
     "sku": "WT-18",
     "name": "Men’s Under Armour Tech Polo",
-    "category": "Shirts",
+    "category": "Polos",
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
@@ -816,7 +816,7 @@ export const allProducts = [
   {
     "sku": "WT-29",
     "name": "Women’s Devon & Jones CrownLux Performance – Plaited Polo",
-    "category": "Shirts",
+    "category": "Polos",
     "sizes": "XS - 3XL",
     "badge": "",
     "colors": [
@@ -1120,7 +1120,7 @@ export const allProducts = [
   {
     "sku": "WT-40",
     "name": "Men’s Devon & Jones CrownLux Performance – Plaited Polo",
-    "category": "Shirts",
+    "category": "Polos",
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
@@ -1154,7 +1154,7 @@ export const allProducts = [
   {
     "sku": "WT-41",
     "name": "Men’s Nike TechBasic Dri Fit Polo",
-    "category": "Shirts",
+    "category": "Polos",
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
