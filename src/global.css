@@ -18026,3 +18026,35 @@ html body:not(#cm):not(#wt) .product-card__image::after { box-shadow: none !impo
 html body:not(#cm):not(#wt) .product-card__info { border-top: 0 !important; }
 html body:not(#cm):not(#wt) .home-catalog__filters :is(.home-catalog__catnav, .home-catalog__filter-group),
 html body:not(#cm):not(#wt) .home-catalog__filters > * { border-bottom: 0 !important; }
+
+/* Login gate, warm pass (like the CM green / MN blue gates, in Wills orange):
+   the brand panel is a Wills-orange gradient with the white wordmark and white
+   APPAREL; the frame and form pane carry a faint orange tint. */
+html body .login-modal.login-modal--split,
+html body .login-overlay .login-modal.login-modal--split,
+html body .login-overlay { background: #f3e9df !important; }
+@media (min-width: 1025px) {
+  html body .login-modal.login-modal--split,
+  html body .login-overlay .login-modal.login-modal--split { background: #f3e9df !important; }
+}
+html body .login-modal--split .login-card__cover {
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 42%, rgba(255, 255, 255, 0.18), transparent 70%),
+    linear-gradient(160deg, #f9a04f 0%, #f58322 45%, #d0670f 100%) !important;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06) !important;
+}
+html body .login-card__brand.brand-cluster::before { background-image: url("/logo-white-onorange.webp") !important; }
+html body .login-modal--split .login-card__tagline .login-card__apparel { color: #ffffff !important; text-shadow: none !important; }
+html body .login-modal--split .login-card__locale {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+html body .login-modal--split .login-card__locale * { color: #ffffff !important; }
+html body .login-modal--split .login-modal__form-pane { background: #f8efe6 !important; }
+html body .login-modal--split .login-modal__form { box-shadow: 0 1px 3px rgba(150, 70, 0, 0.08) !important; }
+@media (max-width: 600px) {
+  html body .login-modal.login-modal--split,
+  html body .login-modal--split .login-modal__form-pane { background: #f8efe6 !important; }
+  html body .login-card__brand.brand-cluster::before { background-image: url("/logo-white.webp") !important; }
+}
