@@ -18058,3 +18058,235 @@ html body .login-modal--split .login-modal__form { box-shadow: 0 1px 3px rgba(15
   html body .login-modal--split .login-modal__form-pane { background: #f8efe6 !important; }
   html body .login-card__brand.brand-cluster::before { background-image: url("/logo-white.webp") !important; }
 }
+
+/* ==========================================================================
+   Wills login gate v3 — like willstransfer.com's hero: the Wills sign photo
+   full-bleed across the whole screen, and the login floating in a dark
+   translucent box on the left (their headline-box treatment). Supersedes the
+   split-panel gate styling above.
+   ========================================================================== */
+html body .login-overlay {
+  padding: 0 !important;
+  background: #14110e !important;
+}
+html body .login-overlay .login-modal.login-modal--split,
+html body .login-modal.login-modal--split {
+  position: relative !important;
+  display: block !important;
+  width: 100vw !important;
+  max-width: none !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+/* Photo: full-bleed behind everything */
+html body .login-modal--split .login-modal__carousel.login-modal__carousel {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  z-index: 0 !important;
+  display: block !important;
+  flex: none !important;
+  background: #14110e !important;
+}
+html body .login-modal--split .login-modal__slide {
+  width: 100% !important;
+  height: 100% !important;
+  inset: 0 !important;
+  object-fit: cover !important;
+  object-position: 62% 45% !important;
+  border-radius: 0 !important;
+}
+html body .login-modal--split .login-modal__carousel::after {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0) 55%) !important;
+  border-radius: 0 !important;
+}
+/* The floating translucent login box */
+html body .login-modal--split .login-modal__form-pane {
+  position: absolute !important;
+  z-index: 2 !important;
+  left: clamp(16px, 10vw, 200px) !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: min(430px, calc(100vw - 32px)) !important;
+  height: auto !important;
+  max-height: calc(100dvh - 32px) !important;
+  margin: 0 !important;
+  padding: 30px 32px 32px !important;
+  background: rgba(16, 13, 10, 0.62) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+html body .login-modal--split .login-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+  width: 100% !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+html body .login-modal--split .login-card__cover {
+  position: relative !important;
+  height: auto !important;
+  min-height: 0 !important;
+  flex: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  padding: 0 0 18px !important;
+  margin: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+html body .login-modal--split .login-card__cover::before,
+html body .login-modal--split .login-card__cover::after { display: none !important; }
+html body .login-modal--split .login-card__brand.brand-cluster {
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  align-self: flex-start !important;
+}
+html body .login-modal--split .login-card__brand.brand-cluster::before {
+  background-image: url("/logo-white.webp") !important;
+  width: 250px !important;
+  height: calc(250px * 313 / 1448) !important;
+  aspect-ratio: auto !important;
+  flex: none !important;
+  margin: 0 !important;
+}
+html body .login-modal--split .login-card__tagline {
+  align-items: flex-start !important;
+  text-align: left !important;
+  margin: 6px 0 0 !important;
+  padding: 0 !important;
+}
+html body .login-modal--split .login-card__tagline .login-card__apparel {
+  color: #ffffff !important;
+  text-shadow: none !important;
+  margin: 0 !important;
+}
+html body .login-modal--split .login-card__locale {
+  position: absolute !important;
+  top: -14px !important;
+  right: -16px !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+}
+html body .login-modal--split .login-card__locale * { color: #ffffff !important; }
+html body .login-modal--split .login-modal__form {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+html body .login-modal--split .login-modal__form :is(.login-modal__subtitle, h2, h3, p) { color: #ffffff !important; }
+html body .login-modal--split .login-modal__form label { color: rgba(255, 255, 255, 0.78) !important; }
+html body .login-modal--split .login-modal__form input {
+  background: #ffffff !important;
+  color: #2b2723 !important;
+  border: 0 !important;
+  border-radius: 2px !important;
+}
+html body .login-modal--split .login-modal__submit {
+  background: var(--ce-green) !important;
+  color: #ffffff !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+}
+@media (max-width: 600px) {
+  html body .login-modal--split .login-modal__slide { object-position: 70% 40% !important; }
+  html body .login-modal--split .login-modal__form-pane {
+    left: 16px !important;
+    padding: 24px 22px 26px !important;
+  }
+  html body .login-modal--split .login-card__brand.brand-cluster::before {
+    width: 210px !important;
+    height: calc(210px * 313 / 1448) !important;
+  }
+}
+/* Phone/tablet: the template flattens the form pane (display: contents) and
+   stacks the gate in a grid/flex column with a short photo strip — force the
+   same full-bleed photo + floating box layout at every width. */
+html body .login-overlay .login-modal--split .login-modal__stack {
+  display: block !important;
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  grid-template-columns: none !important;
+}
+html body .login-overlay .login-modal--split .login-modal__form-pane { display: block !important; }
+html body .login-overlay .login-modal--split .login-modal__carousel.login-modal__carousel {
+  position: absolute !important;
+  inset: 0 !important;
+  height: 100% !important;
+  max-height: none !important;
+}
+html body .login-overlay .login-modal--split .login-card__tagline { display: flex !important; }
+html body .login-overlay .login-modal--split .login-modal__subtitle { display: block !important; margin: 0 0 4px !important; }
+html body .login-overlay .login-modal--split .login-modal__form { display: flex !important; flex-direction: column !important; gap: 14px !important; }
+html body .login-overlay .login-modal--split .login-modal__field,
+html body .login-overlay .login-modal--split .login-modal__submit,
+html body .login-overlay .login-modal--split .login-modal__form input { width: 100% !important; }
+html body .login-overlay .login-modal--split .login-modal__form :is(label, .login-modal__label) { color: rgba(255, 255, 255, 0.82) !important; }
+/* Language toggle: top-right corner of the box, inside it. */
+html body .login-overlay .login-modal--split .login-card__locale { top: 0 !important; right: 0 !important; }
+@media (max-width: 1024px) {
+  html body .login-overlay .login-modal--split .login-modal__form-pane { left: 50% !important; transform: translate(-50%, -50%) !important; }
+}
+html body .login-overlay .login-modal--split .login-card__brand.brand-cluster { order: 1 !important; }
+html body .login-overlay .login-modal--split .login-card__tagline { order: 2 !important; }
+html body .login-overlay { align-items: stretch !important; justify-content: stretch !important; }
+html body .login-overlay .login-modal.login-modal--split { height: 100% !important; min-height: 100vh !important; min-height: 100dvh !important; }
+/* Readable form sizes in the floating box (the desktop template ran small). */
+html body .login-overlay .login-modal--split .login-modal__form label { font-size: 0.72rem !important; letter-spacing: 0.12em !important; }
+html body .login-overlay .login-modal--split .login-modal__form input { height: 46px !important; font-size: 15px !important; padding: 0 14px !important; }
+html body .login-overlay .login-modal--split .login-modal__submit { height: 46px !important; font-size: 15px !important; }
+html body .login-overlay .login-modal--split .login-modal__subtitle { font-size: 1.2rem !important; }
+/* Scaled-up floating box (~15%). */
+html body .login-overlay .login-modal--split .login-modal__form-pane {
+  width: min(500px, calc(100vw - 32px)) !important;
+  padding: 38px 40px 40px !important;
+}
+html body .login-overlay .login-modal--split .login-card__brand.brand-cluster::before {
+  width: 300px !important;
+  height: calc(300px * 313 / 1448) !important;
+}
+html body .login-overlay .login-modal--split .login-card__tagline .login-card__apparel { font-size: 2.15rem !important; }
+html body .login-overlay .login-modal--split .login-modal__subtitle { font-size: 1.4rem !important; }
+html body .login-overlay .login-modal--split .login-modal__form label { font-size: 0.8rem !important; }
+html body .login-overlay .login-modal--split .login-modal__form input { height: 52px !important; font-size: 16px !important; }
+html body .login-overlay .login-modal--split .login-modal__submit { height: 52px !important; font-size: 16px !important; }
+html body .login-overlay .login-modal--split .login-card__locale { transform: scale(1.12); transform-origin: top right; }
+@media (max-width: 600px) {
+  html body .login-overlay .login-modal--split .login-modal__form-pane { padding: 28px 24px 30px !important; }
+  html body .login-overlay .login-modal--split .login-card__brand.brand-cluster::before { width: 240px !important; height: calc(240px * 313 / 1448) !important; }
+  html body .login-overlay .login-modal--split .login-card__tagline .login-card__apparel { font-size: 1.8rem !important; }
+}
+/* No leftover template fade at the bottom of the phone gate. */
+html body .login-overlay .login-modal--split::before,
+html body .login-overlay .login-modal--split::after,
+html body .login-overlay .login-modal--split .login-modal__stack::after { display: none !important; }
+/* Template dot/fade overlays left over from the split gate. */
+html body .login-overlay .login-modal--split .login-modal__stack::before,
+html body .login-overlay .login-modal--split .login-modal__form-pane::before,
+html body .login-overlay .login-modal--split .login-modal__carousel::before { display: none !important; }
