@@ -18009,12 +18009,20 @@ html body .login-modal--split .login-modal__form-pane { background: #f2f1ee !imp
 
 /* Lighter theme: the seams between product tiles and the sidebar dividers
    were dark grey; make them a soft light line. */
-html body:not(#cm):not(#wt) .apparel-grid { background: #e2e1de !important; }
+html body:not(#cm):not(#wt) .apparel-grid { background: #f0efed !important; gap: 1px !important; }
 html body:not(#cm):not(#wt) .product-card { box-shadow: none !important; }
 html body:not(#cm):not(#wt) .home-catalog__inner { box-shadow: none !important; }
 html body:not(#cm):not(#wt) .home-catalog__filters,
 html body:not(#cm):not(#wt) .home-catalog__filters :is(.home-catalog__catnav, .home-catalog__filter-group, [class*="divider"], hr) {
-  border-color: rgba(0, 0, 0, 0.06) !important;
+  border-color: rgba(0, 0, 0, 0.035) !important;
   box-shadow: none !important;
 }
+html body:not(#cm):not(#wt) .product-card__info { border-top-color: rgba(0, 0, 0, 0.035) !important; }
 html body:not(#cm):not(#wt) .home-catalog__catnav-count { background: rgba(0, 0, 0, 0.06) !important; }
+
+/* No seams: drop the inset shadow at the top of the photo tile and the light
+   dividers in the sidebar (the lighter theme doesn't need them). */
+html body:not(#cm):not(#wt) .product-card__image::after { box-shadow: none !important; }
+html body:not(#cm):not(#wt) .product-card__info { border-top: 0 !important; }
+html body:not(#cm):not(#wt) .home-catalog__filters :is(.home-catalog__catnav, .home-catalog__filter-group),
+html body:not(#cm):not(#wt) .home-catalog__filters > * { border-bottom: 0 !important; }
