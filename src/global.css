@@ -18427,3 +18427,85 @@ html body .login-overlay .login-modal--split .login-modal__carousel.login-modal_
 html body .login-overlay .login-modal--split .login-modal__slide { display: none !important; }
 html body .login-overlay .login-modal--split .login-modal__carousel::after { display: none !important; }
 html body .login-overlay .login-modal--split .login-modal__form-pane { background: rgba(0, 0, 0, 0.55) !important; }
+
+/* ==========================================================================
+   Wills footer, mirroring the header (and willstransfer.com's footer): dark
+   bar with their fleet image, a thin orange strip along the BOTTOM, and on
+   desktop a black brand block the width of the sidebar that drops into that
+   strip — so the logo block, sidebar and footer brand share one left column.
+   ========================================================================== */
+html body:not(#cm):not(#wt) .site-footer {
+  background:
+    linear-gradient(to top, var(--ce-green) 0 var(--wills-strip), transparent var(--wills-strip)),
+    linear-gradient(rgba(20, 17, 14, 0.35), rgba(20, 17, 14, 0.35)),
+    url("/login-bg-fleet.webp") center 60% / cover no-repeat,
+    #14110e !important;
+  padding-bottom: 0 !important;
+  border: 0 !important;
+}
+html body:not(#cm):not(#wt) .site-footer::after { display: none !important; }
+html body:not(#cm):not(#wt) .site-footer .site-footer__inner { padding-bottom: calc(var(--wills-strip) + 6px) !important; }
+html body:not(#cm):not(#wt) .site-footer * { color: rgba(255, 255, 255, 0.82) !important; border-color: rgba(255, 255, 255, 0.35) !important; }
+html body:not(#cm):not(#wt) .site-footer a:hover { color: var(--ce-green-light) !important; }
+html body .site-footer__brand.brand-cluster::before { background-image: url("/logo-white.webp") !important; }
+@media (min-width: 1025px) {
+  html body:not(#cm):not(#wt) .site-footer { padding: 0 36px 0 0 !important; }
+  html body:not(#cm):not(#wt) .site-footer .site-footer__inner {
+    width: 100% !important;
+    max-width: none !important;
+    align-items: center !important;
+    padding: 18px 0 calc(var(--wills-strip) + 18px) 0 !important;
+  }
+  html body:not(#cm):not(#wt) .site-footer .site-footer__brand {
+    align-self: stretch !important;
+    flex: 0 0 calc((100% + 36px - 2px) / 6) !important;
+    width: calc((100% + 36px - 2px) / 6) !important;
+    box-sizing: border-box !important;
+    margin: -18px 0 calc(-1 * (var(--wills-strip) + 18px) + var(--wills-strip-lift)) 0 !important;
+    padding: 0 0 0 16px !important;
+    background: #000000 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  html body .site-footer__brand.brand-cluster::before { width: 167px !important; height: 36px !important; }
+}
+/* No Wills logo in the footer (the sticky header already shows it). The
+   footer content starts on the header wordmark's left line instead. */
+html body:not(#cm):not(#wt) .site-footer .site-footer__brand { display: none !important; }
+@media (min-width: 1025px) {
+  html body:not(#cm):not(#wt) .site-footer { padding: 0 36px 0 16px !important; }
+  html body:not(#cm):not(#wt) .site-footer .site-footer__inner { padding: 22px 0 calc(var(--wills-strip) + 22px) 0 !important; }
+}
+
+/* Back-to-top tab: an orange parallelogram (slanted sides) standing on the
+   footer's bottom strip, at the left content line — like willstransfer.com. */
+.site-footer__totop { display: none; }
+html body:not(#cm):not(#wt) .site-footer { position: relative !important; }
+html body:not(#cm):not(#wt) .site-footer .site-footer__totop {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 16px;
+  bottom: 0;
+  width: 92px;
+  height: 40px;
+  padding: 0 0 4px;
+  border: 0;
+  background: var(--ce-green) !important;
+  color: #ffffff !important;
+  clip-path: polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+  cursor: pointer;
+  z-index: 1;
+}
+html body:not(#cm):not(#wt) .site-footer .site-footer__totop:hover { background: var(--ce-green-light) !important; }
+html body:not(#cm):not(#wt) .site-footer .site-footer__totop svg { color: #ffffff !important; stroke: #ffffff; }
+/* Content shifts right of the tab on desktop; on smaller screens the tab sits
+   at the left of the bottom strip under the centred content. */
+@media (min-width: 1025px) {
+  html body:not(#cm):not(#wt) .site-footer { padding-left: calc(16px + 92px + 24px) !important; }
+}
+@media (max-width: 1024px) {
+  html body:not(#cm):not(#wt) .site-footer .site-footer__totop { width: 76px; height: 34px; left: 12px; }
+  html body:not(#cm):not(#wt) .site-footer .site-footer__inner { padding-bottom: calc(var(--wills-strip) + 40px) !important; }
+}

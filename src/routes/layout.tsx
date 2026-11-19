@@ -1610,6 +1610,16 @@ export default component$(() => {
       </main>
 
       <footer class="site-footer">
+        {/* Back-to-top tab (the slanted orange tab from the willstransfer.com
+            footer), sitting on the footer's orange bottom strip. */}
+        <button
+          type="button"
+          class="site-footer__totop"
+          aria-label="Back to top"
+          onClick$={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 15 12 8 19 15" /></svg>
+        </button>
         <div class="site-footer__inner">
           <div class="site-footer__brand brand-cluster" role="img" aria-label="Wills Apparel">
           </div>
