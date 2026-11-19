@@ -26,12 +26,15 @@ async function fetchAndWrite() {
     // here, not in the DB — the DB is shared with the old Wills site.)
     "WT-2": { category: "Sweaters" },
     "WT-6": { category: "Sweaters" },
-    // Polos get their own collection.
-    "WT-3": { category: "Polos" },   // Women's Under Armour Tech Polo
-    "WT-18": { category: "Polos" },  // Men's Under Armour Tech Polo
-    "WT-29": { category: "Polos" },  // Women's CrownLux Plaited Polo
-    "WT-40": { category: "Polos" },  // Men's CrownLux Plaited Polo
-    "WT-41": { category: "Polos" },  // Men's Nike TechBasic Dri Fit Polo
+    // Polos stay in "Shirts" (shown as "T-Shirts & Polos").
+    // Woven button-up shirts get their own collection.
+    "WT-1": { category: "Dress Shirts" },   // Men's Easy Blend Twill Dress Shirt
+    "WT-26": { category: "Dress Shirts" },  // Men's Core365 Operate LS Twill Shirt
+    "WT-42": { category: "Dress Shirts" },  // Men's Core365 Optimum SS Twill Shirt
+    "WT-30": { category: "Dress Shirts" },  // Men's Stirling SS Shirt
+    "WT-32": { category: "Dress Shirts" },  // Women's Stirling SS Shirt
+    "WT-31": { category: "Dress Shirts" },  // Women's Wilshire LS Shirt
+    "WT-33": { category: "Dress Shirts" },  // Men's Wilshire LS Shirt
   };
 
   try {

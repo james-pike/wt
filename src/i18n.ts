@@ -268,6 +268,7 @@ const translations = {
 
   // Categories (used in apparel chips & product cards)
   "cat.Polos": { en: "Polos", fr: "Polos" },
+  "cat.Dress Shirts": { en: "Dress Shirts", fr: "Chemises" },
   "cat.T-Shirts": { en: "T-Shirts", fr: "T-Shirts" },
   "cat.Hoodies": { en: "Hoodies", fr: "Kangourous" },
   "cat.Hats": { en: "Headwear", fr: "Couvre-chefs" },
@@ -279,7 +280,7 @@ const translations = {
   "cat.JacketsHoodies": { en: "Jackets & Hoodies", fr: "Manteaux et capuchons" },
   "cat.Work Wear": { en: "Workwear", fr: "Travail" },
   "cat.Flame Resistant": { en: "Flame Resistant", fr: "Vêtements ignifuges" },
-  "cat.Shirts": { en: "T-Shirts", fr: "T-shirts" },
+  "cat.Shirts": { en: "T-Shirts & Polos", fr: "T-shirts et polos" },
   "cat.Sweaters": { en: "Sweaters", fr: "Chandails" },
   "cat.Footwear": { en: "Safety Footwear", fr: "Chaussures de sécurité" },
   "cat.Headwear": { en: "Headwear", fr: "Couvre-chefs" },
