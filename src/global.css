@@ -17805,3 +17805,139 @@ html body:not(#cm):not(#wt) .site-header .logout-btn {
   html body .login-overlay .login-modal.login-modal--split { background: #1a1815 !important; }
   html body .login-modal--split .login-modal__form-pane { background: transparent !important; }
 }
+
+/* ==========================================================================
+   Wills — dark "iron" theme for the logged-in store, matching the login gate
+   (its warm charcoals #141210 / #1a1815 / #1f1c19 / #26221e / #2e2924 and the
+   9px dot texture). Product photo tiles stay white so the photos read clean;
+   the Wills orange stays the accent. Two id-level :not()s so these beat the
+   template's body:not(#cm) rules.
+   ========================================================================== */
+:root {
+  --wills-ink-0: #141210;   /* deepest — page frame */
+  --wills-ink-1: #1a1815;   /* panels (sidebar, footer) */
+  --wills-ink-2: #1f1c19;   /* cards */
+  --wills-ink-3: #26221e;   /* raised (details, header base) */
+  --wills-ink-4: #2e2924;   /* hover / inputs */
+  --wills-line: rgba(255, 255, 255, 0.08);
+  --wills-text: #ece6dc;
+  --wills-muted: #a59e93;
+  --wills-dots: radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 9px 9px;
+}
+html:root { background: var(--wills-ink-0) !important; }
+html body:not(#cm):not(#wt) { background: var(--wills-ink-0) !important; color: var(--wills-text); }
+
+/* ---- Header: the iron texture over dark charcoal (was rust orange) ---- */
+html body:not(#cm):not(#wt) .site-header.site-header,
+html body:not(#cm):not(#wt) .cart-drawer__site-header {
+  background:
+    url("/wills-iron.png") left top / 100% auto no-repeat,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.25)),
+    var(--wills-ink-3) !important;
+  box-shadow: inset 0 -1px 0 var(--wills-line), 0 2px 6px rgba(0, 0, 0, 0.45) !important;
+}
+html body:not(#cm):not(#wt) .site-header .site-header__search,
+html body:not(#cm):not(#wt) .site-header .logout-btn {
+  background: rgba(0, 0, 0, 0.32) !important;
+  box-shadow: inset 0 0 0 1px var(--wills-line) !important;
+}
+
+/* ---- Page frame + catalog surfaces ---- */
+html body:not(#cm):not(#wt) .apparel-page,
+html body:not(#cm):not(#wt) .apparel-grid,
+html body:not(#cm):not(#wt) .apparel-catalog {
+  background: var(--wills-ink-0) !important;
+}
+html body:not(#cm):not(#wt) .home-catalog__inner {
+  background: var(--wills-dots), var(--wills-ink-0) !important;
+}
+
+/* ---- Sidebar (collections + filters) and the phone tab strip ---- */
+html body:not(#cm):not(#wt) .home-catalog__filters,
+html body:not(#cm):not(#wt) .home-catalog__header,
+html body:not(#cm):not(#wt) .home-catalog__tabs {
+  background: var(--wills-dots), var(--wills-ink-1) !important;
+  border-color: var(--wills-line) !important;
+  color: var(--wills-text) !important;
+}
+html body:not(#cm):not(#wt) .home-catalog__filters *:not(svg):not(path):not(input),
+html body:not(#cm):not(#wt) .home-catalog__tabs *:not(svg):not(path) {
+  color: var(--wills-text) !important;
+  border-color: var(--wills-line) !important;
+}
+html body:not(#cm):not(#wt) .home-catalog__filters [class*="heading"],
+html body:not(#cm):not(#wt) .home-catalog__filters [class*="title"],
+html body:not(#cm):not(#wt) .home-catalog__filters [class*="label"] { color: var(--wills-muted) !important; }
+html body:not(#cm):not(#wt) .home-catalog__filters svg,
+html body:not(#cm):not(#wt) .home-catalog__tabs svg { color: var(--wills-muted) !important; stroke: currentColor; }
+
+/* ---- Product cards: white photo tile, charcoal info strip ---- */
+html body:not(#cm):not(#wt) .product-card {
+  background: var(--wills-ink-2) !important;
+  border-color: var(--wills-line) !important;
+  box-shadow: 0 0 0 1px var(--wills-line) !important;
+}
+html body:not(#cm):not(#wt) .product-card__info {
+  background: var(--wills-ink-2) !important;
+  border-top: 1px solid var(--wills-line);
+}
+html body:not(#cm):not(#wt) .product-card__info *:not([class*="price"]):not([class*="color-dot"]):not([class*="swatch"]) {
+  color: var(--wills-text) !important;
+}
+html body:not(#cm):not(#wt) .product-card__sizes,
+html body:not(#cm):not(#wt) .product-card__sizes * { color: var(--wills-muted) !important; }
+
+/* ---- Product page ---- */
+html body:not(#cm):not(#wt) .product-modal__details {
+  background: var(--wills-dots), var(--wills-ink-3) !important;
+  color: var(--wills-text) !important;
+}
+html body:not(#cm):not(#wt) .product-modal__details :is(h1, h2, h3, li, p, strong, .product-modal__name, .product-modal__material) { color: var(--wills-text) !important; }
+html body:not(#cm):not(#wt) .product-modal__label,
+html body:not(#cm):not(#wt) .product-modal__color-inline { color: var(--wills-muted) !important; }
+html body:not(#cm):not(#wt) .product-modal__option,
+html body:not(#cm):not(#wt) .product-modal__details :is(input, button[class*="qty"], .product-modal__qty-btn) {
+  background: var(--wills-ink-4) !important;
+  color: var(--wills-text) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+html body:not(#cm):not(#wt) .product-modal__option.active {
+  background: var(--ce-green) !important;
+  border-color: var(--ce-green) !important;
+  color: #1a1815 !important;
+}
+/* "More …" carousel heading under the product */
+html body:not(#cm):not(#wt) :is(.related-products, .product-related, [class*="related"]) :is(h2, h3) { color: var(--wills-text) !important; }
+
+/* ---- Footer: charcoal with the white wordmark ---- */
+html body:not(#cm):not(#wt) .site-footer {
+  background: var(--wills-dots), var(--wills-ink-1) !important;
+  border-color: var(--wills-line) !important;
+  color: var(--wills-muted) !important;
+}
+html body:not(#cm):not(#wt) .site-footer * { color: var(--wills-muted) !important; border-color: rgba(255, 255, 255, 0.16) !important; }
+html body:not(#cm):not(#wt) .site-footer a:hover { color: var(--wills-text) !important; }
+html body .site-footer__brand.brand-cluster::before { background-image: url("/logo-white.webp") !important; }
+
+/* Selected collection (desktop sidebar item / phone+tablet tab): Wills orange
+   with dark text, so the label reads on the highlight. */
+html body:not(#cm):not(#wt) .home-catalog__catnav-item.active,
+html body:not(#cm):not(#wt) .home-catalog__tabs .apparel-titlebar__tab.active,
+html body:not(#cm):not(#wt) .apparel-titlebar__tab.active {
+  background: var(--ce-green) !important;
+  color: #1a1815 !important;
+}
+html body:not(#cm):not(#wt) .home-catalog__catnav-item.active *,
+html body:not(#cm):not(#wt) .apparel-titlebar__tab.active * {
+  color: #1a1815 !important;
+  stroke: currentColor;
+}
+html body:not(#cm):not(#wt) .home-catalog__catnav-item:not(.active):hover { background: var(--wills-ink-4) !important; }
+html body:not(#cm):not(#wt) .home-catalog__tabs .apparel-titlebar__tab:not(.active) { background: transparent !important; }
+/* Colour dots: a faint light ring so dark swatches (black, navy) show on the
+   charcoal cards and the product page. */
+html body:not(#cm):not(#wt) .product-card__color-dot,
+html body:not(#cm):not(#wt) .product-modal__color:not(.active) {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.28) !important;
+}
+html body:not(#cm):not(#wt) .home-catalog__tabs .apparel-titlebar__tab.active::before { background: var(--ce-green) !important; }
