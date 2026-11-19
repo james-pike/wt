@@ -17833,19 +17833,31 @@ html body:not(#cm):not(#wt) .site-header .logout-btn {
 html:root { background: var(--wills-steel-0) !important; }
 html body:not(#cm):not(#wt) { background: var(--wills-steel-0) !important; }
 
-/* ---- Header: matches the footer — the gate's charcoal with its fine dot
-   texture (no iron photo texture). ---- */
+/* ---- Header: Wills orange (primary) with white wordmark + controls ---- */
 html body:not(#cm):not(#wt) .site-header.site-header,
 html body:not(#cm):not(#wt) .cart-drawer__site-header {
-  background:
-    radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px) 0 0 / 9px 9px,
-    var(--wills-iron) !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.06)), var(--ce-green) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18) !important;
 }
+/* Search / log-out cells: a slightly darker orange inset on the bar. */
 html body:not(#cm):not(#wt) .site-header .site-header__search,
 html body:not(#cm):not(#wt) .site-header .logout-btn {
-  background: rgba(0, 0, 0, 0.3) !important;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+  background: rgba(0, 0, 0, 0.12) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16) !important;
+}
+/* Cart cell: the deeper orange so it still stands out on the orange bar. */
+html body:not(#cm):not(#wt) .site-header .cart-btn,
+html body:not(#cm):not(#wt) .site-header .cart-btn.cart-btn--active {
+  background: var(--ce-green-dark) !important;
+  color: #ffffff !important;
+}
+html body:not(#cm):not(#wt) .site-header .cart-btn * { color: #ffffff !important; stroke: #ffffff; }
+/* Bigger wordmark + APPAREL in the header. */
+html body .site-header .site-header__logo-img.site-header__logo-img--wills { height: 42px !important; }
+html body:not(#cm):not(#wt) .site-header .site-header__logo-apparel { font-size: 17px !important; letter-spacing: 0.14em !important; }
+@media (max-width: 600px) {
+  html body .site-header .site-header__logo-img.site-header__logo-img--wills { height: clamp(28px, 8.4vw, 34px) !important; }
+  html body:not(#cm):not(#wt) .site-header .site-header__logo-apparel { font-size: 14px !important; }
 }
 
 /* ---- Page frame + catalog surfaces: brushed steel ---- */
@@ -17853,14 +17865,14 @@ html body:not(#cm):not(#wt) .apparel-page,
 html body:not(#cm):not(#wt) .apparel-grid,
 html body:not(#cm):not(#wt) .apparel-catalog { background: var(--wills-steel-0) !important; }
 html body:not(#cm):not(#wt) .home-catalog__inner {
-  background: var(--wills-dots), var(--wills-sheen), var(--wills-steel-0) !important;
+  background: var(--wills-sheen), var(--wills-steel-0) !important;
 }
 
 /* ---- Sidebar (collections + filters) and the phone/tablet tab strip ---- */
 html body:not(#cm):not(#wt) .home-catalog__filters,
 html body:not(#cm):not(#wt) .home-catalog__header,
 html body:not(#cm):not(#wt) .home-catalog__tabs {
-  background: var(--wills-dots), var(--wills-sheen), var(--wills-steel-1) !important;
+  background: var(--wills-sheen), var(--wills-steel-1) !important;
   border-color: var(--wills-line) !important;
 }
 html body:not(#cm):not(#wt) .home-catalog__filters *:not(svg):not(path):not(input),
@@ -17904,32 +17916,93 @@ html body:not(#cm):not(#wt) .product-modal__details :is(input, button[class*="qt
 html body:not(#cm):not(#wt) .product-modal__option.active {
   background: var(--ce-green) !important;
   border-color: var(--ce-green) !important;
-  color: var(--wills-iron-deep) !important;
+  color: #ffffff !important;
 }
 html body:not(#cm):not(#wt) :is(.related-products, .product-related, [class*="related"]) :is(h2, h3) { color: var(--wills-text) !important; }
 
-/* ---- Footer: the iron charcoal (bookends the header), white wordmark ---- */
+/* ---- Footer: Wills orange (matches the header), white wordmark + text;
+   the bar under it is the deeper orange so it still reads as an edge. ---- */
 html body:not(#cm):not(#wt) .site-footer {
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px) 0 0 / 9px 9px, var(--wills-iron) !important;
-  border-color: rgba(255, 255, 255, 0.08) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.06)), var(--ce-green) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
 }
-html body:not(#cm):not(#wt) .site-footer * { color: #b7afa3 !important; border-color: rgba(255, 255, 255, 0.18) !important; }
-html body:not(#cm):not(#wt) .site-footer a:hover { color: #ece6dc !important; }
-html body .site-footer__brand.brand-cluster::before { background-image: url("/logo-white.webp") !important; }
+html body:not(#cm):not(#wt) .site-footer * { color: #ffffff !important; border-color: rgba(255, 255, 255, 0.45) !important; }
+html body:not(#cm):not(#wt) .site-footer a:hover { color: #fff3e6 !important; }
+html body:not(#cm):not(#wt) .site-footer::after { background: var(--ce-green-dark) !important; }
+html body .site-footer__brand.brand-cluster::before { background-image: url("/logo-white-onorange.webp") !important; }
+/* On the orange bars the logo's orange maple leaf vanished — use the variant
+   with a deep maple-red leaf. */
+html body .site-header img.site-header__logo-img--wills,
+html body .cart-drawer__site-header img.site-header__logo-img--wills { content: url("/logo-white-onorange.webp"); }
 
 /* Selected collection (desktop sidebar item / phone+tablet tab): Wills orange
-   with dark text. */
+   with white text. */
 html body:not(#cm):not(#wt) .home-catalog__catnav-item.active,
 html body:not(#cm):not(#wt) .home-catalog__tabs .apparel-titlebar__tab.active,
 html body:not(#cm):not(#wt) .apparel-titlebar__tab.active {
   background: var(--ce-green) !important;
-  color: var(--wills-iron-deep) !important;
+  color: #ffffff !important;
 }
 html body:not(#cm):not(#wt) .home-catalog__tabs .apparel-titlebar__tab.active::before { background: var(--ce-green) !important; }
 html body:not(#cm):not(#wt) .home-catalog__catnav-item.active *,
-html body:not(#cm):not(#wt) .apparel-titlebar__tab.active * { color: var(--wills-iron-deep) !important; stroke: currentColor; }
+html body:not(#cm):not(#wt) .apparel-titlebar__tab.active * { color: #ffffff !important; stroke: currentColor; }
 html body:not(#cm):not(#wt) .home-catalog__catnav-item:not(.active):hover { background: rgba(255, 255, 255, 0.35) !important; }
 html body:not(#cm):not(#wt) .home-catalog__tabs .apparel-titlebar__tab:not(.active) { background: transparent !important; }
 /* Colour dots: a faint ring so light swatches (white, sand) show on the steel. */
 html body:not(#cm):not(#wt) .product-card__color-dot,
 html body:not(#cm):not(#wt) .product-modal__color:not(.active) { box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2) !important; }
+
+/* ==========================================================================
+   Wills login gate — light style (like the B&M gate): light steel panels, the
+   black Wills wordmark, a white form card, Wills-orange button. The photo
+   panel is unchanged. Overrides the earlier charcoal gate rules above.
+   ========================================================================== */
+html body .login-modal.login-modal--split,
+html body .login-overlay .login-modal.login-modal--split {
+  background: #e4e3e0 !important;
+}
+@media (min-width: 1025px) {
+  html body .login-modal.login-modal--split,
+  html body .login-overlay .login-modal.login-modal--split { background: #e4e3e0 !important; }
+}
+html body .login-overlay { background: #ecebe8 !important; }
+/* Brand panel (logo + Proudly Canadian) */
+html body .login-modal--split .login-card__cover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0) 60%), #d6d4d0 !important;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08) !important;
+}
+html body .login-modal--split .login-card__cover::before,
+html body .login-modal--split .login-card__cover::after { opacity: 0 !important; }
+html body .login-card__brand.brand-cluster::before { background-image: url("/logo-black.webp") !important; }
+/* APPAREL in the wordmark's charcoal (white over the phone photo, below). */
+html body .login-modal--split .login-card__tagline .login-card__apparel { color: #2b2723 !important; }
+html body .login-modal--split .login-card__apparel { text-shadow: none !important; }
+html body .login-modal--split .login-card__locale {
+  background: rgba(255, 255, 255, 0.7) !important;
+  color: #2b2723 !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+html body .login-modal--split .login-card__locale * { color: #2b2723 !important; stroke: currentColor; }
+/* Form card */
+html body .login-modal--split .login-modal__form-pane { background: #f7f6f4 !important; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.07) !important; }
+html body .login-modal--split .login-modal__form-pane :is(h1, h2, h3, p, label, .login-card__hint, [class*="title"]) { color: #2b2723 !important; }
+html body .login-modal--split .login-modal__form-pane label { color: #6b645b !important; }
+html body .login-modal--split .login-modal__form-pane input {
+  background: #ffffff !important;
+  color: #2b2723 !important;
+  border-color: rgba(0, 0, 0, 0.16) !important;
+}
+html body .login-modal--split .login-modal__form-pane input::placeholder { color: #9a938a !important; }
+html body .login-modal--split .login-modal__form { background: #ffffff !important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important; }
+html body .login-modal--split .login-modal__form-pane { background: #f2f1ee !important; }
+/* Phones: the brand sits over the photo strip — keep the white wordmark there. */
+@media (max-width: 600px) {
+  html body .login-card__brand.brand-cluster::before { background-image: url("/logo-white.webp") !important; }
+  html body .login-modal--split .login-card__cover { background: transparent !important; box-shadow: none !important; }
+}
+@media (max-width: 600px) {
+  html body .login-modal--split .login-modal__form { background: transparent !important; box-shadow: none !important; }
+  html body .login-modal.login-modal--split,
+  html body .login-modal--split .login-modal__form-pane { background: #f2f1ee !important; }
+  html body .login-modal--split .login-card__tagline .login-card__apparel { color: #ffffff !important; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45) !important; }
+}

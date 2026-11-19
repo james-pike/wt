@@ -1209,10 +1209,6 @@ export default component$(() => {
                 <div class="login-card__tagline">
                   <div class="login-card__apparel">{t("logo.apparel", locale.value).toUpperCase()}</div>
                   <p class="login-card__slogan">{locale.value === "fr" ? "Du chantier au bureau." : "From the jobsite to the office."}</p>
-                  <picture class="login-card__canada">
-                    <source srcset="/carmichael-services/canada2-light.webp" type="image/webp" />
-                    <img src="/carmichael-services/canada2-light.png" alt="Proudly Canadian — Fièrement Canadienne" width="576" height="310" loading="eager" />
-                  </picture>
                 </div>
                 </div>
                 <Form
