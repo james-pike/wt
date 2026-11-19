@@ -17819,12 +17819,12 @@ html body:not(#cm):not(#wt) .site-header .logout-btn {
 :root {
   --wills-iron: #26221e;      /* header/footer charcoal (from the login gate) */
   --wills-iron-deep: #1a1815;
-  --wills-steel-0: #d6d4d0;   /* page frame */
-  --wills-steel-1: #cdcbc6;   /* sidebar / tab strip */
-  --wills-steel-2: #e7e5e1;   /* card info strip */
-  --wills-steel-3: #dfddd9;   /* product details panel */
-  --wills-steel-hi: #f1f0ed;  /* options / inputs */
-  --wills-line: rgba(0, 0, 0, 0.10);
+  --wills-steel-0: #ebeae7;   /* page frame */
+  --wills-steel-1: #e4e3e0;   /* sidebar / tab strip */
+  --wills-steel-2: #f4f3f1;   /* card info strip */
+  --wills-steel-3: #efeeeb;   /* product details panel */
+  --wills-steel-hi: #ffffff;  /* options / inputs */
+  --wills-line: rgba(0, 0, 0, 0.06);
   --wills-text: #2b2723;
   --wills-muted: #6b645b;
   --wills-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 45%, rgba(0, 0, 0, 0.04));
@@ -18006,3 +18006,15 @@ html body .login-modal--split .login-modal__form-pane { background: #f2f1ee !imp
   html body .login-modal--split .login-modal__form-pane { background: #f2f1ee !important; }
   html body .login-modal--split .login-card__tagline .login-card__apparel { color: #ffffff !important; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45) !important; }
 }
+
+/* Lighter theme: the seams between product tiles and the sidebar dividers
+   were dark grey; make them a soft light line. */
+html body:not(#cm):not(#wt) .apparel-grid { background: #e2e1de !important; }
+html body:not(#cm):not(#wt) .product-card { box-shadow: none !important; }
+html body:not(#cm):not(#wt) .home-catalog__inner { box-shadow: none !important; }
+html body:not(#cm):not(#wt) .home-catalog__filters,
+html body:not(#cm):not(#wt) .home-catalog__filters :is(.home-catalog__catnav, .home-catalog__filter-group, [class*="divider"], hr) {
+  border-color: rgba(0, 0, 0, 0.06) !important;
+  box-shadow: none !important;
+}
+html body:not(#cm):not(#wt) .home-catalog__catnav-count { background: rgba(0, 0, 0, 0.06) !important; }
