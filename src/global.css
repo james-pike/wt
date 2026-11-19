@@ -17833,12 +17833,12 @@ html body:not(#cm):not(#wt) .site-header .logout-btn {
 html:root { background: var(--wills-steel-0) !important; }
 html body:not(#cm):not(#wt) { background: var(--wills-steel-0) !important; }
 
-/* ---- Header: the iron texture over the gate's charcoal ---- */
+/* ---- Header: matches the footer — the gate's charcoal with its fine dot
+   texture (no iron photo texture). ---- */
 html body:not(#cm):not(#wt) .site-header.site-header,
 html body:not(#cm):not(#wt) .cart-drawer__site-header {
   background:
-    url("/wills-iron.png") left top / 100% auto no-repeat,
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.22)),
+    radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px) 0 0 / 9px 9px,
     var(--wills-iron) !important;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28) !important;
 }
