@@ -21,7 +21,12 @@ async function fetchAndWrite() {
   // truth for most fields, but these title/category tweaks live here so they
   // survive every regeneration — editing products.ts directly does NOT persist
   // (this script overwrites it on every build). Update the DB to retire one.
-  const OVERRIDES: Record<string, Partial<{ name: string; category: string; sizes: string; img: string; details: string; price: number }>> = {};
+  const OVERRIDES: Record<string, Partial<{ name: string; category: string; sizes: string; img: string; details: string; price: number }>> = {
+    // Team Tech half-/quarter-zip pullovers are sweaters, not T-shirts. (Set
+    // here, not in the DB — the DB is shared with the old Wills site.)
+    "WT-2": { category: "Sweaters" },
+    "WT-6": { category: "Sweaters" },
+  };
 
   try {
     const result = await db.execute(

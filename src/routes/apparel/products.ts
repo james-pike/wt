@@ -32,7 +32,7 @@ export const allProducts = [
   {
     "sku": "WT-2",
     "name": "Women’s Team Tech™ Half-Zip Pullover",
-    "category": "Shirts",
+    "category": "Sweaters",
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
@@ -160,7 +160,7 @@ export const allProducts = [
   {
     "sku": "WT-6",
     "name": "Men’s Team Tech Quarter-Zip Pullover",
-    "category": "Shirts",
+    "category": "Sweaters",
     "sizes": "S - 4XL",
     "badge": "",
     "colors": [
