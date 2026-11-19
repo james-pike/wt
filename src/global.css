@@ -18375,3 +18375,55 @@ html body .login-overlay .login-modal--split .login-modal__form { gap: 18px !imp
   html body .login-overlay .login-modal--split .login-modal__form-pane { padding: 38px 24px 40px !important; }
   html body .login-overlay .login-modal--split .login-card__cover { padding-bottom: 24px !important; }
 }
+
+/* ==========================================================================
+   Wills header, willstransfer.com structure: a thin orange strip across the
+   top of a black bar; the black logo block rises into that strip. On desktop
+   the logo block is exactly the sidebar's width (the catalog grid is
+   1fr : 5fr with a 2px gap), so its edges continue straight down into the
+   sidebar and the footer content starts on the same line.
+   ========================================================================== */
+:root { --wills-strip: 14px; --wills-strip-lift: 6px; }
+html body:not(#cm):not(#wt) .site-header.site-header,
+html body:not(#cm):not(#wt) .cart-drawer__site-header {
+  background: linear-gradient(to bottom, var(--ce-green) 0 var(--wills-strip), #14110e var(--wills-strip)) !important;
+}
+html body:not(#cm):not(#wt) .site-header .site-header__inner { align-items: stretch !important; }
+/* Logo block: starts inside the orange strip, runs to the bottom of the bar. */
+html body:not(#cm):not(#wt) .site-header .site-header__logo {
+  margin-top: var(--wills-strip-lift) !important;
+  background: #000000 !important;
+}
+/* Right-hand controls sit in the black part only. */
+html body:not(#cm):not(#wt) .site-header .site-header__nav {
+  align-self: flex-end !important;
+  height: calc(100% - var(--wills-strip)) !important;
+  margin-top: var(--wills-strip) !important;
+}
+html body:not(#cm):not(#wt) .site-header .site-header__nav > *:not(.site-header__search) { max-height: 100% !important; }
+@media (min-width: 1025px) {
+  html body:not(#cm):not(#wt) .site-header .site-header__logo {
+    flex: 0 0 calc((100% - 2px) / 6) !important;
+    width: calc((100% - 2px) / 6) !important;
+    box-sizing: border-box !important;
+    padding: 0 0 0 16px !important;
+  }
+  html body .site-header .site-header__logo-img.site-header__logo-img--wills { height: 36px !important; }
+  html body:not(#cm):not(#wt) .site-header .site-header__logo-brand {
+    left: calc(16px + 36px * 1448 / 313 * 0.705 + 16px) !important;
+    top: calc(50% + 36px * 0.39 - 24px) !important;
+  }
+  html body:not(#cm):not(#wt) .site-header .site-header__logo-apparel { font-size: 15px !important; }
+}
+@media (max-width: 600px) {
+  :root { --wills-strip: 8px; --wills-strip-lift: 3px; }
+}
+
+/* Gate background: the fleet/warehouse image from the willstransfer.com
+   footer (darkened greyscale), instead of the sign photo. */
+html body .login-overlay .login-modal--split .login-modal__carousel.login-modal__carousel {
+  background: #14110e url("/login-bg-fleet.webp") center 70% / cover no-repeat !important;
+}
+html body .login-overlay .login-modal--split .login-modal__slide { display: none !important; }
+html body .login-overlay .login-modal--split .login-modal__carousel::after { display: none !important; }
+html body .login-overlay .login-modal--split .login-modal__form-pane { background: rgba(0, 0, 0, 0.55) !important; }
