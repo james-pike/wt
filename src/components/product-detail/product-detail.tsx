@@ -10,6 +10,7 @@ import { ProductImage } from "../product-image/product-image";
 import { LogoSlide } from "../logo-overlay/logo-slide";
 import { getLogoConfig, logoAsset, type LogoPosition, type LogoStyle, type LogoBox } from "../../data/logo-placements";
 import { MOQ_BY_SKU } from "../../moq";
+import { CLOTHING_CATEGORIES } from "../../lib/categories";
 
 // Colours whose per-colour IMAGE FILES use a slug that differs from the (renamed)
 // display name. The gallery matches images by colour NAME → filename, so a rename
@@ -985,7 +986,9 @@ export const ProductDetailPanel = component$<ProductDetailPanelProps>((props) =>
       </div>
       {!props.single && (() => {
         const visibleByLogin: Record<string, string[]> = {
-          clothing: ["T-Shirts", "Jackets", "Polos", "Work Wear", "Hats", "Swag"],
+          // Wills lineup (src/lib/categories.ts); footwear rows are stored as
+          // Safety Shoes / Safety Boots.
+          clothing: [...CLOTHING_CATEGORIES.filter((c) => c !== "All" && c !== "Footwear"), "Safety Shoes", "Safety Boots"],
           tech: ["Work Wear"],
           safety: ["Flame Resistant", "Shirts", "Hats"],
         };
@@ -1003,8 +1006,17 @@ export const ProductDetailPanel = component$<ProductDetailPanelProps>((props) =>
           isElectrical
             ? ELECTRICAL_SKUS.includes(r.sku)
             : !ELECTRICAL_SKUS.includes(r.sku) && r.category !== "Flame Resistant";
-        const sameCat = allProducts.filter((r) => r.sku !== p.sku && r.sku !== "CAR-12" && inLineup(r) && r.category === p.category);
-        const allApparel = allProducts.filter((r) => r.sku !== p.sku && r.sku !== "CAR-12" && inLineup(r) && visible.includes(r.category));
+        // Safety Shoes + Safety Boots are one sidebar section (Safety Footwear).
+        const footwear = (c: string) => c === "Safety Shoes" || c === "Safety Boots";
+        const sameCat = allProducts.filter((r) => r.sku !== p.sku && r.sku !== "CAR-12" && inLineup(r) && (r.category === p.category || (footwear(r.category) && footwear(p.category))));
+        // Same order as the sidebar / "All" grid.
+        const catRank = (c: string) => {
+          const i = CLOTHING_CATEGORIES.indexOf(c === "Safety Shoes" || c === "Safety Boots" ? "Footwear" : c);
+          return i === -1 ? CLOTHING_CATEGORIES.length : i;
+        };
+        const allApparel = allProducts
+          .filter((r) => r.sku !== p.sku && r.sku !== "CAR-12" && inLineup(r) && visible.includes(r.category))
+          .sort((a, b) => catRank(a.category) - catRank(b.category));
         // Use the SKU's own category only when it has enough siblings to fill a
         // carousel; otherwise (e.g. Sweaters, with a single item) fall back to the
         // whole "Apparel" lineup so the row isn't empty/near-empty.
