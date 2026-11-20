@@ -18701,3 +18701,15 @@ html body .login-overlay .login-modal--split .login-modal__form-pane > .login-mo
 html body .login-overlay .login-modal--split .login-modal__form label { font-weight: 700 !important; letter-spacing: 0.09em !important; }
 /* Login button sits a little closer to the password field (24px → 18px). */
 html body .login-overlay .login-modal--split .login-modal__submit { margin-top: 0 !important; }
+
+/* Desktop header "APPAREL": capitals, a step lighter (was 700), a touch
+   bigger; tracking opened slightly for caps. Bottom stays on the Wills
+   underline: the box grows upward. */
+@media (min-width: 1025px) {
+  html body:not(#cm):not(#wt) .site-header .site-header__logo-apparel {
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    letter-spacing: 0.02em !important;
+  }
+}

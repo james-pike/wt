@@ -974,8 +974,6 @@ export const ProductDetailPanel = component$<ProductDetailPanelProps>((props) =>
                   <span class="product-modal__add-label-text product-modal__add-label-text--added">{t("modal.added", locale.value)}</span>
                 </span>
                 <span class="product-modal__add-mark" aria-hidden="true">
-                  <img class="product-modal__add-logo product-modal__add-logo--o" src="/swoosh-o.svg" alt="" width="40" height="20" loading="lazy" decoding="async" />
-                  <img class="product-modal__add-logo product-modal__add-logo--y" src="/swoosh-y.svg" alt="" width="40" height="20" loading="lazy" decoding="async" />
                   <svg class="product-modal__add-glyph product-modal__add-glyph--cart" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
                   <svg class="product-modal__add-glyph product-modal__add-glyph--check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
                 </span>
