@@ -18514,3 +18514,25 @@ html body:not(#cm):not(#wt) .site-footer .site-footer__totop svg { color: #fffff
     scrollbar-width: thin;
   }
 }
+
+/* Full-bleed header, like willstransfer.com: the orange strip + black bar run
+   edge to edge of the window, while the logo/search/cart stay in the max-width
+   column (lined up with the sidebar and grid). Painted by one ::after layer
+   behind the header's content (overlapping the box, so no half-pixel seam at
+   its edges); clip-path keeps it from widening the page. */
+html body:not(#cm):not(#wt) .site-header.site-header {
+  box-shadow: none !important;
+  clip-path: inset(0 calc(50% - 50vw) -12px calc(50% - 50vw));
+}
+html body:not(#cm):not(#wt) .site-header.site-header::after {
+  content: "";
+  display: block !important;
+  position: absolute !important; z-index: -1 !important; pointer-events: none;
+  top: 0 !important; bottom: 0 !important;
+  left: calc(50% - 50vw) !important; right: calc(50% - 50vw) !important;
+  width: auto !important; height: auto !important;
+  background: linear-gradient(to bottom, var(--ce-green) 0 var(--wills-strip), #14110e var(--wills-strip)) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important;
+}
+/* The bar's old 1px frame ring would show as a grey line at the column edges. */
+html body:not(#cm):not(#wt) .site-header .site-header__inner { box-shadow: none !important; }
