@@ -18536,3 +18536,12 @@ html body:not(#cm):not(#wt) .site-header.site-header::after {
 }
 /* The bar's old 1px frame ring would show as a grey line at the column edges. */
 html body:not(#cm):not(#wt) .site-header .site-header__inner { box-shadow: none !important; }
+
+/* Desktop: the page margins outside the store column are white, like
+   willstransfer.com, so the full-width header/footer bands and the store
+   column read against a light page. */
+@media (min-width: 1000px) {
+  html:has(body:not(#cm):not(#wt)),
+  html body:not(#cm):not(#wt),
+  html body:not(#cm):not(#wt) .apparel-page { background-color: #ffffff !important; }
+}
