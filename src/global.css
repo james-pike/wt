@@ -18419,15 +18419,6 @@ html body:not(#cm):not(#wt) .site-header .site-header__nav > *:not(.site-header_
   :root { --wills-strip: 8px; --wills-strip-lift: 3px; }
 }
 
-/* Gate background: the fleet/warehouse image from the willstransfer.com
-   footer (darkened greyscale), instead of the sign photo. */
-html body .login-overlay .login-modal--split .login-modal__carousel.login-modal__carousel {
-  background: #14110e url("/login-bg-fleet.webp") center 70% / cover no-repeat !important;
-}
-html body .login-overlay .login-modal--split .login-modal__slide { display: none !important; }
-html body .login-overlay .login-modal--split .login-modal__carousel::after { display: none !important; }
-html body .login-overlay .login-modal--split .login-modal__form-pane { background: rgba(0, 0, 0, 0.55) !important; }
-
 /* ==========================================================================
    Wills footer, mirroring the header (and willstransfer.com's footer): dark
    bar with their fleet image, a thin orange strip along the BOTTOM, and on
