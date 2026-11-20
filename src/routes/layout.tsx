@@ -1259,10 +1259,11 @@ export default component$(() => {
               onClick$={() => { loginHeroIndex.value = (loginHeroIndex.value + 1) % 2; }}
             >
               <img src="/login-bg-canada.webp" alt="" width="2412" height="900"
-                   loading="eager" decoding="sync"
+                   loading="eager" decoding="async" fetchPriority="high"
                    class={`login-modal__slide login-modal__slide--wide ${loginHeroIndex.value === 0 ? "is-active" : ""}`} />
+              {/* Slide 2 isn't seen for 10s: fetch it after slide 1. */}
               <img src="/hero-wills.webp" alt="" width="1600" height="680"
-                   loading="eager" decoding="sync"
+                   loading="eager" decoding="async" fetchPriority="low"
                    class={`login-modal__slide login-modal__slide--wide ${loginHeroIndex.value === 1 ? "is-active" : ""}`} />
             </div>
             </div>

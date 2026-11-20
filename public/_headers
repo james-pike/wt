@@ -32,6 +32,17 @@
 /textures/*
   Cache-Control: public, max-age=2592000, stale-while-revalidate=31536000
 
+# Login gate backgrounds + carousel leaf: stable names, so a month of cache
+# with background refresh (like the product photos), not immutable.
+/login-bg-*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=31536000
+
+/hero-*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=31536000
+
+/wills-leaf.svg
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=31536000
+
 # HTML is server-rendered per request and must not be cached by the browser.
 /
   Cache-Control: public, max-age=0, must-revalidate
