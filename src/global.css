@@ -18500,3 +18500,17 @@ html body:not(#cm):not(#wt) .site-footer .site-footer__totop svg { color: #fffff
   html body:not(#cm):not(#wt) .site-footer .site-footer__totop { width: 76px; height: 34px; left: 12px; }
   html body:not(#cm):not(#wt) .site-footer .site-footer__inner { padding-bottom: calc(var(--wills-strip) + 40px) !important; }
 }
+
+/* Desktop sidebar stays pinned under the header while the gallery scrolls,
+   instead of scrolling away and leaving an empty left column. Scrolls on its
+   own if it's ever taller than the viewport. */
+@media (min-width: 1000px) {
+  html body .home-catalog__filters {
+    position: sticky !important;
+    top: var(--wt-header-pin) !important;
+    max-height: calc(100vh - var(--wt-header-pin));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+}
