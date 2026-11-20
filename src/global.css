@@ -18545,3 +18545,39 @@ html body:not(#cm):not(#wt) .site-header .site-header__inner { box-shadow: none 
   html body:not(#cm):not(#wt),
   html body:not(#cm):not(#wt) .apparel-page { background-color: #ffffff !important; }
 }
+
+/* Header's orange top strip a little thinner, trimmed WITHOUT shrinking the
+   black bar: the whole header sits 4px (phones 2px) above the window edge, so
+   the top of the strip is cut off and everything below moves up with it.
+   --wt-header-top feeds --wt-header-pin, so the sticky sidebar/tab strips
+   follow. The logo block's lift grows by the same amount so it still rises
+   ~4px (phones 2px) into the visible strip. */
+html:has(body:not(#cm):not(#wt)) { --wt-header-top: -4px; }
+html body:not(#cm):not(#wt) .site-header { --wills-strip-lift: 8px; }
+@media (max-width: 600px) {
+  html:has(body:not(#cm):not(#wt)) { --wt-header-top: -2px; }
+  html body:not(#cm):not(#wt) .site-header { --wills-strip-lift: 4px; }
+}
+html body:not(#cm):not(#wt) .site-header.site-header { top: var(--wt-header-top) !important; }
+html body:not(#cm):not(#wt) .site-header.site-header { margin-top: var(--wt-header-top) !important; }
+/* Phones: the header is position:fixed, so `top` alone places it. */
+@media (max-width: 600px) {
+  html body:not(#cm):not(#wt) .site-header.site-header { margin-top: 0 !important; }
+}
+/* Desktop: the Wills header renders 2px shorter than --wt-header-h (65 vs 67),
+   which left a 2px gap above the pinned sidebar; pin to the real bottom edge. */
+@media (min-width: 1000px) {
+  html:has(body:not(#cm):not(#wt)) { --wt-header-pin: calc(var(--wt-header-top) + var(--wt-header-h) - 2px); }
+}
+
+/* Footer sits square on the bottom of the page: no rounded bottom corners and
+   no white gap under it. */
+html body:not(#cm):not(#wt) .site-footer {
+  border-radius: 0 !important;
+  margin-bottom: 0 !important;
+}
+/* Phones: the white card layer behind the page ran 4px past the document,
+   leaving a white sliver under the footer; end it at the footer. */
+@media (max-width: 600px) {
+  html body:not(#cm):not(#wt)::before { bottom: 0 !important; }
+}
