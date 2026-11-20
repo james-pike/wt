@@ -280,7 +280,7 @@ const translations = {
   "cat.JacketsHoodies": { en: "Jackets & Hoodies", fr: "Manteaux et capuchons" },
   "cat.Work Wear": { en: "Workwear", fr: "Travail" },
   "cat.Flame Resistant": { en: "Flame Resistant", fr: "Vêtements ignifuges" },
-  "cat.Shirts": { en: "T-Shirts & Polos", fr: "T-shirts et polos" },
+  "cat.Shirts": { en: "Shirts & Polos", fr: "Chandails et polos" },
   "cat.Sweaters": { en: "Sweaters", fr: "Chandails" },
   "cat.Footwear": { en: "Safety Footwear", fr: "Chaussures de sécurité" },
   "cat.Headwear": { en: "Headwear", fr: "Couvre-chefs" },
