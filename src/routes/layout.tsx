@@ -1115,7 +1115,7 @@ export default component$(() => {
     loginCarouselPaused.value = false; // clear any stale pause when the modal opens
     const id = setInterval(() => {
       if (loginCarouselPaused.value) return;
-      // Single login photo (the Wills sign) — nothing to rotate.
+      loginHeroIndex.value = (loginHeroIndex.value + 1) % 2;
     }, 10000);
     cleanup(() => clearInterval(id));
   }, { strategy: "document-ready" });
@@ -1196,6 +1196,21 @@ export default component$(() => {
                 card holding the photo carousel above the sign-in. */}
             <div class="login-modal__stack">
             <div class="login-modal__form-pane">
+              {/* Carousel dots, in the card's bottom-right corner. */}
+              <div class="login-modal__dots" stoppropagation:click>
+                <button
+                  type="button"
+                  class={`login-modal__dot ${loginHeroIndex.value === 0 ? "is-active" : ""}`}
+                  aria-label="Show slide 1"
+                  onClick$={() => { loginHeroIndex.value = 0; }}
+                />
+                <button
+                  type="button"
+                  class={`login-modal__dot ${loginHeroIndex.value === 1 ? "is-active" : ""}`}
+                  aria-label="Show slide 2"
+                  onClick$={() => { loginHeroIndex.value = 1; }}
+                />
+              </div>
               <div class="login-card">
                 {/* The recessed, dot-textured brand panel (lockup, APPAREL, slogan,
                     Proudly Canadian plaque) — the April hero-cover treatment. */}
@@ -1237,11 +1252,18 @@ export default component$(() => {
                 </Form>
               </div>
             </div>
-            {/* One photo on every screen size: entering Canada. */}
-            <div class="login-modal__carousel">
+            {/* Background carousel: entering Canada, then the orange Wills sign.
+                Cross-fades every 10s; click the photo or a dot (bottom-right of the
+                login card) to switch. */}
+            <div class="login-modal__carousel"
+              onClick$={() => { loginHeroIndex.value = (loginHeroIndex.value + 1) % 2; }}
+            >
               <img src="/login-bg-canada.webp" alt="" width="2412" height="900"
                    loading="eager" decoding="sync"
                    class={`login-modal__slide login-modal__slide--wide ${loginHeroIndex.value === 0 ? "is-active" : ""}`} />
+              <img src="/hero-wills.webp" alt="" width="1600" height="680"
+                   loading="eager" decoding="sync"
+                   class={`login-modal__slide login-modal__slide--wide ${loginHeroIndex.value === 1 ? "is-active" : ""}`} />
             </div>
             </div>
           </div>

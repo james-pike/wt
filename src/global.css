@@ -18625,9 +18625,79 @@ html body .login-overlay .login-modal--split .login-modal__form { padding-left: 
   html body .login-overlay .login-modal--split .login-modal__form { padding-left: 6px !important; padding-right: 6px !important; }
 }
 
-/* Gate card: slightly rounded corners. */
-html body .login-overlay .login-modal--split .login-modal__form-pane { border-radius: 10px !important; }
+/* Gate card: the faintest rounding on the corners. */
+html body .login-overlay .login-modal--split .login-modal__form-pane { border-radius: 3px !important; }
 
 /* Login gate fills the window edge to edge: hide the site's 4px white page
    frame while the gate is up. */
 html body:has(.login-overlay)::after { display: none !important; }
+
+/* ==========================================================================
+   Login gate, desktop: everything in the card scales with the card's own
+   width, so at any window size / browser zoom the logo stays centred over
+   the form instead of overflowing when the card narrows (it does below
+   ~1300px wide, e.g. 150% zoom). Full size is unchanged on wide windows:
+   the logo caps at 392px, APPAREL at 2.4rem.
+   ========================================================================== */
+@media (min-width: 601px) {
+  html body .login-overlay .login-modal--split .login-card { container-type: inline-size; }
+  html body .login-overlay .login-modal--split .login-card__brand.brand-cluster::before {
+    width: min(392px, 99cqw) !important;
+    height: calc(min(392px, 99cqw) * 313 / 1448) !important;
+  }
+  html body .login-overlay .login-modal--split .login-card__tagline { padding-left: calc(min(392px, 99cqw) * 0.27) !important; }
+  html body .login-overlay .login-modal--split .login-card__tagline .login-card__apparel { font-size: min(2.4rem, 9.7cqw) !important; }
+}
+/* "Login to access apparel" a little smaller (was 1.4rem); shrinks further
+   on a narrow card so it stays on one line. */
+html body .login-overlay .login-modal--split .login-modal__subtitle { font-size: 1.22rem !important; }
+@media (min-width: 601px) {
+  html body .login-overlay .login-modal--split .login-modal__subtitle { font-size: min(1.22rem, 7cqw) !important; }
+}
+/* Desktop gate card a touch taller: more room above the logo and below the
+   login button. */
+@media (min-width: 601px) {
+  html body .login-overlay .login-modal--split .login-modal__form-pane { padding-top: 66px !important; padding-bottom: 66px !important; }
+}
+
+/* Login background carousel (2 slides: entering Canada, orange Wills sign).
+   Phones: an older rule forces every wide slide fully opaque; only the
+   active one should show, so the carousel cross-fades there too. */
+@media (max-width: 600px) {
+  html body .login-modal--split .login-modal__slide--wide:not(.is-active) { opacity: 0 !important; }
+}
+
+/* Carousel dots live in the login card: bottom-right corner of the card,
+   not of the page. */
+html body .login-overlay .login-modal--split .login-modal__form-pane > .login-modal__dots {
+  position: absolute !important;
+  inset: auto 14px 14px auto !important;
+  transform: none !important;
+  z-index: 4 !important;
+  gap: 6px !important;
+}
+html body .login-overlay .login-modal--split .login-modal__form-pane > .login-modal__dots .login-modal__dot { width: 11px !important; height: 11px !important; border-radius: 1px !important; }
+
+/* Active carousel dot: a full orange maple leaf (/wills-leaf.svg, the Wills
+   logo's leaf orange #fe6500) fades in on the white square. */
+html body .login-overlay .login-modal--split .login-modal__form-pane > .login-modal__dots .login-modal__dot { position: relative !important; }
+html body .login-overlay .login-modal--split .login-modal__form-pane > .login-modal__dots .login-modal__dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/wills-leaf.svg") center / contain no-repeat;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+html body .login-overlay .login-modal--split .login-modal__form-pane > .login-modal__dots .login-modal__dot.is-active::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Gate "PASSWORD" label: a step lighter (was 800) and slightly tighter
+   tracking (was 0.12em). */
+html body .login-overlay .login-modal--split .login-modal__form label { font-weight: 700 !important; letter-spacing: 0.09em !important; }
+/* Login button sits a little closer to the password field (24px → 18px). */
+html body .login-overlay .login-modal--split .login-modal__submit { margin-top: 0 !important; }
