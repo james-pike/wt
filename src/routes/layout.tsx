@@ -1237,9 +1237,9 @@ export default component$(() => {
                 </Form>
               </div>
             </div>
-            {/* One photo on every screen size: the Wills sign. */}
+            {/* One photo on every screen size: entering Canada. */}
             <div class="login-modal__carousel">
-              <img src="/hero-wills.jpg" alt="" width="1600" height="680"
+              <img src="/login-bg-canada.webp" alt="" width="2412" height="900"
                    loading="eager" decoding="sync"
                    class={`login-modal__slide login-modal__slide--wide ${loginHeroIndex.value === 0 ? "is-active" : ""}`} />
             </div>
@@ -1614,7 +1614,7 @@ export default component$(() => {
           aria-label="Back to top"
           onClick$={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 15 12 8 19 15" /></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 15 12 8 19 15" /></svg>
         </button>
         <div class="site-footer__inner">
           <div class="site-footer__brand brand-cluster" role="img" aria-label="Wills Apparel">

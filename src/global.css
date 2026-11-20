@@ -18479,13 +18479,13 @@ html body:not(#cm):not(#wt) .site-footer .site-footer__totop {
   position: absolute;
   left: 16px;
   bottom: 0;
-  width: 92px;
-  height: 40px;
-  padding: 0 0 4px;
+  width: 96px;
+  height: 64px;
+  padding: 0 0 8px;
   border: 0;
   background: var(--ce-green) !important;
   color: #ffffff !important;
-  clip-path: polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+  clip-path: polygon(17px 0, 100% 0, calc(100% - 17px) 100%, 0 100%);
   cursor: pointer;
   z-index: 1;
 }
@@ -18494,11 +18494,11 @@ html body:not(#cm):not(#wt) .site-footer .site-footer__totop svg { color: #fffff
 /* Content shifts right of the tab on desktop; on smaller screens the tab sits
    at the left of the bottom strip under the centred content. */
 @media (min-width: 1025px) {
-  html body:not(#cm):not(#wt) .site-footer { padding-left: calc(16px + 92px + 24px) !important; }
+  html body:not(#cm):not(#wt) .site-footer { padding-left: calc(16px + 96px + 24px) !important; }
 }
 @media (max-width: 1024px) {
-  html body:not(#cm):not(#wt) .site-footer .site-footer__totop { width: 76px; height: 34px; left: 12px; }
-  html body:not(#cm):not(#wt) .site-footer .site-footer__inner { padding-bottom: calc(var(--wills-strip) + 40px) !important; }
+  html body:not(#cm):not(#wt) .site-footer .site-footer__totop { width: 80px; height: 54px; left: 12px; }
+  html body:not(#cm):not(#wt) .site-footer .site-footer__inner { padding-bottom: calc(var(--wills-strip) + 60px) !important; }
 }
 
 /* Desktop sidebar stays pinned under the header while the gallery scrolls,
@@ -18581,3 +18581,53 @@ html body:not(#cm):not(#wt) .site-footer {
 @media (max-width: 600px) {
   html body:not(#cm):not(#wt)::before { bottom: 0 !important; }
 }
+
+/* Header sits a touch lower (more of the orange strip shows) and the logo
+   block's top edge lands exactly halfway down the visible strip.
+   Desktop: strip 14px, header at -2px → 12px visible; logo top at 7px.
+   Phones: strip 8px, header at -1px → 7px visible; logo top at 4px.
+   (A hair below the true midpoint, which reads as centred by eye.) */
+html:has(body:not(#cm):not(#wt)) { --wt-header-top: -2px; }
+html body:not(#cm):not(#wt) .site-header { --wills-strip-lift: 9px; }
+@media (max-width: 600px) {
+  html:has(body:not(#cm):not(#wt)) { --wt-header-top: -1px; }
+  html body:not(#cm):not(#wt) .site-header { --wills-strip-lift: 3px; }
+}
+
+/* "Apparel" a hair further left, closer to the Wills wordmark. */
+@media (min-width: 1025px) {
+  html body:not(#cm):not(#wt) .site-header .site-header__logo-brand {
+    left: calc(16px + 36px * 1448 / 313 * 0.705 + 13px) !important;
+  }
+}
+@media (max-width: 1024px) {
+  html body:not(#cm):not(#wt) .site-header .site-header__logo-brand { margin-left: 7px !important; }
+}
+
+/* Login gate "APPAREL": lighter than the bold 700 so it doesn't outweigh the
+   Wills wordmark above it. */
+html body .login-modal--split .login-card__tagline .login-card__apparel { font-weight: 500 !important; position: relative !important; left: -6px !important; color: #ece7de !important; }
+
+/* Gate wordmark + APPAREL ~12% bigger (APPAREL's indent scales with it). */
+html body .login-overlay .login-modal--split .login-card__brand.brand-cluster::before { width: 392px !important; height: calc(392px * 313 / 1448) !important; }
+html body .login-overlay .login-modal--split .login-card__tagline { padding-left: calc(392px * 0.27) !important; }
+html body .login-overlay .login-modal--split .login-card__tagline .login-card__apparel { font-size: 2.4rem !important; }
+@media (max-width: 600px) {
+  html body .login-overlay .login-modal--split .login-card__brand.brand-cluster::before { width: 300px !important; height: calc(300px * 313 / 1448) !important; }
+  html body .login-overlay .login-modal--split .login-card__tagline { padding-left: calc(300px * 0.27) !important; }
+  html body .login-overlay .login-modal--split .login-card__tagline .login-card__apparel { font-size: 2rem !important; }
+}
+
+/* Gate card: the login form (heading, field, button) gets a touch more side
+   inset; the card, Wills logo and APPAREL keep their width and position. */
+html body .login-overlay .login-modal--split .login-modal__form { padding-left: 12px !important; padding-right: 12px !important; box-sizing: border-box !important; }
+@media (max-width: 600px) {
+  html body .login-overlay .login-modal--split .login-modal__form { padding-left: 6px !important; padding-right: 6px !important; }
+}
+
+/* Gate card: slightly rounded corners. */
+html body .login-overlay .login-modal--split .login-modal__form-pane { border-radius: 10px !important; }
+
+/* Login gate fills the window edge to edge: hide the site's 4px white page
+   frame while the gate is up. */
+html body:has(.login-overlay)::after { display: none !important; }
